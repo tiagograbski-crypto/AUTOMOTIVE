@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Star | Estética Automotiva de Elite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap');
+
+        :root {
+            --rosso-magma: #A30000;
+            --preto-fosco: #050505;
+            --aco: #C0C0C0;
+        }
+
+        body {
+            background-color: var(--preto-fosco);
+            color: white;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- SISTEMA DE BOOT (LIGANDO O CARRO) --- */
+        #car-boot-system {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background-color: var(--preto-fosco);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .car-frame {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Frames do Carro */
+        #frame-1 { background-image: url('https://carrosest.carrd.co/assets/images/image01.jpg?v=0259a93f'); opacity: 1; }
+        #frame-2 { background-image: url('https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f'); }
+        #frame-3 { background-image: url('https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f'); }
+
+        /* --- ELEMENTOS DE MARCA --- */
+        .brand-container {
+            position: relative;
+            z-index: 110;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease 2.5s;
+        }
+
+        .loaded .brand-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estrela de 5 Pontas Branca */
+        .star-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            z-index: -1;
+            opacity: 0.15;
+            fill: white;
+            filter: blur(2px);
+        }
+
+        /* Overlay para leitura */
+        .vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.8) 100%);
+            z-index: 105;
+        }
+
+        .btn-experience {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 1rem 2.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-top: 2rem;
+            transition: all 0.5s;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-experience:hover {
+            background: var(--rosso-magma);
+            border-color: var(--rosso-magma);
+            box-shadow: 0 0 30px rgba(163, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-black">
+
+    <div id="car-boot-system">
+        <!-- Frames Sequenciais -->
+        <div id="frame-1" class="car-frame"></div>
+        <div id="frame-2" class="car-frame"></div>
+        <div id="frame-3" class="car-frame"></div>
+        
+        <div class="vignette"></div>
+
+        <!-- Conteúdo de Marca -->
+        <div class="brand-container">
+            <!-- Estrela de 5 Pontas SVG -->
+            <svg class="star-bg" viewBox="0 0 24 24">
+                <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+            </svg>
+
+            <h2 class="text-xs tracking-[1em] text-zinc-400 mb-2 font-light">ESTÉTICA AUTOMOTIVA</h2>
+            <h1 class="text-6xl md:text-8xl font-light tracking-tighter">
+                BLACK <span class="font-bold text-white">STAR</span>
+            </h1>
+            <div class="w-12 h-[1px] bg-[#A30000] mx-auto mt-6"></div>
+            
+            <button class="btn-experience">
+                INICIAR EXPERIÊNCIA
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const f1 = document.getElementById('frame-1');
+            const f2 = document.getElementById('frame-2');
+            const f3 = document.getElementById('frame-3');
+            
+            // Sequência de Ignição
+            setTimeout(() => {
+                // Liga as luzes amarelas
+                f2.style.opacity = "1";
+            }, 1200);
+
+            setTimeout(() => {
+                // Liga o Xenon + Amarelas (Full)
+                f3.style.opacity = "1";
+                // Ativa a entrada do conteúdo
+                document.body.classList.add('loaded');
+            }, 2200);
+        });
+    </script>
+</body>
+</html>
