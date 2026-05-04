@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- Cor do buscador no celular (Combina exatamente com o fundo escuro do app) -->
     <meta name="theme-color" content="#09090b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- ALTERE AQUI: Nome da aba do navegador -->
     <title>[NOME DA ESTÉTICA] | Gestão de Estética Automotiva & Detalhamento</title>
     
+    <!-- 🚀 Favicon e Ícone de App (A logozinha na aba do navegador e celular) 🚀 -->
+    <link rel="icon" type="image/jpeg" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
+    <link rel="apple-touch-icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
+
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f" as="image">
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f" as="image">
 
+    <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', 'SEU_PIXEL_ID_AQUI'); fbq('track', 'PageView');
@@ -78,7 +87,7 @@
         .top-navbar { 
             position: absolute; top: 0; left: 0; right: 0;
             height: 70px; display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 16px; z-index: 50; 
+            padding: 0 16px; z-index: 60; /* Maior que a área B2B */
             background: rgba(9, 9, 11, 0.5);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05); 
@@ -88,9 +97,12 @@
 
         .app-layout { flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: url('https://www.transparenttextures.com/patterns/stardust.png'); display: flex; flex-direction: column;}
         
+        /* CORREÇÃO DE BUG (AUDITORIA SÊNIOR): Impede que os blocos sejam comprimidos pelo flexbox */
+        .app-layout > * { flex-shrink: 0 !important; }
+
         /* --- HERO BANNER --- */
         .hero-banner {
-            width: 100%; height: 42vh; min-height: 320px; position: relative; flex-shrink: 0;
+            width: 100%; height: 42vh; min-height: 320px; position: relative;
             background-image: linear-gradient(to bottom, rgba(9,9,11,0.2) 0%, rgba(9,9,11,0.98) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
             background-size: cover; background-position: center 60%;
             display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px;
@@ -100,8 +112,7 @@
         
         .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; width: 100%; }
         
-        /* Ajuste do Padding Bottom para proteger contra o teclado no Mobile */
-        .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 0 20px 60px 20px; }
+        .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 0 20px 80px 20px; }
 
         /* --- SLIDER DE AUTORIDADE --- */
         .authority-slider {
@@ -202,7 +213,7 @@
             z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 10px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .fixed-bottom-cta.visible { transform: translateY(0); }
-        .fixed-bottom-cta.hide-cta { transform: translateY(150%); } /* Esconder quando B2B está em tela */
+        .fixed-bottom-cta.hide-cta { transform: translateY(150%); } 
 
         .bottom-upsell-zone { display: none; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); animation: fade-in 0.3s ease forwards; }
         .upsell-toggle { appearance: none; width: 40px; height: 22px; background: rgba(255,255,255,0.15); border-radius: 20px; position: relative; cursor: pointer; transition: all 0.3s; outline: none; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
@@ -401,8 +412,7 @@
                             <div class="receipt-total"><span class="font-bold text-[13px] uppercase">Total Estimado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
                         </div>
                         
-                        <!-- PADDING BOTTOM para proteger do Teclado no Mobile -->
-                        <div class="pt-2 pb-32 md:pb-8">
+                        <div class="pt-2 pb-8">
                             <p class="text-[12px] text-zinc-400 mb-4 text-center">Para confirmar sua reserva e garantir sua vaga nesta semana, informe seu WhatsApp.</p>
                             <!-- Input de Telefone com Validação Sensorial -->
                             <input type="tel" id="client-phone" class="glass-input hud-input transition-all duration-300" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this)">
@@ -419,7 +429,7 @@
             </div>
 
             <!-- B2B GLID PITCH SECTION (BRANCA E DE ALTO CONTRASTE) -->
-            <div id="b2b-section" class="bg-white text-zinc-900 w-full relative z-50 border-t border-zinc-200 font-sans">
+            <div id="b2b-section" class="bg-white text-zinc-900 w-full relative z-40 border-t border-zinc-200 font-sans">
                 <div class="max-w-5xl mx-auto px-6 py-16 md:py-24">
                     
                     <!-- 1. O Hook B2B -->
@@ -479,17 +489,28 @@
                             <p class="text-xs md:text-sm text-zinc-500 font-semibold uppercase tracking-wider mb-6">Assinatura & Manutenção</p>
                             
                             <div class="mb-6 pb-6 border-b border-zinc-100">
-                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase tracking-wide mb-1">Setup de Adaptação: R$ 697,00 (Taxa Única)</p>
+                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase tracking-wide mb-1">Setup de Adaptação: R$ 497,00 (Taxa Única)</p>
                                 <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase tracking-wide mt-3 mb-1">Mensalidade:</p>
-                                <p class="text-3xl md:text-4xl font-black text-green-600">R$ 97,00 <span class="text-sm md:text-lg text-zinc-500 font-medium">/ mês</span></p>
+                                <p class="text-3xl md:text-4xl font-black text-green-600">R$ 147,00 <span class="text-sm md:text-lg text-zinc-500 font-medium">/ mês</span></p>
                             </div>
                             
                             <ul class="space-y-4 mb-6 flex-grow">
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium"><svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Hospedagem ultrarrápida inclusa</li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium"><svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Seu negócio, suas cores, sua marca</li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium"><svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 2 edições mensais estruturais</li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium"><svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Suporte técnico de vanguarda</li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-500 font-medium"><svg class="w-5 h-5 fill-zinc-300 shrink-0" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg> Taxa anual do domínio (~R$ 40) à parte.</li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
+                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    Hospedagem ultrarrápida inclusa
+                                </li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
+                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    Seu negócio, suas cores, sua marca
+                                </li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
+                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    2 edições mensais estruturais
+                                </li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
+                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    Suporte técnico de vanguarda
+                                </li>
                             </ul>
                             
                             <a href="https://wa.me/554933121788?text=Olá,%20quero%20assinar%20o%20Plano%20Performance%20da%20GLID!" target="_blank" class="block w-full bg-[#10b981] text-white text-center text-sm md:text-base font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-green-600 transition mt-auto">Assinar Performance</a>
@@ -510,47 +531,25 @@
                             </div>
                             
                             <ul class="space-y-4 mb-8 flex-grow">
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium"><svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Licença definitiva do sistema</li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium"><svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Sem mensalidades obrigatórias</li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium"><svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> O cliente gerencia a própria hospedagem</li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium"><svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Tabela de atualização avulsa (A partir de R$ 97)</li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
+                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    Licença definitiva do sistema
+                                </li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
+                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    Sem mensalidades obrigatórias
+                                </li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
+                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    O cliente gerencia a própria hospedagem
+                                </li>
+                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
+                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
+                                    Tabela de atualização avulsa (A partir de R$ 97)
+                                </li>
                             </ul>
                             
                             <a href="https://wa.me/554933121788?text=Olá,%20quero%20adquirir%20a%20Licença%20Única%20da%20GLID!" target="_blank" class="block w-full bg-zinc-900 text-white text-center text-sm md:text-base font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-black transition mt-auto">Adquirir Licença</a>
-                        </div>
-                    </div>
-
-                    <!-- FAQ (S.A.C.) -->
-                    <div class="max-w-3xl mx-auto mb-16">
-                        <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-8 text-center uppercase tracking-tight">Perguntas Frequentes (FAQ)</h3>
-                        <div class="space-y-4">
-                            <div class="border border-zinc-200 rounded-xl overflow-hidden bg-white">
-                                <button class="w-full px-5 md:px-6 py-5 text-left font-bold text-zinc-800 flex justify-between items-center focus:outline-none hover:bg-zinc-50 transition" onclick="toggleFaq('faq1')">
-                                    <span class="pr-4 text-[13px] md:text-base">Preciso ter conhecimento em tecnologia ou programação?</span>
-                                    <span id="icon-faq1" class="text-blue-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                </button>
-                                <div id="faq1" class="hidden px-5 md:px-6 pb-5 text-[13px] md:text-sm text-zinc-600 leading-relaxed border-t border-zinc-100 pt-4">
-                                    Absolutamente não. A GLID entrega a plataforma 100% configurada, testada e pronta para uso. Você só precisa copiar o link que vamos fornecer e colar na sua bio do Instagram, campanhas do Meta Ads ou enviar no WhatsApp dos seus clientes.
-                                </div>
-                            </div>
-                            <div class="border border-zinc-200 rounded-xl overflow-hidden bg-white">
-                                <button class="w-full px-5 md:px-6 py-5 text-left font-bold text-zinc-800 flex justify-between items-center focus:outline-none hover:bg-zinc-50 transition" onclick="toggleFaq('faq2')">
-                                    <span class="pr-4 text-[13px] md:text-base">O que a "Taxa de Setup" do Plano Performance inclui?</span>
-                                    <span id="icon-faq2" class="text-blue-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                </button>
-                                <div id="faq2" class="hidden px-5 md:px-6 pb-5 text-[13px] md:text-sm text-zinc-600 leading-relaxed border-t border-zinc-100 pt-4">
-                                    A taxa de adaptação cobre o trabalho da nossa equipe de engenharia em pegar o código fonte deste aplicativo e adaptá-lo para o seu negócio. Isso inclui: inserir sua Logomarca, adaptar as cores para a paleta da sua empresa, cadastrar os nomes dos seus serviços e os seus preços, além de configurar a inteligência do sistema para enviar as reservas direto para o seu número de WhatsApp.
-                                </div>
-                            </div>
-                            <div class="border border-zinc-200 rounded-xl overflow-hidden bg-white">
-                                <button class="w-full px-5 md:px-6 py-5 text-left font-bold text-zinc-800 flex justify-between items-center focus:outline-none hover:bg-zinc-50 transition" onclick="toggleFaq('faq3')">
-                                    <span class="pr-4 text-[13px] md:text-base">Isso substitui o meu site atual?</span>
-                                    <span id="icon-faq3" class="text-blue-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                </button>
-                                <div id="faq3" class="hidden px-5 md:px-6 pb-5 text-[13px] md:text-sm text-zinc-600 leading-relaxed border-t border-zinc-100 pt-4">
-                                    Sim e com vantagens. Sites tradicionais (Wix, WordPress) são lentos e parecem "panfletos digitais". Este sistema é um "Web App", focado unicamente em converter o visitante em lead (agendamento). Ele carrega instantaneamente, não exige downloads e mantém a atenção do usuário presa até ao final do orçamento.
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -572,10 +571,7 @@
                         
                         <!-- Marca e Direitos -->
                         <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                            
-                            <!-- 🚀 LOGO DA MARCA GLID 🚀 -->
                             <img src="https://glid.carrd.co/assets/images/image03.png?v=a8738403" alt="GLID Tecnologia" class="h-10 md:h-12 mb-3 object-contain">
-                            
                             <p class="text-[10px] md:text-xs text-zinc-500 uppercase tracking-widest font-semibold mb-1">Tecnologia em Conversão B2B</p>
                             <p class="text-[10px] text-zinc-600">© 2026 GLID. Todos os direitos reservados.</p>
                         </div>
@@ -719,8 +715,11 @@
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
             hintText.style.opacity = "0";
             setTimeout(() => {
-                document.getElementById('landing-view').style.opacity = "0"; document.getElementById('landing-view').style.pointerEvents = "none";
+                const landing = document.getElementById('landing-view');
+                landing.style.opacity = "0"; 
+                landing.style.pointerEvents = "none";
                 setTimeout(() => {
+                    landing.style.display = "none"; // Remove do DOM visual para evitar bugs de z-index no iOS
                     document.getElementById('experience-view').classList.add('show-view');
                     setTimeout(() => {
                         document.getElementById('experience-view').style.opacity = "0";
@@ -732,7 +731,7 @@
                             setTimeout(() => { document.getElementById('floating-cta').classList.add('visible'); updateBottomCTA();}, 500);
                         }, 300);
                     }, 600); 
-                }, 300);
+                }, 600);
             }, 600); 
         }
 
@@ -797,7 +796,13 @@
 
             if (funnelState.step === 3) {
                 document.getElementById('bottom-upsell-zone').style.display = 'none';
-                setTimeout(() => { document.getElementById('client-phone').classList.add('pulse-attention'); }, 100);
+                setTimeout(() => { 
+                    const phoneInput = document.getElementById('client-phone');
+                    phoneInput.classList.add('pulse-attention'); 
+                    
+                    // Rolagem segura apenas até o campo do telefone para evitar pular para a área B2B
+                    phoneInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
             }
             updateBottomCTA();
             handleScroll(); // Verifica scroll ao mudar de página
@@ -830,18 +835,11 @@
             const btnCTA = document.getElementById('btn-continue-flow');
             btnCTA.classList.add('processing');
             
-            // WHATSAPP DA ESTÉTICA CLIENTE (USANDO O SEU NÚMERO COMO PADRÃO)
+            // WHATSAPP DA ESTÉTICA CLIENTE (USANDO O SEU NÚMERO COMO PADRÃO B2B)
             const numWhatsApp = "554933121788"; 
             
             const msg = `⚡ *RESERVA VIP | [NOME DA ESTÉTICA]* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model}\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
             setTimeout(() => { window.open(`https://wa.me/${numWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank'); btnCTA.classList.remove('processing'); }, 800);
-        }
-
-        function toggleFaq(id) {
-            const content = document.getElementById(id);
-            const icon = document.getElementById('icon-' + id);
-            if (content.classList.contains('hidden')) { content.classList.remove('hidden'); icon.style.transform = 'rotate(45deg)'; } 
-            else { content.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; }
         }
     </script>
 </body>
