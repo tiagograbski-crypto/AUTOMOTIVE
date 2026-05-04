@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#09090b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Black Car | Estúdio de Detalhamento Automotivo</title>
+    <title>Black Car | Detalhamento & Estética Automotiva</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f" as="image">
@@ -46,8 +46,8 @@
         .progress-circle { position: absolute; transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)); }
         .engine-button { width: 85px; height: 85px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #0a0a0a); box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 8px 16px rgba(0,0,0,0.8); border: 1px solid #2a2a2a; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; }
         .engine-button.active { transform: scale(0.92); background: linear-gradient(145deg, #110000, #330000); border-color: var(--vermelho-ignicao); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
-        .btn-lbl-top, .btn-lbl-bot { font-size: 8px; font-weight: 800; color: #555; }
-        .btn-lbl-mid { font-size: 16px; font-weight: 900; color: #ccc; letter-spacing: 0.1em; margin: 2px 0; text-transform: uppercase; transition: all 0.3s; }
+        .btn-lbl-top, .btn-lbl-bot { font-size: 8px; font-weight: 800; color: #555; font-family: sans-serif;}
+        .btn-lbl-mid { font-size: 16px; font-weight: 900; color: #ccc; letter-spacing: 0.1em; margin: 2px 0; text-transform: uppercase; transition: all 0.3s; font-family: sans-serif;}
         .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho-ignicao); }
         .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ignicao); }
 
@@ -70,28 +70,39 @@
         /* --- TELA 3: APP VIEW --- */
         #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; position: relative; }
         
-        .top-navbar { height: 55px; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; background: rgba(9, 9, 11, 0.95); z-index: 50; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        /* HEADER FLUTUANTE TRANSLÚCIDO (GLASSMORPHISM) */
+        .top-navbar { 
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 65px; display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 20px; z-index: 50; 
+            background: rgba(9, 9, 11, 0.3); /* Ultra transparente */
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); /* Efeito vidro fosco */
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            padding-top: env(safe-area-inset-top); /* Suporte para iPhone Notch */
+        }
+        @media (min-width: 768px) { .top-navbar { padding: 0 32px; height: 75px; } }
 
+        /* FUNIL GERAL (Scrolla por baixo do Header Fixo) */
         .app-layout { flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: url('https://www.transparenttextures.com/patterns/stardust.png'); display: flex; flex-direction: column;}
-        
-        /* --- NOVO HERO BANNER (FULL WIDTH / EDGE-TO-EDGE) --- */
+        .funnel-container { width: 100%; max-width: 650px; margin: 0 auto; padding: 0 20px 140px 20px; }
+
+        /* --- NOVO HERO BANNER (Preenche o topo da tela) --- */
         .hero-banner {
-            width: 100%; height: 32vh; min-height: 240px; position: relative; flex-shrink: 0;
-            background-image: linear-gradient(to bottom, rgba(9,9,11,0.1) 0%, rgba(9,9,11,1) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
+            width: 100%; height: 35vh; min-height: 280px; position: relative; flex-shrink: 0;
+            background-image: linear-gradient(to bottom, rgba(9,9,11,0.1) 0%, rgba(9,9,11,0.95) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
             background-size: cover; background-position: center 70%;
             display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px;
+            padding-top: 70px; /* Para não encostar no Header Flutuante */
         }
-        @media (min-width: 768px) { .hero-banner { padding: 32px 40px; height: 38vh;} }
+        @media (min-width: 768px) { .hero-banner { height: 40vh; padding: 32px 40px; } }
+        
         .hero-content { position: relative; z-index: 10; max-width: 650px; margin: 0 auto; width: 100%; }
-        .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); margin-bottom: 8px; }
+        .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); margin-bottom: 12px; }
         .trust-stars { color: #fbbf24; font-size: 10px; letter-spacing: 2px; }
-
-        /* CONTAINER DO FUNIL (Sem padding no topo, pois o Hero encosta) */
-        .funnel-container { width: 100%; max-width: 650px; margin: 0 auto; padding: 0 20px 140px 20px; }
 
         /* --- SLIDER DE AUTORIDADE --- */
         .authority-slider {
-            background: rgba(255, 255, 255, 0.02); border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding: 10px 0; overflow: hidden; display: flex; white-space: nowrap; width: 100%; margin-bottom: 24px;
         }
         .slider-track { display: flex; gap: 30px; animation: scroll-marquee 20s linear infinite; min-width: 200%; }
@@ -112,16 +123,14 @@
         .step-section:not(.active-step) { opacity: 0.5; }
         .step-section.completed:not(.active-step) .step-content { display: none !important; }
 
-        /* --- CARDS GLASSMORPHISM COM CORES ESTRATÉGICAS --- */
+        /* --- CARDS GLASSMORPHISM (TIERS DE CORES) --- */
         .glass-card { 
-            /* Fundo mais claro e elegante */
             background: rgba(255, 255, 255, 0.08); 
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.15); 
             border-radius: 14px; padding: 18px; margin-bottom: 12px; 
             cursor: pointer; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); 
             position: relative; overflow: hidden;
-            /* Cor padrão herdada, sobrescrita por classes de tier */
             --c-accent: var(--accent); 
         }
         .glass-card:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255,255,255,0.3); }
@@ -131,12 +140,11 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 0 1px var(--c-accent); 
         }
         
-        /* Definição de Cores por Pacote (Neurovendas) */
-        .tier-prata { --c-accent: #94a3b8; } /* Cinza (Express) */
-        .tier-azul  { --c-accent: #0ea5e9; } /* Azul Ciano (Lavagem Técnica) */
-        .tier-ouro  { --c-accent: #f59e0b; } /* Âmbar/Ouro (Cera/Proteção) */
-        .tier-verde { --c-accent: #10b981; } /* Verde Esmeralda (Interna/Saúde) */
-        .tier-roxo  { --c-accent: #8b5cf6; } /* Roxo (Vitrificação/High-End) */
+        .tier-prata { --c-accent: #94a3b8; } 
+        .tier-azul  { --c-accent: #0ea5e9; } 
+        .tier-ouro  { --c-accent: #f59e0b; } 
+        .tier-verde { --c-accent: #10b981; } 
+        .tier-roxo  { --c-accent: #8b5cf6; } 
 
         .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
         .card-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; letter-spacing: -0.5px; transition: color 0.3s;}
@@ -152,25 +160,7 @@
         .glass-card.selected .price-text { background: var(--c-accent); color: #000; border-color: var(--c-accent); }
         .tag-recomendado { position: absolute; top: -1px; left: -1px; background: var(--c-accent); color: #000; font-size: 9px; font-weight: 800; padding: 4px 14px; border-radius: 14px 0 14px 0; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- O UPSELL ESTRATÉGICO --- */
-        .upsell-zone {
-            display: none; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.02));
-            border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 16px; margin-top: 16px;
-            animation: slide-down 0.4s ease forwards;
-        }
-        .upsell-toggle {
-            appearance: none; width: 44px; height: 24px; background: rgba(255,255,255,0.1);
-            border-radius: 20px; position: relative; cursor: pointer; transition: all 0.3s;
-            outline: none; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
-        }
-        .upsell-toggle::after {
-            content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
-            background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .upsell-toggle:checked { background: #f59e0b; }
-        .upsell-toggle:checked::after { transform: translateX(20px); }
-
-        /* --- INPUTS & SELECTS (CORREÇÃO DO BUG DA COR DO TEXTO) --- */
+        /* --- INPUTS & SELECTS --- */
         .glass-input { 
             background-color: rgba(255, 255, 255, 0.08); 
             backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; 
@@ -178,11 +168,11 @@
             appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; 
         }
         
-        /* Mágica para garantir que as opções do select apareçam com texto cinza chumbo no fundo branco (Mobile Native Tweak) */
-        .glass-input option {
-            color: #3f3f46; /* Cinza Chumbo */
-            background-color: #ffffff;
-            font-weight: 600;
+        /* CORREÇÃO DO BUG DAS OPÇÕES INVISÍVEIS NO MOBILE (Força nativa) */
+        select.glass-input option, select.glass-input optgroup { 
+            color: #000000 !important; 
+            background-color: #ffffff !important; 
+            font-weight: 600; 
         }
 
         select.glass-input {
@@ -213,20 +203,39 @@
         .footer-brand { font-weight: 900; font-size: 16px; color: #fff; letter-spacing: -0.5px; margin-bottom: 8px; display: flex; justify-content: center; align-items: center; gap: 8px;}
         .footer-text { font-size: 11px; color: #71717a; line-height: 1.6; max-width: 300px; margin: 0 auto;}
 
-        /* --- BARRA DE CHECKOUT (CARRINHO INFERIOR) --- */
+        /* --- BARRA DE CHECKOUT (CARRINHO INFERIOR COM UPSELL) --- */
         .fixed-bottom-cta {
             position: fixed; bottom: 0; left: 0; right: 0;
             padding: 12px 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom));
             background: rgba(9, 9, 11, 0.95); border-top: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            z-index: 100; display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 10px;
             transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .fixed-bottom-cta.visible { transform: translateY(0); }
+
+        /* Zona de Upsell dentro da barra inferior */
+        .bottom-upsell-zone {
+            display: none; justify-content: space-between; align-items: center;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);
+            animation: fade-in 0.3s ease forwards;
+        }
+        .upsell-toggle {
+            appearance: none; width: 40px; height: 22px; background: rgba(255,255,255,0.15);
+            border-radius: 20px; position: relative; cursor: pointer; transition: all 0.3s;
+            outline: none; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .upsell-toggle::after {
+            content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px;
+            background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .upsell-toggle:checked { background: #f59e0b; }
+        .upsell-toggle:checked::after { transform: translateX(18px); }
         
+        .cta-row-flex { display: flex; justify-content: space-between; align-items: center; width: 100%;}
         .cart-info { display: flex; flex-direction: column; }
         .cart-label { font-size: 10px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 2px;}
-        .cart-total { font-size: 18px; font-weight: 900; color: #fff; line-height: 1;}
+        .cart-total { font-size: 18px; font-weight: 900; color: #fff; line-height: 1; transition: color 0.3s;}
 
         .btn-continue {
             background: #fff; color: #000; border-radius: 10px;
@@ -259,23 +268,30 @@
         </div>
         <div class="vignette"></div>
 
-        <div class="text-center z-20 pt-8 md:pt-12 pointer-events-none px-4 w-full">
+        <!-- TÍTULOS SUPERIORES (Mais limpo, não cobre o carro) -->
+        <div class="text-center z-20 pt-8 md:pt-16 pointer-events-none px-4 w-full">
             <div class="flex justify-center items-center gap-2 mb-4 opacity-80">
                 <span class="tracking-[0.4em] text-zinc-400 uppercase text-[9px] md:text-[10px] font-bold">Centro, Chapecó | SC</span>
             </div>
             <h1 class="font-black tracking-tighter uppercase leading-[0.9] text-[2.8rem] md:text-[4.5rem] drop-shadow-2xl text-white mb-3">BLACK CAR</h1>
             <h2 class="font-light text-[1.1rem] md:text-[1.8rem] text-zinc-300 tracking-[0.2em] uppercase leading-none">Detailing Studio</h2>
-            <p class="mt-6 text-[14px] text-zinc-400 font-normal max-w-xs mx-auto leading-relaxed">Estética automotiva premium. Lavagem detalhada, polimento e proteção cerâmica.</p>
         </div>
 
-        <div class="flex flex-col items-center z-100 mt-auto mb-4">
+        <!-- ÁREA DE AÇÃO INFERIOR (Onde o dedo do utilizador está no Mobile) -->
+        <div class="flex flex-col items-center z-100 mt-auto pb-4 w-full max-w-sm mx-auto">
             <div class="engine-btn-ring">
                 <svg width="100%" height="100%" class="absolute pointer-events-none"><circle cx="50%" cy="50%" r="42%" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"></circle><circle id="ring" class="progress-circle" cx="50%" cy="50%" r="42%" fill="none" stroke="#ef4444" stroke-width="4"></circle></svg>
                 <div id="btn" class="engine-button" onmousedown="startIgnition(event)" onmouseup="stopIgnition(event)" ontouchstart="startIgnition(event)" ontouchend="stopIgnition(event)">
                     <span class="btn-lbl-top">SYSTEM</span><span class="btn-lbl-mid">Start</span><span class="btn-lbl-bot">POWER</span>
                 </div>
             </div>
-            <p id="hold-hint" class="text-[10px] tracking-[0.1em] text-zinc-500 font-bold uppercase transition-opacity duration-300">Segure para Configurar</p>
+            <p id="hold-hint" class="text-[10px] tracking-[0.1em] text-zinc-500 font-bold uppercase transition-opacity duration-300 mb-6">Segure para Configurar</p>
+            
+            <div class="border-t border-white/5 pt-4 w-full text-center px-4">
+                <p class="text-[12px] md:text-[14px] text-zinc-400 font-normal leading-relaxed opacity-90">
+                    Estética automotiva premium.<br>Lavagem detalhada, polimento e proteção cerâmica.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -294,21 +310,23 @@
 
     <!-- 3. WEB APP -->
     <div id="app-view">
+        
+        <!-- HEADER FLUTUANTE TRANSLÚCIDO -->
         <header class="top-navbar">
-            <h1 class="font-black text-[14px] tracking-tighter uppercase text-white">BLACK CAR <span class="text-zinc-500 font-light">Detailing</span></h1>
+            <h1 class="font-black text-[14px] tracking-tighter uppercase text-white">BLACK CAR <span class="text-zinc-400 font-light">Detailing</span></h1>
             <div class="flex items-center gap-1.5">
-                <span class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Reserva VIP</span>
+                <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest bg-white/10 px-2 py-1 rounded">Reserva VIP</span>
             </div>
         </header>
 
         <div class="app-layout" id="scroll-container">
             
-            <!-- NOVO HERO BANNER (Full-width no topo) -->
+            <!-- HERO BANNER TRANSLÚCIDO E EDGE-TO-EDGE -->
             <div id="hero-banner" class="hero-banner">
                 <div class="hero-content">
                     <div class="trust-badge"><span class="trust-stars">★★★★★</span><span class="text-[9px] text-white font-bold tracking-wider uppercase">5.0 no Google</span></div>
                     <h2 class="text-2xl font-black mt-1 mb-2 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE O SEU CARRO <span class="text-[var(--accent)]"><br>AO ESTADO DE ARTE</span></h2>
-                    <p class="text-[12px] font-medium text-zinc-200 leading-relaxed max-w-sm drop-shadow-md">Configure a sua sessão de estética abaixo.</p>
+                    <p class="text-[12px] font-medium text-zinc-200 leading-relaxed max-w-sm drop-shadow-md">O cuidado que o seu património exige. Selecione o serviço ideal abaixo.</p>
                 </div>
             </div>
 
@@ -320,7 +338,6 @@
                     <div class="slider-item">🧽 <span>Toalhas Anti-risco</span></div>
                     <div class="slider-item">🛡️ <span>Selantes Premium</span></div>
                     <div class="slider-item">🔬 <span>Box Climatizado</span></div>
-                    
                     <div class="slider-item">✨ <span>Cera de Carnaúba</span></div>
                     <div class="slider-item">💧 <span>Água Filtrada</span></div>
                     <div class="slider-item">🧽 <span>Toalhas Anti-risco</span></div>
@@ -353,21 +370,8 @@
                             <p class="card-desc">O padrão ouro. Processo a dois baldes (zero ácidos) para não riscar o verniz. Inclui aspiração profunda e limpeza de painéis.</p>
                         </div>
 
-                        <!-- UPSELL ZONA (Aparece para Prata/Azul) -->
-                        <div id="upsell-zone" class="upsell-zone">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <h4 class="text-[13px] font-black text-white uppercase flex items-center gap-1.5 text-[#f59e0b]">
-                                        ✨ Adicionar Upgrade
-                                    </h4>
-                                    <p class="text-[11px] text-zinc-300 mt-1 max-w-[220px]">Selagem da pintura com Cera Líquida Premium. Mais brilho e proteção (+ R$ 50).</p>
-                                </div>
-                                <input type="checkbox" id="upsell-toggle" class="upsell-toggle" onchange="toggleUpsell(this)">
-                            </div>
-                        </div>
-
                         <!-- CARD 2: CERA SINTÉTICA (OURO) -->
-                        <div class="glass-card tier-ouro mt-4" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
+                        <div class="glass-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
                             <div class="tag-recomendado">Mais Escolhido</div>
                             <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><span class="price-text">R$ 150</span></div>
                             <span class="feature-time">⏱️ 3 a 4 horas</span>
@@ -391,14 +395,13 @@
                 </div>
 
                 <!-- WIZARD STEP 2: CARRO -->
-                <div id="step-2-section" class="step-section">
+                <div id="step-2-section" class="step-section" style="display: none;">
                     <div class="section-header">
                         <h2 class="section-title" id="title-2">02. Identifique a Máquina</h2>
                         <button id="edit-2" class="edit-btn" onclick="editStep(2)">Alterar</button>
                     </div>
                     
                     <div id="step-2-content" class="step-content">
-                        <!-- O Select nativo agora tem fonte preta com fundo branco nas opções, evitando o "tudo em branco" -->
                         <select id="brand-select" class="glass-input" onchange="handleBrandSelect()">
                             <option value="" disabled selected>Selecione a Montadora...</option>
                             <option value="Audi">Audi</option><option value="BMW">BMW</option><option value="Chevrolet">Chevrolet</option><option value="Citroen">Citroën</option>
@@ -413,23 +416,21 @@
                 </div>
 
                 <!-- WIZARD STEP 3: CAPTURA E RECIBO -->
-                <div id="step-3-section" class="step-section">
+                <div id="step-3-section" class="step-section" style="display: none;">
                     <div class="section-header">
                         <h2 class="section-title" id="title-3">03. Resumo & Agendamento</h2>
                     </div>
                     
                     <div id="step-3-content" class="step-content">
                         
-                        <!-- A "BAG" / RECIBO DINÂMICO -->
                         <div class="receipt-card">
                             <h4 class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest mb-3 text-center">Reserva de Atendimento</h4>
-                            
                             <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
                             <div class="receipt-row"><span>Protocolo Principal:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
-                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcionais:</span><span class="receipt-val text-[#f59e0b]">+ Selagem Hidrofóbica</span></div>
+                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcionais:</span><span class="receipt-val text-[#f59e0b]">+ Selagem Cera Líquida</span></div>
                             
                             <div class="receipt-total">
-                                <span class="font-bold text-[13px] text-white uppercase">Investimento:</span>
+                                <span class="font-bold text-[13px] text-white uppercase">Investimento Estimado:</span>
                                 <span class="receipt-total-val" id="receipt-total">R$ 0</span>
                             </div>
                         </div>
@@ -449,17 +450,32 @@
             </div>
         </div>
 
-        <!-- BARRA DE CHECKOUT INFERIOR (CARRINHO) -->
+        <!-- BARRA DE CHECKOUT INFERIOR (CARRINHO E UPSELL) -->
         <div id="floating-cta" class="fixed-bottom-cta">
-            <div class="cart-info">
-                <span class="cart-label">Total a investir</span>
-                <span class="cart-total" id="cta-total">R$ 0</span>
-            </div>
             
-            <button id="btn-continue-flow" class="btn-continue" disabled onclick="handleNextStep()">
-                <div class="spinner"></div>
-                <span class="btn-text">Selecionar Pacote</span>
-            </button>
+            <!-- UPSELL ZONA NA BARRA INFERIOR -->
+            <div id="bottom-upsell-zone" class="bottom-upsell-zone">
+                <div>
+                    <h4 class="text-[12px] font-black text-[#f59e0b] uppercase tracking-wide flex items-center gap-1.5">
+                        ✨ Cera Líquida Premium
+                    </h4>
+                    <p class="text-[9px] text-zinc-300 mt-1">+ R$ 50 (Brilho intenso e Proteção UV)</p>
+                </div>
+                <input type="checkbox" id="upsell-toggle-bottom" class="upsell-toggle" onchange="toggleUpsell(this)">
+            </div>
+
+            <!-- LINHA DO CARRINHO E BOTAO -->
+            <div class="cta-row-flex">
+                <div class="cart-info">
+                    <span class="cart-label">Total a investir</span>
+                    <span class="cart-total" id="cta-total">R$ 0</span>
+                </div>
+                
+                <button id="btn-continue-flow" class="btn-continue" disabled onclick="handleNextStep()">
+                    <div class="spinner"></div>
+                    <span class="btn-text">Selecionar</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -549,22 +565,25 @@
             
             funnelState.baseService = mode; funnelState.basePrice = price;
             
-            const upsellZone = document.getElementById('upsell-zone');
-            const upsellToggle = document.getElementById('upsell-toggle');
+            // Lógica do Upsell na Barra Inferior
+            const bottomUpsellZone = document.getElementById('bottom-upsell-zone');
+            const upsellToggle = document.getElementById('upsell-toggle-bottom');
             
             if (price === 60 || price === 90) {
-                upsellZone.style.display = 'block';
+                bottomUpsellZone.style.display = 'flex';
             } else {
-                upsellZone.style.display = 'none';
+                bottomUpsellZone.style.display = 'none';
                 upsellToggle.checked = false;
                 funnelState.hasUpsell = false;
             }
+            
             if(navigator.vibrate) navigator.vibrate(20);
             
+            // Se NÃO tem upsell, e o cliente escolheu um plano mais caro, podemos auto-avançar
             if(price !== 60 && price !== 90) {
                  setTimeout(() => { funnelState.step = 2; updateWizardUI(); }, 400);
             } else {
-                 updateWizardUI(); 
+                 updateWizardUI(); // Fica no passo 1, atualiza a barra para ele decidir o upsell
             }
         }
 
@@ -606,7 +625,7 @@
         function editStep(step) { funnelState.step = step; updateWizardUI(); }
 
         function updateWizardUI() {
-            // Hides banner & slider dynamically
+            // Esconde o Banner e Slider se não for o passo 1
             const isFirstStep = funnelState.step === 1;
             document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
             document.getElementById('authority-slider').style.display = isFirstStep ? 'flex' : 'none';
@@ -618,6 +637,10 @@
             
             document.getElementById('step-1-content').style.display = funnelState.step === 1 ? 'block' : 'none';
             document.getElementById('edit-1').style.display = funnelState.step > 1 ? 'block' : 'none';
+            
+            let servicoText = funnelState.baseService.split('(')[0].trim();
+            if (funnelState.hasUpsell) servicoText += " + Cera";
+            document.getElementById('title-1').innerText = funnelState.step > 1 ? `01. ${servicoText}` : '01. Selecione o Tratamento';
             document.getElementById('title-1').classList.toggle('active', funnelState.step === 1);
 
             // STEP 2 (CARRO)
@@ -627,6 +650,9 @@
             document.getElementById('step-2-section').style.display = funnelState.step >= 2 ? 'block' : 'none';
             document.getElementById('step-2-content').style.display = funnelState.step === 2 ? 'block' : 'none';
             document.getElementById('edit-2').style.display = funnelState.step > 2 ? 'block' : 'none';
+            
+            let carText = funnelState.brand ? `${funnelState.brand} ${funnelState.model}` : '02. Identifique a Máquina';
+            document.getElementById('title-2').innerText = funnelState.step > 2 ? `02. ${carText}` : '02. Identifique a Máquina';
             document.getElementById('title-2').classList.toggle('active', funnelState.step === 2);
 
             // STEP 3 (RECIBO & WHATSAPP)
@@ -639,9 +665,16 @@
             if(funnelState.brand && funnelState.model) document.getElementById('receipt-car').innerText = `${funnelState.brand} ${funnelState.model}`;
             if(funnelState.baseService) document.getElementById('receipt-base').innerText = funnelState.baseService;
             document.getElementById('receipt-upsell-row').style.display = funnelState.hasUpsell ? 'flex' : 'none';
-            document.getElementById('receipt-total').innerText = `R$ ${getTotalPrice()}`;
+            
+            // Highlight total text if upsell active
+            const recTotal = document.getElementById('receipt-total');
+            recTotal.innerText = `R$ ${getTotalPrice()}`;
+            recTotal.style.color = funnelState.hasUpsell ? '#f59e0b' : '#10b981'; 
 
             if (funnelState.step === 3) {
+                // Esconder o upsell do rodapé, se ele existir
+                document.getElementById('bottom-upsell-zone').style.display = 'none';
+
                 setTimeout(() => { 
                     document.getElementById('client-phone').classList.add('pulse-attention');
                     document.getElementById('scroll-container').scrollTo({ top: document.getElementById('scroll-container').scrollHeight, behavior: 'smooth' });
@@ -655,13 +688,15 @@
             const btnCTA = document.getElementById('btn-continue-flow');
             const totalUI = document.getElementById('cta-total');
             totalUI.innerText = `R$ ${getTotalPrice()}`;
+            
+            totalUI.style.color = funnelState.hasUpsell ? '#f59e0b' : '#fff';
 
             btnCTA.classList.remove('btn-success');
             btnCTA.disabled = true;
 
             if (funnelState.step === 1) {
                 if (funnelState.basePrice === 0) {
-                    btnCTA.querySelector('.btn-text').innerText = "Escolha um Serviço";
+                    btnCTA.querySelector('.btn-text').innerText = "Selecionar";
                 } else {
                     btnCTA.disabled = false;
                     btnCTA.querySelector('.btn-text').innerText = "Continuar";
@@ -669,10 +704,10 @@
             } 
             else if (funnelState.step === 2) {
                 if (!funnelState.brand || funnelState.model.length < 2) {
-                    btnCTA.querySelector('.btn-text').innerText = "Informe o Veículo";
+                    btnCTA.querySelector('.btn-text').innerText = "Informe Veículo";
                 } else {
                     btnCTA.disabled = false;
-                    btnCTA.querySelector('.btn-text').innerText = "Ir para Resumo";
+                    btnCTA.querySelector('.btn-text').innerText = "Ver Resumo";
                 }
             } 
             else if (funnelState.step === 3) {
@@ -681,7 +716,7 @@
                 } else {
                     btnCTA.disabled = false;
                     btnCTA.classList.add('btn-success');
-                    btnCTA.querySelector('.btn-text').innerText = "Confirmar Reserva";
+                    btnCTA.querySelector('.btn-text').innerText = "Agendar no WhatsApp";
                 }
             }
         }
@@ -705,7 +740,7 @@
             
             let carroStr = `${funnelState.brand} ${funnelState.model}`;
             let servicoStr = funnelState.baseService;
-            if(funnelState.hasUpsell) servicoStr += ` + Selagem Extra de Pintura`;
+            if(funnelState.hasUpsell) servicoStr += ` + Cera Líquida Premium`;
             
             let total = getTotalPrice();
 
