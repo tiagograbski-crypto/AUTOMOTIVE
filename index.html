@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#050505">
+    <meta name="theme-color" content="#09090b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Black Car | Estúdio de Detalhamento Automotivo</title>
     
@@ -11,56 +11,50 @@
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f" as="image">
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f" as="image">
 
-    <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', 'SEU_PIXEL_ID_AQUI'); fbq('track', 'PageView');
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Share+Tech+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
 
         :root {
-            --accent: #06b6d4; 
-            --accent-glow: rgba(6, 182, 212, 0.4);
-            --bg-base: #050505;
-            --bg-panel: #0a0a0c;
-            --bg-card: #121214;
+            --accent: #0ea5e9; 
+            --accent-glow: rgba(14, 165, 233, 0.4);
+            --bg-base: #09090b; 
             --vermelho-ignicao: #ef4444;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-base); color: white; margin: 0; font-family: 'Inter', sans-serif; overflow: hidden; overscroll-behavior-y: none; }
-        .tech-text { font-family: 'Share Tech Mono', monospace; }
+        body { background-color: var(--bg-base); color: white; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; overscroll-behavior-y: none; }
 
         /* --- TELA 1: IGNIÇÃO --- */
-        #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px 8vh 20px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); background-color: var(--bg-base); }
+        #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px; transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); background-color: var(--bg-base); }
         .car-bg { position: absolute; inset: 0; background-size: cover; background-position: center 60%; opacity: 0; transition: opacity 0.5s ease; transform: scale(1.05); }
         #bg-off { background-image: url('https://carrosest.carrd.co/assets/images/image01.jpg?v=0259a93f'); opacity: 1; z-index: 1; }
         #bg-ambient { background-image: url('https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f'); z-index: 2; mix-blend-mode: lighten; } 
         #bg-on { background-image: url('https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f'); z-index: 4; mix-blend-mode: lighten; }
-        #underglow { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: radial-gradient(ellipse at bottom, rgba(6,182,212,0.25) 0%, transparent 70%); opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.4s ease; }
+        #underglow { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: radial-gradient(ellipse at bottom, rgba(14,165,233,0.25) 0%, transparent 70%); opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.4s ease; }
         .accessory-on #underglow { opacity: 1; animation: breathe-glow 3s infinite alternate ease-in-out; }
         @keyframes breathe-glow { 0% { opacity: 0.5; } 100% { opacity: 1; } }
         .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,1) 100%); z-index: 5; pointer-events: none; }
         .idle-shake { animation: idle-rumble-ani 0.06s infinite linear; }
         @keyframes idle-rumble-ani { 0% { transform: translate(0, 0) } 25% { transform: translate(-1px, 1px) } 50% { transform: translate(1px, 1px) } 75% { transform: translate(1px, -1px) } 100% { transform: translate(0, 0) } }
 
-        .engine-btn-ring { position: relative; width: 140px; height: 140px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; z-index: 100; margin-top: auto; margin-bottom: 2vh; }
-        @media (min-width: 768px) { .engine-btn-ring { width: 180px; height: 180px; } }
+        .engine-btn-ring { position: relative; width: 140px; height: 140px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; z-index: 100; margin-top: auto; margin-bottom: 24px; }
         .progress-circle { position: absolute; transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)); }
         .engine-button { width: 85px; height: 85px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #0a0a0a); box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 8px 16px rgba(0,0,0,0.8); border: 1px solid #2a2a2a; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; }
-        @media (min-width: 768px) { .engine-button { width: 110px; height: 110px; } }
         .engine-button.active { transform: scale(0.92); background: linear-gradient(145deg, #110000, #330000); border-color: var(--vermelho-ignicao); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
         .btn-lbl-top, .btn-lbl-bot { font-size: 8px; font-weight: 800; color: #555; }
         .btn-lbl-mid { font-size: 16px; font-weight: 900; color: #ccc; letter-spacing: 0.1em; margin: 2px 0; text-transform: uppercase; transition: all 0.3s; }
         .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho-ignicao); }
         .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ignicao); }
 
-        @keyframes pulse-alert { 0%, 100% { transform: scale(1); color: #9ca3af; } 50% { transform: scale(1.05); color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); } }
         .alert-hint { animation: pulse-alert 0.4s ease-in-out 3; font-weight: 800 !important; color: var(--accent) !important; }
+        @keyframes pulse-alert { 0%, 100% { transform: scale(1); color: #9ca3af; } 50% { transform: scale(1.05); color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); } }
 
-        /* --- TELA 2: PRE-LOADER (Mais Rápido) --- */
+        /* --- TELA 2: PRE-LOADER --- */
         #experience-view { position: fixed; inset: 0; z-index: 100; background: var(--bg-base); display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .stars-container { display: flex; gap: 8px; margin-bottom: 24px; }
         .star-icon { width: 20px; height: 20px; fill: #fff; opacity: 0; transform: translateY(15px); }
@@ -74,119 +68,179 @@
         .show-view .status-text { animation: fadeInTextLux 0.3s ease forwards; animation-delay: 0.3s; }
 
         /* --- TELA 3: APP VIEW --- */
-        #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; }
+        #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; position: relative; }
         
-        .top-navbar { height: 55px; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; background: rgba(5,5,5,0.98); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 50; backdrop-filter: blur(12px); }
-        @media (min-width: 768px) { .top-navbar { height: 65px; padding: 0 24px; } }
+        .top-navbar { height: 55px; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; background: rgba(9, 9, 11, 0.95); z-index: 50; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 
-        .app-layout { display: flex; flex-direction: column; height: calc(100dvh - 55px); }
-        @media (min-width: 768px) { .app-layout { flex-direction: row; height: calc(100dvh - 65px); } }
-
-        /* PALCO VISUAL OTIMIZADO */
-        .stage-panel { 
-            position: relative; width: 100%; flex-shrink: 0;
-            height: 90px; min-height: 90px;
-            background: var(--bg-panel);
-            display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;
-        }
-        @media (min-width: 768px) { .stage-panel { width: 40%; height: 100%; min-height: auto; border-bottom: none; border-right: 1px solid rgba(255,255,255,0.05); } }
-
-        /* ESCUDO CSS E RADAR ATIVO */
-        .radar-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.15; }
-        .radar-sweep { position: absolute; inset: -50%; background: conic-gradient(from 0deg, transparent 70%, rgba(6, 182, 212, 0.15) 100%); animation: sweep 6s linear infinite; pointer-events: none; opacity: 0.5; }
-        @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .brand-tech-badge {
-            background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.2);
-            border-radius: 6px; padding: 6px 14px; display: flex; align-items: center; gap: 10px;
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
-            opacity: 0; transform: translateY(10px); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: 15;
-        }
-        @media (min-width: 768px) { .brand-tech-badge { padding: 12px 24px; border-radius: 8px; gap: 16px; box-shadow: 0 0 25px var(--accent-glow); } }
-        .brand-tech-badge.active { opacity: 1; transform: translateY(0); }
+        .app-layout { flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: url('https://www.transparenttextures.com/patterns/stardust.png'); display: flex; flex-direction: column;}
         
-        .badge-initial { font-size: 18px; font-weight: 900; color: var(--accent); line-height: 1; text-shadow: 0 0 8px rgba(6, 182, 212, 0.5); }
-        .badge-divider { width: 1px; height: 18px; background: rgba(6, 182, 212, 0.3); }
-        .badge-name { font-size: 10px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
-
-        #laser { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--accent); box-shadow: 0 0 20px 4px var(--accent); z-index: 20; opacity: 0; pointer-events: none; }
-        @keyframes laser-scan { 0% { left: -10%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: 110%; opacity: 0; } }
-
-        /* PAINEL DE CONTROLE (FUNIL) */
-        .control-panel { 
-            width: 100%; height: 100%; flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; 
-            padding: 16px 16px 140px 16px; 
-            background: var(--bg-base);
+        /* --- NOVO HERO BANNER (FULL WIDTH / EDGE-TO-EDGE) --- */
+        .hero-banner {
+            width: 100%; height: 32vh; min-height: 240px; position: relative; flex-shrink: 0;
+            background-image: linear-gradient(to bottom, rgba(9,9,11,0.1) 0%, rgba(9,9,11,1) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover; background-position: center 70%;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px;
         }
-        @media (min-width: 768px) { .control-panel { width: 60%; padding: 40px; } }
+        @media (min-width: 768px) { .hero-banner { padding: 32px 40px; height: 38vh;} }
+        .hero-content { position: relative; z-index: 10; max-width: 650px; margin: 0 auto; width: 100%; }
+        .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); margin-bottom: 8px; }
+        .trust-stars { color: #fbbf24; font-size: 10px; letter-spacing: 2px; }
 
-        /* --- HERO BANNER C/ PROVA SOCIAL --- */
-        .app-hero-banner {
-            background: linear-gradient(135deg, #083344 0%, var(--bg-card) 100%);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            border-radius: 12px; padding: 16px; margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.02);
+        /* CONTAINER DO FUNIL (Sem padding no topo, pois o Hero encosta) */
+        .funnel-container { width: 100%; max-width: 650px; margin: 0 auto; padding: 0 20px 140px 20px; }
+
+        /* --- SLIDER DE AUTORIDADE --- */
+        .authority-slider {
+            background: rgba(255, 255, 255, 0.02); border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 0; overflow: hidden; display: flex; white-space: nowrap; width: 100%; margin-bottom: 24px;
+        }
+        .slider-track { display: flex; gap: 30px; animation: scroll-marquee 20s linear infinite; min-width: 200%; }
+        .slider-item { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; }
+        .slider-item span { color: #fff; }
+        @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* LÓGICA DO WIZARD ACORDEÃO */
+        .step-section { margin-bottom: 24px; transition: all 0.4s ease; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;}
+        .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #71717a; font-weight: 800; display: flex; align-items: center; gap: 10px; transition: color 0.3s; margin: 0; }
+        .section-title.active { color: #fff; font-weight: 900; }
+        
+        .edit-btn { font-size: 9px; color: #fff; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; padding: 4px 12px; background: rgba(255,255,255,0.05); border-radius: 20px; display: none; transition: all 0.2s; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); cursor: pointer;}
+        .step-content { display: none; animation: slide-down 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards; transform-origin: top; }
+        @keyframes slide-down { from { opacity: 0; transform: scaleY(0.95); } to { opacity: 1; transform: scaleY(1); } }
+
+        .step-section:not(.active-step) { opacity: 0.5; }
+        .step-section.completed:not(.active-step) .step-content { display: none !important; }
+
+        /* --- CARDS GLASSMORPHISM COM CORES ESTRATÉGICAS --- */
+        .glass-card { 
+            /* Fundo mais claro e elegante */
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 14px; padding: 18px; margin-bottom: 12px; 
+            cursor: pointer; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); 
             position: relative; overflow: hidden;
-            display: flex; flex-direction: column; justify-content: center;
+            /* Cor padrão herdada, sobrescrita por classes de tier */
+            --c-accent: var(--accent); 
         }
-        @media (min-width: 768px) { .app-hero-banner { padding: 24px; border-radius: 16px; margin-bottom: 28px; } }
-        .app-hero-banner::after { content: ''; position: absolute; top: -50%; right: -10%; width: 100px; height: 100px; background: var(--accent); filter: blur(50px); opacity: 0.15; }
-        
-        .trust-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); margin-top: 10px; width: fit-content; }
-        .trust-stars { color: #fbbf24; font-size: 10px; letter-spacing: 1px; }
-
-        .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #6b7280; margin-bottom: 12px; font-weight: 800; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
-        .section-title::after { content: ''; flex-grow: 1; height: 1px; background: rgba(255,255,255,0.05); transition: background 0.3s; }
-        .section-title.active { color: var(--accent); }
-        .section-title.active::after { background: var(--accent-glow); }
-
-        .hud-select { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); color: white; width: 100%; padding: 14px; font-size: 15px; font-weight: 500; border-radius: 10px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; cursor: pointer; }
-        .hud-select:focus { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
-        .hud-select:disabled { opacity: 0.4; cursor: not-allowed; }
-
-        .upgrade-card { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; padding: 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s ease-in-out; position: relative; }
-        .upgrade-card:hover { border-color: rgba(6, 182, 212, 0.4); background: #18181b; }
-        .upgrade-card.selected { background: rgba(6, 182, 212, 0.04); border-color: var(--accent); box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08); transform: scale(1.01); }
-        
-        .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .card-category { font-size: 9px; font-weight: 800; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; }
-        .upgrade-card.selected .card-category { color: var(--accent); }
-        
-        .price-badge { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 13px; color: #fff; background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 6px; }
-        .upgrade-card.selected .price-badge { background: var(--accent); color: #000; }
-        .card-title { font-size: 15px; font-weight: 900; color: #fff; margin-bottom: 4px; letter-spacing: -0.5px; }
-        .upgrade-card.selected .card-title { color: var(--accent); }
-        .card-desc { font-size: 11px; color: #8b929e; line-height: 1.5; font-weight: 400; }
-        .tag-recomendado { position: absolute; top: -8px; right: 16px; background: var(--accent); color: #000; font-size: 9px; font-weight: 900; padding: 4px 12px; border-radius: 12px; text-transform: uppercase; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4); }
-        
-        /* Captura de Leads & Escassez */
-        .urgency-badge { color: #ef4444; font-size: 11px; font-weight: 700; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
-        .hud-input { background: rgba(0,0,0,0.6); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; padding: 16px 14px; font-size: 16px; border-radius: 10px; outline: none; margin-bottom: 12px; text-align: center; font-weight: 500; letter-spacing: 1px; transition: all 0.3s; }
-        .hud-input:focus { border-color: var(--accent); background: rgba(6, 182, 212, 0.05); box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); }
-        .hud-input::placeholder { color: #52525b; font-weight: 400; letter-spacing: normal; }
-
-        .hud-cta { background: var(--accent); color: #000; padding: 18px; text-align: center; font-weight: 900; font-size: 14px; border-radius: 10px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; width: 100%; border: none; display: flex; justify-content: center; gap: 10px; align-items: center; letter-spacing: 0.5px; }
-        .hud-cta:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6, 182, 212, 0.25); }
-        .hud-cta:disabled { background: #27272a; color: #52525b; cursor: not-allowed; box-shadow: none; transform: none; }
-
-        .step-section { opacity: 0.25; pointer-events: none; transition: all 0.5s ease; filter: grayscale(100%); }
-        .step-section.unlocked { opacity: 1; pointer-events: auto; filter: grayscale(0%); }
-
-        /* STICKY BAR MOBILE */
-        .mobile-sticky-bar { 
-            position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255,255,255,0.08); padding: 14px 16px; z-index: 100;
-            display: flex; justify-content: space-between; align-items: center;
-            transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            padding-bottom: calc(14px + env(safe-area-inset-bottom));
+        .glass-card:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255,255,255,0.3); }
+        .glass-card.selected { 
+            background: rgba(255, 255, 255, 0.15); 
+            border-color: var(--c-accent); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 0 1px var(--c-accent); 
         }
-        @media (min-width: 768px) { .mobile-sticky-bar { display: none; } }
-        .mobile-sticky-bar.visible { transform: translateY(0); }
+        
+        /* Definição de Cores por Pacote (Neurovendas) */
+        .tier-prata { --c-accent: #94a3b8; } /* Cinza (Express) */
+        .tier-azul  { --c-accent: #0ea5e9; } /* Azul Ciano (Lavagem Técnica) */
+        .tier-ouro  { --c-accent: #f59e0b; } /* Âmbar/Ouro (Cera/Proteção) */
+        .tier-verde { --c-accent: #10b981; } /* Verde Esmeralda (Interna/Saúde) */
+        .tier-roxo  { --c-accent: #8b5cf6; } /* Roxo (Vitrificação/High-End) */
 
-        .spinner { border: 2px solid rgba(0,0,0,0.2); border-top: 2px solid #000; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: none; }
+        .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+        .card-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; letter-spacing: -0.5px; transition: color 0.3s;}
+        .glass-card.selected .card-title { color: var(--c-accent); }
+        .card-desc { font-size: 12px; color: #a1a1aa; line-height: 1.5; font-weight: 400; margin-bottom: 10px; }
+        
+        .feature-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;}
+        .feature-item { font-size: 11px; color: #d4d4d8; display: flex; align-items: center; gap: 6px; }
+        .feature-item svg { width: 13px; height: 13px; fill: var(--c-accent); flex-shrink: 0; }
+        .feature-time { color: #a1a1aa; font-size: 10px; font-weight: 600; background: rgba(255, 255, 255, 0.05); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 8px;}
+
+        .price-text { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 15px; color: #fff; background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);}
+        .glass-card.selected .price-text { background: var(--c-accent); color: #000; border-color: var(--c-accent); }
+        .tag-recomendado { position: absolute; top: -1px; left: -1px; background: var(--c-accent); color: #000; font-size: 9px; font-weight: 800; padding: 4px 14px; border-radius: 14px 0 14px 0; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- O UPSELL ESTRATÉGICO --- */
+        .upsell-zone {
+            display: none; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.02));
+            border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 16px; margin-top: 16px;
+            animation: slide-down 0.4s ease forwards;
+        }
+        .upsell-toggle {
+            appearance: none; width: 44px; height: 24px; background: rgba(255,255,255,0.1);
+            border-radius: 20px; position: relative; cursor: pointer; transition: all 0.3s;
+            outline: none; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .upsell-toggle::after {
+            content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+            background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .upsell-toggle:checked { background: #f59e0b; }
+        .upsell-toggle:checked::after { transform: translateX(20px); }
+
+        /* --- INPUTS & SELECTS (CORREÇÃO DO BUG DA COR DO TEXTO) --- */
+        .glass-input { 
+            background-color: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; 
+            padding: 16px 14px; font-size: 14px; font-weight: 500; border-radius: 10px; 
+            appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; 
+        }
+        
+        /* Mágica para garantir que as opções do select apareçam com texto cinza chumbo no fundo branco (Mobile Native Tweak) */
+        .glass-input option {
+            color: #3f3f46; /* Cinza Chumbo */
+            background-color: #ffffff;
+            font-weight: 600;
+        }
+
+        select.glass-input {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 14px center; background-size: 16px;
+            padding-right: 40px; cursor: pointer;
+        }
+        .glass-input:focus { border-color: var(--accent); background-color: rgba(255,255,255,0.12); box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2); }
+        
+        .hud-input { text-align: center; font-size: 18px; letter-spacing: 2px; font-weight: 600; background-image: none !important;}
+        .hud-input::placeholder { color: #a1a1aa; font-weight: 400; letter-spacing: normal; font-size: 14px;}
+        .pulse-attention { animation: input-pulse 2s infinite; }
+        @keyframes input-pulse { 0%, 100% { border-color: rgba(255,255,255,0.15); } 50% { border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); } }
+
+        /* --- O TICKET DE RECIBO FINAL (BAG/CART) --- */
+        .receipt-card {
+            background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.15);
+            border-radius: 12px; padding: 16px; margin-bottom: 20px;
+        }
+        .receipt-row { display: flex; justify-content: space-between; font-size: 12px; color: #a1a1aa; margin-bottom: 8px; border-bottom: 1px dotted rgba(255,255,255,0.05); padding-bottom: 8px;}
+        .receipt-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .receipt-val { color: #fff; font-weight: 600; text-align: right;}
+        .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .receipt-total-val { font-size: 20px; font-weight: 900; color: #10b981; }
+
+        /* --- FOOTER --- */
+        .premium-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px 140px 20px; text-align: center; margin-top: 20px; }
+        .footer-brand { font-weight: 900; font-size: 16px; color: #fff; letter-spacing: -0.5px; margin-bottom: 8px; display: flex; justify-content: center; align-items: center; gap: 8px;}
+        .footer-text { font-size: 11px; color: #71717a; line-height: 1.6; max-width: 300px; margin: 0 auto;}
+
+        /* --- BARRA DE CHECKOUT (CARRINHO INFERIOR) --- */
+        .fixed-bottom-cta {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            padding: 12px 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom));
+            background: rgba(9, 9, 11, 0.95); border-top: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 100; display: flex; justify-content: space-between; align-items: center;
+            transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .fixed-bottom-cta.visible { transform: translateY(0); }
+        
+        .cart-info { display: flex; flex-direction: column; }
+        .cart-label { font-size: 10px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 2px;}
+        .cart-total { font-size: 18px; font-weight: 900; color: #fff; line-height: 1;}
+
+        .btn-continue {
+            background: #fff; color: #000; border-radius: 10px;
+            padding: 12px 24px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            border: none; cursor: pointer; transition: all 0.3s;
+        }
+        .btn-continue:disabled { background: rgba(255,255,255,0.1); color: #71717a; cursor: not-allowed; }
+        .btn-continue.btn-success { background: #10b981; color: #fff; }
+
+        .spinner { border: 2px solid rgba(255,255,255,0.2); border-top: 2px solid currentColor; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: none; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .processing .spinner { display: inline-block; }
+        .processing .btn-text { display: none; }
     </style>
 </head>
 <body>
@@ -205,38 +259,27 @@
         </div>
         <div class="vignette"></div>
 
-        <div class="text-center z-20 pt-8 md:pt-12 pointer-events-none px-2 w-full">
-            <div class="flex justify-center items-center gap-1.5 mb-3 opacity-80">
-                <svg class="w-3 h-3 fill-[var(--accent)]" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <span class="tracking-[0.3em] text-zinc-300 uppercase text-[9px] md:text-[10px] font-bold">Centro, Chapecó | SC</span>
+        <div class="text-center z-20 pt-8 md:pt-12 pointer-events-none px-4 w-full">
+            <div class="flex justify-center items-center gap-2 mb-4 opacity-80">
+                <span class="tracking-[0.4em] text-zinc-400 uppercase text-[9px] md:text-[10px] font-bold">Centro, Chapecó | SC</span>
             </div>
-            
-            <h1 class="font-black tracking-tighter uppercase leading-[0.9] text-[2.4rem] md:text-[4.5rem] drop-shadow-xl text-white mb-2">
-                BLACK CAR
-            </h1>
-            <h2 class="font-light text-[1.1rem] md:text-[2rem] text-zinc-300 tracking-[0.2em] uppercase leading-none">Detailing Studio</h2>
-            
-            <p class="mt-5 text-[13px] md:text-[16px] text-zinc-300 font-normal max-w-sm mx-auto leading-relaxed">
-                Estúdio de detalhamento automotivo. Elevamos a estética do seu veículo ao estado de arte.
-            </p>
+            <h1 class="font-black tracking-tighter uppercase leading-[0.9] text-[2.8rem] md:text-[4.5rem] drop-shadow-2xl text-white mb-3">BLACK CAR</h1>
+            <h2 class="font-light text-[1.1rem] md:text-[1.8rem] text-zinc-300 tracking-[0.2em] uppercase leading-none">Detailing Studio</h2>
+            <p class="mt-6 text-[14px] text-zinc-400 font-normal max-w-xs mx-auto leading-relaxed">Estética automotiva premium. Lavagem detalhada, polimento e proteção cerâmica.</p>
         </div>
 
-        <div class="engine-btn-ring">
-            <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-[var(--accent)] text-[9px] font-black tracking-[0.1em] uppercase whitespace-nowrap animate-pulse">
-                Segure para Iniciar
+        <div class="flex flex-col items-center z-100 mt-auto mb-4">
+            <div class="engine-btn-ring">
+                <svg width="100%" height="100%" class="absolute pointer-events-none"><circle cx="50%" cy="50%" r="42%" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"></circle><circle id="ring" class="progress-circle" cx="50%" cy="50%" r="42%" fill="none" stroke="#ef4444" stroke-width="4"></circle></svg>
+                <div id="btn" class="engine-button" onmousedown="startIgnition(event)" onmouseup="stopIgnition(event)" ontouchstart="startIgnition(event)" ontouchend="stopIgnition(event)">
+                    <span class="btn-lbl-top">SYSTEM</span><span class="btn-lbl-mid">Start</span><span class="btn-lbl-bot">POWER</span>
+                </div>
             </div>
-            <svg width="100%" height="100%" class="absolute pointer-events-none"><circle cx="50%" cy="50%" r="42%" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"></circle><circle id="ring" class="progress-circle" cx="50%" cy="50%" r="42%" fill="none" stroke="#ef4444" stroke-width="4"></circle></svg>
-            <div id="btn" class="engine-button" onmousedown="startIgnition(event)" onmouseup="stopIgnition(event)" ontouchstart="startIgnition(event)" ontouchend="stopIgnition(event)">
-                <span class="btn-lbl-top">SYSTEM</span>
-                <span class="btn-lbl-mid">Start</span>
-                <span class="btn-lbl-bot">POWER</span>
-            </div>
+            <p id="hold-hint" class="text-[10px] tracking-[0.1em] text-zinc-500 font-bold uppercase transition-opacity duration-300">Segure para Configurar</p>
         </div>
-
-        <p id="hold-hint" class="text-[11px] md:text-[12px] tracking-[0.1em] text-zinc-500 mb-2 z-20 font-bold opacity-0 transition-opacity duration-300">Mensagem</p>
     </div>
 
-    <!-- 2. PRE-LOADER (ACELERADO) -->
+    <!-- 2. PRE-LOADER -->
     <div id="experience-view">
         <div class="stars-container">
             <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
@@ -246,131 +289,176 @@
             <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
         </div>
         <div class="lux-line"></div>
-        <p class="status-text text-zinc-400">ACESSANDO PROTOCOLO...</p>
+        <p class="status-text text-zinc-500">ACESSANDO TERMINAL...</p>
     </div>
 
     <!-- 3. WEB APP -->
     <div id="app-view">
         <header class="top-navbar">
-            <h1 class="font-black text-[14px] md:text-[16px] tracking-tighter uppercase text-white">BLACK CAR <span class="text-[var(--accent)] font-light">Detailing</span></h1>
-            <div class="flex items-center gap-1.5 md:gap-2">
-                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span id="header-status" class="tech-text text-[9px] md:text-[10px] text-green-500 uppercase font-bold">Online</span>
+            <h1 class="font-black text-[14px] tracking-tighter uppercase text-white">BLACK CAR <span class="text-zinc-500 font-light">Detailing</span></h1>
+            <div class="flex items-center gap-1.5">
+                <span class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Reserva VIP</span>
             </div>
         </header>
 
-        <div class="app-layout">
+        <div class="app-layout" id="scroll-container">
             
-            <!-- LADO ESQUERDO: PALCO VISUAL OTIMIZADO C/ VARREDURA VIVA -->
-            <div class="stage-panel">
-                <div class="radar-grid"></div>
-                <div class="radar-sweep"></div>
-                <div id="laser"></div>
-                
-                <div id="brand-hologram" class="brand-tech-badge">
-                    <div class="badge-initial" id="shield-initials">--</div>
-                    <div class="badge-divider"></div>
-                    <div class="badge-name" id="shield-name">MARCA</div>
+            <!-- NOVO HERO BANNER (Full-width no topo) -->
+            <div id="hero-banner" class="hero-banner">
+                <div class="hero-content">
+                    <div class="trust-badge"><span class="trust-stars">★★★★★</span><span class="text-[9px] text-white font-bold tracking-wider uppercase">5.0 no Google</span></div>
+                    <h2 class="text-2xl font-black mt-1 mb-2 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE O SEU CARRO <span class="text-[var(--accent)]"><br>AO ESTADO DE ARTE</span></h2>
+                    <p class="text-[12px] font-medium text-zinc-200 leading-relaxed max-w-sm drop-shadow-md">Configure a sua sessão de estética abaixo.</p>
                 </div>
             </div>
 
-            <!-- LADO DIREITO: PROGRESSIVE FUNNEL COMPRESSO -->
-            <div class="control-panel" id="scroll-container">
-                
-                <!-- HERO BANNER C/ PROVA SOCIAL ESTRATÉGICA -->
-                <div class="app-hero-banner">
-                    <div class="relative z-10">
-                        <span class="bg-black text-white text-[8px] md:text-[9px] font-black px-2 py-1 rounded uppercase tracking-widest mb-2 inline-block">Centro, Chapecó - SC</span>
-                        <h2 class="text-lg md:text-3xl font-black mt-1 mb-1 md:mb-2 uppercase tracking-tighter leading-none text-white">
-                            ESTÚDIO DE DETALHAMENTO <span class="hidden md:inline"><br></span><span class="text-[var(--accent)] text-[14px] md:text-3xl block md:inline mt-1 md:mt-0">& ESTÉTICA AVANÇADA</span>
-                        </h2>
-                        
-                        <div class="trust-badge">
-                            <span class="trust-stars">★★★★★</span>
-                            <span class="text-[9px] text-zinc-300 font-bold tracking-wider uppercase ml-1">5.0 no Google</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PASSO 1: IDENTIFICAÇÃO DO VEÍCULO -->
-                <div id="step-1-section" class="step-section unlocked mb-6 md:mb-8">
-                    <h2 class="section-title active" id="title-1">01. Identificação do Veículo</h2>
-                    <select id="brand-select" class="hud-select"><option value="">A Carregar Marcas...</option></select>
-                    <select id="model-select" class="hud-select" disabled><option value="">Aguardando Marca...</option></select>
-                </div>
-
-                <!-- PASSO 2: PACOTES -->
-                <div id="step-2-section" class="step-section mb-6 md:mb-8">
-                    <h2 class="section-title" id="title-2">02. Nível de Tratamento</h2>
+            <!-- SLIDER DE AUTORIDADE -->
+            <div class="authority-slider" id="authority-slider">
+                <div class="slider-track">
+                    <div class="slider-item">✨ <span>Cera de Carnaúba</span></div>
+                    <div class="slider-item">💧 <span>Água Filtrada</span></div>
+                    <div class="slider-item">🧽 <span>Toalhas Anti-risco</span></div>
+                    <div class="slider-item">🛡️ <span>Selantes Premium</span></div>
+                    <div class="slider-item">🔬 <span>Box Climatizado</span></div>
                     
-                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Manutenção Técnica', 'R$ 90')">
-                        <div class="card-header-flex">
-                            <span class="card-category">Limpeza Segura</span>
-                            <span class="price-badge">R$ 90</span>
-                        </div>
-                        <h3 class="card-title">MANUTENÇÃO TÉCNICA</h3>
-                        <p class="card-desc">Lavagem detalhada sem ácidos, preservando a integridade do verniz. Inclui aspiração profunda.</p>
-                    </div>
+                    <div class="slider-item">✨ <span>Cera de Carnaúba</span></div>
+                    <div class="slider-item">💧 <span>Água Filtrada</span></div>
+                    <div class="slider-item">🧽 <span>Toalhas Anti-risco</span></div>
+                    <div class="slider-item">🛡️ <span>Selantes Premium</span></div>
+                    <div class="slider-item">🔬 <span>Box Climatizado</span></div>
+                </div>
+            </div>
 
-                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Proteção Sintética', 'R$ 150')">
-                        <div class="tag-recomendado">Recomendado</div>
-                        <div class="card-header-flex">
-                            <span class="card-category text-[var(--accent)]">Brilho e Defesa</span>
-                            <span class="price-badge">R$ 150</span>
-                        </div>
-                        <h3 class="card-title">PROTEÇÃO SINTÉTICA</h3>
-                        <p class="card-desc">Descontaminação da pintura e selagem <strong class="text-white font-semibold">Hidrorepelente</strong>. Garante toque aveludado e proteção UV.</p>
+            <div class="funnel-container">
+                <!-- WIZARD STEP 1: PROTOCOLOS -->
+                <div id="step-1-section" class="step-section active-step">
+                    <div class="section-header">
+                        <h2 class="section-title active" id="title-1">01. Selecione o Protocolo</h2>
+                        <button id="edit-1" class="edit-btn" onclick="editStep(1)">Alterar</button>
                     </div>
-
-                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Purificação Interna', 'R$ 250')">
-                        <div class="card-header-flex">
-                            <span class="card-category">Biossegurança</span>
-                            <span class="price-badge">R$ 250</span>
+                    
+                    <div id="step-1-content" class="step-content" style="display: block;">
+                        
+                        <!-- CARD 0: EXPRESS (PRATA) -->
+                        <div class="glass-card tier-prata" onclick="selectUpgrade(this, 'Lavagem Externa Express', 60)">
+                            <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><span class="price-text">R$ 60</span></div>
+                            <span class="feature-time">⏱️ 40 a 60 minutos</span>
+                            <p class="card-desc">Foco na agilidade. Lavagem segura da pintura exterior e limpeza rápida dos dois tapetes dianteiros.</p>
                         </div>
-                        <h3 class="card-title">PURIFICAÇÃO INTERNA</h3>
-                        <p class="card-desc">Higienização profunda, condicionamento de plásticos/couro e Oxi-Sanitização (elimina 99% de odores).</p>
-                    </div>
 
-                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 'R$ 800')">
-                        <div class="card-header-flex">
-                            <span class="card-category">Blindagem Máxima</span>
-                            <span class="price-badge">R$ 800</span>
+                        <!-- CARD 1: TÉCNICA (AZUL) -->
+                        <div class="glass-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 90)">
+                            <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><span class="price-text">R$ 90</span></div>
+                            <span class="feature-time">⏱️ 1h30 a 2 horas</span>
+                            <p class="card-desc">O padrão ouro. Processo a dois baldes (zero ácidos) para não riscar o verniz. Inclui aspiração profunda e limpeza de painéis.</p>
                         </div>
-                        <h3 class="card-title">VITRIFICAÇÃO CERÂMICA 9H</h3>
-                        <p class="card-desc">Correção técnica de pintura e aplicação de Coating Cerâmico de altíssima dureza. Estado de 0km.</p>
+
+                        <!-- UPSELL ZONA (Aparece para Prata/Azul) -->
+                        <div id="upsell-zone" class="upsell-zone">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="text-[13px] font-black text-white uppercase flex items-center gap-1.5 text-[#f59e0b]">
+                                        ✨ Adicionar Upgrade
+                                    </h4>
+                                    <p class="text-[11px] text-zinc-300 mt-1 max-w-[220px]">Selagem da pintura com Cera Líquida Premium. Mais brilho e proteção (+ R$ 50).</p>
+                                </div>
+                                <input type="checkbox" id="upsell-toggle" class="upsell-toggle" onchange="toggleUpsell(this)">
+                            </div>
+                        </div>
+
+                        <!-- CARD 2: CERA SINTÉTICA (OURO) -->
+                        <div class="glass-card tier-ouro mt-4" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
+                            <div class="tag-recomendado">Mais Escolhido</div>
+                            <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><span class="price-text">R$ 150</span></div>
+                            <span class="feature-time">⏱️ 3 a 4 horas</span>
+                            <p class="card-desc">Descontaminação da pintura e selagem completa. Garante toque liso, brilho profundo e proteção UV.</p>
+                        </div>
+
+                        <!-- CARD 3: INTERNA (VERDE) -->
+                        <div class="glass-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 250)">
+                            <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><span class="price-text">R$ 250</span></div>
+                            <span class="feature-time">⏱️ 1 Dia (Secagem Téc.)</span>
+                            <p class="card-desc">Foco na saúde: Higienização profunda de estofados, couro e Oxi-Sanitização (elimina fungos e odores).</p>
+                        </div>
+
+                        <!-- CARD 4: VITRIFICAÇÃO (ROXO) -->
+                        <div class="glass-card tier-roxo" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
+                            <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><span class="price-text">R$ 800</span></div>
+                            <span class="feature-time">⏱️ 2 a 3 Dias</span>
+                            <p class="card-desc">Correção de pintura (polimento para remover marcas de lavagens erradas) e aplicação de Coating 9H.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PASSO 3: FECHAMENTO / CAPTURA COM ESCASSEZ -->
+                <!-- WIZARD STEP 2: CARRO -->
+                <div id="step-2-section" class="step-section">
+                    <div class="section-header">
+                        <h2 class="section-title" id="title-2">02. Identifique a Máquina</h2>
+                        <button id="edit-2" class="edit-btn" onclick="editStep(2)">Alterar</button>
+                    </div>
+                    
+                    <div id="step-2-content" class="step-content">
+                        <!-- O Select nativo agora tem fonte preta com fundo branco nas opções, evitando o "tudo em branco" -->
+                        <select id="brand-select" class="glass-input" onchange="handleBrandSelect()">
+                            <option value="" disabled selected>Selecione a Montadora...</option>
+                            <option value="Audi">Audi</option><option value="BMW">BMW</option><option value="Chevrolet">Chevrolet</option><option value="Citroen">Citroën</option>
+                            <option value="Fiat">Fiat</option><option value="Ford">Ford</option><option value="Honda">Honda</option><option value="Hyundai">Hyundai</option>
+                            <option value="Jeep">Jeep</option><option value="Kia">Kia</option><option value="Land Rover">Land Rover</option><option value="Mercedes-Benz">Mercedes-Benz</option>
+                            <option value="Mitsubishi">Mitsubishi</option><option value="Nissan">Nissan</option><option value="Peugeot">Peugeot</option><option value="Porsche">Porsche</option>
+                            <option value="Renault">Renault</option><option value="Toyota">Toyota</option><option value="Volkswagen">Volkswagen</option><option value="Volvo">Volvo</option>
+                            <option value="Outra">Outra (Informarei no WhatsApp)</option>
+                        </select>
+                        <input type="text" id="model-input" class="glass-input" placeholder="Qual o modelo? (Ex: Hilux, 320i)" style="display: none;" oninput="handleModelInput()">
+                    </div>
+                </div>
+
+                <!-- WIZARD STEP 3: CAPTURA E RECIBO -->
                 <div id="step-3-section" class="step-section">
-                    <h2 class="section-title" id="title-3">03. Liberação de Vaga</h2>
-                    <div class="bg-[rgba(56,189,248,0.03)] border border-[rgba(56,189,248,0.12)] rounded-xl md:rounded-2xl p-5 md:p-6 text-center mt-2">
+                    <div class="section-header">
+                        <h2 class="section-title" id="title-3">03. Resumo & Agendamento</h2>
+                    </div>
+                    
+                    <div id="step-3-content" class="step-content">
                         
-                        <div class="urgency-badge">⚠️ Apenas 3 vagas para esta semana</div>
-                        
-                        <p class="text-[14px] md:text-[15px] text-white font-black mb-1.5 tracking-tight">GARANTA SEU PROTOCOLO</p>
-                        <p class="text-[11px] md:text-[13px] text-zinc-400 mb-5 leading-relaxed">Insira o seu número de WhatsApp. Iremos consultar a agenda e garantir o seu atendimento de forma exclusiva.</p>
-                        
-                        <input type="tel" id="client-phone" class="hud-input" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this); checkUnlock();">
-                        
-                        <button id="btn-agendar-desktop" class="hud-cta hidden md:flex" disabled onclick="handleCheckout(this)">
-                            <div class="spinner"></div>
-                            <span class="btn-text">Inserir Telefone</span>
-                        </button>
+                        <!-- A "BAG" / RECIBO DINÂMICO -->
+                        <div class="receipt-card">
+                            <h4 class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest mb-3 text-center">Reserva de Atendimento</h4>
+                            
+                            <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
+                            <div class="receipt-row"><span>Protocolo Principal:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
+                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcionais:</span><span class="receipt-val text-[#f59e0b]">+ Selagem Hidrofóbica</span></div>
+                            
+                            <div class="receipt-total">
+                                <span class="font-bold text-[13px] text-white uppercase">Investimento:</span>
+                                <span class="receipt-total-val" id="receipt-total">R$ 0</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <p class="text-[12px] text-zinc-400 mb-4 text-center">Para confirmar sua reserva e garantir sua vaga nesta semana, informe seu WhatsApp.</p>
+                            <input type="tel" id="client-phone" class="glass-input hud-input" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this); checkUnlock();">
+                        </div>
                     </div>
                 </div>
+
+                <footer class="premium-footer">
+                    <div class="footer-brand">BLACK CAR DETAILING</div>
+                    <p class="footer-text">Centro de Estética Automotiva de Alta Performance.</p>
+                    <p class="text-[10px] text-zinc-600 mt-4">Centro, Chapecó - SC</p>
+                </footer>
             </div>
         </div>
 
-        <!-- STICKY BAR MOBILE (ZONA DO POLEGAR - TIGHT & CLEAN) -->
-        <div id="mobile-bar" class="mobile-sticky-bar">
-            <div class="flex flex-col justify-center">
-                <p class="text-[9px] text-zinc-400 uppercase tracking-widest font-bold mb-0.5" id="mobile-mode-lbl">Aguardando...</p>
-                <p class="text-[15px] font-black text-[var(--accent)] leading-none" id="mobile-price-lbl">Passo 1</p>
+        <!-- BARRA DE CHECKOUT INFERIOR (CARRINHO) -->
+        <div id="floating-cta" class="fixed-bottom-cta">
+            <div class="cart-info">
+                <span class="cart-label">Total a investir</span>
+                <span class="cart-total" id="cta-total">R$ 0</span>
             </div>
-            <button id="btn-agendar-mobile" class="bg-[var(--accent)] text-black px-5 py-3 rounded-lg font-black text-[12px] uppercase tracking-wider transition-all opacity-40 cursor-not-allowed flex justify-center items-center gap-2" onclick="handleMobileCTA(this)">
-                <div class="spinner border-black border-t-transparent"></div>
-                <span class="btn-text">Veículo</span>
+            
+            <button id="btn-continue-flow" class="btn-continue" disabled onclick="handleNextStep()">
+                <div class="spinner"></div>
+                <span class="btn-text">Selecionar Pacote</span>
             </button>
         </div>
     </div>
@@ -386,35 +474,17 @@
         let timer, midTimer, startTime, isStarted = false, audioUnlocked = false; 
         
         let funnelState = {
-            step: 1,
+            step: 1, 
+            baseService: "",
+            basePrice: 0,
+            hasUpsell: false,
+            upsellPrice: 50,
             brand: "",
             model: "",
-            mode: "",
-            price: "",
             phoneReady: false
         };
 
-        function getBrandInitials(brandName) {
-            const name = brandName.toUpperCase();
-            if (name.includes('VOLKSWAGEN')) return 'VW';
-            if (name.includes('CHEVROLET')) return 'CHV';
-            if (name.includes('FIAT')) return 'FIA';
-            if (name.includes('FORD')) return 'FRD';
-            if (name.includes('TOYOTA')) return 'TYT';
-            if (name.includes('HONDA')) return 'HND';
-            if (name.includes('HYUNDAI')) return 'HYD';
-            if (name.includes('RENAULT')) return 'RNT';
-            if (name.includes('JEEP')) return 'JEP';
-            if (name.includes('NISSAN')) return 'NSN';
-            if (name.includes('BMW')) return 'BMW';
-            if (name.includes('MERCEDES')) return 'MB';
-            if (name.includes('AUDI')) return 'AUD';
-            if (name.includes('PORSCHE')) return 'PRS';
-            
-            const parts = name.split(' ');
-            if (parts.length > 1) { return (parts[0].charAt(0) + parts[1].charAt(0)).substring(0, 3); } 
-            else { return name.substring(0, 3); }
-        }
+        function getTotalPrice() { return funnelState.basePrice + (funnelState.hasUpsell ? funnelState.upsellPrice : 0); }
 
         function maskPhone(input) {
             let val = input.value.replace(/\D/g, '');
@@ -424,15 +494,11 @@
             input.value = val;
         }
 
-        // IGNIÇÃO COM CORTE DIRETO (VELOCIDADE ABSOLUTA)
         function startIgnition(e) {
             if(isStarted) return;
             if(!audioUnlocked) { sound.play().then(()=> {sound.pause(); sound.currentTime=0;}); audioUnlocked=true; }
-            startTime = Date.now(); 
-            btn.classList.add('active'); 
-            ring.style.strokeDashoffset = "0";
-            
-            hintText.style.opacity = "0";
+            startTime = Date.now(); btn.classList.add('active'); ring.style.strokeDashoffset = "0";
+            hintText.innerText = "INICIANDO..."; hintText.style.color = "var(--vermelho-ignicao)"; hintText.style.opacity = "1";
             midTimer = setTimeout(() => { bgAmbient.style.opacity = "1"; carStageBg.classList.add('idle-shake'); }, 300);
             timer = setTimeout(ignite, 600); 
         }
@@ -441,27 +507,14 @@
             if(isStarted) return;
             const duration = startTime ? (Date.now() - startTime) : 0;
             clearTimeout(midTimer); clearTimeout(timer);
-            
-            btn.classList.remove('active'); 
-            ring.style.transition = "none"; ring.style.strokeDashoffset = "408";
+            btn.classList.remove('active'); ring.style.transition = "none"; ring.style.strokeDashoffset = "408";
             setTimeout(() => ring.style.transition = "stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1)", 50);
-            
             carStageBg.classList.remove('idle-shake');
-            
             if (duration > 0 && duration < 600) {
-                document.body.classList.add('accessory-on');
-                bgAmbient.style.opacity = "1";
-                
-                hintText.innerText = "ALERTA: MANTENHA PRESSIONADO";
-                hintText.style.color = "var(--accent)";
-                hintText.style.opacity = "1";
-                hintText.classList.remove('alert-hint'); 
-                void hintText.offsetWidth; 
-                hintText.classList.add('alert-hint');
+                document.body.classList.add('accessory-on'); bgAmbient.style.opacity = "1";
+                hintText.innerText = "ALERTA: SEGURE O BOTÃO"; hintText.classList.remove('alert-hint'); void hintText.offsetWidth; hintText.classList.add('alert-hint');
             } else {
-                hintText.style.opacity = "0";
-                bgAmbient.style.opacity = "0";
-                document.body.classList.remove('accessory-on');
+                hintText.innerText = "Segure para Configurar"; hintText.style.color = ""; bgAmbient.style.opacity = "0"; document.body.classList.remove('accessory-on');
             }
             startTime = 0;
         }
@@ -470,15 +523,12 @@
             isStarted = true; carStageBg.classList.remove('idle-shake'); document.getElementById('bg-on').style.opacity = "1"; bgAmbient.style.opacity = "1"; 
             sound.volume = 0.8; sound.play().catch(e => console.log("Áudio bloqueado."));
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
-            if(typeof fbq !== 'undefined') fbq('trackCustom', 'SystemIgnited');
+            hintText.style.opacity = "0";
             
-            // CORTE DE 2.5s PARA 600ms - TRANSIÇÃO IMEDIATA E FLUIDA
             setTimeout(() => {
                 document.getElementById('landing-view').style.opacity = "0"; document.getElementById('landing-view').style.pointerEvents = "none";
-                
                 setTimeout(() => {
                     document.getElementById('experience-view').classList.add('show-view');
-                    
                     setTimeout(() => {
                         document.getElementById('experience-view').style.opacity = "0";
                         setTimeout(() => {
@@ -486,180 +536,186 @@
                             document.getElementById('app-view').style.display = "flex";
                             void document.getElementById('app-view').offsetWidth;
                             document.getElementById('app-view').style.opacity = "1";
-                            setTimeout(() => { document.getElementById('mobile-bar').classList.add('visible'); }, 300);
-                            fetchBrands(); 
+                            setTimeout(() => { document.getElementById('floating-cta').classList.add('visible'); updateBottomCTA();}, 500);
                         }, 300);
-                    }, 600); // Fica só 600ms no preloader
+                    }, 600); 
                 }, 300);
-            }, 600); // Cortou o tempo do carro ligado na tela preta
-        }
-
-        function updateHeaderStatus(msg) { document.getElementById('header-status').innerText = msg; }
-
-        async function fetchBrands() {
-            try {
-                const res = await fetch('https://parallelum.com.br/fipe/api/v1/carros/marcas');
-                const data = await res.json();
-                const sel = document.getElementById('brand-select');
-                sel.innerHTML = '<option value="">1. Selecione a Marca</option>' + data.map(b => `<option value="${b.codigo}">${b.nome.toUpperCase()}</option>`).join('');
-                
-                sel.onchange = async () => {
-                    if(!sel.value) return;
-                    funnelState.brand = sel.options[sel.selectedIndex].text;
-                    const modSel = document.getElementById('model-select');
-                    modSel.disabled = false; modSel.innerHTML = '<option value="">Buscando modelos...</option>';
-                    
-                    const resMod = await fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${sel.value}/modelos`);
-                    const modData = await resMod.json();
-
-                    const uniqueModels = []; const modelSet = new Set();
-                    modData.modelos.forEach(m => {
-                        let baseName = m.nome.split(' ')[0].toUpperCase();
-                        if(m.nome.toUpperCase().includes('GRAND CHEROKEE')) baseName = 'GRAND CHEROKEE';
-                        if(m.nome.toUpperCase().includes('HR-V')) baseName = 'HR-V';
-                        if(m.nome.toUpperCase().includes('T-CROSS')) baseName = 'T-CROSS';
-                        if(!modelSet.has(baseName)) { modelSet.add(baseName); uniqueModels.push({nome: baseName}); }
-                    });
-
-                    uniqueModels.sort((a, b) => a.nome.localeCompare(b.nome));
-                    modSel.innerHTML = '<option value="">2. Selecione o Modelo</option>' + uniqueModels.map(m => `<option value="${m.nome}">${m.nome}</option>`).join('');
-
-                    modSel.onchange = () => {
-                        if(!modSel.value) return;
-                        funnelState.model = modSel.value;
-                        updateRealCarVisual();
-                    };
-                };
-            } catch (e) { console.log("FIPE Offline."); }
-        }
-
-        function updateRealCarVisual() {
-            const hologramBadge = document.getElementById('brand-hologram');
-            const shieldInitials = document.getElementById('shield-initials');
-            const shieldName = document.getElementById('shield-name');
-            const laser = document.getElementById('laser');
-            
-            hologramBadge.classList.remove('active');
-
-            let cleanBrandName = funnelState.brand.split('-')[0].trim();
-            shieldInitials.innerText = getBrandInitials(cleanBrandName);
-            shieldName.innerText = cleanBrandName;
-
-            laser.style.animation = 'none'; void laser.offsetWidth; 
-            laser.style.animation = 'laser-scan 1.2s ease-in-out';
-
-            setTimeout(() => {
-                laser.style.animation = 'none';
-                hologramBadge.classList.add('active');
-                unlockStep2();
-            }, 1200); 
-        }
-
-        function unlockStep2() {
-            funnelState.step = 2;
-            document.getElementById('title-1').classList.remove('active');
-            document.getElementById('title-2').classList.add('active');
-            const step2 = document.getElementById('step-2-section');
-            step2.classList.add('unlocked');
-            setTimeout(() => { step2.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
-            updateMobileBar();
+            }, 600); 
         }
 
         function selectUpgrade(el, mode, price) {
-            if(funnelState.step < 2) return; 
-            document.querySelectorAll('.upgrade-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.upgrade-card, .glass-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             
-            funnelState.mode = mode; funnelState.price = price;
+            funnelState.baseService = mode; funnelState.basePrice = price;
+            
+            const upsellZone = document.getElementById('upsell-zone');
+            const upsellToggle = document.getElementById('upsell-toggle');
+            
+            if (price === 60 || price === 90) {
+                upsellZone.style.display = 'block';
+            } else {
+                upsellZone.style.display = 'none';
+                upsellToggle.checked = false;
+                funnelState.hasUpsell = false;
+            }
             if(navigator.vibrate) navigator.vibrate(20);
             
-            unlockStep3();
+            if(price !== 60 && price !== 90) {
+                 setTimeout(() => { funnelState.step = 2; updateWizardUI(); }, 400);
+            } else {
+                 updateWizardUI(); 
+            }
         }
 
-        function unlockStep3() {
-            funnelState.step = 3;
-            document.getElementById('title-2').classList.remove('active');
-            document.getElementById('title-3').classList.add('active');
-            const step3 = document.getElementById('step-3-section');
-            step3.classList.add('unlocked');
-            setTimeout(() => { document.getElementById('client-phone').scrollIntoView({ behavior: 'smooth', block: 'center' }); document.getElementById('client-phone').focus(); }, 300);
-            updateMobileBar();
+        function toggleUpsell(checkbox) {
+            funnelState.hasUpsell = checkbox.checked;
+            if(navigator.vibrate) navigator.vibrate(10);
+            updateWizardUI();
+        }
+
+        function handleBrandSelect() {
+            const sel = document.getElementById('brand-select');
+            funnelState.brand = sel.value;
+            if(funnelState.brand === "") return;
+            const modelInput = document.getElementById('model-input');
+            modelInput.style.display = 'block'; modelInput.focus();
+            updateWizardUI();
+        }
+
+        function handleModelInput() {
+            const modelInput = document.getElementById('model-input');
+            funnelState.model = modelInput.value;
+            
+            if (funnelState.brand !== "" && funnelState.model.length >= 2) {
+                setTimeout(() => { funnelState.step = 3; updateWizardUI(); }, 500);
+            }
+            updateWizardUI();
         }
 
         function checkUnlock() {
-            const phoneInput = document.getElementById('client-phone').value;
-            const btnDesk = document.getElementById('btn-agendar-desktop');
-            
-            if (phoneInput.length >= 14) {
-                funnelState.phoneReady = true;
-                btnDesk.disabled = false;
-                btnDesk.querySelector('.btn-text').innerText = "GERAR PROTOCOLO (WHATSAPP)";
+            const phoneInput = document.getElementById('client-phone');
+            if (phoneInput.value.length >= 14) {
+                funnelState.phoneReady = true; phoneInput.classList.remove('pulse-attention'); 
             } else {
                 funnelState.phoneReady = false;
-                btnDesk.disabled = true;
-                btnDesk.querySelector('.btn-text').innerText = "Inserir Telefone";
             }
-            updateMobileBar();
+            updateBottomCTA();
         }
 
-        function updateMobileBar() {
-            const btnMob = document.getElementById('btn-agendar-mobile');
-            const lblMode = document.getElementById('mobile-mode-lbl');
-            const lblPrice = document.getElementById('mobile-price-lbl');
+        function editStep(step) { funnelState.step = step; updateWizardUI(); }
+
+        function updateWizardUI() {
+            // Hides banner & slider dynamically
+            const isFirstStep = funnelState.step === 1;
+            document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
+            document.getElementById('authority-slider').style.display = isFirstStep ? 'flex' : 'none';
+
+            // STEP 1 (PACOTES)
+            const s1 = document.getElementById('step-1-section');
+            s1.classList.toggle('active-step', funnelState.step === 1);
+            if(funnelState.step > 1) { s1.classList.add('completed'); s1.classList.remove('active-step'); } 
+            
+            document.getElementById('step-1-content').style.display = funnelState.step === 1 ? 'block' : 'none';
+            document.getElementById('edit-1').style.display = funnelState.step > 1 ? 'block' : 'none';
+            document.getElementById('title-1').classList.toggle('active', funnelState.step === 1);
+
+            // STEP 2 (CARRO)
+            const s2 = document.getElementById('step-2-section');
+            s2.classList.toggle('active-step', funnelState.step === 2);
+            if(funnelState.step > 2) { s2.classList.add('completed'); s2.classList.remove('active-step'); }
+            document.getElementById('step-2-section').style.display = funnelState.step >= 2 ? 'block' : 'none';
+            document.getElementById('step-2-content').style.display = funnelState.step === 2 ? 'block' : 'none';
+            document.getElementById('edit-2').style.display = funnelState.step > 2 ? 'block' : 'none';
+            document.getElementById('title-2').classList.toggle('active', funnelState.step === 2);
+
+            // STEP 3 (RECIBO & WHATSAPP)
+            const s3 = document.getElementById('step-3-section');
+            s3.classList.toggle('active-step', funnelState.step === 3);
+            document.getElementById('step-3-section').style.display = funnelState.step === 3 ? 'block' : 'none';
+            document.getElementById('step-3-content').style.display = funnelState.step === 3 ? 'block' : 'none';
+            document.getElementById('title-3').classList.toggle('active', funnelState.step === 3);
+            
+            if(funnelState.brand && funnelState.model) document.getElementById('receipt-car').innerText = `${funnelState.brand} ${funnelState.model}`;
+            if(funnelState.baseService) document.getElementById('receipt-base').innerText = funnelState.baseService;
+            document.getElementById('receipt-upsell-row').style.display = funnelState.hasUpsell ? 'flex' : 'none';
+            document.getElementById('receipt-total').innerText = `R$ ${getTotalPrice()}`;
+
+            if (funnelState.step === 3) {
+                setTimeout(() => { 
+                    document.getElementById('client-phone').classList.add('pulse-attention');
+                    document.getElementById('scroll-container').scrollTo({ top: document.getElementById('scroll-container').scrollHeight, behavior: 'smooth' });
+                }, 100);
+            }
+
+            updateBottomCTA();
+        }
+
+        function updateBottomCTA() {
+            const btnCTA = document.getElementById('btn-continue-flow');
+            const totalUI = document.getElementById('cta-total');
+            totalUI.innerText = `R$ ${getTotalPrice()}`;
+
+            btnCTA.classList.remove('btn-success');
+            btnCTA.disabled = true;
 
             if (funnelState.step === 1) {
-                lblMode.innerText = "Passo 1"; lblPrice.innerText = "Veículo";
-                btnMob.querySelector('.btn-text').innerText = "Selecionar";
-                btnMob.classList.add('opacity-40');
-            } else if (funnelState.step === 2 && !funnelState.mode) {
-                lblMode.innerText = "Passo 2"; lblPrice.innerText = "Tratamento";
-                btnMob.querySelector('.btn-text').innerText = "Aguardando";
-                btnMob.classList.add('opacity-40');
-            } else if (funnelState.step >= 2 && funnelState.mode) {
-                lblMode.innerText = funnelState.mode;
-                lblPrice.innerText = funnelState.price;
-                if (!funnelState.phoneReady) {
-                    btnMob.querySelector('.btn-text').innerText = "Contato";
-                    btnMob.classList.add('opacity-40');
+                if (funnelState.basePrice === 0) {
+                    btnCTA.querySelector('.btn-text').innerText = "Escolha um Serviço";
                 } else {
-                    btnMob.querySelector('.btn-text').innerText = "Agendar";
-                    btnMob.classList.remove('opacity-40', 'cursor-not-allowed');
+                    btnCTA.disabled = false;
+                    btnCTA.querySelector('.btn-text').innerText = "Continuar";
+                }
+            } 
+            else if (funnelState.step === 2) {
+                if (!funnelState.brand || funnelState.model.length < 2) {
+                    btnCTA.querySelector('.btn-text').innerText = "Informe o Veículo";
+                } else {
+                    btnCTA.disabled = false;
+                    btnCTA.querySelector('.btn-text').innerText = "Ir para Resumo";
+                }
+            } 
+            else if (funnelState.step === 3) {
+                if (!funnelState.phoneReady) {
+                    btnCTA.querySelector('.btn-text').innerText = "Falta Contato";
+                } else {
+                    btnCTA.disabled = false;
+                    btnCTA.classList.add('btn-success');
+                    btnCTA.querySelector('.btn-text').innerText = "Confirmar Reserva";
                 }
             }
         }
 
-        function handleMobileCTA(btnElement) {
+        function handleNextStep() {
             if (funnelState.step === 1) {
-                document.getElementById('brand-select').focus();
-            } else if (funnelState.step === 2 && !funnelState.mode) {
-                document.getElementById('step-2-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else if (funnelState.step >= 2 && !funnelState.phoneReady) {
-                document.getElementById('client-phone').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                document.getElementById('client-phone').focus();
-            } else {
-                handleCheckout(btnElement);
+                funnelState.step = 2; updateWizardUI();
+            } else if (funnelState.step === 2) {
+                funnelState.step = 3; updateWizardUI();
+            } else if (funnelState.step === 3 && funnelState.phoneReady) {
+                finalizeBooking();
             }
         }
 
-        function handleCheckout(btnElement) {
-            if(!funnelState.brand || !funnelState.model || !funnelState.mode || !funnelState.phoneReady) return;
-            
+        function finalizeBooking() {
+            const btnCTA = document.getElementById('btn-continue-flow');
             const clientPhone = document.getElementById('client-phone').value;
             if(typeof fbq !== 'undefined') fbq('track', 'Lead');
-            localStorage.setItem('blackcar_lead', clientPhone);
             
-            btnElement.classList.add('processing');
-            btnElement.querySelector('.btn-text').innerText = "Gerando Protocolo...";
+            btnCTA.classList.add('processing');
             
+            let carroStr = `${funnelState.brand} ${funnelState.model}`;
+            let servicoStr = funnelState.baseService;
+            if(funnelState.hasUpsell) servicoStr += ` + Selagem Extra de Pintura`;
+            
+            let total = getTotalPrice();
+
             const numWhatsApp = "5549999084031"; 
-            const msg = `⚡ *ESTÚDIO BLACK CAR* ⚡\n\nOlá equipe! Gostaria de verificar a agenda para o meu veículo:\n\n🚗 *MÁQUINA:* ${funnelState.brand} ${funnelState.model}\n🛠️ *TRATAMENTO:* ${funnelState.mode} (${funnelState.price})\n📱 *CONTATO:* ${clientPhone}\n\nPodemos confirmar o protocolo?`;
+            const msg = `⚡ *RESERVA VIP | BLACK CAR* ⚡\n\nOlá equipe! Completei o meu protocolo pelo site:\n\n🚗 *VEÍCULO:* ${carroStr}\n🛠️ *PROTOCOLO:* ${servicoStr}\n💰 *INVESTIMENTO:* R$ ${total}\n📱 *MEU WHATSAPP:* ${clientPhone}\n\nPodemos confirmar a reserva?`;
             
             setTimeout(() => {
-                btnElement.classList.remove('processing');
-                btnElement.querySelector('.btn-text').innerText = "Redirecionando...";
-                btnElement.style.background = "#25D366"; btnElement.style.color = "#fff";
+                btnCTA.classList.remove('processing');
                 window.open(`https://wa.me/${numWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank');
-            }, 1200);
+            }, 800);
         }
     </script>
 </body>
