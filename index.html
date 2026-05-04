@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#09090b">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Black Car | Detalhamento & Estética Automotiva</title>
+    <!-- ALTERE AQUI: Nome da aba do navegador -->
+    <title>[NOME DA ESTÉTICA] | Estética Automotiva & Detalhamento</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- ALTERE AQUI: Imagens de Pré-carregamento (opcional) -->
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f" as="image">
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f" as="image">
 
+    <!-- ALTERE AQUI: Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', 'SEU_PIXEL_ID_AQUI'); fbq('track', 'PageView');
@@ -24,17 +28,24 @@
             --accent-glow: rgba(14, 165, 233, 0.4);
             --bg-base: #09090b; 
             --vermelho-ignicao: #ef4444;
+            --verde-status: #10b981;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { background-color: var(--bg-base); color: white; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; overscroll-behavior-y: none; }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* --- TELA 1: IGNIÇÃO --- */
-        #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px; transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); background-color: var(--bg-base); }
+        #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px 4vh 20px; transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); background-color: var(--bg-base); }
         .car-bg { position: absolute; inset: 0; background-size: cover; background-position: center 60%; opacity: 0; transition: opacity 0.5s ease; transform: scale(1.05); }
+        
+        /* ALTERE AQUI: Imagens de fundo da Ignição */
         #bg-off { background-image: url('https://carrosest.carrd.co/assets/images/image01.jpg?v=0259a93f'); opacity: 1; z-index: 1; }
         #bg-ambient { background-image: url('https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f'); z-index: 2; mix-blend-mode: lighten; } 
         #bg-on { background-image: url('https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f'); z-index: 4; mix-blend-mode: lighten; }
+        
         #underglow { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: radial-gradient(ellipse at bottom, rgba(14,165,233,0.25) 0%, transparent 70%); opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.4s ease; }
         .accessory-on #underglow { opacity: 1; animation: breathe-glow 3s infinite alternate ease-in-out; }
         @keyframes breathe-glow { 0% { opacity: 0.5; } 100% { opacity: 1; } }
@@ -42,7 +53,7 @@
         .idle-shake { animation: idle-rumble-ani 0.06s infinite linear; }
         @keyframes idle-rumble-ani { 0% { transform: translate(0, 0) } 25% { transform: translate(-1px, 1px) } 50% { transform: translate(1px, 1px) } 75% { transform: translate(1px, -1px) } 100% { transform: translate(0, 0) } }
 
-        .engine-btn-ring { position: relative; width: 140px; height: 140px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; z-index: 100; margin-top: auto; margin-bottom: 24px; }
+        .engine-btn-ring { position: relative; width: 140px; height: 140px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; z-index: 100; margin-top: auto; margin-bottom: 20px; }
         .progress-circle { position: absolute; transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)); }
         .engine-button { width: 85px; height: 85px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #0a0a0a); box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 8px 16px rgba(0,0,0,0.8); border: 1px solid #2a2a2a; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; }
         .engine-button.active { transform: scale(0.92); background: linear-gradient(145deg, #110000, #330000); border-color: var(--vermelho-ignicao); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
@@ -64,41 +75,37 @@
         .lux-line { width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin-bottom: 16px; opacity: 0; }
         .show-view .lux-line { animation: expandLine 0.4s ease forwards; animation-delay: 0.2s; }
         @keyframes expandLine { 50% { opacity: 1; } 100% { width: 150px; opacity: 1; } }
-        .status-text { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; color: #888; text-transform: uppercase; opacity: 0; transform: translateY(5px); }
-        .show-view .status-text { animation: fadeInTextLux 0.3s ease forwards; animation-delay: 0.3s; }
 
         /* --- TELA 3: APP VIEW --- */
         #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; position: relative; }
         
-        /* HEADER FLUTUANTE TRANSLÚCIDO (GLASSMORPHISM) */
         .top-navbar { 
             position: absolute; top: 0; left: 0; right: 0;
-            height: 65px; display: flex; justify-content: space-between; align-items: center; 
+            height: 70px; display: flex; justify-content: space-between; align-items: center; 
             padding: 0 20px; z-index: 50; 
-            background: rgba(9, 9, 11, 0.3); /* Ultra transparente */
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); /* Efeito vidro fosco */
+            background: rgba(9, 9, 11, 0.5);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05); 
-            padding-top: env(safe-area-inset-top); /* Suporte para iPhone Notch */
+            padding-top: env(safe-area-inset-top); 
         }
-        @media (min-width: 768px) { .top-navbar { padding: 0 32px; height: 75px; } }
+        @media (min-width: 768px) { .top-navbar { padding: 0 32px; height: 80px; } }
 
-        /* FUNIL GERAL (Scrolla por baixo do Header Fixo) */
         .app-layout { flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: url('https://www.transparenttextures.com/patterns/stardust.png'); display: flex; flex-direction: column;}
-        .funnel-container { width: 100%; max-width: 650px; margin: 0 auto; padding: 0 20px 140px 20px; }
-
-        /* --- NOVO HERO BANNER (Preenche o topo da tela) --- */
-        .hero-banner {
-            width: 100%; height: 35vh; min-height: 280px; position: relative; flex-shrink: 0;
-            background-image: linear-gradient(to bottom, rgba(9,9,11,0.1) 0%, rgba(9,9,11,0.95) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
-            background-size: cover; background-position: center 70%;
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px;
-            padding-top: 70px; /* Para não encostar no Header Flutuante */
-        }
-        @media (min-width: 768px) { .hero-banner { height: 40vh; padding: 32px 40px; } }
         
-        .hero-content { position: relative; z-index: 10; max-width: 650px; margin: 0 auto; width: 100%; }
-        .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); margin-bottom: 12px; }
-        .trust-stars { color: #fbbf24; font-size: 10px; letter-spacing: 2px; }
+        /* --- HERO BANNER --- */
+        .hero-banner {
+            width: 100%; height: 42vh; min-height: 320px; position: relative; flex-shrink: 0;
+            /* ALTERE AQUI: Imagem de fundo principal da sua Estética */
+            background-image: linear-gradient(to bottom, rgba(9,9,11,0.2) 0%, rgba(9,9,11,0.98) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover; background-position: center 60%;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px;
+            padding-top: 80px; 
+        }
+        @media (min-width: 768px) { .hero-banner { height: 48vh; padding: 40px; } }
+        
+        .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; width: 100%; }
+
+        .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 0 20px 140px 20px; }
 
         /* --- SLIDER DE AUTORIDADE --- */
         .authority-slider {
@@ -110,7 +117,7 @@
         .slider-item span { color: #fff; }
         @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* LÓGICA DO WIZARD ACORDEÃO */
+        /* LÓGICA DO WIZARD */
         .step-section { margin-bottom: 24px; transition: all 0.4s ease; }
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;}
         .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #71717a; font-weight: 800; display: flex; align-items: center; gap: 10px; transition: color 0.3s; margin: 0; }
@@ -123,40 +130,39 @@
         .step-section:not(.active-step) { opacity: 0.5; }
         .step-section.completed:not(.active-step) .step-content { display: none !important; }
 
-        /* --- CARDS GLASSMORPHISM (TIERS DE CORES) --- */
+        /* --- CARDS SÓLIDOS C/ PSICOLOGIA DE CORES --- */
         .glass-card { 
-            background: rgba(255, 255, 255, 0.08); 
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15); 
-            border-radius: 14px; padding: 18px; margin-bottom: 12px; 
+            background: var(--c-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 14px; padding: 20px; 
             cursor: pointer; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); 
             position: relative; overflow: hidden;
-            --c-accent: var(--accent); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        .glass-card:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255,255,255,0.3); }
+        .glass-card:hover { filter: brightness(1.15); border-color: rgba(255,255,255,0.2); }
         .glass-card.selected { 
-            background: rgba(255, 255, 255, 0.15); 
+            background: var(--c-bg-sel);
             border-color: var(--c-accent); 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 0 1px var(--c-accent); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 0 1px var(--c-accent); 
         }
         
-        .tier-prata { --c-accent: #94a3b8; } 
-        .tier-azul  { --c-accent: #0ea5e9; } 
-        .tier-ouro  { --c-accent: #f59e0b; } 
-        .tier-verde { --c-accent: #10b981; } 
-        .tier-roxo  { --c-accent: #8b5cf6; } 
+        .tier-prata { --c-accent: #94a3b8; --c-bg: linear-gradient(145deg, #1f2937, #0f172a); --c-bg-sel: linear-gradient(145deg, #334155, #1e293b); } 
+        .tier-azul  { --c-accent: #38bdf8; --c-bg: linear-gradient(145deg, #0c4a6e, #082f49); --c-bg-sel: linear-gradient(145deg, #0284c7, #0369a1); } 
+        .tier-ouro  { --c-accent: #fbbf24; --c-bg: linear-gradient(145deg, #451a03, #222); --c-bg-sel: linear-gradient(145deg, #78350f, #451a03); } 
+        .tier-verde { --c-accent: #34d399; --c-bg: linear-gradient(145deg, #064e3b, #222); --c-bg-sel: linear-gradient(145deg, #059669, #064e3b); } 
+        .tier-roxo  { --c-accent: #a78bfa; --c-bg: linear-gradient(145deg, #3b0764, #222); --c-bg-sel: linear-gradient(145deg, #6b21a8, #3b0764); } 
 
         .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
         .card-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; letter-spacing: -0.5px; transition: color 0.3s;}
         .glass-card.selected .card-title { color: var(--c-accent); }
-        .card-desc { font-size: 12px; color: #a1a1aa; line-height: 1.5; font-weight: 400; margin-bottom: 10px; }
+        .card-desc { font-size: 12px; color: #cbd5e1; line-height: 1.5; font-weight: 400; margin-bottom: 12px; }
         
-        .feature-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;}
-        .feature-item { font-size: 11px; color: #d4d4d8; display: flex; align-items: center; gap: 6px; }
+        .feature-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;}
+        .feature-item { font-size: 11px; color: #e2e8f0; display: flex; align-items: center; gap: 6px; }
         .feature-item svg { width: 13px; height: 13px; fill: var(--c-accent); flex-shrink: 0; }
-        .feature-time { color: #a1a1aa; font-size: 10px; font-weight: 600; background: rgba(255, 255, 255, 0.05); padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 8px;}
+        .feature-time { color: #f8fafc; font-size: 10px; font-weight: 700; background: rgba(0, 0, 0, 0.4); padding: 4px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05);}
 
-        .price-text { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 15px; color: #fff; background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);}
+        .price-text { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 15px; color: #fff; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);}
         .glass-card.selected .price-text { background: var(--c-accent); color: #000; border-color: var(--c-accent); }
         .tag-recomendado { position: absolute; top: -1px; left: -1px; background: var(--c-accent); color: #000; font-size: 9px; font-weight: 800; padding: 4px 14px; border-radius: 14px 0 14px 0; text-transform: uppercase; letter-spacing: 1px; }
 
@@ -168,7 +174,6 @@
             appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; 
         }
         
-        /* CORREÇÃO DO BUG DAS OPÇÕES INVISÍVEIS NO MOBILE (Força nativa) */
         select.glass-input option, select.glass-input optgroup { 
             color: #000000 !important; 
             background-color: #ffffff !important; 
@@ -187,23 +192,25 @@
         .pulse-attention { animation: input-pulse 2s infinite; }
         @keyframes input-pulse { 0%, 100% { border-color: rgba(255,255,255,0.15); } 50% { border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); } }
 
-        /* --- O TICKET DE RECIBO FINAL (BAG/CART) --- */
+        /* --- O TICKET DE RECIBO FINAL BRANCO SÓLIDO --- */
         .receipt-card {
-            background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.15);
-            border-radius: 12px; padding: 16px; margin-bottom: 20px;
+            background: #ffffff; border: 1px solid #e4e4e7;
+            border-radius: 12px; padding: 20px; margin-bottom: 20px;
+            color: #18181b; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-        .receipt-row { display: flex; justify-content: space-between; font-size: 12px; color: #a1a1aa; margin-bottom: 8px; border-bottom: 1px dotted rgba(255,255,255,0.05); padding-bottom: 8px;}
+        .receipt-card h4 { color: #52525b; border-bottom: 1px solid #e4e4e7; padding-bottom: 10px; margin-bottom: 12px; }
+        .receipt-row { display: flex; justify-content: space-between; font-size: 13px; color: #52525b; margin-bottom: 10px; border-bottom: 1px dotted #d4d4d8; padding-bottom: 8px;}
         .receipt-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .receipt-val { color: #fff; font-weight: 600; text-align: right;}
-        .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .receipt-total-val { font-size: 20px; font-weight: 900; color: #10b981; }
+        .receipt-val { color: #18181b; font-weight: 700; text-align: right;}
+        .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e4e4e7; }
+        .receipt-total-val { font-size: 22px; font-weight: 900; color: #059669; }
 
         /* --- FOOTER --- */
         .premium-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px 140px 20px; text-align: center; margin-top: 20px; }
         .footer-brand { font-weight: 900; font-size: 16px; color: #fff; letter-spacing: -0.5px; margin-bottom: 8px; display: flex; justify-content: center; align-items: center; gap: 8px;}
         .footer-text { font-size: 11px; color: #71717a; line-height: 1.6; max-width: 300px; margin: 0 auto;}
 
-        /* --- BARRA DE CHECKOUT (CARRINHO INFERIOR COM UPSELL) --- */
+        /* --- BARRA DE CHECKOUT INFERIOR --- */
         .fixed-bottom-cta {
             position: fixed; bottom: 0; left: 0; right: 0;
             padding: 12px 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom));
@@ -214,7 +221,6 @@
         }
         .fixed-bottom-cta.visible { transform: translateY(0); }
 
-        /* Zona de Upsell dentro da barra inferior */
         .bottom-upsell-zone {
             display: none; justify-content: space-between; align-items: center;
             padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -244,7 +250,7 @@
             border: none; cursor: pointer; transition: all 0.3s;
         }
         .btn-continue:disabled { background: rgba(255,255,255,0.1); color: #71717a; cursor: not-allowed; }
-        .btn-continue.btn-success { background: #10b981; color: #fff; }
+        .btn-continue.btn-success { background: var(--verde-status); color: #fff; }
 
         .spinner { border: 2px solid rgba(255,255,255,0.2); border-top: 2px solid currentColor; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: none; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -254,6 +260,7 @@
 </head>
 <body>
 
+    <!-- ALTERE AQUI: Som do Motor (opcional) -->
     <audio id="ignition-sound" preload="auto">
         <source src="https://assets.mixkit.co/active_storage/sfx/2554/2554-preview.mp3" type="audio/mpeg">
     </audio>
@@ -268,29 +275,37 @@
         </div>
         <div class="vignette"></div>
 
-        <!-- TÍTULOS SUPERIORES (Mais limpo, não cobre o carro) -->
-        <div class="text-center z-20 pt-8 md:pt-16 pointer-events-none px-4 w-full">
-            <div class="flex justify-center items-center gap-2 mb-4 opacity-80">
-                <span class="tracking-[0.4em] text-zinc-400 uppercase text-[9px] md:text-[10px] font-bold">Centro, Chapecó | SC</span>
+        <div class="text-center z-20 pt-8 md:pt-16 pointer-events-none px-4 w-full flex flex-col items-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <!-- ALTERE AQUI: Sua Cidade -->
+                <span class="tracking-[0.4em] text-white uppercase text-[10px] font-black">[SUA CIDADE - UF]</span>
             </div>
-            <h1 class="font-black tracking-tighter uppercase leading-[0.9] text-[2.8rem] md:text-[4.5rem] drop-shadow-2xl text-white mb-3">BLACK CAR</h1>
-            <h2 class="font-light text-[1.1rem] md:text-[1.8rem] text-zinc-300 tracking-[0.2em] uppercase leading-none">Detailing Studio</h2>
+            <!-- ALTERE AQUI: Nome da sua estética -->
+            <h1 class="font-black uppercase text-center text-white mb-3 text-4xl sm:text-5xl md:text-7xl tracking-tighter" style="max-width: 90vw; word-wrap: break-word;">
+                [NOME DA ESTÉTICA]
+            </h1>
+            <h2 class="font-medium text-[1.1rem] md:text-[1.8rem] text-zinc-300 tracking-[0.1em] uppercase leading-none">Estética Automotiva</h2>
         </div>
 
-        <!-- ÁREA DE AÇÃO INFERIOR (Onde o dedo do utilizador está no Mobile) -->
-        <div class="flex flex-col items-center z-100 mt-auto pb-4 w-full max-w-sm mx-auto">
+        <div class="flex flex-col items-center z-100 mt-auto pb-6 w-full max-w-sm mx-auto">
             <div class="engine-btn-ring">
                 <svg width="100%" height="100%" class="absolute pointer-events-none"><circle cx="50%" cy="50%" r="42%" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"></circle><circle id="ring" class="progress-circle" cx="50%" cy="50%" r="42%" fill="none" stroke="#ef4444" stroke-width="4"></circle></svg>
                 <div id="btn" class="engine-button" onmousedown="startIgnition(event)" onmouseup="stopIgnition(event)" ontouchstart="startIgnition(event)" ontouchend="stopIgnition(event)">
                     <span class="btn-lbl-top">SYSTEM</span><span class="btn-lbl-mid">Start</span><span class="btn-lbl-bot">POWER</span>
                 </div>
             </div>
-            <p id="hold-hint" class="text-[10px] tracking-[0.1em] text-zinc-500 font-bold uppercase transition-opacity duration-300 mb-6">Segure para Configurar</p>
             
-            <div class="border-t border-white/5 pt-4 w-full text-center px-4">
-                <p class="text-[12px] md:text-[14px] text-zinc-400 font-normal leading-relaxed opacity-90">
-                    Estética automotiva premium.<br>Lavagem detalhada, polimento e proteção cerâmica.
+            <p id="hold-hint" class="text-[10px] tracking-[0.1em] text-zinc-500 font-bold uppercase transition-opacity duration-300 mb-6">Segure para Acessar</p>
+            
+            <div class="border-t border-white/10 pt-5 w-full text-center px-4">
+                <p class="text-[12px] md:text-[13px] text-white font-bold uppercase tracking-wider mb-1">
+                    Lavação • Cera • Polimento • Vitrificação
                 </p>
+                <p class="text-[11px] text-zinc-400 font-medium">O cuidado que a sua máquina merece.</p>
             </div>
         </div>
     </div>
@@ -305,32 +320,39 @@
             <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
         </div>
         <div class="lux-line"></div>
-        <p class="status-text text-zinc-500">ACESSANDO TERMINAL...</p>
+        <p class="text-[12px] font-bold tracking-[0.2em] text-white uppercase mt-2">CARREGANDO ESTÉTICA PREMIUM...</p>
     </div>
 
     <!-- 3. WEB APP -->
     <div id="app-view">
         
-        <!-- HEADER FLUTUANTE TRANSLÚCIDO -->
         <header class="top-navbar">
-            <h1 class="font-black text-[14px] tracking-tighter uppercase text-white">BLACK CAR <span class="text-zinc-400 font-light">Detailing</span></h1>
-            <div class="flex items-center gap-1.5">
-                <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest bg-white/10 px-2 py-1 rounded">Reserva VIP</span>
+            <h1 class="font-black text-[13px] md:text-[14px] uppercase text-white truncate max-w-[60%]">
+                <!-- ALTERE AQUI -->
+                [SUA ESTÉTICA] <span class="text-zinc-400 font-light hidden sm:inline">Detailing</span>
+            </h1>
+            <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md shrink-0">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <!-- ALTERE AQUI -->
+                <span class="text-[9px] text-white font-black uppercase tracking-widest">[SUA CIDADE]</span>
             </div>
         </header>
 
         <div class="app-layout" id="scroll-container">
             
-            <!-- HERO BANNER TRANSLÚCIDO E EDGE-TO-EDGE -->
             <div id="hero-banner" class="hero-banner">
                 <div class="hero-content">
-                    <div class="trust-badge"><span class="trust-stars">★★★★★</span><span class="text-[9px] text-white font-bold tracking-wider uppercase">5.0 no Google</span></div>
-                    <h2 class="text-2xl font-black mt-1 mb-2 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE O SEU CARRO <span class="text-[var(--accent)]"><br>AO ESTADO DE ARTE</span></h2>
-                    <p class="text-[12px] font-medium text-zinc-200 leading-relaxed max-w-sm drop-shadow-md">O cuidado que o seu património exige. Selecione o serviço ideal abaixo.</p>
+                    <div class="bg-red-600 text-white px-3 py-1 rounded text-[9px] font-black uppercase tracking-widest mb-3 inline-block shadow-lg">
+                        ⚠️ SOMENTE COM AGENDAMENTO
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-black mt-1 mb-2 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE O SEU VEÍCULO <span class="text-[var(--accent)]"><br>AO ESTADO DE ARTE</span></h2>
+                    <p class="text-[13px] md:text-[15px] font-medium text-zinc-200 leading-relaxed max-w-md drop-shadow-md">Selecione o serviço ideal abaixo e garanta a sua vaga.</p>
                 </div>
             </div>
 
-            <!-- SLIDER DE AUTORIDADE -->
             <div class="authority-slider" id="authority-slider">
                 <div class="slider-track">
                     <div class="slider-item">✨ <span>Cera de Carnaúba</span></div>
@@ -347,7 +369,8 @@
             </div>
 
             <div class="funnel-container">
-                <!-- WIZARD STEP 1: PROTOCOLOS -->
+
+                <!-- PASSO 1: PROTOCOLOS -->
                 <div id="step-1-section" class="step-section active-step">
                     <div class="section-header">
                         <h2 class="section-title active" id="title-1">01. Selecione o Protocolo</h2>
@@ -355,125 +378,122 @@
                     </div>
                     
                     <div id="step-1-content" class="step-content" style="display: block;">
-                        
-                        <!-- CARD 0: EXPRESS (PRATA) -->
-                        <div class="glass-card tier-prata" onclick="selectUpgrade(this, 'Lavagem Externa Express', 60)">
-                            <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><span class="price-text">R$ 60</span></div>
-                            <span class="feature-time">⏱️ 40 a 60 minutos</span>
-                            <p class="card-desc">Foco na agilidade. Lavagem segura da pintura exterior e limpeza rápida dos dois tapetes dianteiros.</p>
-                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <!-- ALTERE AQUI: PREÇOS E SERVIÇOS SE DESEJAR -->
+                            <div class="glass-card tier-prata" onclick="selectUpgrade(this, 'Lavagem Externa Express', 60)">
+                                <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><span class="price-text">R$ 60</span></div>
+                                <span class="feature-time">⏱️ 40 a 60 min</span>
+                                <p class="card-desc">Foco na agilidade. Limpeza segura da pintura e tapetes dianteiros.</p>
+                            </div>
 
-                        <!-- CARD 1: TÉCNICA (AZUL) -->
-                        <div class="glass-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 90)">
-                            <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><span class="price-text">R$ 90</span></div>
-                            <span class="feature-time">⏱️ 1h30 a 2 horas</span>
-                            <p class="card-desc">O padrão ouro. Processo a dois baldes (zero ácidos) para não riscar o verniz. Inclui aspiração profunda e limpeza de painéis.</p>
-                        </div>
+                            <div class="glass-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 90)">
+                                <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><span class="price-text">R$ 90</span></div>
+                                <span class="feature-time">⏱️ 1h30 a 2h</span>
+                                <p class="card-desc">Limpeza profunda com PH neutro e pincelamento de detalhes.</p>
+                            </div>
 
-                        <!-- CARD 2: CERA SINTÉTICA (OURO) -->
-                        <div class="glass-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
-                            <div class="tag-recomendado">Mais Escolhido</div>
-                            <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><span class="price-text">R$ 150</span></div>
-                            <span class="feature-time">⏱️ 3 a 4 horas</span>
-                            <p class="card-desc">Descontaminação da pintura e selagem completa. Garante toque liso, brilho profundo e proteção UV.</p>
-                        </div>
+                            <div class="glass-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
+                                <div class="tag-recomendado">Mais Escolhido</div>
+                                <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><span class="price-text">R$ 150</span></div>
+                                <span class="feature-time">⏱️ 3 a 4h</span>
+                                <p class="card-desc">Descontaminação da pintura e selagem de alto brilho.</p>
+                            </div>
 
-                        <!-- CARD 3: INTERNA (VERDE) -->
-                        <div class="glass-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 250)">
-                            <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><span class="price-text">R$ 250</span></div>
-                            <span class="feature-time">⏱️ 1 Dia (Secagem Téc.)</span>
-                            <p class="card-desc">Foco na saúde: Higienização profunda de estofados, couro e Oxi-Sanitização (elimina fungos e odores).</p>
-                        </div>
+                            <div class="glass-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 250)">
+                                <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><span class="price-text">R$ 250</span></div>
+                                <span class="feature-time">⏱️ 1 Dia</span>
+                                <p class="card-desc">Higienização profunda e Oxi-Sanitização (elimina fungos).</p>
+                            </div>
 
-                        <!-- CARD 4: VITRIFICAÇÃO (ROXO) -->
-                        <div class="glass-card tier-roxo" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
-                            <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><span class="price-text">R$ 800</span></div>
-                            <span class="feature-time">⏱️ 2 a 3 Dias</span>
-                            <p class="card-desc">Correção de pintura (polimento para remover marcas de lavagens erradas) e aplicação de Coating 9H.</p>
+                            <div class="glass-card tier-roxo md:col-span-2" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
+                                <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><span class="price-text">R$ 800</span></div>
+                                <span class="feature-time">⏱️ 2 a 3 Dias</span>
+                                <p class="card-desc">Polimento técnico + Coating Cerâmico 9H. Blindagem de brilho.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- WIZARD STEP 2: CARRO -->
+                <!-- GALERIA RESPONSIVA -->
+                <div class="mb-12 px-1" id="gallery-section">
+                    <div class="flex items-center gap-2 mb-4 justify-center md:justify-start">
+                        <svg class="w-5 h-5 fill-zinc-500" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                        <h2 class="text-[12px] md:text-[14px] font-bold uppercase tracking-[2px] text-zinc-400">Conheça o Nosso Trabalho</h2>
+                    </div>
+                    <div class="flex overflow-x-auto gap-4 pb-4 snap-x hide-scrollbar w-full snap-mandatory">
+                        <!-- ALTERE AQUI: Suas Imagens da Estética -->
+                        
+                        <!-- 1. Imagem de Lavagem Detalhada (Snow Foam) -->
+                        <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Lavagem Snow Foam">
+                        
+                        <!-- 2. NOVO: Imagem do Polimento com Politriz Roto-Orbital (O Gatilho de Alto Valor) -->
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Correção de Pintura com Politriz">
+                        
+                        <!-- 3. Imagem de Acabamento/Inspeção Premium -->
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Acabamento Premium e Cristalização">
+                        
+                    </div>
+                </div>
+
+                <!-- PASSO 2: CARRO -->
                 <div id="step-2-section" class="step-section" style="display: none;">
                     <div class="section-header">
                         <h2 class="section-title" id="title-2">02. Identifique a Máquina</h2>
                         <button id="edit-2" class="edit-btn" onclick="editStep(2)">Alterar</button>
                     </div>
-                    
                     <div id="step-2-content" class="step-content">
                         <select id="brand-select" class="glass-input" onchange="handleBrandSelect()">
                             <option value="" disabled selected>Selecione a Montadora...</option>
-                            <option value="Audi">Audi</option><option value="BMW">BMW</option><option value="Chevrolet">Chevrolet</option><option value="Citroen">Citroën</option>
-                            <option value="Fiat">Fiat</option><option value="Ford">Ford</option><option value="Honda">Honda</option><option value="Hyundai">Hyundai</option>
-                            <option value="Jeep">Jeep</option><option value="Kia">Kia</option><option value="Land Rover">Land Rover</option><option value="Mercedes-Benz">Mercedes-Benz</option>
-                            <option value="Mitsubishi">Mitsubishi</option><option value="Nissan">Nissan</option><option value="Peugeot">Peugeot</option><option value="Porsche">Porsche</option>
-                            <option value="Renault">Renault</option><option value="Toyota">Toyota</option><option value="Volkswagen">Volkswagen</option><option value="Volvo">Volvo</option>
-                            <option value="Outra">Outra (Informarei no WhatsApp)</option>
+                            <option value="Audi">Audi</option><option value="BMW">BMW</option><option value="Chevrolet">Chevrolet</option><option value="Fiat">Fiat</option><option value="Ford">Ford</option><option value="Honda">Honda</option><option value="Hyundai">Hyundai</option><option value="Jeep">Jeep</option><option value="Land Rover">Land Rover</option><option value="Mercedes-Benz">Mercedes-Benz</option><option value="Porsche">Porsche</option><option value="Toyota">Toyota</option><option value="Volkswagen">Volkswagen</option><option value="Outra">Outra</option>
                         </select>
                         <input type="text" id="model-input" class="glass-input" placeholder="Qual o modelo? (Ex: Hilux, 320i)" style="display: none;" oninput="handleModelInput()">
                     </div>
                 </div>
 
-                <!-- WIZARD STEP 3: CAPTURA E RECIBO -->
+                <!-- PASSO 3: RECIBO -->
                 <div id="step-3-section" class="step-section" style="display: none;">
-                    <div class="section-header">
-                        <h2 class="section-title" id="title-3">03. Resumo & Agendamento</h2>
-                    </div>
-                    
+                    <div class="section-header"><h2 class="section-title" id="title-3">03. Resumo & Agendamento</h2></div>
                     <div id="step-3-content" class="step-content">
-                        
                         <div class="receipt-card">
-                            <h4 class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest mb-3 text-center">Reserva de Atendimento</h4>
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-center">Protocolo de Agendamento</h4>
                             <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
-                            <div class="receipt-row"><span>Protocolo Principal:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
-                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcionais:</span><span class="receipt-val text-[#f59e0b]">+ Selagem Cera Líquida</span></div>
-                            
-                            <div class="receipt-total">
-                                <span class="font-bold text-[13px] text-white uppercase">Investimento Estimado:</span>
-                                <span class="receipt-total-val" id="receipt-total">R$ 0</span>
-                            </div>
+                            <div class="receipt-row"><span>Serviço:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
+                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-600">+ Cera Líquida</span></div>
+                            <div class="receipt-total"><span class="font-bold text-[13px] uppercase">Total Estimado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
                         </div>
-
-                        <div class="pt-2">
-                            <p class="text-[12px] text-zinc-400 mb-4 text-center">Para confirmar sua reserva e garantir sua vaga nesta semana, informe seu WhatsApp.</p>
-                            <input type="tel" id="client-phone" class="glass-input hud-input" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this); checkUnlock();">
-                        </div>
+                        <input type="tel" id="client-phone" class="glass-input hud-input" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this); checkUnlock();">
                     </div>
                 </div>
 
                 <footer class="premium-footer">
-                    <div class="footer-brand">BLACK CAR DETAILING</div>
-                    <p class="footer-text">Centro de Estética Automotiva de Alta Performance.</p>
-                    <p class="text-[10px] text-zinc-600 mt-4">Centro, Chapecó - SC</p>
+                    <div class="footer-brand text-white uppercase text-center w-full block">
+                        <!-- ALTERE AQUI -->
+                        [NOME DA ESTÉTICA] DETAILING
+                    </div>
+                    <!-- ALTERE AQUI -->
+                    <p class="footer-text">Centro, [Sua Cidade - UF]</p>
                 </footer>
             </div>
         </div>
 
-        <!-- BARRA DE CHECKOUT INFERIOR (CARRINHO E UPSELL) -->
+        <!-- BARRA CHECKOUT COM UPSELL -->
         <div id="floating-cta" class="fixed-bottom-cta">
-            
-            <!-- UPSELL ZONA NA BARRA INFERIOR -->
             <div id="bottom-upsell-zone" class="bottom-upsell-zone">
                 <div>
-                    <h4 class="text-[12px] font-black text-[#f59e0b] uppercase tracking-wide flex items-center gap-1.5">
-                        ✨ Cera Líquida Premium
-                    </h4>
-                    <p class="text-[9px] text-zinc-300 mt-1">+ R$ 50 (Brilho intenso e Proteção UV)</p>
+                    <!-- ALTERE AQUI: Nome/Preço do Opcional -->
+                    <h4 class="text-[12px] font-black text-[#f59e0b] uppercase">✨ Adicionar Cera Líquida</h4>
+                    <p class="text-[9px] text-zinc-300 mt-1">+ R$ 50 (Brilho intenso e proteção)</p>
                 </div>
                 <input type="checkbox" id="upsell-toggle-bottom" class="upsell-toggle" onchange="toggleUpsell(this)">
             </div>
-
-            <!-- LINHA DO CARRINHO E BOTAO -->
             <div class="cta-row-flex">
                 <div class="cart-info">
-                    <span class="cart-label">Total a investir</span>
+                    <span class="cart-label">Total Investimento</span>
                     <span class="cart-total" id="cta-total">R$ 0</span>
                 </div>
-                
                 <button id="btn-continue-flow" class="btn-continue" disabled onclick="handleNextStep()">
-                    <div class="spinner"></div>
-                    <span class="btn-text">Selecionar</span>
+                    <div class="spinner"></div><span class="btn-text">Selecionar</span>
                 </button>
             </div>
         </div>
@@ -487,42 +507,23 @@
         const bgAmbient = document.getElementById('bg-ambient');
         const hintText = document.getElementById('hold-hint');
         
-        let timer, midTimer, startTime, isStarted = false, audioUnlocked = false; 
-        
-        let funnelState = {
-            step: 1, 
-            baseService: "",
-            basePrice: 0,
-            hasUpsell: false,
-            upsellPrice: 50,
-            brand: "",
-            model: "",
-            phoneReady: false
-        };
+        let funnelState = { step: 1, baseService: "", basePrice: 0, hasUpsell: false, upsellPrice: 50, brand: "", model: "", phoneReady: false };
 
         function getTotalPrice() { return funnelState.basePrice + (funnelState.hasUpsell ? funnelState.upsellPrice : 0); }
-
-        function maskPhone(input) {
-            let val = input.value.replace(/\D/g, '');
-            if (val.length > 11) val = val.slice(0, 11);
-            if (val.length > 2) val = `(${val.substring(0, 2)}) ${val.substring(2)}`;
-            if (val.length > 9) val = `${val.substring(0, 10)}-${val.substring(10)}`;
-            input.value = val;
-        }
+        function maskPhone(input) { let val = input.value.replace(/\D/g, ''); if (val.length > 11) val = val.slice(0, 11); if (val.length > 2) val = `(${val.substring(0, 2)}) ${val.substring(2)}`; if (val.length > 9) val = `${val.substring(0, 10)}-${val.substring(10)}`; input.value = val; }
 
         function startIgnition(e) {
-            if(isStarted) return;
-            if(!audioUnlocked) { sound.play().then(()=> {sound.pause(); sound.currentTime=0;}); audioUnlocked=true; }
-            startTime = Date.now(); btn.classList.add('active'); ring.style.strokeDashoffset = "0";
+            if(!funnelState.audioUnlocked) { sound.play().then(()=> {sound.pause(); sound.currentTime=0;}); funnelState.audioUnlocked=true; }
+            funnelState.startTime = Date.now(); btn.classList.add('active'); ring.style.strokeDashoffset = "0";
             hintText.innerText = "INICIANDO..."; hintText.style.color = "var(--vermelho-ignicao)"; hintText.style.opacity = "1";
-            midTimer = setTimeout(() => { bgAmbient.style.opacity = "1"; carStageBg.classList.add('idle-shake'); }, 300);
-            timer = setTimeout(ignite, 600); 
+            funnelState.midTimer = setTimeout(() => { bgAmbient.style.opacity = "1"; carStageBg.classList.add('idle-shake'); }, 300);
+            funnelState.timer = setTimeout(ignite, 600); 
         }
 
         function stopIgnition(e) {
-            if(isStarted) return;
-            const duration = startTime ? (Date.now() - startTime) : 0;
-            clearTimeout(midTimer); clearTimeout(timer);
+            if(funnelState.isStarted) return;
+            const duration = funnelState.startTime ? (Date.now() - funnelState.startTime) : 0;
+            clearTimeout(funnelState.midTimer); clearTimeout(funnelState.timer);
             btn.classList.remove('active'); ring.style.transition = "none"; ring.style.strokeDashoffset = "408";
             setTimeout(() => ring.style.transition = "stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1)", 50);
             carStageBg.classList.remove('idle-shake');
@@ -530,17 +531,15 @@
                 document.body.classList.add('accessory-on'); bgAmbient.style.opacity = "1";
                 hintText.innerText = "ALERTA: SEGURE O BOTÃO"; hintText.classList.remove('alert-hint'); void hintText.offsetWidth; hintText.classList.add('alert-hint');
             } else {
-                hintText.innerText = "Segure para Configurar"; hintText.style.color = ""; bgAmbient.style.opacity = "0"; document.body.classList.remove('accessory-on');
+                hintText.innerText = "Segure para Acessar"; hintText.style.color = ""; bgAmbient.style.opacity = "0"; document.body.classList.remove('accessory-on');
             }
-            startTime = 0;
         }
 
         function ignite() {
-            isStarted = true; carStageBg.classList.remove('idle-shake'); document.getElementById('bg-on').style.opacity = "1"; bgAmbient.style.opacity = "1"; 
+            funnelState.isStarted = true; carStageBg.classList.remove('idle-shake'); document.getElementById('bg-on').style.opacity = "1"; bgAmbient.style.opacity = "1"; 
             sound.volume = 0.8; sound.play().catch(e => console.log("Áudio bloqueado."));
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
             hintText.style.opacity = "0";
-            
             setTimeout(() => {
                 document.getElementById('landing-view').style.opacity = "0"; document.getElementById('landing-view').style.pointerEvents = "none";
                 setTimeout(() => {
@@ -560,197 +559,109 @@
         }
 
         function selectUpgrade(el, mode, price) {
-            document.querySelectorAll('.upgrade-card, .glass-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.glass-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
-            
             funnelState.baseService = mode; funnelState.basePrice = price;
-            
-            // Lógica do Upsell na Barra Inferior
-            const bottomUpsellZone = document.getElementById('bottom-upsell-zone');
-            const upsellToggle = document.getElementById('upsell-toggle-bottom');
-            
-            if (price === 60 || price === 90) {
-                bottomUpsellZone.style.display = 'flex';
-            } else {
-                bottomUpsellZone.style.display = 'none';
-                upsellToggle.checked = false;
-                funnelState.hasUpsell = false;
-            }
-            
+            const bUpsell = document.getElementById('bottom-upsell-zone');
+            if (price === 60 || price === 90) { bUpsell.style.display = 'flex'; } 
+            else { bUpsell.style.display = 'none'; document.getElementById('upsell-toggle-bottom').checked = false; funnelState.hasUpsell = false; }
             if(navigator.vibrate) navigator.vibrate(20);
-            
-            // Se NÃO tem upsell, e o cliente escolheu um plano mais caro, podemos auto-avançar
-            if(price !== 60 && price !== 90) {
-                 setTimeout(() => { funnelState.step = 2; updateWizardUI(); }, 400);
-            } else {
-                 updateWizardUI(); // Fica no passo 1, atualiza a barra para ele decidir o upsell
-            }
+            if(price !== 60 && price !== 90) { setTimeout(() => { funnelState.step = 2; updateWizardUI(); }, 400); } 
+            else { updateWizardUI(); }
         }
 
-        function toggleUpsell(checkbox) {
-            funnelState.hasUpsell = checkbox.checked;
-            if(navigator.vibrate) navigator.vibrate(10);
-            updateWizardUI();
-        }
+        function toggleUpsell(checkbox) { funnelState.hasUpsell = checkbox.checked; updateWizardUI(); }
 
         function handleBrandSelect() {
             const sel = document.getElementById('brand-select');
             funnelState.brand = sel.value;
             if(funnelState.brand === "") return;
-            const modelInput = document.getElementById('model-input');
-            modelInput.style.display = 'block'; modelInput.focus();
+            document.getElementById('model-input').style.display = 'block';
+            document.getElementById('model-input').focus();
             updateWizardUI();
         }
 
         function handleModelInput() {
-            const modelInput = document.getElementById('model-input');
-            funnelState.model = modelInput.value;
-            
-            if (funnelState.brand !== "" && funnelState.model.length >= 2) {
-                setTimeout(() => { funnelState.step = 3; updateWizardUI(); }, 500);
-            }
+            funnelState.model = document.getElementById('model-input').value;
+            if (funnelState.brand !== "" && funnelState.model.length >= 2) { setTimeout(() => { funnelState.step = 3; updateWizardUI(); }, 500); }
             updateWizardUI();
         }
 
         function checkUnlock() {
             const phoneInput = document.getElementById('client-phone');
-            if (phoneInput.value.length >= 14) {
-                funnelState.phoneReady = true; phoneInput.classList.remove('pulse-attention'); 
-            } else {
-                funnelState.phoneReady = false;
-            }
+            funnelState.phoneReady = phoneInput.value.length >= 14;
+            if (funnelState.phoneReady) phoneInput.classList.remove('pulse-attention'); 
             updateBottomCTA();
         }
 
         function editStep(step) { funnelState.step = step; updateWizardUI(); }
 
         function updateWizardUI() {
-            // Esconde o Banner e Slider se não for o passo 1
             const isFirstStep = funnelState.step === 1;
             document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
             document.getElementById('authority-slider').style.display = isFirstStep ? 'flex' : 'none';
+            document.getElementById('gallery-section').style.display = isFirstStep ? 'block' : 'none';
 
-            // STEP 1 (PACOTES)
             const s1 = document.getElementById('step-1-section');
             s1.classList.toggle('active-step', funnelState.step === 1);
-            if(funnelState.step > 1) { s1.classList.add('completed'); s1.classList.remove('active-step'); } 
-            
+            if(funnelState.step > 1) s1.classList.add('completed');
             document.getElementById('step-1-content').style.display = funnelState.step === 1 ? 'block' : 'none';
             document.getElementById('edit-1').style.display = funnelState.step > 1 ? 'block' : 'none';
             
-            let servicoText = funnelState.baseService.split('(')[0].trim();
-            if (funnelState.hasUpsell) servicoText += " + Cera";
-            document.getElementById('title-1').innerText = funnelState.step > 1 ? `01. ${servicoText}` : '01. Selecione o Tratamento';
-            document.getElementById('title-1').classList.toggle('active', funnelState.step === 1);
-
-            // STEP 2 (CARRO)
             const s2 = document.getElementById('step-2-section');
             s2.classList.toggle('active-step', funnelState.step === 2);
-            if(funnelState.step > 2) { s2.classList.add('completed'); s2.classList.remove('active-step'); }
             document.getElementById('step-2-section').style.display = funnelState.step >= 2 ? 'block' : 'none';
             document.getElementById('step-2-content').style.display = funnelState.step === 2 ? 'block' : 'none';
             document.getElementById('edit-2').style.display = funnelState.step > 2 ? 'block' : 'none';
-            
-            let carText = funnelState.brand ? `${funnelState.brand} ${funnelState.model}` : '02. Identifique a Máquina';
-            document.getElementById('title-2').innerText = funnelState.step > 2 ? `02. ${carText}` : '02. Identifique a Máquina';
-            document.getElementById('title-2').classList.toggle('active', funnelState.step === 2);
 
-            // STEP 3 (RECIBO & WHATSAPP)
             const s3 = document.getElementById('step-3-section');
             s3.classList.toggle('active-step', funnelState.step === 3);
             document.getElementById('step-3-section').style.display = funnelState.step === 3 ? 'block' : 'none';
             document.getElementById('step-3-content').style.display = funnelState.step === 3 ? 'block' : 'none';
-            document.getElementById('title-3').classList.toggle('active', funnelState.step === 3);
             
-            if(funnelState.brand && funnelState.model) document.getElementById('receipt-car').innerText = `${funnelState.brand} ${funnelState.model}`;
-            if(funnelState.baseService) document.getElementById('receipt-base').innerText = funnelState.baseService;
+            document.getElementById('receipt-car').innerText = `${funnelState.brand} ${funnelState.model}`;
+            document.getElementById('receipt-base').innerText = funnelState.baseService;
             document.getElementById('receipt-upsell-row').style.display = funnelState.hasUpsell ? 'flex' : 'none';
-            
-            // Highlight total text if upsell active
-            const recTotal = document.getElementById('receipt-total');
-            recTotal.innerText = `R$ ${getTotalPrice()}`;
-            recTotal.style.color = funnelState.hasUpsell ? '#f59e0b' : '#10b981'; 
+            document.getElementById('receipt-total').innerText = `R$ ${getTotalPrice()}`;
 
             if (funnelState.step === 3) {
-                // Esconder o upsell do rodapé, se ele existir
                 document.getElementById('bottom-upsell-zone').style.display = 'none';
-
-                setTimeout(() => { 
-                    document.getElementById('client-phone').classList.add('pulse-attention');
-                    document.getElementById('scroll-container').scrollTo({ top: document.getElementById('scroll-container').scrollHeight, behavior: 'smooth' });
-                }, 100);
+                setTimeout(() => { document.getElementById('client-phone').classList.add('pulse-attention'); }, 100);
             }
-
             updateBottomCTA();
         }
 
         function updateBottomCTA() {
             const btnCTA = document.getElementById('btn-continue-flow');
-            const totalUI = document.getElementById('cta-total');
-            totalUI.innerText = `R$ ${getTotalPrice()}`;
-            
-            totalUI.style.color = funnelState.hasUpsell ? '#f59e0b' : '#fff';
-
-            btnCTA.classList.remove('btn-success');
-            btnCTA.disabled = true;
+            document.getElementById('cta-total').innerText = `R$ ${getTotalPrice()}`;
+            btnCTA.classList.remove('btn-success'); btnCTA.disabled = true;
 
             if (funnelState.step === 1) {
-                if (funnelState.basePrice === 0) {
-                    btnCTA.querySelector('.btn-text').innerText = "Selecionar";
-                } else {
-                    btnCTA.disabled = false;
-                    btnCTA.querySelector('.btn-text').innerText = "Continuar";
-                }
-            } 
-            else if (funnelState.step === 2) {
-                if (!funnelState.brand || funnelState.model.length < 2) {
-                    btnCTA.querySelector('.btn-text').innerText = "Informe Veículo";
-                } else {
-                    btnCTA.disabled = false;
-                    btnCTA.querySelector('.btn-text').innerText = "Ver Resumo";
-                }
-            } 
-            else if (funnelState.step === 3) {
-                if (!funnelState.phoneReady) {
-                    btnCTA.querySelector('.btn-text').innerText = "Falta Contato";
-                } else {
-                    btnCTA.disabled = false;
-                    btnCTA.classList.add('btn-success');
-                    btnCTA.querySelector('.btn-text').innerText = "Agendar no WhatsApp";
-                }
+                if (funnelState.basePrice === 0) btnCTA.innerText = "Selecionar";
+                else { btnCTA.disabled = false; btnCTA.innerText = "Continuar"; }
+            } else if (funnelState.step === 2) {
+                if (!funnelState.brand || funnelState.model.length < 2) btnCTA.innerText = "Informe Veículo";
+                else { btnCTA.disabled = false; btnCTA.innerText = "Ver Resumo"; }
+            } else if (funnelState.step === 3) {
+                if (!funnelState.phoneReady) btnCTA.innerText = "Falta Contato";
+                else { btnCTA.disabled = false; btnCTA.classList.add('btn-success'); btnCTA.innerText = "Agendar via WhatsApp"; }
             }
         }
 
         function handleNextStep() {
-            if (funnelState.step === 1) {
-                funnelState.step = 2; updateWizardUI();
-            } else if (funnelState.step === 2) {
-                funnelState.step = 3; updateWizardUI();
-            } else if (funnelState.step === 3 && funnelState.phoneReady) {
-                finalizeBooking();
-            }
+            if (funnelState.step < 3) { funnelState.step++; updateWizardUI(); } 
+            else if (funnelState.step === 3 && funnelState.phoneReady) finalizeBooking();
         }
 
         function finalizeBooking() {
             const btnCTA = document.getElementById('btn-continue-flow');
-            const clientPhone = document.getElementById('client-phone').value;
-            if(typeof fbq !== 'undefined') fbq('track', 'Lead');
-            
             btnCTA.classList.add('processing');
             
-            let carroStr = `${funnelState.brand} ${funnelState.model}`;
-            let servicoStr = funnelState.baseService;
-            if(funnelState.hasUpsell) servicoStr += ` + Cera Líquida Premium`;
-            
-            let total = getTotalPrice();
-
+            /* ALTERE AQUI: O seu número do WhatsApp que vai receber os leads */
             const numWhatsApp = "5549999084031"; 
-            const msg = `⚡ *RESERVA VIP | BLACK CAR* ⚡\n\nOlá equipe! Completei o meu protocolo pelo site:\n\n🚗 *VEÍCULO:* ${carroStr}\n🛠️ *PROTOCOLO:* ${servicoStr}\n💰 *INVESTIMENTO:* R$ ${total}\n📱 *MEU WHATSAPP:* ${clientPhone}\n\nPodemos confirmar a reserva?`;
             
-            setTimeout(() => {
-                btnCTA.classList.remove('processing');
-                window.open(`https://wa.me/${numWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank');
-            }, 800);
+            const msg = `⚡ *RESERVA VIP | [NOME DA ESTÉTICA]* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model}\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
+            setTimeout(() => { window.open(`https://wa.me/${numWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank'); btnCTA.classList.remove('processing'); }, 800);
         }
     </script>
 </body>
