@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- 🟢 CONFIGURAÇÕES DE APLICAÇÃO NATIVA (STANDALONE) 🟢 -->
-    <meta name="theme-color" content="#09090b">
+    <!-- 🟢 CONFIGURAÇÕES NATIVAS 🟢 -->
+    <meta name="theme-color" content="#050505">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="GLID App">
     
-    <!-- LIGAÇÃO AO MANIFESTO -->
     <link rel="manifest" href="manifest.json">
-    
-    <!-- 🟢 FAVICON E ÍCONES DE ECRÃ INICIAL 🟢 -->
     <link rel="icon" type="image/jpeg" href="https://glid.carrd.co/assets/images/image09.jpg?v=e98d29f3">
     <link rel="apple-touch-icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=e98d29f3">
     <link rel="shortcut icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=e98d29f3">
 
-    <title>[NOME DA ESTÉTICA] | Gestão de Estética Automotiva & Detalhamento</title>
+    <title>[NOME DA ESTÉTICA] | Detalhamento & Proteção Premium</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -32,180 +29,239 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         :root {
-            --accent: #0ea5e9; 
-            --accent-glow: rgba(14, 165, 233, 0.4);
-            --bg-base: #09090b; 
+            /* Fundo Mood/Emoção (Escuro) */
+            --bg-ultra: #050505;
+            --bg-carbon: #0d0d0f; 
+            
+            /* Ilhas de Foco / Conversão (Claras e Solidas) */
+            --card-solid: #ffffff;
+            --card-border: #e4e4e7;
+            --input-bg: #ffffff;
+            --input-border: #d4d4d8;
+            
+            /* Cores de Ação */
+            --accent-green: #10b981;
+            --accent-gold: #f59e0b;
             --vermelho-ignicao: #ef4444;
-            --verde-status: #10b981;
+
+            /* Tiers: Cores Base */
+            --c-prata: #64748b;
+            --c-azul: #0284c7;
+            --c-ouro: #d97706;
+            --c-verde: #059669;
+            --c-roxo: #7e22ce;
+
+            /* Tiers: Fundo Selecionado (Suave) */
+            --bg-sel-prata: #f8fafc;
+            --bg-sel-azul: #f0f9ff;
+            --bg-sel-ouro: #fffbeb;
+            --bg-sel-verde: #ecfdf5;
+            --bg-sel-roxo: #faf5ff;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-base); color: white; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; overscroll-behavior-y: none; }
+        body { background-color: var(--bg-ultra); color: white; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; overscroll-behavior-y: none; }
         
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* --- TELA 1: IGNIÇÃO --- */
-        #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px 4vh 20px; transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); background-color: var(--bg-base); }
+        #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px 4vh 20px; transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); background-color: var(--bg-ultra); }
         .car-bg { position: absolute; inset: 0; background-size: cover; background-position: center 60%; opacity: 0; transition: opacity 0.5s ease; transform: scale(1.05); }
         #bg-off { background-image: url('https://carrosest.carrd.co/assets/images/image01.jpg?v=0259a93f'); opacity: 1; z-index: 1; }
         #bg-ambient { background-image: url('https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f'); z-index: 2; mix-blend-mode: lighten; } 
         #bg-on { background-image: url('https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f'); z-index: 4; mix-blend-mode: lighten; }
-        #underglow { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: radial-gradient(ellipse at bottom, rgba(14,165,233,0.25) 0%, transparent 70%); opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.4s ease; }
-        .accessory-on #underglow { opacity: 1; animation: breathe-glow 3s infinite alternate ease-in-out; }
-        @keyframes breathe-glow { 0% { opacity: 0.5; } 100% { opacity: 1; } }
-        .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,1) 100%); z-index: 5; pointer-events: none; }
+        .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 20%, rgba(5,5,5,0.9) 80%, rgba(5,5,5,1) 100%); z-index: 5; pointer-events: none; }
         .idle-shake { animation: idle-rumble-ani 0.06s infinite linear; }
         @keyframes idle-rumble-ani { 0% { transform: translate(0, 0) } 25% { transform: translate(-1px, 1px) } 50% { transform: translate(1px, 1px) } 75% { transform: translate(1px, -1px) } 100% { transform: translate(0, 0) } }
 
-        /* Botão Maior no Mobile */
         .engine-btn-ring { position: relative; width: 160px; height: 160px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; z-index: 100; margin-top: auto; margin-bottom: 24px; touch-action: none; -webkit-user-select: none; user-select: none;}
-        .progress-circle { position: absolute; transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 470; stroke-dashoffset: 470; transition: stroke-dashoffset 0.6s linear; filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)); }
-        .engine-button { width: 95px; height: 95px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #0a0a0a); box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 10px 20px rgba(0,0,0,0.8); border: 2px solid #2a2a2a; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; touch-action: none;}
-        .engine-button.active { transform: scale(0.92); background: linear-gradient(145deg, #110000, #330000); border-color: var(--vermelho-ignicao); box-shadow: 0 0 24px rgba(239,68,68,0.4); }
+        .progress-circle { position: absolute; transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 470; stroke-dashoffset: 470; transition: stroke-dashoffset 0.6s linear; filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.8)); }
+        .engine-button { width: 95px; height: 95px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #0a0a0a); box-shadow: 0 10px 20px rgba(0,0,0,0.9); border: 2px solid #2a2a2a; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; touch-action: none;}
+        .engine-button.active { transform: scale(0.92); background: linear-gradient(145deg, #110000, #330000); border-color: var(--vermelho-ignicao); box-shadow: 0 0 30px rgba(239,68,68,0.6); }
         .btn-lbl-top, .btn-lbl-bot { font-size: 9px; font-weight: 800; color: #555; font-family: sans-serif; letter-spacing: 0.5px;}
         .btn-lbl-mid { font-size: 18px; font-weight: 900; color: #ccc; letter-spacing: 0.1em; margin: 2px 0; text-transform: uppercase; transition: all 0.3s; font-family: sans-serif;}
         .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho-ignicao); }
         .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ignicao); }
 
         /* --- TELA 2: PRE-LOADER --- */
-        #experience-view { position: fixed; inset: 0; z-index: 100; background: var(--bg-base); display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        #experience-view { position: fixed; inset: 0; z-index: 100; background: var(--bg-ultra); display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .stars-container { display: flex; gap: 8px; margin-bottom: 24px; }
-        .star-icon { width: 20px; height: 20px; fill: #fff; opacity: 0; transform: translateY(15px); }
+        .star-icon { width: 22px; height: 22px; fill: var(--accent-gold); opacity: 0; transform: translateY(15px); filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.5));}
         .show-view .star-icon { animation: luxFadeUp 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
         .show-view .star-icon:nth-child(1) { animation-delay: 0.05s; } .show-view .star-icon:nth-child(2) { animation-delay: 0.15s; } .show-view .star-icon:nth-child(3) { animation-delay: 0.25s; } .show-view .star-icon:nth-child(4) { animation-delay: 0.35s; } .show-view .star-icon:nth-child(5) { animation-delay: 0.45s; }
-        @keyframes luxFadeUp { to { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); } }
+        @keyframes luxFadeUp { to { opacity: 1; transform: translateY(0); } }
 
         /* --- TELA 3: APP VIEW --- */
-        #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; position: relative; overscroll-behavior-y: none; }
+        #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-ultra); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; position: relative; overscroll-behavior-y: none; }
         
-        .fixed-top-header { position: absolute; top: 0; left: 0; right: 0; z-index: 60; display: flex; flex-direction: column; }
+        /* CABEÇALHO ESCURO E SÓLIDO (Moldura do App) */
+        .fixed-top-header { position: absolute; top: 0; left: 0; right: 0; z-index: 60; display: flex; flex-direction: column; background: var(--bg-ultra); }
+        .top-navbar { height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; background: #000; border-bottom: 1px solid #18181b; padding-top: env(safe-area-inset-top); }
         
-        .top-navbar { 
-            position: relative; 
-            height: 70px; display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 16px; 
-            background: rgba(9, 9, 11, 0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08); 
-            padding-top: env(safe-area-inset-top); 
-        }
-        @media (min-width: 768px) { .top-navbar { padding: 0 32px; height: 80px; } }
+        .city-pill { background: #121214; padding: 6px 12px; border-radius: 20px; border: 1px solid #27272a; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.8);}
 
-        .authority-slider {
-            background: rgba(9, 9, 11, 0.65); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 0; overflow: hidden; display: flex; white-space: nowrap; width: 100%;
-        }
+        .authority-slider { background: #0a0a0c; border-bottom: 1px solid #18181b; padding: 12px 0; overflow: hidden; display: flex; white-space: nowrap; width: 100%; }
         .slider-track { display: flex; gap: 32px; animation: scroll-marquee 20s linear infinite; min-width: 200%; }
-        .slider-item { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1.5px; }
+        .slider-item { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 800; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1.5px; }
         .slider-item span { color: #fff; }
         @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        .app-layout { flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: url('https://www.transparenttextures.com/patterns/stardust.png'); display: flex; flex-direction: column; scroll-padding-top: 130px; }
+        /* 🏁 FUNDO CARBON FIBER NATIVO (O TEATRO ESCURO) 🏁 */
+        .app-layout { 
+            flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; 
+            background-color: var(--bg-carbon);
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            display: flex; flex-direction: column; scroll-padding-top: 130px; 
+        }
         .app-layout > * { flex-shrink: 0 !important; }
 
         .hero-banner {
-            width: 100%; height: 45vh; min-height: 380px; position: relative;
-            background-image: linear-gradient(to bottom, rgba(9,9,11,0.1) 0%, rgba(9,9,11,0.4) 40%, rgba(9,9,11,0.98) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
+            width: 100%; height: 38vh; min-height: 320px; position: relative;
+            background-image: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.8) 60%, var(--bg-carbon) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
             background-size: cover; background-position: center 60%;
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 32px 20px;
-            padding-top: 130px; 
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px; padding-top: 120px; 
         }
-        @media (min-width: 768px) { .hero-banner { height: 50vh; min-height: 420px; padding: 48px; padding-top: 150px; } }
-        
         .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; width: 100%; }
-        .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 40px 20px 100px 20px; }
+        .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px 20px 140px 20px; }
 
-        /* WIZARD & CARDS */
-        .step-section { margin-bottom: 40px; transition: all 0.4s ease; }
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px;}
-        .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #71717a; font-weight: 800; display: flex; align-items: center; gap: 10px; margin: 0; }
-        .section-title.active { color: #fff; font-weight: 900; }
-        
-        .edit-btn { font-size: 9px; color: #fff; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 20px; display: none; transition: all 0.2s; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); cursor: pointer;}
-        .edit-btn:hover { background: rgba(255,255,255,0.1); }
-        .step-content { display: none; animation: slide-down 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards; transform-origin: top; }
-        @keyframes slide-down { from { opacity: 0; transform: scaleY(0.95); } to { opacity: 1; transform: scaleY(1); } }
-        .step-section:not(.active-step) { opacity: 0.4; }
-        .step-section.completed:not(.active-step) .step-content { display: none !important; }
+        /* 🟢 LINHA DO TEMPO VISUAL 🟢 */
+        .progress-container { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; padding: 0 10px; }
+        .progress-step { display: flex; flex-direction: column; align-items: center; gap: 8px; color: #52525b; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;}
+        .progress-step.active { color: var(--accent-green); }
+        .progress-dot { width: 28px; height: 28px; border-radius: 50%; background: #27272a; border: 2px solid #3f3f46; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: 900; color: #a1a1aa; transition: all 0.3s; z-index: 2; box-shadow: 0 4px 6px rgba(0,0,0,0.5);}
+        .progress-step.active .progress-dot { background: var(--accent-green); border-color: var(--accent-green); color: #000; box-shadow: 0 0 15px rgba(16,185,129,0.4);}
+        .progress-step.completed .progress-dot { background: #fff; border-color: #fff; color: #000; }
+        .progress-step.completed { color: #fff; }
+        .progress-line { flex-grow: 1; height: 3px; background: #27272a; margin: 0 10px; position: relative; top: -8px; z-index: 1; border-radius: 2px; overflow: hidden;}
+        .progress-line-fill { height: 100%; width: 0%; background: var(--accent-green); transition: width 0.4s ease; }
 
-        .glass-card { background: var(--c-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .glass-card:hover { filter: brightness(1.15); border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
-        .glass-card.selected { border-color: var(--c-accent); box-shadow: 0 12px 30px rgba(0,0,0,0.5), inset 0 0 0 1px var(--c-accent); transform: translateY(-2px); }
-        
-        .tier-prata { --c-accent: #94a3b8; --c-bg: #1f2937; --c-bg-sel: #334155; } 
-        .tier-azul  { --c-accent: #38bdf8; --c-bg: #0c4a6e; --c-bg-sel: #0284c7; } 
-        .tier-ouro  { --c-accent: #fbbf24; --c-bg: #451a03; --c-bg-sel: #78350f; } 
-        .tier-verde { --c-accent: #34d399; --c-bg: #064e3b; --c-bg-sel: #059669; } 
-        .tier-roxo  { --c-accent: #a78bfa; --c-bg: #3b0764; --c-bg-sel: #6b21a8; } 
+        /* 🟢 BARRA DE CONFIANÇA B2C (ILHA DE FOCO CLARA) 🟢 */
+        .trust-banner { display: flex; justify-content: space-between; align-items: center; background: var(--card-solid); border: 1px solid var(--card-border); border-radius: 16px; padding: 18px 12px; margin-bottom: 32px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; flex: 1; }
+        .trust-divider { width: 1px; height: 30px; background: var(--card-border); }
 
-        .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 12px; }
-        .card-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; letter-spacing: -0.5px; transition: color 0.3s; line-height: 1.2;}
-        .glass-card.selected .card-title { color: var(--c-accent); }
-        .card-desc { font-size: 12px; color: #cbd5e1; line-height: 1.6; font-weight: 400; margin-bottom: 14px; }
-        .feature-time { color: #f8fafc; font-size: 10px; font-weight: 700; background: rgba(0, 0, 0, 0.4); padding: 5px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05);}
-        .price-text { display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0;}
+        /* WIZARD & ECRÃS */
+        .step-section { display: none; animation: slide-in 0.3s ease forwards; transform-origin: top; }
+        .step-section.active-step { display: block; }
+        @keyframes slide-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid #27272a; padding-bottom: 16px;}
+        .section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; font-weight: 900; display: flex; align-items: center; margin: 0; }
         
-        .btn-calc-valor { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 9px; text-transform: uppercase; font-weight: 800; padding: 6px 12px; border-radius: 8px; letter-spacing: 1px; transition: all 0.3s; }
-        .glass-card.selected .btn-calc-valor { background: var(--c-accent); color: #000; border-color: var(--c-accent); box-shadow: 0 0 15px var(--c-accent); }
+        .back-btn { font-size: 11px; color: #a1a1aa; font-weight: 800; text-transform: uppercase; background: #121214; border: 1px solid #27272a; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .back-btn:hover { color: #fff; border-color: #52525b; background: #27272a;}
+
+        /* 💎 CARTÕES CLAROS (ALTA LEGIBILIDADE E FÁCIL DECISÃO) 💎 */
+        .solid-card { background: var(--card-solid); border: 2px solid var(--card-border); border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; margin-bottom: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .solid-card:hover { border-color: #a1a1aa; transform: translateY(-2px); }
         
-        .glass-input { background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; padding: 18px 16px; font-size: 15px; font-weight: 500; border-radius: 12px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 16px; }
-        select.glass-input option, select.glass-input optgroup { color: #000000 !important; background-color: #ffffff !important; font-weight: 600; }
-        select.glass-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 18px; padding-right: 48px; cursor: pointer; }
-        .glass-input:focus { border-color: var(--accent); background-color: rgba(255,255,255,0.1); box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2); }
-        .hud-input { text-align: center; font-size: 20px; letter-spacing: 3px; font-weight: 600; background-image: none !important;}
-        .hud-input::placeholder { color: #71717a; font-weight: 400; letter-spacing: normal; font-size: 15px;}
+        /* 💎 SELEÇÃO (FUNDOS TINTADOS E BORDAS FORTES) 💎 */
+        .solid-card.selected { transform: scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+        .tier-prata.selected { background: var(--bg-sel-prata); border-color: var(--c-prata); }
+        .tier-azul.selected  { background: var(--bg-sel-azul);  border-color: var(--c-azul); }
+        .tier-ouro.selected  { background: var(--bg-sel-ouro);  border-color: var(--c-ouro); }
+        .tier-verde.selected { background: var(--bg-sel-verde); border-color: var(--c-verde); }
+        .tier-roxo.selected  { background: var(--bg-sel-roxo);  border-color: var(--c-roxo); }
+
+        .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 12px; }
+        .card-title { font-size: 17px; font-weight: 900; color: #18181b; margin-bottom: 4px; letter-spacing: -0.5px; line-height: 1.2; transition: color 0.3s;}
         
-        .cat-btn { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 6px; color: #a1a1aa; font-size: 10px; font-weight: 800; text-transform: uppercase; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer;}
-        .cat-btn.selected { background: rgba(16, 185, 129, 0.1); border-color: #10b981; color: #fff; box-shadow: inset 0 0 0 1px #10b981; transform: scale(1.02); }
-        .cat-btn.selected .cat-icon { filter: brightness(2) drop-shadow(0 0 6px rgba(16,185,129,0.5)); }
+        .tier-prata.selected .card-title { color: #334155; }
+        .tier-azul.selected .card-title { color: #0369a1; }
+        .tier-ouro.selected .card-title { color: #b45309; }
+        .tier-verde.selected .card-title { color: #047857; }
+        .tier-roxo.selected .card-title { color: #7e22ce; }
+
+        .card-desc { font-size: 13px; color: #52525b; line-height: 1.6; font-weight: 500; margin-bottom: 16px; }
+        .solid-card.selected .card-desc { color: #3f3f46; }
+        
+        .feature-time { color: #52525b; font-size: 10px; font-weight: 800; background: #f4f4f5; padding: 6px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 16px; border: 1px solid #e4e4e7; letter-spacing: 0.5px;}
+        .solid-card.selected .feature-time { background: #fff; border-color: currentColor;}
+        
+        /* Tags Especiais */
+        .benefit-tag { font-size: 9px; font-weight: 900; color: #3f3f46; border: 1px solid #d4d4d8; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 16px;}
+        .solid-card.selected .benefit-tag { background: #fff; border-color: currentColor; }
+        
+        .promo-tag { background: #18181b; color: #fff; padding: 6px 14px; font-size: 10px; font-weight: 900; border-radius: 14px 0 16px 0; position: absolute; top: 0; left: 0; text-transform: uppercase; letter-spacing: 1px; border-right: 1px solid #3f3f46; border-bottom: 1px solid #3f3f46;}
+        .promo-ouro { background: var(--accent-gold); color: #000; border: none; box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4); }
+
+        /* Tipografia de Preços Base */
+        .price-pill { display: flex; flex-direction: column; align-items: flex-end; text-align: right; flex-shrink: 0; }
+        .price-pill .label { font-size: 9px; color: #71717a; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;}
+        .price-pill .value { font-size: 18px; font-weight: 900; color: #18181b; letter-spacing: -0.5px;}
+        
+        .tier-prata.selected .price-pill .value { color: var(--c-prata); }
+        .tier-azul.selected .price-pill .value { color: var(--c-azul); }
+        .tier-ouro.selected .price-pill .value { color: var(--c-ouro); }
+        .tier-verde.selected .price-pill .value { color: var(--c-verde); }
+        .tier-roxo.selected .price-pill .value { color: var(--c-roxo); }
+
+        /* 💎 INPUTS CLAROS (FOCO TOTAL NO PREENCHIMENTO) 💎 */
+        .solid-input { background-color: var(--input-bg); border: 2px solid var(--input-border); color: #18181b; width: 100%; padding: 18px 20px; font-size: 16px; font-weight: 600; border-radius: 12px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        select.solid-input option, select.solid-input optgroup { color: #000000 !important; background-color: #ffffff !important; font-weight: 600; }
+        select.solid-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; background-size: 20px; cursor: pointer; }
+        .solid-input:focus { border-color: var(--accent-green); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); background-color: #fff; }
+        
+        .hud-input { text-align: center; font-size: 22px; letter-spacing: 4px; font-weight: 800; background-image: none !important;}
+        .hud-input::placeholder { color: #a1a1aa; font-weight: 500; letter-spacing: normal; font-size: 15px;}
+        
+        /* BOTÕES DE CATEGORIA (PORTE) CLAROS */
+        .cat-btn { background: var(--card-solid); border: 2px solid var(--card-border); border-radius: 12px; padding: 18px 6px; color: #52525b; font-size: 11px; font-weight: 800; text-transform: uppercase; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
+        .cat-btn.selected { background: var(--accent-green); border-color: var(--accent-green); color: #fff; box-shadow: 0 6px 20px rgba(16,185,129,0.3); transform: translateY(-3px); }
+        .cat-btn.selected .cat-icon { filter: brightness(2); }
 
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-6px); } }
         .shake-animation { animation: shake 0.4s ease-in-out; }
-        .input-error { border-color: #ef4444 !important; box-shadow: 0 0 12px rgba(239, 68, 68, 0.3) !important; color: #ef4444 !important; }
-        .input-success { border-color: #10b981 !important; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4) !important; color: #10b981 !important;}
+        .input-error { border-color: var(--vermelho-ignicao) !important; box-shadow: 0 0 12px rgba(239, 68, 68, 0.2) !important; color: var(--vermelho-ignicao) !important; }
+        .input-success { border-color: var(--accent-green) !important; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2) !important; color: var(--accent-green) !important; background-color: #f0fdf4; }
 
-        .receipt-card { background: #ffffff; border: 1px solid #e4e4e7; border-radius: 16px; padding: 24px; margin-bottom: 24px; color: #18181b; box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
-        .receipt-card h4 { color: #52525b; border-bottom: 1px solid #e4e4e7; padding-bottom: 12px; margin-bottom: 16px; }
-        .receipt-row { display: flex; justify-content: space-between; font-size: 14px; color: #52525b; margin-bottom: 12px; border-bottom: 1px dotted #d4d4d8; padding-bottom: 10px;}
+        /* RECIBO CLARO (O CONTRATO) */
+        .receipt-card { background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+        .receipt-card h4 { color: #71717a; border-bottom: 1px solid var(--card-border); padding-bottom: 16px; margin-bottom: 20px; font-size: 12px; letter-spacing: 2px;}
+        .receipt-row { display: flex; justify-content: space-between; font-size: 14px; color: #52525b; margin-bottom: 16px; border-bottom: 1px dotted var(--card-border); padding-bottom: 10px; font-weight: 500;}
         .receipt-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .receipt-val { color: #18181b; font-weight: 700; text-align: right;}
-        .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e4e4e7; }
-        .receipt-total-val { font-size: 24px; font-weight: 900; color: #059669; letter-spacing: -0.5px; }
+        .receipt-val { color: #18181b; font-weight: 800; text-align: right;}
+        .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; padding-top: 24px; border-top: 2px solid var(--card-border); }
+        .receipt-total-val { font-size: 26px; font-weight: 900; color: var(--accent-green); letter-spacing: -0.5px; }
 
-        .review-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; min-width: 280px; max-width: 300px; scroll-snap-align: start; flex-shrink: 0;}
-        .star-rating { color: #fbbf24; font-size: 14px; margin-bottom: 10px; letter-spacing: 2px;}
+        /* B2C PROVAS SOCIAIS E FAQ */
+        .review-card { background: var(--card-solid); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; min-width: 280px; max-width: 300px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 6px 15px rgba(0,0,0,0.08);}
+        .star-rating { color: var(--accent-gold); font-size: 16px; margin-bottom: 12px; letter-spacing: 3px;}
         
-        .b2c-faq-btn { width: 100%; text-align: left; padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; font-size: 14px; font-weight: 600; color: #f8fafc; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; transition: 0.2s;}
-        .b2c-faq-btn:hover { background: rgba(255,255,255,0.06); }
-        .b2c-faq-content { display: none; padding: 0 20px 20px 20px; font-size: 13px; color: #94a3b8; line-height: 1.6; }
+        .b2c-faq-btn { width: 100%; text-align: left; padding: 20px 24px; background: var(--card-solid); border: 1px solid var(--card-border); border-radius: 12px; font-size: 14px; font-weight: 700; color: #18181b; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
+        .b2c-faq-btn:hover { background: #f4f4f5; }
+        .b2c-faq-content { display: none; padding: 0 24px 24px 24px; font-size: 13px; color: #52525b; line-height: 1.6; }
 
-        .b2c-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 48px 24px; margin-top: 32px; background: rgba(0,0,0,0.3); }
+        .b2c-footer { border-top: 1px solid #27272a; padding: 48px 24px; margin-top: 40px; background: #000; color: #fff;}
 
-        /* BARRA CTA FLUTUANTE B2C */
-        .fixed-bottom-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 20px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: rgba(9, 9, 11, 0.95); border-top: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px); z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 12px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 -10px 30px rgba(0,0,0,0.5); }
+        /* 💎 BARRA CTA FLUTUANTE (BRANCA/CLARA) 💎 */
+        .fixed-bottom-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 20px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: #ffffff; border-top: 1px solid var(--card-border); z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 16px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15); }
         .fixed-bottom-cta.visible { transform: translateY(0); }
-        .fixed-bottom-cta.hide-cta { transform: translateY(150%); }
+        .fixed-bottom-cta.hide-cta { transform: translateY(150%) !important; }
 
-        .bottom-upsell-zone { display: none; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); animation: fade-in 0.4s ease forwards; }
-        .upsell-toggle { appearance: none; width: 44px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 24px; position: relative; cursor: pointer; transition: all 0.3s; outline: none; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
-        .upsell-toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .upsell-toggle:checked { background: #f59e0b; }
-        .upsell-toggle:checked::after { transform: translateX(20px); }
+        .bottom-upsell-zone { display: none; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--card-border); animation: fade-in 0.4s ease forwards; }
+        
+        .upsell-toggle { appearance: none; width: 48px; height: 26px; background: #e4e4e7; border-radius: 26px; position: relative; cursor: pointer; transition: all 0.3s; outline: none; flex-shrink: 0; border: 1px solid #d4d4d8; }
+        .upsell-toggle::after { content: ''; position: absolute; top: 1px; left: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
+        .upsell-toggle:checked { background: var(--accent-gold); border-color: var(--accent-gold); }
+        .upsell-toggle:checked::after { transform: translateX(22px); background: #fff; }
         
         .cta-row-flex { display: flex; justify-content: space-between; align-items: center; width: 100%;}
         .cart-info { display: flex; flex-direction: column; }
-        .cart-label { font-size: 11px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 2px;}
-        .cart-total { font-size: 20px; font-weight: 900; color: #fff; line-height: 1; transition: color 0.3s;}
+        .cart-label { font-size: 11px; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 4px;}
+        .cart-total { font-size: 24px; font-weight: 900; color: #18181b; line-height: 1; transition: color 0.3s;}
 
-        .btn-continue { background: #fff; color: #000; border-radius: 12px; padding: 14px 24px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: center; align-items: center; gap: 8px; border: none; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
-        .btn-continue:disabled { background: rgba(255,255,255,0.08); color: #52525b; cursor: not-allowed; }
-        .btn-continue.btn-success { background: var(--verde-status); color: #fff; box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+        /* Botão Primário */
+        .btn-continue { background: #f4f4f5; color: #a1a1aa; border-radius: 12px; padding: 16px 28px; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid #e4e4e7; cursor: not-allowed; transition: all 0.3s; white-space: nowrap; display: flex; justify-content: center; align-items: center; gap: 8px;}
+        
+        /* Estado de Fechamento (Verde Vibrante) */
+        .btn-continue.btn-success { background: var(--accent-green); color: #fff; box-shadow: 0 6px 25px rgba(16,185,129,0.3); border: none; cursor: pointer;}
 
-        .spinner { border: 2px solid rgba(255,255,255,0.2); border-top: 2px solid currentColor; border-radius: 50%; width: 18px; height: 18px; animation: spin 1s linear infinite; display: none; }
+        .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid currentColor; border-radius: 50%; width: 18px; height: 18px; animation: spin 1s linear infinite; display: none; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .processing .spinner { display: inline-block; }
         .processing .btn-text { display: none; }
@@ -228,14 +284,14 @@
         <div class="vignette"></div>
 
         <div class="text-center z-20 pt-8 flex flex-col items-center">
-            <div class="flex justify-center items-center gap-2 mb-4 bg-black/40 px-4 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
+            <div class="city-pill mb-5">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span class="tracking-[0.4em] text-white uppercase text-[10px] font-black">[SUA CIDADE - UF]</span>
+                <span class="tracking-[0.3em] text-white uppercase text-[10px] font-black">[SUA CIDADE - UF]</span>
             </div>
-            <h1 class="font-black uppercase text-center text-white mb-3 text-4xl sm:text-5xl md:text-7xl tracking-tighter leading-tight w-full break-words px-2" style="max-width: 100%;">
+            <h1 class="font-black uppercase text-center text-white mb-2 text-4xl sm:text-5xl md:text-7xl tracking-tighter leading-tight w-full break-words px-2">
                 [NOME DA ESTÉTICA]
             </h1>
         </div>
@@ -248,12 +304,12 @@
                 </div>
             </div>
             
-            <h2 class="font-black text-[1rem] text-white tracking-[0.2em] uppercase mt-4 mb-2">Estética Automotiva</h2>
+            <h2 class="font-black text-[1rem] text-white tracking-[0.2em] uppercase mt-2 mb-3">Limpeza & Detalhamento</h2>
             <p id="hold-hint" class="text-[10px] tracking-[0.1em] text-zinc-500 font-bold uppercase transition-opacity duration-300 mb-8">Segure para Acessar</p>
             
             <div class="border-t border-white/10 pt-6 w-full text-center px-4">
                 <p class="text-[13px] md:text-[14px] text-white font-bold uppercase tracking-wider mb-2">Lavação • Cera • Polimento • Vitrificação</p>
-                <p class="text-[11px] text-zinc-400 font-medium">O cuidado que a sua máquina exige.</p>
+                <p class="text-[11px] text-zinc-400 font-medium">O padrão máximo para a sua máquina.</p>
             </div>
         </div>
     </div>
@@ -273,13 +329,12 @@
     <!-- 3. WEB APP -->
     <div id="app-view">
         
-        <!-- CABEÇALHO UNIFICADO E FIXO -->
         <div class="fixed-top-header">
             <header class="top-navbar">
                 <h1 class="font-black text-[14px] uppercase text-white truncate flex-1 pr-2">
-                    [SUA ESTÉTICA] <span class="text-zinc-400 font-light hidden sm:inline">Detailing</span>
+                    [SUA ESTÉTICA] <span class="text-zinc-500 font-light hidden sm:inline">Detailing</span>
                 </h1>
-                <div class="flex items-center gap-1.5 md:gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md shrink-0">
+                <div class="city-pill">
                     <span class="relative flex h-2 w-2 shrink-0">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -295,141 +350,209 @@
             </div>
         </div>
 
-        <!-- CONTENTOR PRINCIPAL DE SCROLL -->
         <div class="app-layout" id="scroll-container">
             
             <div id="hero-banner" class="hero-banner">
                 <div class="hero-content">
-                    <div class="bg-red-600 text-white px-3 py-1.5 rounded text-[10px] font-black uppercase tracking-widest mb-4 inline-block shadow-lg">⚠️ SOMENTE COM AGENDAMENTO</div>
-                    <h2 class="text-3xl md:text-5xl font-black mt-1 mb-3 uppercase tracking-tighter leading-none text-white drop-shadow-lg">O PADRÃO MÁXIMO EM<br><span class="text-[var(--accent)]">ESTÉTICA E PROTEÇÃO</span></h2>
-                    <p class="text-[14px] md:text-[16px] font-medium text-zinc-200 leading-relaxed max-w-md drop-shadow-md">O valor do detalhamento é calculado sob medida para a sua máquina. Explore os nossos protocolos VIP abaixo.</p>
+                    <div class="bg-red-600 text-white px-4 py-2 rounded text-[10px] font-black uppercase tracking-widest mb-4 inline-block shadow-lg border border-red-500">⚠️ SOMENTE COM AGENDAMENTO</div>
+                    <h2 class="text-3xl md:text-5xl font-black mt-1 mb-4 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE A SUA MÁQUINA AO<br><span class="text-[var(--accent-gold)]">PADRÃO DE EXPOSIÇÃO</span></h2>
+                    <p class="text-[14px] md:text-[16px] font-medium text-zinc-300 leading-relaxed max-w-md drop-shadow-md">O valor do detalhamento é calculado sob medida para a sua máquina. Explore os nossos protocolos VIP abaixo.</p>
                 </div>
             </div>
 
             <div class="funnel-container">
 
-                <!-- 🟢 PASSO 1: SELEÇÃO DE PROTOCOLOS (SEM PREÇO FINAL) 🟢 -->
+                <!-- 🟢 LINHA DO TEMPO VISUAL (PROGRESS BAR) 🟢 -->
+                <div class="progress-container" id="funnel-timeline">
+                    <div class="progress-step active" id="step-nav-1">
+                        <div class="progress-dot">1</div>
+                        <span>Serviço</span>
+                    </div>
+                    <div class="progress-line"><div class="progress-line-fill" id="line-fill-1"></div></div>
+                    
+                    <div class="progress-step" id="step-nav-2">
+                        <div class="progress-dot">2</div>
+                        <span>Veículo</span>
+                    </div>
+                    <div class="progress-line"><div class="progress-line-fill" id="line-fill-2"></div></div>
+                    
+                    <div class="progress-step" id="step-nav-3">
+                        <div class="progress-dot">3</div>
+                        <span>Reserva</span>
+                    </div>
+                </div>
+
+                <!-- 🟢 BARRA DE CONFIANÇA B2C (ILHA CLARA) 🟢 -->
+                <div class="trust-banner" id="trust-banner">
+                    <div class="trust-item"><span class="text-xl">💧</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Água<br>Filtrada</span></div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item"><span class="text-xl">🧪</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Produtos<br>pH Neutro</span></div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item"><span class="text-xl">🧽</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Toalhas<br>Anti-Risco</span></div>
+                </div>
+
+                <!-- 🟢 PASSO 1: SELEÇÃO DE PROTOCOLOS 🟢 -->
                 <div id="step-1-section" class="step-section active-step">
-                    <div class="section-header"><h2 class="section-title active" id="title-1">01. Selecione o Protocolo</h2><button id="edit-1" class="edit-btn hidden" onclick="editStep(1)">Alterar</button></div>
+                    <div class="section-header">
+                        <h2 class="section-title active" id="title-1">Selecione o Protocolo</h2>
+                    </div>
                     <div id="step-1-content" class="step-content" style="display: block;">
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div class="glass-card tier-prata" onclick="selectUpgrade(this, 'Lavagem Externa Express', 60)">
-                                <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
-                                <span class="feature-time">⏱️ 40 a 60 min</span><p class="card-desc">Foco na agilidade. Limpeza segura da pintura e tapetes dianteiros.</p>
+                            
+                            <!-- Card Base (R$ 90) com Promoção de Maio -->
+                            <div class="solid-card tier-prata" onclick="selectUpgrade(this, 'Ducha Premium Express', 90)">
+                                <div class="promo-tag">Promoção de Maio</div>
+                                <div class="card-header-flex mt-5">
+                                    <h3 class="card-title">Ducha Premium Express</h3>
+                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 90</div></div>
+                                </div>
+                                <span class="benefit-tag">✓ Lavagem Segura</span>
+                                <p class="card-desc">Foco na agilidade. Ducha externa de alta pressão, pneu "pretinho" e aspiração focada nos dois tapetes dianteiros.</p>
+                                <span class="feature-time">⏱️ 40 a 60 min</span>
                             </div>
-                            <div class="glass-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 90)">
-                                <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
-                                <span class="feature-time">⏱️ 1h30 a 2h</span><p class="card-desc">Limpeza profunda com PH neutro e pincelamento de detalhes.</p>
+                            
+                            <div class="solid-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 150)">
+                                <div class="card-header-flex">
+                                    <h3 class="card-title">Lavagem Técnica Detalhada</h3>
+                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 150</div></div>
+                                </div>
+                                <span class="benefit-tag">✓ Limpeza de Emblemas</span>
+                                <p class="card-desc">Limpeza profunda com espuma de PH neutro, aspiração completa e pincelamento detalhado em grades e frisos.</p>
+                                <span class="feature-time">⏱️ 1h30 a 2h</span>
                             </div>
-                            <div class="glass-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
-                                <div class="tag-recomendado" style="background:#fbbf24;color:#000;padding:4px 12px;font-size:10px;font-weight:900;border-radius:16px 0 16px 0;position:absolute;top:0;left:0;text-transform:uppercase;">Mais Escolhido</div>
-                                <div class="card-header-flex mt-4"><h3 class="card-title">Lavação + Cera Sintética</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
-                                <span class="feature-time">⏱️ 3 a 4h</span><p class="card-desc">Descontaminação da pintura e selagem de alto brilho.</p>
+                            
+                            <div class="solid-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 250)">
+                                <div class="promo-tag promo-ouro">Mais Escolhido</div>
+                                <div class="card-header-flex mt-5">
+                                    <h3 class="card-title">Detalhamento + Cera Sintética</h3>
+                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 250</div></div>
+                                </div>
+                                <span class="benefit-tag">✓ Brilho de Showroom</span>
+                                <p class="card-desc">Descontaminação química da pintura (remoção de seiva e asfalto) e selagem para um alto brilho e durabilidade.</p>
+                                <span class="feature-time">⏱️ 3 a 4h</span>
                             </div>
-                            <div class="glass-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 250)">
-                                <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
-                                <span class="feature-time">⏱️ 1 Dia</span><p class="card-desc">Higienização profunda e Oxi-Sanitização (elimina fungos).</p>
+                            
+                            <div class="solid-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 350)">
+                                <div class="card-header-flex">
+                                    <h3 class="card-title">Purificação Interna VIP</h3>
+                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 350</div></div>
+                                </div>
+                                <span class="benefit-tag">✓ Remoção de Odores</span>
+                                <p class="card-desc">Higienização profunda dos tecidos/couro e Oxi-Sanitização (elimina ácaros, fungos e odores entranhados).</p>
+                                <span class="feature-time">⏱️ 1 Dia</span>
                             </div>
-                            <div class="glass-card tier-roxo md:col-span-2" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
-                                <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
-                                <span class="feature-time">⏱️ 2 a 3 Dias</span><p class="card-desc">Polimento técnico de correção e blindagem química contra raios UV e agentes externos.</p>
+                            
+                            <div class="solid-card tier-roxo md:col-span-2" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
+                                <div class="card-header-flex">
+                                    <h3 class="card-title">Vitrificação Cerâmica 9H</h3>
+                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 800</div></div>
+                                </div>
+                                <span class="benefit-tag">✓ Proteção Máxima</span>
+                                <p class="card-desc">Polimento técnico de correção (remoção de riscos superficiais) e blindagem química extrema contra raios UV e dejetos.</p>
+                                <span class="feature-time">⏱️ 2 a 3 Dias</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 🟢 PASSO 2: IDENTIFICAÇÃO DO CARRO 🟢 -->
-                <div id="step-2-section" class="step-section" style="display: none;">
-                    <div class="section-header"><h2 class="section-title" id="title-2">02. Identifique a Máquina</h2><button id="edit-2" class="edit-btn hidden" onclick="editStep(2)">Alterar</button></div>
+                <div id="step-2-section" class="step-section">
+                    <div class="section-header">
+                        <h2 class="section-title active" id="title-2">Identifique a Máquina</h2>
+                        <button class="back-btn" onclick="editStep(1)">← Voltar</button>
+                    </div>
                     <div id="step-2-content" class="step-content">
                         
-                        <p class="text-[12px] text-zinc-400 font-medium mb-6 text-center bg-white/5 p-4 rounded-xl border border-white/10 shadow-inner">Para revelar o orçamento exato para o seu veículo, informe a montadora e o modelo.</p>
+                        <p class="text-[13px] text-zinc-700 font-medium mb-6 text-center bg-white p-5 rounded-2xl border border-zinc-200 shadow-sm">Para revelar o orçamento exato para o seu veículo, informe a montadora e o modelo.</p>
 
-                        <select id="native-brand" class="glass-input" onchange="handleNativeBrand()">
+                        <select id="native-brand" class="solid-input" onchange="handleNativeBrand()">
                             <option value="" disabled selected>Montadora...</option>
                         </select>
                         
-                        <select id="native-model" class="glass-input" style="display: none;" onchange="handleNativeModel()">
+                        <select id="native-model" class="solid-input" style="display: none;" onchange="handleNativeModel()">
                             <option value="" disabled selected>Modelo...</option>
                         </select>
 
-                        <!-- Fallback Visual -->
-                        <div id="fallback-size" class="mt-4 bg-white/5 border border-white/10 rounded-2xl p-5" style="display:none;">
-                            <p class="text-[11px] text-zinc-300 font-bold uppercase tracking-widest mb-4 text-center">Qual o porte aproximado?</p>
-                            <div class="grid grid-cols-3 gap-3 mb-4">
-                                <button type="button" class="cat-btn" id="cat-hatch" onclick="selectFallbackCategory('Pequeno/Hatch', 1, 'cat-hatch')"><span class="cat-icon text-2xl">🚗</span><span>Pequeno</span></button>
-                                <button type="button" class="cat-btn" id="cat-suv" onclick="selectFallbackCategory('Médio/SUV', 1.3, 'cat-suv')"><span class="cat-icon text-2xl">🚙</span><span>Médio/SUV</span></button>
-                                <button type="button" class="cat-btn" id="cat-pickup" onclick="selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-2xl">🛻</span><span>Grande</span></button>
+                        <!-- Fallback Visual SÓLIDO -->
+                        <div id="fallback-size" class="mt-4 bg-white border border-zinc-200 rounded-2xl p-6" style="display:none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <p class="text-[12px] text-zinc-900 font-black uppercase tracking-widest mb-5 text-center">Qual o porte aproximado?</p>
+                            <div class="grid grid-cols-3 gap-3 mb-5">
+                                <button type="button" class="cat-btn" id="cat-hatch" onclick="selectFallbackCategory('Pequeno/Hatch', 1, 'cat-hatch')"><span class="cat-icon text-3xl">🚗</span><span>Pequeno</span></button>
+                                <button type="button" class="cat-btn" id="cat-suv" onclick="selectFallbackCategory('Médio/SUV', 1.3, 'cat-suv')"><span class="cat-icon text-3xl">🚙</span><span>Médio/SUV</span></button>
+                                <button type="button" class="cat-btn" id="cat-pickup" onclick="selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-3xl">🛻</span><span>Grande</span></button>
                             </div>
-                            <input type="text" id="fallback-input" class="glass-input" placeholder="Digite o nome do modelo (Ex: Monza)" oninput="handleFallbackInput()">
+                            <input type="text" id="fallback-input" class="solid-input" placeholder="Nome do modelo (Ex: Monza)" oninput="handleFallbackInput()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🟢 PASSO 3: RECIBO 🟢 -->
+                <div id="step-3-section" class="step-section">
+                    <div class="section-header">
+                        <h2 class="section-title active" id="title-3">Resumo & Reserva</h2>
+                        <button class="back-btn" onclick="editStep(2)">← Voltar</button>
+                    </div>
+                    <div id="step-3-content" class="step-content">
+                        <div class="receipt-card">
+                            <h4 class="text-[12px] font-black uppercase tracking-widest text-center text-zinc-400">Protocolo Oficial</h4>
+                            <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
+                            <div class="receipt-row"><span>Porte Base:</span><span class="receipt-val font-medium text-zinc-500" id="receipt-category">Pendente</span></div>
+                            <div class="receipt-row"><span>Serviço:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
+                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-600">+ Cera Líquida</span></div>
+                            <div class="receipt-total"><span class="font-black text-[14px] uppercase text-zinc-800">Total Calculado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
+                        </div>
+                        <div class="pt-4 pb-32">
+                            <p class="text-[14px] text-zinc-600 mb-6 text-center font-medium">As vagas de detalhamento são limitadas. Insira o seu WhatsApp para confirmar a sua janela de horário.</p>
+                            <input type="tel" id="client-phone" class="solid-input hud-input transition-all duration-300" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this)">
                         </div>
                     </div>
                 </div>
 
                 <!-- GALERIA DE RESULTADOS -->
                 <div class="mb-16 mt-12" id="gallery-section">
-                    <div class="flex items-center gap-2 mb-5 justify-center md:justify-start">
-                        <svg class="w-5 h-5 fill-zinc-500" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                        <h2 class="text-[13px] md:text-[15px] font-bold uppercase tracking-[2px] text-zinc-400">Padrão de Qualidade</h2>
+                    <div class="flex items-center gap-2 mb-6 justify-center md:justify-start">
+                        <svg class="w-5 h-5 fill-zinc-400" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                        <h2 class="text-[14px] md:text-[16px] font-black uppercase tracking-[2px] text-zinc-300">Padrão de Qualidade</h2>
                     </div>
-                    <div class="flex overflow-x-auto gap-5 pb-5 snap-x hide-scrollbar w-full snap-mandatory">
-                        <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Lavagem Snow Foam">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Correção de Pintura com Politriz">
-                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Acabamento Premium e Cristalização">
+                    <div class="flex overflow-x-auto gap-6 pb-6 snap-x hide-scrollbar w-full snap-mandatory">
+                        <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-zinc-800 shadow-xl" alt="Limpeza Detalhada">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-zinc-800 shadow-xl" alt="Correção de Pintura">
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-zinc-800 shadow-xl" alt="Acabamento Premium e Cristalização">
                     </div>
                 </div>
 
                 <!-- PROVA SOCIAL B2C -->
                 <div class="mb-16" id="social-proof-section">
-                    <div class="flex items-center gap-2 mb-5 justify-center md:justify-start">
-                        <svg class="w-5 h-5 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <h2 class="text-[13px] md:text-[15px] font-bold uppercase tracking-[2px] text-zinc-400">Avaliações 5 Estrelas</h2>
+                    <div class="flex items-center gap-2 mb-6 justify-center md:justify-start">
+                        <svg class="w-5 h-5 fill-yellow-500" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <h2 class="text-[14px] md:text-[16px] font-black uppercase tracking-[2px] text-zinc-300">Avaliações 5 Estrelas</h2>
                     </div>
-                    <div class="flex overflow-x-auto gap-5 pb-5 snap-x hide-scrollbar w-full snap-mandatory">
+                    <div class="flex overflow-x-auto gap-6 pb-6 snap-x hide-scrollbar w-full snap-mandatory">
                         <div class="review-card">
                             <div class="star-rating">★★★★★</div>
-                            <p class="text-[13px] text-zinc-300 italic mb-4">"Excelente trabalho. Deixaram a pintura da minha caminhonete parecendo um espelho. Super cuidadosos com os detalhes."</p>
-                            <p class="text-[11px] font-bold text-white uppercase tracking-widest">— Rodrigo M.</p>
-                            <p class="text-[10px] text-zinc-500 uppercase mt-1">Proprietário de RAM 2500</p>
-                        </div>
-                        <div class="review-card">
-                            <div class="star-rating">★★★★★</div>
-                            <p class="text-[13px] text-zinc-300 italic mb-4">"A vitrificação que fizeram ficou impecável. A água bate e escorre na hora. Recomendo de olhos fechados o serviço VIP."</p>
-                            <p class="text-[11px] font-bold text-white uppercase tracking-widest">— Carlos T.</p>
-                            <p class="text-[10px] text-zinc-500 uppercase mt-1">Proprietário de Porsche Macan</p>
+                            <p class="text-[14px] text-zinc-600 italic mb-5 leading-relaxed">"Excelente trabalho. Deixaram a pintura da minha caminhonete parecendo um espelho. Super cuidadosos com os detalhes."</p>
+                            <p class="text-[11px] font-black text-zinc-900 uppercase tracking-widest">— Rodrigo M.</p>
+                            <p class="text-[10px] text-zinc-500 uppercase mt-1.5">Proprietário de RAM 2500</p>
                         </div>
                         <div class="review-card">
                             <div class="star-rating">★★★★★</div>
-                            <p class="text-[13px] text-zinc-300 italic mb-4">"O melhor cuidado automotivo da cidade. Não levo a minha em outro lugar. Limpeza técnica muito superior aos lava-rápidos comuns."</p>
-                            <p class="text-[11px] font-bold text-white uppercase tracking-widest">— Eduardo S.</p>
-                            <p class="text-[10px] text-zinc-500 uppercase mt-1">Proprietário de BMW 320i</p>
+                            <p class="text-[14px] text-zinc-600 italic mb-5 leading-relaxed">"A vitrificação que fizeram ficou impecável. A água bate e escorre na hora. Recomendo de olhos fechados o serviço VIP."</p>
+                            <p class="text-[11px] font-black text-zinc-900 uppercase tracking-widest">— Carlos T.</p>
+                            <p class="text-[10px] text-zinc-500 uppercase mt-1.5">Proprietário de Porsche Macan</p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- PASSO 3: RECIBO -->
-                <div id="step-3-section" class="step-section" style="display: none;">
-                    <div class="section-header"><h2 class="section-title" id="title-3">03. Resumo & Agendamento</h2></div>
-                    <div id="step-3-content" class="step-content">
-                        <div class="receipt-card">
-                            <h4 class="text-[11px] font-black uppercase tracking-widest text-center">Protocolo Oficial</h4>
-                            <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
-                            <div class="receipt-row"><span>Porte Base:</span><span class="receipt-val font-medium text-zinc-400" id="receipt-category">Pendente</span></div>
-                            <div class="receipt-row"><span>Serviço:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
-                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-600">+ Cera Líquida</span></div>
-                            <div class="receipt-total"><span class="font-bold text-[14px] uppercase">Total Calculado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
-                        </div>
-                        <div class="pt-4 pb-12">
-                            <p class="text-[13px] text-zinc-400 mb-5 text-center">Para confirmar a sua reserva e garantir vaga nesta semana, informe o seu WhatsApp.</p>
-                            <input type="tel" id="client-phone" class="glass-input hud-input transition-all duration-300" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this)">
+                        <div class="review-card">
+                            <div class="star-rating">★★★★★</div>
+                            <p class="text-[14px] text-zinc-600 italic mb-5 leading-relaxed">"O melhor cuidado automotivo da cidade. Não levo a minha em outro lugar. Limpeza técnica muito superior aos lava-rápidos comuns."</p>
+                            <p class="text-[11px] font-black text-zinc-900 uppercase tracking-widest">— Eduardo S.</p>
+                            <p class="text-[10px] text-zinc-500 uppercase mt-1.5">Proprietário de BMW 320i</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- FAQ B2C (CLIENTE FINAL) -->
-                <div class="mt-12 mb-12" id="b2c-faq-section">
-                     <h2 class="text-[12px] font-black uppercase text-zinc-500 tracking-[0.2em] mb-6 text-center md:text-left">Dúvidas Frequentes</h2>
+                <div class="mt-16 mb-16" id="b2c-faq-section">
+                     <h2 class="text-[12px] font-black uppercase text-zinc-400 tracking-[0.2em] mb-6 text-center md:text-left">Dúvidas Frequentes</h2>
                      
                      <button class="b2c-faq-btn" onclick="toggleB2CFaq('b2c-faq1')">Aceitam cartões de crédito? <span id="icon-b2c-faq1" class="text-emerald-500 transition-transform text-xl">+</span></button>
                      <div id="b2c-faq1" class="b2c-faq-content">Sim! Aceitamos todos os cartões de crédito e débito, além de pagamentos via PIX.</div>
@@ -442,67 +565,96 @@
                 </div>
 
                 <!-- RODAPÉ B2C ROBUSTO -->
-                <footer class="b2c-footer rounded-3xl">
+                <footer class="b2c-footer rounded-3xl" id="footer-section">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
                         <div>
-                            <h3 class="text-white uppercase font-black tracking-widest text-[13px] mb-4">[NOME DA ESTÉTICA]</h3>
-                            <p class="text-[12px] text-zinc-400 leading-relaxed">Rua Exemplo, 123 - Centro<br>[Sua Cidade] - UF, 00000-000</p>
+                            <h3 class="text-white uppercase font-black tracking-widest text-[14px] mb-5">[NOME DA ESTÉTICA]</h3>
+                            <p class="text-[13px] text-zinc-400 leading-relaxed">Rua Exemplo, 123 - Centro<br>[Sua Cidade] - UF, 00000-000</p>
                         </div>
                         <div>
-                            <h4 class="text-[11px] text-zinc-500 uppercase font-bold tracking-widest mb-4">Horário de Funcionamento</h4>
-                            <p class="text-[12px] text-zinc-400 leading-relaxed">Segunda a Sexta: 08h00 às 18h00<br>Sábado: 08h00 às 12h00</p>
+                            <h4 class="text-[11px] text-zinc-500 uppercase font-black tracking-widest mb-5">Horário de Funcionamento</h4>
+                            <p class="text-[13px] text-zinc-400 leading-relaxed">Segunda a Sexta: 08h00 às 18h00<br>Sábado: 08h00 às 12h00</p>
                         </div>
                         <div>
-                            <h4 class="text-[11px] text-zinc-500 uppercase font-bold tracking-widest mb-4">Atendimento</h4>
-                            <p class="text-[12px] text-zinc-400 mb-4">WhatsApp: (00) 00000-0000</p>
+                            <h4 class="text-[11px] text-zinc-500 uppercase font-black tracking-widest mb-5">Atendimento</h4>
+                            <p class="text-[13px] text-zinc-400 mb-5">WhatsApp: (00) 00000-0000</p>
                             <div class="flex gap-4 justify-center md:justify-start">
-                                <a href="#" class="bg-white/5 p-2.5 rounded-xl hover:bg-white/10 transition"><svg class="w-5 h-5 fill-zinc-300" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                                <a href="#" class="bg-white/5 p-2.5 rounded-xl hover:bg-white/10 transition"><svg class="w-5 h-5 fill-zinc-300" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                                <a href="#" class="bg-[#131316] border border-[#333338] p-3 rounded-xl hover:bg-[#1c1c20] transition"><svg class="w-5 h-5 fill-zinc-300" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                                <a href="#" class="bg-[#131316] border border-[#333338] p-3 rounded-xl hover:bg-[#1c1c20] transition"><svg class="w-5 h-5 fill-zinc-300" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
                             </div>
                         </div>
                     </div>
                 </footer>
             </div>
 
-            <!-- ⚪ SEÇÃO B2B GLID (BRANCO ABSOLUTO / SEO) -->
+            <!-- ⚪ SEÇÃO B2B GLID (A MÁQUINA DE CONVERSÃO) ⚪ -->
             <div id="b2b-section" class="bg-white text-zinc-900 w-full relative z-40 border-t border-zinc-200 pb-20 md:pb-32 font-sans">
                 <div class="max-w-5xl mx-auto px-6 py-20 md:py-32">
+                    
+                    <!-- Headline Agitadora -->
                     <div class="text-center mb-16 md:mb-24">
-                        <span class="text-[12px] md:text-[14px] font-bold text-red-800 uppercase tracking-[3px] block mb-5">HEMORRAGIA OPERACIONAL: O FIM DO TEMPO PERDIDO.</span>
-                        <h2 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 leading-tight mb-8">O SEU WHATSAPP NÃO É UM BALCÃO DE DÚVIDAS.<br class="hidden md:block"> É UM CANAL DE FECHAMENTO.</h2>
-                        <p class="text-base md:text-xl text-zinc-600 leading-relaxed font-medium max-w-4xl mx-auto">Sua equipa perde horas preciosas todos os dias a responder a perguntas repetitivas de curiosos sem estratégia de compra. O seu negócio precisa de um filtro automático que qualifica o cliente antes do contato humano.</p>
+                        <span class="text-[12px] md:text-[14px] font-bold text-red-600 uppercase tracking-[3px] block mb-5">ALERTA PARA DONOS DE ESTÉTICA AUTOMOTIVA PREMIUM:</span>
+                        <h2 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 leading-tight mb-8">PARE DE PERDER HORAS NO WHATSAPP COM QUEM<br class="hidden md:block"> QUER PAGAR R$ 50 NUMA LAVAGEM.</h2>
+                        <p class="text-base md:text-xl text-zinc-600 leading-relaxed font-medium max-w-4xl mx-auto">Vender detalhamento de R$ 800 num "site comum" destrói a sua autoridade. O seu negócio precisa de um <strong>Sistema de Triagem e Fechamento</strong> que eduque o cliente, ancore o seu valor e calcule o orçamento automático antes de ele chamar a sua equipa.</p>
                     </div>
 
-                    <div class="bg-zinc-50 border border-zinc-200 rounded-3xl p-8 md:p-12 mb-20 shadow-sm relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-2 h-full bg-blue-600"></div>
-                        <h3 class="text-2xl md:text-3xl font-black text-zinc-900 mb-6 tracking-tight">O Filtro Implacável: Automação e Triagem.</h3>
-                        <p class="text-base md:text-xl text-zinc-700 leading-relaxed font-medium">Este sistema funciona como um rececionista digital de elite: ele gera valor através do design e <strong>calcula o orçamento automaticamente pelo porte exato do veículo</strong>. O cliente chega ao seu WhatsApp pronto para agendar. Agilidade máxima para faturar mais com menos esforço operacional.</p>
+                    <!-- Os 3 Pilares do Benefício (Copy de Elite) -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 max-w-5xl mx-auto">
+                        <div class="bg-zinc-50 p-8 md:p-10 rounded-3xl border border-zinc-200 shadow-sm hover:border-zinc-300 transition duration-300">
+                            <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                                <span class="text-2xl">🛑</span>
+                            </div>
+                            <h3 class="text-xl font-black text-zinc-900 mb-4">1. O Filtro Anti-Curiosos</h3>
+                            <p class="text-zinc-600 text-[15px] font-medium leading-relaxed">O cliente só entra no seu WhatsApp <em>depois</em> de escolher o pacote e aceitar o preço. Fim dos orçamentos intermináveis que terminam num "vou ver e te aviso".</p>
+                        </div>
+                        <div class="bg-zinc-50 p-8 md:p-10 rounded-3xl border border-zinc-200 shadow-sm hover:border-zinc-300 transition duration-300">
+                            <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                                <span class="text-2xl">⚙️</span>
+                            </div>
+                            <h3 class="text-xl font-black text-zinc-900 mb-4">2. Orçamento Dinâmico</h3>
+                            <p class="text-zinc-600 text-[15px] font-medium leading-relaxed">Lavar um Hatch não custa o mesmo que uma RAM. O sistema usa uma base de dados nativa que multiplica o preço final de acordo com o porte do veículo automaticamente.</p>
+                        </div>
+                        <div class="bg-zinc-50 p-8 md:p-10 rounded-3xl border border-zinc-200 shadow-sm hover:border-zinc-300 transition duration-300">
+                            <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
+                                <span class="text-2xl">💎</span>
+                            </div>
+                            <h3 class="text-xl font-black text-zinc-900 mb-4">3. Ancoragem de Grife</h3>
+                            <p class="text-zinc-600 text-[15px] font-medium leading-relaxed">Uma interface escura e imersiva inspirada nos painéis de carros de luxo. Quando o cliente vê a sua estética aqui, ele para de a comparar com o lava-rápido da esquina.</p>
+                        </div>
                     </div>
 
+                    <!-- Ofertas de Fechamento -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mb-20">
-                        <div class="bg-white border border-zinc-200 rounded-3xl p-8 md:p-10 relative shadow-xl shadow-zinc-200/50 flex flex-col hover:border-green-500 transition-colors">
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full">Retenção e Suporte</div>
+                        <div class="bg-white border-2 border-emerald-500 rounded-3xl p-8 md:p-10 relative shadow-xl shadow-emerald-500/10 flex flex-col hover:-translate-y-1 transition transform">
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Lucro Recorrente</div>
                             <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-3 uppercase tracking-tight">PLANO PERFORMANCE</h3>
                             <div class="mb-8 pb-8 border-b border-zinc-100">
-                                <p class="text-[13px] text-zinc-500 font-medium uppercase mb-2">Setup: R$ 697,00</p>
-                                <p class="text-4xl md:text-5xl font-black text-green-600">R$ 97,00 <span class="text-base md:text-lg text-zinc-500 font-medium">/ mês</span></p>
+                                <p class="text-[13px] text-zinc-500 font-medium uppercase mb-2">Setup Inicial: R$ 697,00</p>
+                                <p class="text-4xl md:text-5xl font-black text-emerald-600">R$ 97,00 <span class="text-base md:text-lg text-zinc-500 font-medium">/ mês</span></p>
                             </div>
                             <ul class="space-y-5 mb-8 flex-grow text-[14px] md:text-base font-medium text-zinc-700">
-                                <li>✅ Conexão de Domínio Próprio</li><li>✅ Hospedagem inclusa</li><li>✅ Seu negócio, suas cores</li><li>✅ Suporte técnico de vanguarda</li>
+                                <li class="flex items-center gap-3"><span class="text-emerald-500">✓</span> Conexão de Domínio Próprio</li>
+                                <li class="flex items-center gap-3"><span class="text-emerald-500">✓</span> Hospedagem de Alta Velocidade</li>
+                                <li class="flex items-center gap-3"><span class="text-emerald-500">✓</span> O seu logótipo e as suas cores</li>
+                                <li class="flex items-center gap-3"><span class="text-emerald-500">✓</span> Manutenção e Suporte Técnico</li>
                             </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-[#10b981] text-white text-center text-base font-bold uppercase py-5 rounded-xl mt-auto transition hover:-translate-y-1 transform">Assinar Agora</a>
+                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-emerald-500 text-white text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-lg shadow-emerald-500/40 hover:bg-emerald-600 transition">Assinar Agora</a>
                         </div>
-                        <div class="bg-white border border-zinc-200 rounded-3xl p-8 md:p-10 relative hover:border-zinc-400 transition flex flex-col">
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-zinc-900 text-white text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full">Posse do Sistema</div>
-                            <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-3 uppercase tracking-tight">LICENÇA ÚNICA</h3>
-                            <div class="mb-8 pb-8 border-b border-zinc-100">
-                                <p class="text-4xl md:text-5xl font-black text-zinc-900">R$ 1.497,00</p>
-                                <p class="text-[13px] text-zinc-500 font-medium mt-2">(Pagamento Único)</p>
+                        
+                        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 relative hover:border-zinc-700 transition flex flex-col hover:-translate-y-1 transform shadow-2xl">
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-zinc-100 text-zinc-900 text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Posse Definitiva</div>
+                            <h3 class="text-xl md:text-2xl font-black text-white mb-3 uppercase tracking-tight">LICENÇA ÚNICA</h3>
+                            <div class="mb-8 pb-8 border-b border-zinc-800">
+                                <p class="text-4xl md:text-5xl font-black text-white">R$ 1.497,00</p>
+                                <p class="text-[13px] text-zinc-400 font-medium mt-2">(Pagamento Único)</p>
                             </div>
-                            <ul class="space-y-5 mb-8 flex-grow text-[14px] md:text-base font-medium text-zinc-600">
-                                <li>✅ Licença definitiva</li><li>✅ Sem mensalidades</li><li>✅ Gestão própria de hospedagem</li><li>✅ Tabela de atualização avulsa</li>
+                            <ul class="space-y-5 mb-8 flex-grow text-[14px] md:text-base font-medium text-zinc-300">
+                                <li class="flex items-center gap-3"><span class="text-zinc-500">✓</span> Licença definitiva do código-fonte</li>
+                                <li class="flex items-center gap-3"><span class="text-zinc-500">✓</span> Zero mensalidades</li>
+                                <li class="flex items-center gap-3"><span class="text-zinc-500">✓</span> O cliente gere a própria hospedagem</li>
+                                <li class="flex items-center gap-3"><span class="text-zinc-500">✓</span> Tabela de atualizações avulsa</li>
                             </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Única." target="_blank" class="block w-full bg-zinc-900 text-white text-center text-base font-bold uppercase py-5 rounded-xl mt-auto transition hover:-translate-y-1 transform">Adquirir Licença</a>
+                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Única." target="_blank" class="block w-full bg-white text-zinc-900 text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-lg shadow-white/20 hover:bg-zinc-200 transition">Adquirir Licença</a>
                         </div>
                     </div>
                 </div>
@@ -518,10 +670,10 @@
             </div>
         </div>
 
-        <!-- BARRA CTA FLUTUANTE B2C -->
+        <!-- 🟢 BARRA CTA FLUTUANTE B2C (TOTALMENTE CLARA) 🟢 -->
         <div id="floating-cta" class="fixed-bottom-cta">
             <div id="bottom-upsell-zone" class="bottom-upsell-zone">
-                <div><h4 class="text-[12px] font-black text-[#f59e0b] uppercase">✨ Adicionar Cera Líquida</h4><p class="text-[10px] text-zinc-300 mt-1">+ R$ 50 (Proteção Extra e Brilho)</p></div>
+                <div><h4 class="text-[13px] font-black text-amber-600 uppercase">✨ Adicionar Cera Líquida</h4><p class="text-[11px] text-zinc-500 mt-1">+ R$ 50 (Proteção Extra e Brilho)</p></div>
                 <input type="checkbox" id="upsell-toggle-bottom" class="upsell-toggle shrink-0" onchange="toggleUpsell(this)">
             </div>
             <div class="cta-row-flex">
@@ -635,12 +787,12 @@
         function handleFallbackInput() { funnelState.model = document.getElementById('fallback-input').value; if (funnelState.model.length >= 2 && funnelState.categoryMultiplier > 1) { setTimeout(() => { editStep(3); }, 500); } }
 
         function selectUpgrade(el, mode, price) {
-            document.querySelectorAll('.glass-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.solid-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             funnelState.baseService = mode; funnelState.basePrice = price; 
             const bUpsell = document.getElementById('bottom-upsell-zone');
-            if (price === 60 || price === 90) bUpsell.style.display = 'flex'; 
-            else { bUpsell.style.display = 'none'; funnelState.hasUpsell = false; }
+            if (price === 90 || price === 150) bUpsell.style.display = 'flex'; 
+            else { bUpsell.style.display = 'none'; funnelState.hasUpsell = false; document.getElementById('upsell-toggle-bottom').checked = false; }
             if(navigator.vibrate) navigator.vibrate(20);
             setTimeout(() => { editStep(2); }, 400);
         }
@@ -657,7 +809,6 @@
             updateBottomCTA();
         }
 
-        // 🟢 MEIA LUZ IMEDIATA E FADE-OUT SUAVE 🟢
         function startIgnition(e) {
             if(!funnelState.audioUnlocked) { sound.play().then(()=> {sound.pause(); sound.currentTime=0;}); funnelState.audioUnlocked=true; }
             funnelState.startTime = Date.now(); 
@@ -665,10 +816,7 @@
             ring.style.strokeDashoffset = "0";
             hintText.innerText = "INICIANDO..."; 
             hintText.style.color = "var(--vermelho-ignicao)";
-            
-            // Meia luz acende no exato momento do clique
             document.getElementById('bg-ambient').style.opacity = "1";
-            
             funnelState.midTimer = setTimeout(() => { document.getElementById('car-stage-bg').classList.add('idle-shake'); }, 300);
             funnelState.timer = setTimeout(ignite, 500); 
         }
@@ -680,10 +828,7 @@
             btn.classList.remove('active'); 
             ring.style.strokeDashoffset = "470";
             document.getElementById('car-stage-bg').classList.remove('idle-shake');
-            
-            // Desliga a meia luz se a ignição falhar
             document.getElementById('bg-ambient').style.opacity = "0";
-            
             hintText.innerText = "Segure para Acessar"; 
             hintText.style.color = "";
         }
@@ -699,7 +844,6 @@
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
             hintText.style.opacity = "0";
             
-            // 🟢 CARRO FICA LIGADO POR 2 SEGUNDOS 🟢
             setTimeout(() => {
                 let vol = 1.0;
                 let fadeInterval = setInterval(() => { if (vol > 0.1) { vol -= 0.1; sound.volume = vol; } else { sound.pause(); clearInterval(fadeInterval); } }, 50);
@@ -719,7 +863,11 @@
                         expView.classList.add('show-view');
                     }, 10);
                     
-                    // 🟢 ESTRELAS VISÍVEIS POR 3 SEGUNDOS 🟢
+                    setTimeout(() => {
+                        let vol = 1.0;
+                        let fadeInterval = setInterval(() => { if (vol > 0.2) { vol -= 0.2; sound.volume = vol; } else { sound.pause(); clearInterval(fadeInterval); } }, 50);
+                    }, 400);
+
                     setTimeout(() => {
                         expView.style.transition = "opacity 0.3s ease"; 
                         expView.style.opacity = "0";
@@ -741,18 +889,27 @@
 
         function updateWizardUI() {
             const isFirstStep = funnelState.step === 1;
-            document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
-            document.getElementById('gallery-section').style.display = isFirstStep ? 'none' : 'block';
-            document.getElementById('social-proof-section').style.display = isFirstStep ? 'none' : 'block';
-
-            document.getElementById('step-1-section').classList.toggle('active-step', funnelState.step === 1);
-            document.getElementById('step-1-content').style.display = funnelState.step === 1 ? 'block' : 'none';
-            document.getElementById('edit-1').style.display = funnelState.step > 1 ? 'block' : 'none';
             
-            document.getElementById('step-2-section').style.display = funnelState.step >= 2 ? 'block' : 'none';
-            document.getElementById('step-2-content').style.display = funnelState.step === 2 ? 'block' : 'none';
-            document.getElementById('edit-2').style.display = funnelState.step > 2 ? 'block' : 'none';
+            document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
+            document.getElementById('trust-banner').style.display = isFirstStep ? 'flex' : 'none';
+            document.getElementById('gallery-section').style.display = isFirstStep ? 'block' : 'none';
+            document.getElementById('social-proof-section').style.display = isFirstStep ? 'block' : 'none';
+            document.getElementById('b2c-faq-section').style.display = isFirstStep ? 'block' : 'none';
+            document.getElementById('footer-section').style.display = isFirstStep ? 'block' : 'none';
 
+            document.getElementById('step-nav-1').className = funnelState.step >= 1 ? 'progress-step active' : 'progress-step';
+            if(funnelState.step > 1) document.getElementById('step-nav-1').classList.add('completed');
+            
+            document.getElementById('step-nav-2').className = funnelState.step >= 2 ? 'progress-step active' : 'progress-step';
+            if(funnelState.step > 2) document.getElementById('step-nav-2').classList.add('completed');
+            
+            document.getElementById('step-nav-3').className = funnelState.step === 3 ? 'progress-step active' : 'progress-step';
+
+            document.getElementById('line-fill-1').style.width = funnelState.step >= 2 ? '100%' : '0%';
+            document.getElementById('line-fill-2').style.width = funnelState.step === 3 ? '100%' : '0%';
+
+            document.getElementById('step-1-section').style.display = funnelState.step === 1 ? 'block' : 'none';
+            document.getElementById('step-2-section').style.display = funnelState.step === 2 ? 'block' : 'none';
             document.getElementById('step-3-section').style.display = funnelState.step === 3 ? 'block' : 'none';
             
             document.getElementById('receipt-car').innerText = funnelState.brand && funnelState.model ? (funnelState.brand + " " + funnelState.model) : "-";
@@ -761,11 +918,10 @@
             document.getElementById('receipt-upsell-row').style.display = funnelState.hasUpsell ? 'flex' : 'none';
             document.getElementById('receipt-total').innerText = `R$ ${getTotalPrice()}`;
 
+            document.getElementById('scroll-container').scrollTop = 0;
+
             if (funnelState.step === 3) {
                 document.getElementById('bottom-upsell-zone').style.display = 'none';
-                setTimeout(() => { document.getElementById('step-3-section').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
-            } else if (funnelState.step === 2) {
-                setTimeout(() => { document.getElementById('step-2-section').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
             }
             updateBottomCTA();
         }
@@ -776,6 +932,7 @@
             if (funnelState.step === 1 && funnelState.basePrice > 0) displayTotal = "A partir de R$ " + funnelState.basePrice;
             else if (funnelState.step >= 2 && funnelState.basePrice > 0) displayTotal = "R$ " + getTotalPrice();
             document.getElementById('cta-total').innerText = displayTotal;
+            
             btnCTA.classList.remove('btn-success'); btnCTA.disabled = true;
 
             if (funnelState.step === 1) {
@@ -794,7 +951,7 @@
         }
 
         function finalizeBooking() {
-            const msg = `⚡ *RESERVA VIP* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR ESTIMADO:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
+            const msg = `⚡ *RESERVA VIP* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR CALCULADO:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
             window.open(`https://wa.me/554933121788?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
