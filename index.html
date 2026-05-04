@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
+    <!-- 🟢 CONFIGURAÇÕES DE APLICAÇÃO NATIVA (STANDALONE) 🟢 -->
     <meta name="theme-color" content="#09090b">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="GLID App">
     
+    <!-- LIGAÇÃO AO MANIFESTO -->
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
-    <link rel="apple-touch-icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
-    <link rel="shortcut icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
+    
+    <!-- 🟢 FAVICON E ÍCONES DE ECRÃ INICIAL 🟢 -->
+    <link rel="icon" type="image/jpeg" href="https://glid.carrd.co/assets/images/image09.jpg?v=e98d29f3">
+    <link rel="apple-touch-icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=e98d29f3">
+    <link rel="shortcut icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=e98d29f3">
 
     <title>[NOME DA ESTÉTICA] | Gestão de Estética Automotiva & Detalhamento</title>
     
@@ -144,8 +149,11 @@
         .glass-card.selected .card-title { color: var(--c-accent); }
         .card-desc { font-size: 12px; color: #cbd5e1; line-height: 1.5; font-weight: 400; margin-bottom: 12px; }
         .feature-time { color: #f8fafc; font-size: 10px; font-weight: 700; background: rgba(0, 0, 0, 0.4); padding: 4px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05);}
-        .price-text { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 15px; color: #fff; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: flex-end;}
-        .glass-card.selected .price-text { background: var(--c-accent); color: #000; border-color: var(--c-accent); }
+        .price-text { display: flex; flex-direction: column; align-items: flex-end;}
+        
+        /* BOTÃO CÁLCULO MISTERIOSO */
+        .btn-calc-valor { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 9px; text-transform: uppercase; font-weight: 800; padding: 4px 10px; border-radius: 8px; letter-spacing: 1px; transition: all 0.3s; }
+        .glass-card.selected .btn-calc-valor { background: var(--c-accent); color: #000; border-color: var(--c-accent); box-shadow: 0 0 10px var(--c-accent); }
         
         .glass-input { background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; padding: 16px 14px; font-size: 14px; font-weight: 500; border-radius: 10px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; }
         select.glass-input option, select.glass-input optgroup { color: #000000 !important; background-color: #ffffff !important; font-weight: 600; }
@@ -211,7 +219,7 @@
 <body>
 
     <audio id="ignition-sound" preload="auto">
-        <source src="https://assets.mixkit.co/active_storage/sfx/2554/2554-preview.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2736/2736-preview.mp3" type="audio/mpeg">
     </audio>
 
     <!-- 1. TELA DE IGNIÇÃO -->
@@ -298,18 +306,49 @@
                 <div class="hero-content">
                     <div class="bg-red-600 text-white px-3 py-1 rounded text-[9px] font-black uppercase tracking-widest mb-3 inline-block shadow-lg">⚠️ SOMENTE COM AGENDAMENTO</div>
                     <h2 class="text-2xl md:text-4xl font-black mt-1 mb-2 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE O SEU VEÍCULO <span class="text-[var(--accent)]"><br>AO ESTADO DE ARTE</span></h2>
-                    <p class="text-[13px] md:text-[15px] font-medium text-zinc-200 leading-relaxed max-w-md drop-shadow-md">O valor da estética é ajustado ao porte da sua máquina. Informe o modelo para descobrir o valor exato.</p>
+                    <p class="text-[13px] md:text-[15px] font-medium text-zinc-200 leading-relaxed max-w-md drop-shadow-md">O valor do detalhamento é calculado sob medida. Explore os nossos protocolos VIP abaixo.</p>
                 </div>
             </div>
 
             <div class="funnel-container">
 
-                <!-- 🟢 PASSO 1: IDENTIFICAÇÃO DO CARRO (INVERTIDO E NATIVO) 🟢 -->
+                <!-- 🟢 PASSO 1: SELEÇÃO DE PROTOCOLOS (SEM PREÇO FINAL) 🟢 -->
                 <div id="step-1-section" class="step-section active-step">
-                    <div class="section-header"><h2 class="section-title active" id="title-1">01. Identifique a Máquina</h2><button id="edit-1" class="text-[9px] text-white uppercase font-bold tracking-widest px-3 py-1 bg-white/5 rounded-full border border-white/10 hidden" onclick="editStep(1)">Alterar</button></div>
+                    <div class="section-header"><h2 class="section-title active" id="title-1">01. Selecione o Protocolo</h2><button id="edit-1" class="text-[9px] text-white uppercase font-bold tracking-widest px-3 py-1 bg-white/5 rounded-full border border-white/10 hidden" onclick="editStep(1)">Alterar</button></div>
                     <div id="step-1-content" class="step-content" style="display: block;">
                         
-                        <p class="text-[11px] text-zinc-400 font-medium mb-4 text-center bg-white/5 p-3 rounded-lg border border-white/10">Para apresentarmos o valor exato do detalhamento, selecione a montadora e o modelo da sua máquina abaixo.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="glass-card tier-prata" onclick="selectUpgrade(this, 'Lavagem Externa Express', 60)">
+                                <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
+                                <span class="feature-time">⏱️ 40 a 60 min</span><p class="card-desc">Foco na agilidade. Limpeza segura da pintura e tapetes dianteiros.</p>
+                            </div>
+                            <div class="glass-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 90)">
+                                <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
+                                <span class="feature-time">⏱️ 1h30 a 2h</span><p class="card-desc">Limpeza profunda com PH neutro e pincelamento de detalhes.</p>
+                            </div>
+                            <div class="glass-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
+                                <div class="tag-recomendado" style="background:#fbbf24;color:#000;padding:2px 10px;font-size:9px;font-weight:900;border-radius:10px 0 10px 0;position:absolute;top:0;left:0;text-transform:uppercase;">Mais Escolhido</div>
+                                <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
+                                <span class="feature-time">⏱️ 3 a 4h</span><p class="card-desc">Descontaminação da pintura e selagem de alto brilho.</p>
+                            </div>
+                            <div class="glass-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 250)">
+                                <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
+                                <span class="feature-time">⏱️ 1 Dia</span><p class="card-desc">Higienização profunda e Oxi-Sanitização (elimina fungos).</p>
+                            </div>
+                            <div class="glass-card tier-roxo md:col-span-2" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
+                                <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><div class="price-text"><span class="btn-calc-valor">Calcular</span></div></div>
+                                <span class="feature-time">⏱️ 2 a 3 Dias</span><p class="card-desc">Polimento técnico de correção e blindagem química contra raios UV e agentes externos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🟢 PASSO 2: IDENTIFICAÇÃO DO CARRO 🟢 -->
+                <div id="step-2-section" class="step-section" style="display: none;">
+                    <div class="section-header"><h2 class="section-title" id="title-2">02. Identifique a Máquina</h2><button id="edit-2" class="text-[9px] text-white uppercase font-bold tracking-widest px-3 py-1 bg-white/5 rounded-full border border-white/10 hidden" onclick="editStep(2)">Alterar</button></div>
+                    <div id="step-2-content" class="step-content">
+                        
+                        <p class="text-[11px] text-zinc-400 font-medium mb-4 text-center bg-white/5 p-3 rounded-lg border border-white/10">Para revelar o orçamento exato para o seu veículo, informe a montadora e o modelo.</p>
 
                         <select id="native-brand" class="glass-input" onchange="handleNativeBrand()">
                             <option value="" disabled selected>Montadora...</option>
@@ -328,37 +367,6 @@
                                 <button type="button" class="cat-btn" id="cat-pickup" onclick="selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-xl">🛻</span><span>Grande</span></button>
                             </div>
                             <input type="text" id="fallback-input" class="glass-input" placeholder="Digite o nome do modelo (Ex: Monza)" oninput="handleFallbackInput()">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 🟢 PASSO 2: SELEÇÃO DE PROTOCOLOS COM VALOR DINÂMICO 🟢 -->
-                <div id="step-2-section" class="step-section" style="display: none;">
-                    <div class="section-header"><h2 class="section-title" id="title-2">02. Selecione o Protocolo</h2><button id="edit-2" class="text-[9px] text-white uppercase font-bold tracking-widest px-3 py-1 bg-white/5 rounded-full border border-white/10 hidden" onclick="editStep(2)">Alterar</button></div>
-                    <div id="step-2-content" class="step-content">
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="glass-card tier-prata" onclick="selectUpgrade(this, 'Lavagem Externa Express', 60)">
-                                <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><div class="price-text"><span id="price-val-express">R$ 60</span></div></div>
-                                <span class="feature-time">⏱️ 40 a 60 min</span><p class="card-desc">Foco na agilidade. Limpeza segura da pintura e tapetes dianteiros.</p>
-                            </div>
-                            <div class="glass-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 90)">
-                                <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><div class="price-text"><span id="price-val-detail">R$ 90</span></div></div>
-                                <span class="feature-time">⏱️ 1h30 a 2h</span><p class="card-desc">Limpeza profunda com PH neutro e pincelamento de detalhes.</p>
-                            </div>
-                            <div class="glass-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
-                                <div class="tag-recomendado" style="background:#fbbf24;color:#000;padding:2px 10px;font-size:9px;font-weight:900;border-radius:10px 0 10px 0;position:absolute;top:0;left:0;text-transform:uppercase;">Mais Escolhido</div>
-                                <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><div class="price-text"><span id="price-val-cera" class="text-amber-400">R$ 150</span></div></div>
-                                <span class="feature-time">⏱️ 3 a 4h</span><p class="card-desc">Descontaminação da pintura e selagem de alto brilho.</p>
-                            </div>
-                            <div class="glass-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 250)">
-                                <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><div class="price-text"><span id="price-val-vip">R$ 250</span></div></div>
-                                <span class="feature-time">⏱️ 1 Dia</span><p class="card-desc">Higienização profunda e Oxi-Sanitização (elimina fungos).</p>
-                            </div>
-                            <div class="glass-card tier-roxo md:col-span-2" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
-                                <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><div class="price-text"><span id="price-val-vitri">R$ 800</span></div></div>
-                                <span class="feature-time">⏱️ 2 a 3 Dias</span><p class="card-desc">Polimento técnico de correção e blindagem química contra raios UV e agentes externos.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -591,7 +599,7 @@
             <div class="cta-row-flex">
                 <div class="cart-info">
                     <span class="cart-label">Total Estimado</span>
-                    <span class="cart-total" id="cta-total">R$ 0</span>
+                    <span class="cart-total" id="cta-total">R$ ---</span>
                 </div>
                 <button id="btn-continue-flow" class="btn-continue" disabled onclick="handleNextStep()">
                     <div class="spinner"></div><span class="btn-text">Selecionar</span>
@@ -656,7 +664,9 @@
             basePrice: 0, 
             hasUpsell: false, 
             upsellPrice: 50, 
-            phoneReady: false 
+            phoneReady: false,
+            audioUnlocked: false,
+            isStarted: false
         };
 
         function getTotalPrice() { 
@@ -675,7 +685,7 @@
                 brandSelect.appendChild(option);
             });
 
-            // Observer de Performance
+            // Observer de Performance para ocultar a barra CTA no B2B
             const b2bSection = document.getElementById('b2b-section');
             const floatingCta = document.getElementById('floating-cta');
             const scrollContainer = document.getElementById('scroll-container'); 
@@ -727,8 +737,7 @@
             else if (mult >= 1.5) funnelState.categoryName = "Grande/Pickup";
 
             funnelState.categoryMultiplier = mult;
-            updateDynamicPrices();
-            setTimeout(() => { editStep(2); }, 400); 
+            setTimeout(() => { editStep(3); }, 400); // Avança para o recibo
         }
 
         function selectFallbackCategory(catName, multiplier, btnId) {
@@ -737,28 +746,17 @@
             
             funnelState.categoryName = catName;
             funnelState.categoryMultiplier = multiplier;
-            updateDynamicPrices();
             
-            if (funnelState.model.length >= 2) setTimeout(() => { editStep(2); }, 400);
+            if (funnelState.model.length >= 2) setTimeout(() => { editStep(3); }, 400);
             updateWizardUI();
         }
 
         function handleFallbackInput() {
             funnelState.model = document.getElementById('fallback-input').value;
             if (funnelState.model.length >= 2 && funnelState.categoryMultiplier > 1) {
-                setTimeout(() => { editStep(2); }, 500);
+                setTimeout(() => { editStep(3); }, 500);
             }
             updateWizardUI();
-        }
-
-        // 🟢 CÁLCULO MÁGICO DE PREÇO NO FRONT-END 🟢
-        function updateDynamicPrices() {
-            const mult = funnelState.categoryMultiplier || 1;
-            document.getElementById('price-val-express').innerText = 'R$ ' + Math.round(60 * mult);
-            document.getElementById('price-val-detail').innerText = 'R$ ' + Math.round(90 * mult);
-            document.getElementById('price-val-cera').innerText = 'R$ ' + Math.round(150 * mult);
-            document.getElementById('price-val-vip').innerText = 'R$ ' + Math.round(250 * mult);
-            document.getElementById('price-val-vitri').innerText = 'R$ ' + Math.round(800 * mult);
         }
 
         function selectUpgrade(el, mode, price) {
@@ -771,11 +769,12 @@
             else { bUpsell.style.display = 'none'; document.getElementById('upsell-toggle-bottom').checked = false; funnelState.hasUpsell = false; }
             
             if(navigator.vibrate) navigator.vibrate(20);
-            setTimeout(() => { editStep(3); }, 400); 
+            setTimeout(() => { editStep(2); }, 400); // Ocultação de preço avança para Step 2
         }
 
         function toggleUpsell(checkbox) { funnelState.hasUpsell = checkbox.checked; updateWizardUI(); }
 
+        // 🟢 MÁSCARA E VALIDAÇÃO DE TELEFONE 🟢
         function maskPhone(input) { 
             let val = input.value.replace(/\D/g, ''); 
             if (val.length > 11) val = val.slice(0, 11); 
@@ -796,6 +795,7 @@
             updateBottomCTA();
         }
 
+        // ⚡ IGNIÇÃO COM NOVO AUDIO E FADE OUT ATRASADO ⚡
         function startIgnition(e) {
             if(!funnelState.audioUnlocked) { sound.play().then(()=> {sound.pause(); sound.currentTime=0;}); funnelState.audioUnlocked=true; }
             funnelState.startTime = Date.now(); btn.classList.add('active'); ring.style.strokeDashoffset = "0";
@@ -821,7 +821,12 @@
 
         function ignite() {
             funnelState.isStarted = true; carStageBg.classList.remove('idle-shake'); document.getElementById('bg-on').style.opacity = "1"; bgAmbient.style.opacity = "1"; 
-            sound.volume = 0.8; sound.play().catch(e => console.log("Áudio bloqueado."));
+            
+            // 🟢 VOLUME NO MÁXIMO E REPRODUÇÃO DA IGNIÇÃO
+            sound.volume = 1.0; 
+            sound.currentTime = 0; 
+            sound.play().catch(e => console.log("Áudio bloqueado."));
+            
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
             hintText.style.opacity = "0";
             
@@ -830,6 +835,21 @@
                 landing.style.transition = "opacity 0.3s ease"; 
                 landing.style.opacity = "0"; 
                 landing.style.pointerEvents = "none";
+                
+                // 🟢 FADE OUT ATRASADO: Deixa o motor roncar alto durante 800ms antes de começar a silenciar
+                setTimeout(() => {
+                    let vol = 1.0;
+                    let fadeInterval = setInterval(() => {
+                        if (vol > 0.1) {
+                            vol -= 0.1;
+                            sound.volume = vol;
+                        } else {
+                            sound.pause();
+                            sound.currentTime = 0;
+                            clearInterval(fadeInterval);
+                        }
+                    }, 50); 
+                }, 800);
                 
                 setTimeout(() => {
                     landing.style.display = "none"; 
@@ -855,11 +875,11 @@
             const isFirstStep = funnelState.step === 1;
             document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
             
-            // Oculta tudo que não for o formulário no Step 1
-            document.getElementById('gallery-section').style.display = isFirstStep ? 'none' : 'block';
-            document.getElementById('social-proof-section').style.display = isFirstStep ? 'none' : 'block';
+            // Oculta Prova Social e Galeria se não for no passo 1
+            document.getElementById('gallery-section').style.display = isFirstStep ? 'block' : 'none';
+            document.getElementById('social-proof-section').style.display = isFirstStep ? 'block' : 'none';
 
-            // STEP 1 (CARRO)
+            // STEP 1 (SERVIÇOS)
             const s1 = document.getElementById('step-1-section');
             s1.classList.toggle('active-step', funnelState.step === 1);
             if(funnelState.step > 1) s1.classList.add('completed');
@@ -867,7 +887,7 @@
             document.getElementById('step-1-content').style.display = funnelState.step === 1 ? 'block' : 'none';
             document.getElementById('edit-1').style.display = funnelState.step > 1 ? 'block' : 'none';
             
-            // STEP 2 (SERVIÇOS)
+            // STEP 2 (CARRO)
             const s2 = document.getElementById('step-2-section');
             s2.classList.toggle('active-step', funnelState.step === 2);
             s2.style.display = funnelState.step >= 2 ? 'block' : 'none';
@@ -904,14 +924,24 @@
 
         function updateBottomCTA() {
             const btnCTA = document.getElementById('btn-continue-flow');
-            document.getElementById('cta-total').innerText = `R$ ${getTotalPrice()}`;
+            let displayTotal = "R$ 0";
+            
+            if (funnelState.step === 1 && funnelState.basePrice > 0) {
+                 displayTotal = "A partir de R$ " + funnelState.basePrice;
+            } else if (funnelState.step >= 2 && funnelState.categoryMultiplier > 0 && funnelState.basePrice > 0) {
+                 displayTotal = "R$ " + getTotalPrice();
+            } else {
+                 displayTotal = "R$ ---";
+            }
+            
+            document.getElementById('cta-total').innerText = displayTotal;
             btnCTA.classList.remove('btn-success'); btnCTA.disabled = true;
 
             if (funnelState.step === 1) {
-                if (!funnelState.brand || funnelState.model.length < 2 || !funnelState.categoryName) btnCTA.querySelector('.btn-text').innerText = "Informe Veículo";
-                else { btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Ver Protocolos"; }
-            } else if (funnelState.step === 2) {
                 if (funnelState.basePrice === 0) btnCTA.querySelector('.btn-text').innerText = "Selecionar";
+                else { btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Identificar Máquina"; }
+            } else if (funnelState.step === 2) {
+                if (!funnelState.brand || funnelState.model.length < 2 || !funnelState.categoryName) btnCTA.querySelector('.btn-text').innerText = "Informe Veículo";
                 else { btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Ver Resumo"; }
             } else if (funnelState.step === 3) {
                 if (!funnelState.phoneReady) btnCTA.querySelector('.btn-text').innerText = "Falta Contato";
@@ -931,11 +961,11 @@
             
             const numWhatsApp = "554933121788"; 
             
-            const msg = `⚡ *RESERVA VIP | [NOME DA ESTÉTICA]* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR ESTIMADO:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
+            const msg = `⚡ *RESERVA VIP | [NOME DA ESTÉTICA]* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR CALCULADO:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
             setTimeout(() => { window.open(`https://wa.me/${numWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank'); btnCTA.classList.remove('processing'); }, 800);
         }
 
-        // FAQ
+        // FAQ Toggles
         function toggleFaq(id) {
             const content = document.getElementById(id);
             const icon = document.getElementById('icon-' + id);
