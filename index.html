@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- Cor do buscador no celular (Combina exatamente com o fundo escuro do app) -->
     <meta name="theme-color" content="#09090b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="GLID App">
     
-    <!-- ALTERE AQUI: Nome da aba do navegador -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
+    <link rel="apple-touch-icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
+    <link rel="shortcut icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
+
     <title>[NOME DA ESTÉTICA] | Gestão de Estética Automotiva & Detalhamento</title>
     
-    <!-- 🚀 Favicon e Ícone de App (A logozinha na aba do navegador e celular) 🚀 -->
-    <link rel="icon" type="image/jpeg" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
-    <link rel="apple-touch-icon" href="https://glid.carrd.co/assets/images/image09.jpg?v=b6091a32">
-
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f" as="image">
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f" as="image">
 
-    <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', 'SEU_PIXEL_ID_AQUI'); fbq('track', 'PageView');
@@ -46,11 +46,9 @@
         /* --- TELA 1: IGNIÇÃO --- */
         #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px 4vh 20px; transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); background-color: var(--bg-base); }
         .car-bg { position: absolute; inset: 0; background-size: cover; background-position: center 60%; opacity: 0; transition: opacity 0.5s ease; transform: scale(1.05); }
-        
         #bg-off { background-image: url('https://carrosest.carrd.co/assets/images/image01.jpg?v=0259a93f'); opacity: 1; z-index: 1; }
         #bg-ambient { background-image: url('https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f'); z-index: 2; mix-blend-mode: lighten; } 
         #bg-on { background-image: url('https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f'); z-index: 4; mix-blend-mode: lighten; }
-        
         #underglow { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: radial-gradient(ellipse at bottom, rgba(14,165,233,0.25) 0%, transparent 70%); opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.4s ease; }
         .accessory-on #underglow { opacity: 1; animation: breathe-glow 3s infinite alternate ease-in-out; }
         @keyframes breathe-glow { 0% { opacity: 0.5; } 100% { opacity: 1; } }
@@ -67,9 +65,6 @@
         .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho-ignicao); }
         .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ignicao); }
 
-        .alert-hint { animation: pulse-alert 0.4s ease-in-out 3; font-weight: 800 !important; color: var(--accent) !important; }
-        @keyframes pulse-alert { 0%, 100% { transform: scale(1); color: #9ca3af; } 50% { transform: scale(1.05); color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); } }
-
         /* --- TELA 2: PRE-LOADER --- */
         #experience-view { position: fixed; inset: 0; z-index: 100; background: var(--bg-base); display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .stars-container { display: flex; gap: 8px; margin-bottom: 24px; }
@@ -82,52 +77,50 @@
         @keyframes expandLine { 50% { opacity: 1; } 100% { width: 150px; opacity: 1; } }
 
         /* --- TELA 3: APP VIEW --- */
-        #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; position: relative; }
+        #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; position: relative; overscroll-behavior-y: none; }
+        
+        /* CABEÇALHO FIXO COM SLIDER EMENDADO */
+        .fixed-top-header { position: absolute; top: 0; left: 0; right: 0; z-index: 60; display: flex; flex-direction: column; }
         
         .top-navbar { 
-            position: absolute; top: 0; left: 0; right: 0;
+            position: relative; 
             height: 70px; display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 16px; z-index: 60; /* Maior que a área B2B */
-            background: rgba(9, 9, 11, 0.5);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 0 16px; 
+            background: rgba(9, 9, 11, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05); 
             padding-top: env(safe-area-inset-top); 
         }
         @media (min-width: 768px) { .top-navbar { padding: 0 32px; height: 80px; } }
 
-        .app-layout { flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: url('https://www.transparenttextures.com/patterns/stardust.png'); display: flex; flex-direction: column;}
-        
-        /* CORREÇÃO DE BUG (AUDITORIA SÊNIOR): Impede que os blocos sejam comprimidos pelo flexbox */
-        .app-layout > * { flex-shrink: 0 !important; }
-
-        /* --- HERO BANNER --- */
-        .hero-banner {
-            width: 100%; height: 42vh; min-height: 320px; position: relative;
-            background-image: linear-gradient(to bottom, rgba(9,9,11,0.2) 0%, rgba(9,9,11,0.98) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
-            background-size: cover; background-position: center 60%;
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px;
-            padding-top: 80px; 
-        }
-        @media (min-width: 768px) { .hero-banner { height: 48vh; padding: 40px; } }
-        
-        .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; width: 100%; }
-        
-        .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 0 20px 80px 20px; }
-
-        /* --- SLIDER DE AUTORIDADE --- */
         .authority-slider {
-            background: rgba(255, 255, 255, 0.02); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 0; overflow: hidden; display: flex; white-space: nowrap; width: 100%; margin-bottom: 24px;
+            background: rgba(9, 9, 11, 0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 0; overflow: hidden; display: flex; white-space: nowrap; width: 100%;
         }
         .slider-track { display: flex; gap: 30px; animation: scroll-marquee 20s linear infinite; min-width: 200%; }
         .slider-item { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; }
         .slider-item span { color: #fff; }
         @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* WIZARD */
+        .app-layout { flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; background: url('https://www.transparenttextures.com/patterns/stardust.png'); display: flex; flex-direction: column;}
+        .app-layout > * { flex-shrink: 0 !important; }
+
+        .hero-banner {
+            width: 100%; height: 42vh; min-height: 320px; position: relative;
+            background-image: linear-gradient(to bottom, rgba(9,9,11,0.2) 0%, rgba(9,9,11,0.98) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover; background-position: center 60%;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px;
+            padding-top: 120px; 
+        }
+        @media (min-width: 768px) { .hero-banner { height: 48vh; padding: 40px; padding-top: 140px; } }
+        
+        .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; width: 100%; }
+        .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 32px 20px 60px 20px; }
+
+        /* WIZARD & CARDS */
         .step-section { margin-bottom: 24px; transition: all 0.4s ease; }
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;}
-        .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #71717a; font-weight: 800; display: flex; align-items: center; gap: 10px; transition: color 0.3s; margin: 0; }
+        .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #71717a; font-weight: 800; display: flex; align-items: center; gap: 10px; margin: 0; }
         .section-title.active { color: #fff; font-weight: 900; }
         
         .edit-btn { font-size: 9px; color: #fff; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; padding: 4px 12px; background: rgba(255,255,255,0.05); border-radius: 20px; display: none; transition: all 0.2s; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); cursor: pointer;}
@@ -136,65 +129,42 @@
         .step-section:not(.active-step) { opacity: 0.5; }
         .step-section.completed:not(.active-step) .step-content { display: none !important; }
 
-        /* CARDS SÓLIDOS */
-        .glass-card { 
-            background: var(--c-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            border-radius: 14px; padding: 20px; 
-            cursor: pointer; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); 
-            position: relative; overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
+        .glass-card { background: var(--c-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 14px; padding: 20px; cursor: pointer; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .glass-card:hover { filter: brightness(1.15); border-color: rgba(255,255,255,0.2); }
-        .glass-card.selected { 
-            background: var(--c-bg-sel);
-            border-color: var(--c-accent); 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 0 1px var(--c-accent); 
-        }
+        .glass-card.selected { border-color: var(--c-accent); box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 0 1px var(--c-accent); }
         
-        .tier-prata { --c-accent: #94a3b8; --c-bg: linear-gradient(145deg, #1f2937, #0f172a); --c-bg-sel: linear-gradient(145deg, #334155, #1e293b); } 
-        .tier-azul  { --c-accent: #38bdf8; --c-bg: linear-gradient(145deg, #0c4a6e, #082f49); --c-bg-sel: linear-gradient(145deg, #0284c7, #0369a1); } 
-        .tier-ouro  { --c-accent: #fbbf24; --c-bg: linear-gradient(145deg, #451a03, #222); --c-bg-sel: linear-gradient(145deg, #78350f, #451a03); } 
-        .tier-verde { --c-accent: #34d399; --c-bg: linear-gradient(145deg, #064e3b, #222); --c-bg-sel: linear-gradient(145deg, #059669, #064e3b); } 
-        .tier-roxo  { --c-accent: #a78bfa; --c-bg: linear-gradient(145deg, #3b0764, #222); --c-bg-sel: linear-gradient(145deg, #6b21a8, #3b0764); } 
+        .tier-prata { --c-accent: #94a3b8; --c-bg: #1f2937; --c-bg-sel: #334155; } 
+        .tier-azul  { --c-accent: #38bdf8; --c-bg: #0c4a6e; --c-bg-sel: #0284c7; } 
+        .tier-ouro  { --c-accent: #fbbf24; --c-bg: #451a03; --c-bg-sel: #78350f; } 
+        .tier-verde { --c-accent: #34d399; --c-bg: #064e3b; --c-bg-sel: #059669; } 
+        .tier-roxo  { --c-accent: #a78bfa; --c-bg: #3b0764; --c-bg-sel: #6b21a8; } 
 
         .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
         .card-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; letter-spacing: -0.5px; transition: color 0.3s;}
         .glass-card.selected .card-title { color: var(--c-accent); }
         .card-desc { font-size: 12px; color: #cbd5e1; line-height: 1.5; font-weight: 400; margin-bottom: 12px; }
-        .feature-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;}
-        .feature-item { font-size: 11px; color: #e2e8f0; display: flex; align-items: center; gap: 6px; }
-        .feature-item svg { width: 13px; height: 13px; fill: var(--c-accent); flex-shrink: 0; }
         .feature-time { color: #f8fafc; font-size: 10px; font-weight: 700; background: rgba(0, 0, 0, 0.4); padding: 4px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05);}
-        .price-text { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 15px; color: #fff; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);}
+        .price-text { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 15px; color: #fff; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: flex-end;}
         .glass-card.selected .price-text { background: var(--c-accent); color: #000; border-color: var(--c-accent); }
         
-        /* INPUTS & SELECTS */
-        .glass-input { 
-            background-color: rgba(255, 255, 255, 0.08); 
-            backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; 
-            padding: 16px 14px; font-size: 14px; font-weight: 500; border-radius: 10px; 
-            appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; 
-        }
+        .glass-input { background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; padding: 16px 14px; font-size: 14px; font-weight: 500; border-radius: 10px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; }
         select.glass-input option, select.glass-input optgroup { color: #000000 !important; background-color: #ffffff !important; font-weight: 600; }
         select.glass-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; padding-right: 40px; cursor: pointer; }
         .glass-input:focus { border-color: var(--accent); background-color: rgba(255,255,255,0.12); box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2); }
-        
         .hud-input { text-align: center; font-size: 18px; letter-spacing: 2px; font-weight: 600; background-image: none !important;}
         .hud-input::placeholder { color: #a1a1aa; font-weight: 400; letter-spacing: normal; font-size: 14px;}
         
-        /* Validação Sensorial do Telefone (QI do Telefone) */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-6px); }
-            50% { transform: translateX(6px); }
-            75% { transform: translateX(-6px); }
-        }
+        /* BOTÕES DE CATEGORIA DE CARRO */
+        .cat-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px 5px; color: #a1a1aa; font-size: 10px; font-weight: 800; text-transform: uppercase; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;}
+        .cat-btn.selected { background: rgba(16, 185, 129, 0.1); border-color: #10b981; color: #fff; box-shadow: inset 0 0 0 1px #10b981; }
+        .cat-btn.selected .cat-icon { filter: brightness(2) drop-shadow(0 0 5px rgba(16,185,129,0.5)); }
+
+        /* 🟣 VALIDAÇÃO SENSORIAL (QI DO TELEFONE) */
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-6px); } }
         .shake-animation { animation: shake 0.4s ease-in-out; }
         .input-error { border-color: #ef4444 !important; box-shadow: 0 0 10px rgba(239, 68, 68, 0.3) !important; }
         .input-success { border-color: #10b981 !important; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4) !important; color: #10b981 !important;}
 
-        /* RECIBO FINAL */
         .receipt-card { background: #ffffff; border: 1px solid #e4e4e7; border-radius: 12px; padding: 20px; margin-bottom: 20px; color: #18181b; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
         .receipt-card h4 { color: #52525b; border-bottom: 1px solid #e4e4e7; padding-bottom: 10px; margin-bottom: 12px; }
         .receipt-row { display: flex; justify-content: space-between; font-size: 13px; color: #52525b; margin-bottom: 10px; border-bottom: 1px dotted #d4d4d8; padding-bottom: 8px;}
@@ -203,17 +173,19 @@
         .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e4e4e7; }
         .receipt-total-val { font-size: 22px; font-weight: 900; color: #059669; }
 
-        /* FOOTER CLIENTE */
-        .premium-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px 40px 20px; text-align: center; margin-top: 20px; }
+        /* B2C OTIMIZAÇÕES */
+        .review-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; min-width: 260px; max-width: 280px; scroll-snap-align: start; flex-shrink: 0;}
+        .star-rating { color: #fbbf24; font-size: 12px; margin-bottom: 8px; }
+        
+        .b2c-faq-btn { width: 100%; text-align: left; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; font-size: 13px; font-weight: 600; color: #e2e8f0; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .b2c-faq-content { display: none; padding: 0 16px 16px 16px; font-size: 12px; color: #94a3b8; line-height: 1.5; }
 
-        /* BARRA DE CHECKOUT INFERIOR */
-        .fixed-bottom-cta {
-            position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom));
-            background: rgba(9, 9, 11, 0.95); border-top: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 10px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
+        .b2c-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px; margin-top: 20px; background: rgba(0,0,0,0.2); }
+
+        /* BARRA CTA FLUTUANTE B2C */
+        .fixed-bottom-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); background: rgba(9, 9, 11, 0.95); border-top: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(15px); z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 10px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
         .fixed-bottom-cta.visible { transform: translateY(0); }
-        .fixed-bottom-cta.hide-cta { transform: translateY(150%); } 
+        .fixed-bottom-cta.hide-cta { transform: translateY(150%); }
 
         .bottom-upsell-zone { display: none; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); animation: fade-in 0.3s ease forwards; }
         .upsell-toggle { appearance: none; width: 40px; height: 22px; background: rgba(255,255,255,0.15); border-radius: 20px; position: relative; cursor: pointer; transition: all 0.3s; outline: none; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
@@ -273,13 +245,9 @@
                     <span class="btn-lbl-top">SYSTEM</span><span class="btn-lbl-mid">Start</span><span class="btn-lbl-bot">POWER</span>
                 </div>
             </div>
-            
             <p id="hold-hint" class="text-[10px] tracking-[0.1em] text-zinc-500 font-bold uppercase transition-opacity duration-300 mb-6">Segure para Acessar</p>
-            
             <div class="border-t border-white/10 pt-5 w-full text-center px-4">
-                <p class="text-[12px] md:text-[13px] text-white font-bold uppercase tracking-wider mb-1">
-                    Lavação • Cera • Polimento • Vitrificação
-                </p>
+                <p class="text-[12px] md:text-[13px] text-white font-bold uppercase tracking-wider mb-1">Lavação • Cera • Polimento • Vitrificação</p>
                 <p class="text-[11px] text-zinc-400 font-medium">O cuidado que a sua máquina merece.</p>
             </div>
         </div>
@@ -301,102 +269,141 @@
     <!-- 3. WEB APP -->
     <div id="app-view">
         
-        <header class="top-navbar">
-            <h1 class="font-black text-[13px] md:text-[14px] uppercase text-white truncate flex-1 pr-2">
-                [SUA ESTÉTICA] <span class="text-zinc-400 font-light hidden sm:inline">Detailing</span>
-            </h1>
-            <div class="flex items-center gap-1.5 md:gap-2 bg-white/10 px-2 md:px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md shrink-0">
-                <span class="relative flex h-2 w-2 shrink-0">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span class="text-[9px] text-white font-black uppercase tracking-widest truncate max-w-[100px] md:max-w-none">[SUA CIDADE]</span>
-            </div>
-        </header>
-
-        <!-- Container de Rolar (Escuta o B2B Scroll para esconder a HUD do Carrinho) -->
-        <div class="app-layout" id="scroll-container" onscroll="handleScroll()">
-            
-            <div id="hero-banner" class="hero-banner">
-                <div class="hero-content">
-                    <div class="bg-red-600 text-white px-3 py-1 rounded text-[9px] font-black uppercase tracking-widest mb-3 inline-block shadow-lg">
-                        ⚠️ SOMENTE COM AGENDAMENTO
-                    </div>
-                    <h2 class="text-2xl md:text-4xl font-black mt-1 mb-2 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE O SEU VEÍCULO <span class="text-[var(--accent)]"><br>AO ESTADO DE ARTE</span></h2>
-                    <p class="text-[13px] md:text-[15px] font-medium text-zinc-200 leading-relaxed max-w-md drop-shadow-md">Selecione o serviço ideal abaixo e garanta a sua vaga.</p>
+        <!-- CABEÇALHO UNIFICADO E FIXO -->
+        <div class="fixed-top-header">
+            <header class="top-navbar">
+                <h1 class="font-black text-[13px] md:text-[14px] uppercase text-white truncate flex-1 pr-2">
+                    [SUA ESTÉTICA] <span class="text-zinc-400 font-light hidden sm:inline">Detailing</span>
+                </h1>
+                <div class="flex items-center gap-1.5 md:gap-2 bg-white/10 px-2 md:px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md shrink-0">
+                    <span class="relative flex h-2 w-2 shrink-0">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-[9px] text-white font-black uppercase tracking-widest truncate max-w-[100px] md:max-w-none">[SUA CIDADE]</span>
                 </div>
-            </div>
-
+            </header>
+            
             <div class="authority-slider" id="authority-slider">
                 <div class="slider-track">
                     <div class="slider-item">✨ <span>Cera de Carnaúba</span></div><div class="slider-item">💧 <span>Água Filtrada</span></div><div class="slider-item">🧽 <span>Toalhas Anti-risco</span></div><div class="slider-item">🛡️ <span>Selantes Premium</span></div><div class="slider-item">🔬 <span>Box Climatizado</span></div><div class="slider-item">✨ <span>Cera de Carnaúba</span></div><div class="slider-item">💧 <span>Água Filtrada</span></div><div class="slider-item">🧽 <span>Toalhas Anti-risco</span></div><div class="slider-item">🛡️ <span>Selantes Premium</span></div><div class="slider-item">🔬 <span>Box Climatizado</span></div>
                 </div>
             </div>
+        </div>
+
+        <!-- CONTENTOR PRINCIPAL DE SCROLL -->
+        <div class="app-layout" id="scroll-container">
+            
+            <div id="hero-banner" class="hero-banner">
+                <div class="hero-content">
+                    <div class="bg-red-600 text-white px-3 py-1 rounded text-[9px] font-black uppercase tracking-widest mb-3 inline-block shadow-lg">⚠️ SOMENTE COM AGENDAMENTO</div>
+                    <h2 class="text-2xl md:text-4xl font-black mt-1 mb-2 uppercase tracking-tighter leading-none text-white drop-shadow-lg">ELEVE O SEU VEÍCULO <span class="text-[var(--accent)]"><br>AO ESTADO DE ARTE</span></h2>
+                    <p class="text-[13px] md:text-[15px] font-medium text-zinc-200 leading-relaxed max-w-md drop-shadow-md">O valor da estética é ajustado ao porte da sua máquina. Informe o modelo para descobrir o valor exato.</p>
+                </div>
+            </div>
 
             <div class="funnel-container">
-                <!-- PASSO 1: PROTOCOLOS -->
+
+                <!-- 🟢 PASSO 1: IDENTIFICAÇÃO DO CARRO (INVERTIDO E NATIVO) 🟢 -->
                 <div id="step-1-section" class="step-section active-step">
-                    <div class="section-header">
-                        <h2 class="section-title active" id="title-1">01. Selecione o Protocolo</h2>
-                        <button id="edit-1" class="edit-btn" onclick="editStep(1)">Alterar</button>
-                    </div>
+                    <div class="section-header"><h2 class="section-title active" id="title-1">01. Identifique a Máquina</h2><button id="edit-1" class="text-[9px] text-white uppercase font-bold tracking-widest px-3 py-1 bg-white/5 rounded-full border border-white/10 hidden" onclick="editStep(1)">Alterar</button></div>
                     <div id="step-1-content" class="step-content" style="display: block;">
+                        
+                        <p class="text-[11px] text-zinc-400 font-medium mb-4 text-center bg-white/5 p-3 rounded-lg border border-white/10">Para apresentarmos o valor exato do detalhamento, selecione a montadora e o modelo da sua máquina abaixo.</p>
+
+                        <select id="native-brand" class="glass-input" onchange="handleNativeBrand()">
+                            <option value="" disabled selected>Montadora...</option>
+                        </select>
+                        
+                        <select id="native-model" class="glass-input" style="display: none;" onchange="handleNativeModel()">
+                            <option value="" disabled selected>Modelo...</option>
+                        </select>
+
+                        <!-- Fallback Visual (Caso ele selecione Outra Marca) -->
+                        <div id="fallback-size" class="mt-2 bg-white/5 border border-white/10 rounded-xl p-4" style="display:none;">
+                            <p class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest mb-3 text-center">Qual o porte aproximado?</p>
+                            <div class="grid grid-cols-3 gap-2 mb-3">
+                                <button type="button" class="cat-btn" id="cat-hatch" onclick="selectFallbackCategory('Pequeno/Hatch', 1, 'cat-hatch')"><span class="cat-icon text-xl">🚗</span><span>Pequeno</span></button>
+                                <button type="button" class="cat-btn" id="cat-suv" onclick="selectFallbackCategory('Médio/SUV', 1.3, 'cat-suv')"><span class="cat-icon text-xl">🚙</span><span>Médio/SUV</span></button>
+                                <button type="button" class="cat-btn" id="cat-pickup" onclick="selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-xl">🛻</span><span>Grande</span></button>
+                            </div>
+                            <input type="text" id="fallback-input" class="glass-input" placeholder="Digite o nome do modelo (Ex: Monza)" oninput="handleFallbackInput()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🟢 PASSO 2: SELEÇÃO DE PROTOCOLOS COM VALOR DINÂMICO 🟢 -->
+                <div id="step-2-section" class="step-section" style="display: none;">
+                    <div class="section-header"><h2 class="section-title" id="title-2">02. Selecione o Protocolo</h2><button id="edit-2" class="text-[9px] text-white uppercase font-bold tracking-widest px-3 py-1 bg-white/5 rounded-full border border-white/10 hidden" onclick="editStep(2)">Alterar</button></div>
+                    <div id="step-2-content" class="step-content">
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="glass-card tier-prata" onclick="selectUpgrade(this, 'Lavagem Externa Express', 60)">
-                                <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><span class="price-text">R$ 60</span></div>
-                                <span class="feature-time">⏱️ 40 a 60 min</span>
-                                <p class="card-desc">Foco na agilidade. Limpeza segura da pintura e tapetes dianteiros.</p>
+                                <div class="card-header-flex"><h3 class="card-title">Lavagem Externa Express</h3><div class="price-text"><span id="price-val-express">R$ 60</span></div></div>
+                                <span class="feature-time">⏱️ 40 a 60 min</span><p class="card-desc">Foco na agilidade. Limpeza segura da pintura e tapetes dianteiros.</p>
                             </div>
                             <div class="glass-card tier-azul" onclick="selectUpgrade(this, 'Lavagem Técnica Detalhada', 90)">
-                                <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><span class="price-text">R$ 90</span></div>
-                                <span class="feature-time">⏱️ 1h30 a 2h</span>
-                                <p class="card-desc">Limpeza profunda com PH neutro e pincelamento de detalhes.</p>
+                                <div class="card-header-flex"><h3 class="card-title">Lavagem Técnica Detalhada</h3><div class="price-text"><span id="price-val-detail">R$ 90</span></div></div>
+                                <span class="feature-time">⏱️ 1h30 a 2h</span><p class="card-desc">Limpeza profunda com PH neutro e pincelamento de detalhes.</p>
                             </div>
                             <div class="glass-card tier-ouro" onclick="selectUpgrade(this, 'Detalhamento + Cera Sintética', 150)">
-                                <div class="tag-recomendado">Mais Escolhido</div>
-                                <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><span class="price-text">R$ 150</span></div>
-                                <span class="feature-time">⏱️ 3 a 4h</span>
-                                <p class="card-desc">Descontaminação da pintura e selagem de alto brilho.</p>
+                                <div class="tag-recomendado" style="background:#fbbf24;color:#000;padding:2px 10px;font-size:9px;font-weight:900;border-radius:10px 0 10px 0;position:absolute;top:0;left:0;text-transform:uppercase;">Mais Escolhido</div>
+                                <div class="card-header-flex mt-2"><h3 class="card-title">Lavação + Cera Sintética</h3><div class="price-text"><span id="price-val-cera" class="text-amber-400">R$ 150</span></div></div>
+                                <span class="feature-time">⏱️ 3 a 4h</span><p class="card-desc">Descontaminação da pintura e selagem de alto brilho.</p>
                             </div>
                             <div class="glass-card tier-verde" onclick="selectUpgrade(this, 'Purificação Interna VIP', 250)">
-                                <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><span class="price-text">R$ 250</span></div>
-                                <span class="feature-time">⏱️ 1 Dia</span>
-                                <p class="card-desc">Higienização profunda e Oxi-Sanitização (elimina fungos).</p>
+                                <div class="card-header-flex"><h3 class="card-title">Purificação Interna VIP</h3><div class="price-text"><span id="price-val-vip">R$ 250</span></div></div>
+                                <span class="feature-time">⏱️ 1 Dia</span><p class="card-desc">Higienização profunda e Oxi-Sanitização (elimina fungos).</p>
                             </div>
                             <div class="glass-card tier-roxo md:col-span-2" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
-                                <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><span class="price-text">R$ 800</span></div>
-                                <span class="feature-time">⏱️ 2 a 3 Dias</span>
-                                <p class="card-desc">Polimento técnico + Coating Cerâmico 9H. Blindagem de brilho.</p>
+                                <div class="card-header-flex"><h3 class="card-title">Vitrificação Cerâmica 9H</h3><div class="price-text"><span id="price-val-vitri">R$ 800</span></div></div>
+                                <span class="feature-time">⏱️ 2 a 3 Dias</span><p class="card-desc">Polimento técnico de correção e blindagem química contra raios UV e agentes externos.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- GALERIA RESPONSIVA -->
-                <div class="mb-12 px-1" id="gallery-section">
+                <!-- GALERIA DE RESULTADOS -->
+                <div class="mb-14 mt-10" id="gallery-section">
                     <div class="flex items-center gap-2 mb-4 justify-center md:justify-start">
-                        <svg class="w-5 h-5 fill-zinc-500" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                        <h2 class="text-[12px] md:text-[14px] font-bold uppercase tracking-[2px] text-zinc-400">Conheça o Nosso Trabalho</h2>
+                        <svg class="w-4 h-4 fill-zinc-500" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                        <h2 class="text-[12px] md:text-[14px] font-bold uppercase tracking-[2px] text-zinc-400">Padrão de Qualidade</h2>
                     </div>
                     <div class="flex overflow-x-auto gap-4 pb-4 snap-x hide-scrollbar w-full snap-mandatory">
-                        <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Lavagem Snow Foam">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Correção de Pintura com Politriz">
-                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Acabamento Premium e Cristalização">
+                        <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Lavagem Snow Foam">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Correção de Pintura com Politriz">
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80" loading="lazy" class="w-[85%] md:w-[45%] lg:w-[30%] aspect-[16/9] object-cover rounded-2xl snap-center shrink-0 border border-white/10 shadow-lg" alt="Acabamento Premium e Cristalização">
                     </div>
                 </div>
 
-                <!-- PASSO 2: CARRO -->
-                <div id="step-2-section" class="step-section" style="display: none;">
-                    <div class="section-header">
-                        <h2 class="section-title" id="title-2">02. Identifique a Máquina</h2>
-                        <button id="edit-2" class="edit-btn" onclick="editStep(2)">Alterar</button>
+                <!-- PROVA SOCIAL B2C -->
+                <div class="mb-14" id="social-proof-section">
+                    <div class="flex items-center gap-2 mb-4 justify-center md:justify-start">
+                        <svg class="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <h2 class="text-[12px] md:text-[14px] font-bold uppercase tracking-[2px] text-zinc-400">Avaliações 5 Estrelas</h2>
                     </div>
-                    <div id="step-2-content" class="step-content">
-                        <select id="brand-select" class="glass-input" onchange="handleBrandSelect()">
-                            <option value="" disabled selected>Selecione a Montadora...</option>
-                            <option value="Audi">Audi</option><option value="BMW">BMW</option><option value="Chevrolet">Chevrolet</option><option value="Fiat">Fiat</option><option value="Ford">Ford</option><option value="Honda">Honda</option><option value="Hyundai">Hyundai</option><option value="Jeep">Jeep</option><option value="Land Rover">Land Rover</option><option value="Mercedes-Benz">Mercedes-Benz</option><option value="Porsche">Porsche</option><option value="Toyota">Toyota</option><option value="Volkswagen">Volkswagen</option><option value="Outra">Outra</option>
-                        </select>
-                        <input type="text" id="model-input" class="glass-input" placeholder="Qual o modelo? (Ex: Hilux, 320i)" style="display: none;" oninput="handleModelInput()">
+                    <div class="flex overflow-x-auto gap-4 pb-4 snap-x hide-scrollbar w-full snap-mandatory">
+                        <!-- Card Avaliação 1 -->
+                        <div class="review-card">
+                            <div class="star-rating">★★★★★</div>
+                            <p class="text-xs text-zinc-300 italic mb-3">"Excelente trabalho. Deixaram a pintura da minha caminhonete parecendo um espelho. Super cuidadosos com os detalhes."</p>
+                            <p class="text-[10px] font-bold text-white uppercase tracking-widest">— Rodrigo M.</p>
+                            <p class="text-[9px] text-zinc-500 uppercase mt-0.5">Proprietário de RAM 2500</p>
+                        </div>
+                        <!-- Card Avaliação 2 -->
+                        <div class="review-card">
+                            <div class="star-rating">★★★★★</div>
+                            <p class="text-xs text-zinc-300 italic mb-3">"A vitrificação que fizeram ficou impecável. A água bate e escorre na hora. Recomendo de olhos fechados o serviço VIP."</p>
+                            <p class="text-[10px] font-bold text-white uppercase tracking-widest">— Carlos T.</p>
+                            <p class="text-[9px] text-zinc-500 uppercase mt-0.5">Proprietário de Porsche Macan</p>
+                        </div>
+                        <!-- Card Avaliação 3 -->
+                        <div class="review-card">
+                            <div class="star-rating">★★★★★</div>
+                            <p class="text-xs text-zinc-300 italic mb-3">"O melhor cuidado automotivo da cidade. Não levo a minha em outro lugar. Limpeza técnica muito superior aos lava-rápidos comuns."</p>
+                            <p class="text-[10px] font-bold text-white uppercase tracking-widest">— Eduardo S.</p>
+                            <p class="text-[9px] text-zinc-500 uppercase mt-0.5">Proprietário de BMW 320i</p>
+                        </div>
                     </div>
                 </div>
 
@@ -407,207 +414,172 @@
                         <div class="receipt-card">
                             <h4 class="text-[10px] font-bold uppercase tracking-widest text-center">Protocolo de Agendamento</h4>
                             <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
+                            <div class="receipt-row"><span>Porte Base:</span><span class="receipt-val font-medium text-zinc-400" id="receipt-category">Pendente</span></div>
                             <div class="receipt-row"><span>Serviço:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
                             <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-600">+ Cera Líquida</span></div>
-                            <div class="receipt-total"><span class="font-bold text-[13px] uppercase">Total Estimado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
+                            <div class="receipt-total"><span class="font-bold text-[13px] uppercase">Total Calculado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
                         </div>
-                        
                         <div class="pt-2 pb-8">
                             <p class="text-[12px] text-zinc-400 mb-4 text-center">Para confirmar sua reserva e garantir sua vaga nesta semana, informe seu WhatsApp.</p>
-                            <!-- Input de Telefone com Validação Sensorial -->
                             <input type="tel" id="client-phone" class="glass-input hud-input transition-all duration-300" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this)">
                         </div>
                     </div>
                 </div>
 
-                <footer class="premium-footer">
-                    <div class="footer-brand text-white uppercase text-center w-full block">
-                        [NOME DA ESTÉTICA] DETAILING
+                <!-- FAQ B2C (CLIENTE FINAL) -->
+                <div class="mt-8 mb-8" id="b2c-faq-section">
+                     <h2 class="text-[10px] font-black uppercase text-zinc-500 tracking-[0.2em] mb-4 text-center md:text-left">Dúvidas Frequentes</h2>
+                     
+                     <button class="b2c-faq-btn" onclick="toggleB2CFaq('b2c-faq1')">Aceitam cartões de crédito? <span id="icon-b2c-faq1" class="text-emerald-500 transition-transform text-lg">+</span></button>
+                     <div id="b2c-faq1" class="b2c-faq-content">Sim! Aceitamos todos os cartões de crédito e débito, além de pagamentos via PIX.</div>
+
+                     <button class="b2c-faq-btn" onclick="toggleB2CFaq('b2c-faq2')">Posso deixar o carro e buscar depois? <span id="icon-b2c-faq2" class="text-emerald-500 transition-transform text-lg">+</span></button>
+                     <div id="b2c-faq2" class="b2c-faq-content">Com certeza. O nosso espaço é seguro e monitorizado. Pode deixar o seu veículo connosco pela manhã e recolhê-lo ao final do dia.</div>
+
+                     <button class="b2c-faq-btn" onclick="toggleB2CFaq('b2c-faq3')">Como funciona o Clube de Mensalistas? <span id="icon-b2c-faq3" class="text-emerald-500 transition-transform text-lg">+</span></button>
+                     <div id="b2c-faq3" class="b2c-faq-content">Oferecemos planos mensais exclusivos para clientes que desejam manter o carro sempre impecável com um valor fixo. Fale connosco no WhatsApp para verificar a disponibilidade de vagas no clube.</div>
+                </div>
+
+                <!-- RODAPÉ B2C ROBUSTO -->
+                <footer class="b2c-footer rounded-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                        <!-- Info Local -->
+                        <div>
+                            <h3 class="text-white uppercase font-black tracking-widest text-sm mb-3">[NOME DA ESTÉTICA]</h3>
+                            <p class="text-[11px] text-zinc-400 leading-relaxed">Rua Exemplo, 123 - Centro<br>[Sua Cidade] - UF, 00000-000</p>
+                        </div>
+                        <!-- Horários -->
+                        <div>
+                            <h4 class="text-[10px] text-zinc-500 uppercase font-bold tracking-widest mb-3">Horário de Funcionamento</h4>
+                            <p class="text-[11px] text-zinc-400">Segunda a Sexta: 08h00 às 18h00<br>Sábado: 08h00 às 12h00</p>
+                        </div>
+                        <!-- Contato & Sociais -->
+                        <div>
+                            <h4 class="text-[10px] text-zinc-500 uppercase font-bold tracking-widest mb-3">Atendimento</h4>
+                            <p class="text-[11px] text-zinc-400 mb-3">WhatsApp: (00) 00000-0000</p>
+                            <div class="flex gap-3 justify-center md:justify-start">
+                                <a href="#" class="bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><svg class="w-4 h-4 fill-zinc-300" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                                <a href="#" class="bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><svg class="w-4 h-4 fill-zinc-300" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                            </div>
+                        </div>
                     </div>
-                    <p class="footer-text">Centro, [Sua Cidade - UF]</p>
                 </footer>
             </div>
 
-            <!-- B2B GLID PITCH SECTION (BRANCA E DE ALTO CONTRASTE) -->
-            <div id="b2b-section" class="bg-white text-zinc-900 w-full relative z-40 border-t border-zinc-200 font-sans">
+            <!-- ⚪ SEÇÃO B2B GLID (BRANCO ABSOLUTO / SEO) -->
+            <div id="b2b-section" class="bg-white text-zinc-900 w-full relative z-40 border-t border-zinc-200 pb-16 md:pb-24 font-sans">
                 <div class="max-w-5xl mx-auto px-6 py-16 md:py-24">
-                    
-                    <!-- 1. O Hook B2B -->
                     <div class="text-center mb-14 md:mb-20">
-                        <span class="text-[11px] md:text-[13px] font-bold text-red-800 uppercase tracking-[3px] block mb-4">
-                            ALERTA DE MERCADO: O FIM DO ALCANCE ORGÂNICO.
-                        </span>
-                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight mb-6">
-                            O INSTAGRAM NÃO É O SEU ESCRITÓRIO.<br class="hidden md:block"> É UMA VITRINE ALUGADA.
-                        </h2>
-                        <p class="text-sm md:text-lg text-zinc-600 leading-relaxed font-medium max-w-3xl mx-auto">
-                            Você investe em produtos de ponta, mas o algoritmo decide quem te vê. Pagar caro por anúncios para enviar clientes a um WhatsApp desorganizado é queimar o caixa da sua empresa. A verdadeira autoridade é construída onde o cliente busca soluções definitivas: no Google. Quem não tem um terreno próprio digital está vulnerável.
-                        </p>
+                        <span class="text-[11px] md:text-[13px] font-bold text-red-800 uppercase tracking-[3px] block mb-4">HEMORRAGIA OPERACIONAL: O FIM DO TEMPO PERDIDO NO WHATSAPP.</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight mb-6">O SEU WHATSAPP NÃO É UM BALCÃO DE DÚVIDAS.<br class="hidden md:block"> É UM CANAL DE FECHAMENTO.</h2>
+                        <p class="text-sm md:text-lg text-zinc-600 leading-relaxed font-medium max-w-3xl mx-auto">Você investe nos melhores produtos, mas a sua equipa perde horas preciosas todos os dias a responder a perguntas repetitivas e a enviar "tabelas em PDF" para curiosos sem estratégia de compra. Pagar caro por anúncios no Instagram para entupir o seu telemóvel de leads não qualificados é queimar o caixa e a agilidade da sua empresa.</p>
                     </div>
 
-                    <!-- 2. A Solução (Com Injeção SEO B2B) -->
                     <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 md:p-10 mb-16 shadow-sm relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-1.5 h-full bg-blue-600"></div>
-                        <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-4 tracking-tight">A Engenharia de Conversão para o Seu Negócio.</h3>
-                        <p class="text-sm md:text-lg text-zinc-700 leading-relaxed font-medium">
-                            Ter um ativo digital focado em estética automotiva profissional é o que separa o amadorismo do detalhamento automotivo (Detailing) de alta performance. Este sistema não é apenas um site; é um aplicativo para lava-rápido e clínicas que automatiza o seu fechamento.<br><br>
-                            Ele foi projetado com otimização técnica para que serviços como polimento técnico automotivo, vitrificação de pintura e higienização interna de veículos sejam encontrados rapidamente por quem procura lavação de carros de alto padrão. Mais do que um sistema de agendamento automotivo, é a solução definitiva em gestão de estética automotiva e captação de clientes automotivos.
-                        </p>
+                        <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-4 tracking-tight">O Filtro Implacável: Automação e Triagem de Alto Padrão.</h3>
+                        <p class="text-sm md:text-lg text-zinc-700 leading-relaxed font-medium">Ter um ativo digital focado em estética automotiva profissional é o que separa o amadorismo do detalhamento automotivo (Detailing) de alta performance. Este sistema funciona como um rececionista digital implacável: ele educa o cliente, gera valor através do design e <strong>calcula o orçamento automaticamente pelo porte exato do veículo</strong>. O cliente chega ao seu WhatsApp apenas para agendar, com o serviço e o valor já aceites. Agilidade máxima para quem quer faturar sem perder tempo.</p>
                     </div>
 
-                    <!-- Depoimentos Aleatórios (Social Proof) -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-16 md:mb-20">
-                        <div class="bg-zinc-50 border border-zinc-200 p-6 rounded-2xl relative">
-                            <div class="flex text-yellow-400 mb-3 text-sm">★★★★★</div>
-                            <p class="text-[13px] md:text-sm text-zinc-700 italic mb-4">"O meu ticket médio subiu 40% na primeira semana. O cliente já chega sabendo o valor e com a cera extra selecionada na tela. Fantástico."</p>
-                            <p class="text-xs font-bold text-zinc-900 uppercase">Marcos R.</p>
-                            <p class="text-[10px] text-zinc-500">São Paulo, SP</p>
-                        </div>
-                        <div class="bg-zinc-50 border border-zinc-200 p-6 rounded-2xl relative">
-                            <div class="flex text-yellow-400 mb-3 text-sm">★★★★★</div>
-                            <p class="text-[13px] md:text-sm text-zinc-700 italic mb-4">"Parei de perder tempo a responder aos mesmos preços no WhatsApp o dia todo. Mando o link, o app vende por mim e o agendamento cai pronto."</p>
-                            <p class="text-xs font-bold text-zinc-900 uppercase">Diego A.</p>
-                            <p class="text-[10px] text-zinc-500">Curitiba, PR</p>
-                        </div>
-                        <div class="bg-zinc-50 border border-zinc-200 p-6 rounded-2xl relative">
-                            <div class="flex text-yellow-400 mb-3 text-sm">★★★★★</div>
-                            <p class="text-[13px] md:text-sm text-zinc-700 italic mb-4">"A percepção de valor mudou completamente. Hoje os clientes não comparam mais o meu preço com o lava-jato da esquina."</p>
-                            <p class="text-xs font-bold text-zinc-900 uppercase">Roberto M.</p>
-                            <p class="text-[10px] text-zinc-500">Belo Horizonte, MG</p>
-                        </div>
-                    </div>
-
-                    <!-- 3. Planos e Valores -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16">
-                        
-                        <!-- CARD 1: PERFORMANCE -->
                         <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 relative shadow-xl shadow-zinc-200/50 flex flex-col hover:border-green-500 transition-colors">
-                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-4 rounded-full whitespace-nowrap">
-                                Retenção e Suporte
-                            </div>
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-4 rounded-full">Retenção e Suporte</div>
                             <h3 class="text-lg md:text-xl font-black text-zinc-900 mb-2 uppercase tracking-tight">PLANO PERFORMANCE</h3>
-                            <p class="text-xs md:text-sm text-zinc-500 font-semibold uppercase tracking-wider mb-6">Assinatura & Manutenção</p>
-                            
                             <div class="mb-6 pb-6 border-b border-zinc-100">
-                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase tracking-wide mb-1">Setup de Adaptação: R$ 497,00 (Taxa Única)</p>
-                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase tracking-wide mt-3 mb-1">Mensalidade:</p>
-                                <p class="text-3xl md:text-4xl font-black text-green-600">R$ 147,00 <span class="text-sm md:text-lg text-zinc-500 font-medium">/ mês</span></p>
+                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase mb-1">Setup de Adaptação: R$ 697,00</p>
+                                <p class="text-3xl md:text-4xl font-black text-green-600">R$ 97,00 <span class="text-sm md:text-lg text-zinc-500 font-medium">/ mês</span></p>
                             </div>
-                            
-                            <ul class="space-y-4 mb-6 flex-grow">
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
-                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    Hospedagem ultrarrápida inclusa
-                                </li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
-                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    Seu negócio, suas cores, sua marca
-                                </li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
-                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    2 edições mensais estruturais
-                                </li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-700 font-medium">
-                                    <svg class="w-5 h-5 fill-green-500 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    Suporte técnico de vanguarda
-                                </li>
+                            <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-700">
+                                <li class="flex items-start gap-3">✅ Conexão de Domínio Próprio</li>
+                                <li class="flex items-start gap-3">✅ Hospedagem ultrarrápida inclusa</li>
+                                <li class="flex items-start gap-3">✅ Seu negócio, suas cores, sua marca</li>
+                                <li class="flex items-start gap-3">✅ 2 edições mensais estruturais</li>
+                                <li class="flex items-start gap-3">✅ Banco de Dados Automóvel Nativo</li>
                             </ul>
-                            
-                            <a href="https://wa.me/554933121788?text=Olá,%20quero%20assinar%20o%20Plano%20Performance%20da%20GLID!" target="_blank" class="block w-full bg-[#10b981] text-white text-center text-sm md:text-base font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-green-600 transition mt-auto">Assinar Performance</a>
+                            <a href="https://wa.me/554933121788?text=Olá,%20quero%20assinar%20o%20Plano%20Performance%20da%20GLID!" target="_blank" class="block w-full bg-[#10b981] text-white text-center text-sm md:text-base font-bold uppercase py-4 rounded-xl mt-auto">Assinar Performance</a>
                         </div>
-
-                        <!-- CARD 2: LICENÇA ÚNICA -->
                         <div class="bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 relative hover:border-zinc-400 transition flex flex-col">
-                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-zinc-900 text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-4 rounded-full whitespace-nowrap">
-                                Posse do Sistema
-                            </div>
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-zinc-900 text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-4 rounded-full">Posse do Sistema</div>
                             <h3 class="text-lg md:text-xl font-black text-zinc-900 mb-2 uppercase tracking-tight">LICENÇA ÚNICA</h3>
-                            <p class="text-xs md:text-sm text-zinc-500 font-semibold uppercase tracking-wider mb-6">Aquisição de Código</p>
-                            
                             <div class="mb-6 pb-6 border-b border-zinc-100">
-                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase tracking-wide mb-1">Valor:</p>
-                                <p class="text-3xl md:text-4xl font-black text-zinc-900">R$ 1.297,00</p>
-                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium uppercase tracking-wide mt-1">(Pagamento Único)</p>
+                                <p class="text-3xl md:text-4xl font-black text-zinc-900">R$ 1.497,00</p>
+                                <p class="text-[12px] md:text-[13px] text-zinc-500 font-medium mt-1">(Pagamento Único)</p>
                             </div>
-                            
-                            <ul class="space-y-4 mb-8 flex-grow">
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
-                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    Licença definitiva do sistema
-                                </li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
-                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    Sem mensalidades obrigatórias
-                                </li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
-                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    O cliente gerencia a própria hospedagem
-                                </li>
-                                <li class="flex items-start gap-3 text-[13px] md:text-sm text-zinc-600 font-medium">
-                                    <svg class="w-5 h-5 fill-zinc-400 shrink-0" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 
-                                    Tabela de atualização avulsa (A partir de R$ 97)
-                                </li>
+                            <ul class="space-y-4 mb-8 flex-grow text-[13px] md:text-sm font-medium text-zinc-600">
+                                <li class="flex items-start gap-3">✅ Licença definitiva do sistema</li>
+                                <li class="flex items-start gap-3">✅ Sem mensalidades obrigatórias</li>
+                                <li class="flex items-start gap-3">✅ O cliente gerencia a hospedagem</li>
+                                <li class="flex items-start gap-3">✅ Tabela de atualização avulsa</li>
                             </ul>
-                            
-                            <a href="https://wa.me/554933121788?text=Olá,%20quero%20adquirir%20a%20Licença%20Única%20da%20GLID!" target="_blank" class="block w-full bg-zinc-900 text-white text-center text-sm md:text-base font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-black transition mt-auto">Adquirir Licença</a>
+                            <a href="https://wa.me/554933121788?text=Olá,%20quero%20adquirir%20a%20Licença%20Única%20da%20GLID!" target="_blank" class="block w-full bg-zinc-900 text-white text-center text-sm md:text-base font-bold uppercase py-4 rounded-xl mt-auto">Adquirir Licença</a>
                         </div>
                     </div>
 
-                    <!-- 4. Call to Action B2B Final -->
+                    <div class="max-w-3xl mx-auto mb-16">
+                        <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-8 text-center uppercase tracking-tight">Perguntas Frequentes (FAQ)</h3>
+                        <div class="space-y-4">
+                            <div class="border border-zinc-200 rounded-xl overflow-hidden bg-white">
+                                <button class="w-full px-5 md:px-6 py-5 text-left font-bold text-zinc-800 flex justify-between items-center focus:outline-none hover:bg-zinc-50 transition" onclick="toggleFaq('faq1')">
+                                    <span class="pr-4 text-[13px] md:text-base">Preciso ter conhecimento em tecnologia ou programação?</span>
+                                    <span id="icon-faq1" class="text-blue-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
+                                </button>
+                                <div id="faq1" class="hidden px-5 md:px-6 pb-5 text-[13px] md:text-sm text-zinc-600 leading-relaxed border-t border-zinc-100 pt-4">
+                                    Absolutamente não. A GLID entrega a plataforma 100% configurada, testada e pronta para uso. Você só precisa copiar o link que vamos fornecer e colar na sua bio do Instagram, campanhas do Meta Ads ou enviar no WhatsApp dos seus clientes.
+                                </div>
+                            </div>
+                            <div class="border border-zinc-200 rounded-xl overflow-hidden bg-white">
+                                <button class="w-full px-5 md:px-6 py-5 text-left font-bold text-zinc-800 flex justify-between items-center focus:outline-none hover:bg-zinc-50 transition" onclick="toggleFaq('faq2')">
+                                    <span class="pr-4 text-[13px] md:text-base">O que a "Taxa de Setup" do Plano Performance inclui?</span>
+                                    <span id="icon-faq2" class="text-blue-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
+                                </button>
+                                <div id="faq2" class="hidden px-5 md:px-6 pb-5 text-[13px] md:text-sm text-zinc-600 leading-relaxed border-t border-zinc-100 pt-4">
+                                    A taxa de adaptação cobre o trabalho da nossa equipe de engenharia em pegar o código fonte deste aplicativo e adaptá-lo para o seu negócio. Isso inclui: inserir sua Logomarca, adaptar as cores para a paleta da sua empresa, cadastrar os nomes dos seus serviços e os seus preços, além de configurar a inteligência do sistema para enviar as reservas direto para o seu número de WhatsApp.
+                                </div>
+                            </div>
+                            <div class="border border-zinc-200 rounded-xl overflow-hidden bg-white">
+                                <button class="w-full px-5 md:px-6 py-5 text-left font-bold text-zinc-800 flex justify-between items-center focus:outline-none hover:bg-zinc-50 transition" onclick="toggleFaq('faq3')">
+                                    <span class="pr-4 text-[13px] md:text-base">Isso substitui o meu site atual?</span>
+                                    <span id="icon-faq3" class="text-blue-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
+                                </button>
+                                <div id="faq3" class="hidden px-5 md:px-6 pb-5 text-[13px] md:text-sm text-zinc-600 leading-relaxed border-t border-zinc-100 pt-4">
+                                    Sim e com vantagens. Sites tradicionais (Wix, WordPress) são lentos e parecem "panfletos digitais". Este sistema é um "Web App", focado unicamente em converter o visitante em lead (agendamento). Ele carrega instantaneamente, não exige downloads e mantém a atenção do usuário presa até ao final do orçamento.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="text-center pt-8 border-t border-zinc-100">
-                        <p class="text-lg md:text-xl font-bold text-zinc-900 mb-8 tracking-tight">
-                            Pare de perder orçamentos. Assuma o controle digital da sua operação.
-                        </p>
-                        <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assumir%20o%20controle%20digital%20da%20minha%20empresa%20com%20a%20GLID." target="_blank" class="inline-flex justify-center items-center gap-3 bg-[#25D366] text-white px-8 md:px-12 py-5 rounded-2xl font-black text-[13px] md:text-[15px] uppercase tracking-widest shadow-lg shadow-green-500/30 hover:-translate-y-1 transition transform w-full md:w-auto">
+                        <p class="text-lg md:text-xl font-bold text-zinc-900 mb-8 tracking-tight">Pare de perder orçamentos. Assuma o controle digital da sua operação.</p>
+                        <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assumir%20o%20controle%20digital%20da%20minha%20empresa%20com%20a%20GLID." target="_blank" class="inline-flex justify-center items-center gap-3 bg-[#25D366] text-white px-8 md:px-12 py-5 rounded-2xl font-black text-[13px] md:text-[15px] uppercase tracking-widest shadow-lg shadow-green-500/30 transition transform hover:-translate-y-1 w-full md:w-auto">
                             <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
                             Falar com a GLID no WhatsApp
                         </a>
                     </div>
                 </div>
 
-                <!-- 🚨 MINI RODAPÉ B2B (GL.ID) DE ALTA AUTORIDADE 🚨 -->
                 <div class="bg-zinc-950 py-10 md:py-12 px-6 border-t-4 border-blue-600">
                     <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-                        
-                        <!-- Marca e Direitos -->
                         <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                            <img src="https://glid.carrd.co/assets/images/image03.png?v=a8738403" alt="GLID Tecnologia" class="h-10 md:h-12 mb-3 object-contain">
+                            <img src="https://glid.carrd.co/assets/images/image03.png?v=a8738403" alt="GLID" class="h-10 md:h-12 mb-3 object-contain">
                             <p class="text-[10px] md:text-xs text-zinc-500 uppercase tracking-widest font-semibold mb-1">Tecnologia em Conversão B2B</p>
                             <p class="text-[10px] text-zinc-600">© 2026 GLID. Todos os direitos reservados.</p>
                         </div>
-                        
-                        <!-- Selos de Autoridade (Trust Badges) -->
                         <div class="flex items-center gap-4 md:gap-6">
-                            <!-- Selo 1: Segurança -->
                             <div class="flex flex-col items-center group">
-                                <div class="bg-zinc-900 p-3 rounded-full border border-zinc-800 mb-2 group-hover:border-blue-500 transition-colors">
-                                    <svg class="w-4 h-4 fill-zinc-400 group-hover:fill-blue-500 transition-colors" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-                                </div>
-                                <span class="text-[8px] text-zinc-500 uppercase tracking-widest font-bold text-center">Criptografia<br>SSL 256-bit</span>
+                                <div class="bg-zinc-900 p-3 rounded-full border border-zinc-800 mb-2 group-hover:border-blue-500 transition-colors"><svg class="w-4 h-4 fill-zinc-400 group-hover:fill-blue-500 transition-colors" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+                                <span class="text-[8px] text-zinc-500 uppercase tracking-widest font-bold text-center">SSL 256-bit</span>
                             </div>
-                            <!-- Selo 2: Cloud -->
                             <div class="flex flex-col items-center group">
-                                <div class="bg-zinc-900 p-3 rounded-full border border-zinc-800 mb-2 group-hover:border-blue-500 transition-colors">
-                                    <svg class="w-4 h-4 fill-zinc-400 group-hover:fill-blue-500 transition-colors" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-                                </div>
-                                <span class="text-[8px] text-zinc-500 uppercase tracking-widest font-bold text-center">Infraestrutura<br>Cloud CDN</span>
-                            </div>
-                            <!-- Selo 3: Código Proprietário -->
-                            <div class="flex flex-col items-center group">
-                                <div class="bg-zinc-900 p-3 rounded-full border border-zinc-800 mb-2 group-hover:border-blue-500 transition-colors">
-                                    <svg class="w-4 h-4 fill-zinc-400 group-hover:fill-blue-500 transition-colors" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-                                </div>
-                                <span class="text-[8px] text-zinc-500 uppercase tracking-widest font-bold text-center">Código<br>Autoral</span>
+                                <div class="bg-zinc-900 p-3 rounded-full border border-zinc-800 mb-2 group-hover:border-blue-500 transition-colors"><svg class="w-4 h-4 fill-zinc-400 group-hover:fill-blue-500 transition-colors" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg></div>
+                                <span class="text-[8px] text-zinc-500 uppercase tracking-widest font-bold text-center">Cloud CDN</span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- BARRA CHECKOUT COM UPSELL -->
+        <!-- BARRA CTA FLUTUANTE B2C -->
         <div id="floating-cta" class="fixed-bottom-cta">
             <div id="bottom-upsell-zone" class="bottom-upsell-zone">
                 <div>
@@ -618,7 +590,7 @@
             </div>
             <div class="cta-row-flex">
                 <div class="cart-info">
-                    <span class="cart-label">Total Investimento</span>
+                    <span class="cart-label">Total Estimado</span>
                     <span class="cart-total" id="cta-total">R$ 0</span>
                 </div>
                 <button id="btn-continue-flow" class="btn-continue" disabled onclick="handleNextStep()">
@@ -636,11 +608,174 @@
         const bgAmbient = document.getElementById('bg-ambient');
         const hintText = document.getElementById('hold-hint');
         
-        let funnelState = { step: 1, baseService: "", basePrice: 0, hasUpsell: false, upsellPrice: 50, brand: "", model: "", phoneReady: false };
+        // 🟢 BANCO DE DADOS NATIVO DE CARROS 🟢
+        // Mapeamento hiper completo para o mercado brasileiro
+        const carDatabase = {
+            "Aston Martin": {"DB11": 1, "DBS": 1, "DBX": 1.5, "Valkyrie": 1, "Vantage": 1},
+            "Audi": {"A1": 1, "A3": 1, "A4": 1, "A5": 1, "A6": 1, "A7": 1, "A8": 1, "e-tron": 1.3, "e-tron GT": 1, "Q3": 1.3, "Q5": 1.3, "Q7": 1.5, "Q8": 1.5, "R8": 1, "RS Q3": 1.3, "RS Q8": 1.5, "RS3": 1, "RS4": 1, "RS5": 1, "RS6": 1.3, "RS7": 1, "TT": 1, "TTS": 1},
+            "BMW": {"M2": 1, "M3": 1, "M4": 1, "M5": 1, "M8": 1, "Série 1": 1, "Série 2": 1, "Série 3": 1, "Série 4": 1, "Série 5": 1, "Série 6": 1, "Série 7": 1, "Série 8": 1, "X1": 1.3, "X2": 1.3, "X3": 1.3, "X4": 1.3, "X5": 1.5, "X6": 1.5, "X7": 1.5, "Z4": 1, "i3": 1, "i4": 1, "i8": 1, "iX": 1.5, "iX3": 1.3},
+            "BYD": {"Dolphin": 1.3, "Dolphin Mini": 1, "Han": 1, "King": 1, "Seagull": 1, "Seal": 1, "Song Plus": 1.3, "Tan": 1.5, "Yuan Plus": 1.3},
+            "CAOA Chery": {"Arrizo 5": 1, "Arrizo 6": 1, "Tiggo 2": 1.3, "Tiggo 3x": 1.3, "Tiggo 5x": 1.3, "Tiggo 7": 1.3, "Tiggo 8": 1.5, "iCar": 1},
+            "Chevrolet": {"Camaro": 1, "Celta": 1, "Classic": 1, "Cobalt": 1.3, "Corvette": 1, "Cruze": 1, "Equinox": 1.3, "Joy": 1, "Montana": 1.3, "Omega": 1, "Onix": 1, "Onix Plus": 1, "Prisma": 1, "S10": 1.5, "Silverado": 1.5, "Sonic": 1, "Spin": 1.3, "Tracker": 1.3, "Trailblazer": 1.5, "Vectra": 1, "Zafira": 1.3},
+            "Citroën": {"Aircross": 1.3, "Berlingo": 1.5, "C3": 1, "C3 Aircross": 1.3, "C4 Cactus": 1.3, "C4 Lounge": 1, "C5 Aircross": 1.3, "Jumpy": 1.5},
+            "Dodge": {"Challenger": 1, "Charger": 1, "Durango": 1.5, "Journey": 1.5},
+            "Ferrari": {"296 GTB": 1, "458": 1, "488": 1, "812 Superfast": 1, "California": 1, "F12": 1, "F8 Tributo": 1, "Portofino": 1, "Purosangue": 1.5, "Roma": 1, "SF90": 1},
+            "Fiat": {"500": 1, "Argo": 1, "Bravo": 1, "Cronos": 1, "Doblo": 1.5, "Ducato": 1.5, "Fastback": 1.3, "Fiorino": 1.3, "Grand Siena": 1, "Idea": 1.3, "Linea": 1, "Mobi": 1, "Palio": 1, "Pulse": 1.3, "Punto": 1, "Siena": 1, "Strada": 1.3, "Titano": 1.5, "Toro": 1.5, "Uno": 1},
+            "Ford": {"Bronco": 1.3, "EcoSport": 1.3, "Edge": 1.5, "Escort": 1, "Explorer": 1.5, "F-150": 1.5, "Fiesta": 1, "Focus": 1, "Fusion": 1, "Ka": 1, "Maverick": 1.5, "Mustang": 1, "Ranger": 1.5, "Territory": 1.3, "Transit": 1.5},
+            "Honda": {"Accord": 1, "CR-V": 1.5, "City": 1, "Civic": 1, "Fit": 1, "HR-V": 1.3, "WR-V": 1.3, "ZR-V": 1.3},
+            "Hyundai": {"Azera": 1, "Creta": 1.3, "Elantra": 1, "HB20": 1, "HB20S": 1, "HR": 1.5, "Santa Fe": 1.5, "Sonata": 1, "Tucson": 1.3, "Veloster": 1, "Veracruz": 1.5, "i30": 1, "ix35": 1.3},
+            "Jaguar": {"E-Pace": 1.3, "F-Pace": 1.5, "F-Type": 1, "I-Pace": 1.3, "XE": 1, "XF": 1, "XJ": 1},
+            "Jeep": {"Cherokee": 1.5, "Commander": 1.5, "Compass": 1.3, "Gladiator": 1.5, "Grand Cherokee": 1.5, "Renegade": 1.3, "Wrangler": 1.5},
+            "Kia": {"Bongo": 1.5, "Cadenza": 1, "Carnival": 1.5, "Cerato": 1, "Mohave": 1.5, "Niro": 1.3, "Optima": 1, "Picanto": 1, "Seltos": 1.3, "Sorento": 1.5, "Soul": 1, "Sportage": 1.3, "Stinger": 1},
+            "Land Rover": {"Defender": 1.5, "Discovery": 1.5, "Discovery Sport": 1.3, "Evoque": 1.3, "Freelander": 1.3, "Range Rover": 1.5, "Range Rover Sport": 1.5, "Velar": 1.3},
+            "Lexus": {"CT": 1.3, "ES": 1, "IS": 1, "LS": 1, "NX": 1.3, "RX": 1.5, "UX": 1.3},
+            "Maserati": {"Ghibli": 1, "GranTurismo": 1, "Grecale": 1.3, "Levante": 1.5, "Quattroporte": 1},
+            "Mercedes-Benz": {"AMG GT": 1, "CLA": 1, "CLS": 1, "Classe A": 1, "Classe C": 1, "Classe E": 1, "Classe G": 1.5, "Classe S": 1, "GLA": 1.3, "GLB": 1.3, "GLC": 1.3, "GLE": 1.5, "GLS": 1.5, "Sprinter": 1.5, "Vito": 1.5},
+            "Mini": {"Clubman": 1.3, "Cooper": 1, "Countryman": 1.3},
+            "Mitsubishi": {"ASX": 1.3, "Eclipse Cross": 1.3, "L200 Triton": 1.5, "Lancer": 1, "Outlander": 1.5, "Pajero": 1.5, "Pajero Dakar": 1.5, "Pajero Full": 1.5, "Pajero TR4": 1.3},
+            "Nissan": {"Frontier": 1.5, "Kicks": 1.3, "Leaf": 1, "Livina": 1.3, "March": 1, "Sentra": 1, "Tiida": 1, "Versa": 1},
+            "Peugeot": {"2008": 1.3, "206": 1, "207": 1, "208": 1, "3008": 1.3, "307": 1, "308": 1, "5008": 1.5, "Boxer": 1.5, "Expert": 1.5, "Partner": 1.5},
+            "Porsche": {"718 Boxster": 1, "718 Cayman": 1, "911": 1, "Cayenne": 1.5, "Macan": 1.3, "Panamera": 1, "Taycan": 1},
+            "RAM": {"1500": 1.5, "2500": 1.5, "3500": 1.5, "Classic": 1.5, "Rampage": 1.5},
+            "Renault": {"Captur": 1.3, "Clio": 1, "Duster": 1.3, "Fluence": 1, "Kangoo": 1.5, "Kwid": 1, "Logan": 1, "Master": 1.5, "Megane": 1, "Oroch": 1.3, "Sandero": 1, "Stepway": 1.3, "Zoe": 1},
+            "Subaru": {"Forester": 1.5, "Impreza": 1, "Legacy": 1, "Outback": 1.5, "WRX": 1, "XV": 1.3},
+            "Suzuki": {"Grand Vitara": 1.3, "Jimny": 1.3, "S-Cross": 1.3, "Swift": 1, "Vitara": 1.3},
+            "Toyota": {"Bandeirante": 1.5, "Camry": 1, "Corolla": 1, "Corolla Cross": 1.3, "Etios": 1, "Hilux": 1.5, "Prius": 1, "RAV4": 1.5, "SW4": 1.5, "Yaris": 1},
+            "Volkswagen": {"Amarok": 1.5, "Beetle": 1, "Bora": 1, "CrossFox": 1.3, "Fox": 1, "Gol": 1, "Golf": 1, "Jetta": 1, "Kombi": 1.5, "Nivus": 1.3, "Parati": 1, "Passat": 1, "Polo": 1, "Santana": 1, "Saveiro": 1.3, "SpaceFox": 1.3, "T-Cross": 1.3, "Taos": 1.3, "Tiguan": 1.5, "Touareg": 1.5, "Up!": 1, "Virtus": 1, "Voyage": 1},
+            "Volvo": {"C30": 1, "C40": 1.3, "EX30": 1.3, "S60": 1, "S90": 1, "V40": 1, "V60": 1.3, "XC40": 1.3, "XC60": 1.3, "XC90": 1.5},
+            "Outra Marca": {"Outro (Digitar Manualmente)": "manual"}
+        };
 
-        function getTotalPrice() { return funnelState.basePrice + (funnelState.hasUpsell ? funnelState.upsellPrice : 0); }
+        let funnelState = { 
+            step: 1, 
+            brand: "", 
+            model: "", 
+            categoryName: "",
+            categoryMultiplier: 1, 
+            baseService: "", 
+            basePrice: 0, 
+            hasUpsell: false, 
+            upsellPrice: 50, 
+            phoneReady: false 
+        };
+
+        function getTotalPrice() { 
+            let baseCalculada = funnelState.basePrice * funnelState.categoryMultiplier;
+            return Math.round(baseCalculada) + (funnelState.hasUpsell ? funnelState.upsellPrice : 0); 
+        }
         
-        // VALIDAÇÃO SENSORIAL: O "QI DO TELEFONE"
+        // 🟢 INICIALIZAÇÃO DA BASE DE DADOS 🟢
+        document.addEventListener("DOMContentLoaded", () => {
+            const brandSelect = document.getElementById('native-brand');
+            
+            // Popula as opções do Select Nativamente ordenando as marcas
+            Object.keys(carDatabase).sort().forEach(brand => {
+                let option = document.createElement("option");
+                option.value = brand; option.text = brand;
+                brandSelect.appendChild(option);
+            });
+
+            // Observer de Performance
+            const b2bSection = document.getElementById('b2b-section');
+            const floatingCta = document.getElementById('floating-cta');
+            const scrollContainer = document.getElementById('scroll-container'); 
+            
+            if (b2bSection && floatingCta && scrollContainer) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) floatingCta.classList.add('hide-cta');
+                        else floatingCta.classList.remove('hide-cta');
+                    });
+                }, { root: scrollContainer, threshold: 0.05 }); 
+                observer.observe(b2bSection);
+            }
+        });
+
+        // 🟢 SELEÇÃO DO CARRO -> MODELO -> PREÇO 🟢
+        function handleNativeBrand() {
+            funnelState.brand = document.getElementById('native-brand').value;
+            const modelSelect = document.getElementById('native-model');
+            const fallbackSection = document.getElementById('fallback-size');
+            
+            // Reseta opções
+            modelSelect.innerHTML = '<option value="" disabled selected>Modelo...</option>';
+            funnelState.model = ""; funnelState.categoryName = ""; funnelState.categoryMultiplier = 1;
+            
+            if (funnelState.brand === "Outra Marca") {
+                modelSelect.style.display = 'none';
+                fallbackSection.style.display = 'block';
+            } else {
+                fallbackSection.style.display = 'none';
+                modelSelect.style.display = 'block';
+                
+                // Popula Modelos correspondentes
+                Object.keys(carDatabase[funnelState.brand]).sort().forEach(model => {
+                    let option = document.createElement("option");
+                    option.value = model; option.text = model;
+                    modelSelect.appendChild(option);
+                });
+            }
+            updateWizardUI();
+        }
+
+        function handleNativeModel() {
+            funnelState.model = document.getElementById('native-model').value;
+            const mult = carDatabase[funnelState.brand][funnelState.model];
+            
+            if (mult === 1) funnelState.categoryName = "Pequeno/Sedan";
+            else if (mult === 1.3) funnelState.categoryName = "Médio/SUV";
+            else if (mult >= 1.5) funnelState.categoryName = "Grande/Pickup";
+
+            funnelState.categoryMultiplier = mult;
+            updateDynamicPrices();
+            setTimeout(() => { editStep(2); }, 400); 
+        }
+
+        function selectFallbackCategory(catName, multiplier, btnId) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('selected'));
+            document.getElementById(btnId).classList.add('selected');
+            
+            funnelState.categoryName = catName;
+            funnelState.categoryMultiplier = multiplier;
+            updateDynamicPrices();
+            
+            if (funnelState.model.length >= 2) setTimeout(() => { editStep(2); }, 400);
+            updateWizardUI();
+        }
+
+        function handleFallbackInput() {
+            funnelState.model = document.getElementById('fallback-input').value;
+            if (funnelState.model.length >= 2 && funnelState.categoryMultiplier > 1) {
+                setTimeout(() => { editStep(2); }, 500);
+            }
+            updateWizardUI();
+        }
+
+        // 🟢 CÁLCULO MÁGICO DE PREÇO NO FRONT-END 🟢
+        function updateDynamicPrices() {
+            const mult = funnelState.categoryMultiplier || 1;
+            document.getElementById('price-val-express').innerText = 'R$ ' + Math.round(60 * mult);
+            document.getElementById('price-val-detail').innerText = 'R$ ' + Math.round(90 * mult);
+            document.getElementById('price-val-cera').innerText = 'R$ ' + Math.round(150 * mult);
+            document.getElementById('price-val-vip').innerText = 'R$ ' + Math.round(250 * mult);
+            document.getElementById('price-val-vitri').innerText = 'R$ ' + Math.round(800 * mult);
+        }
+
+        function selectUpgrade(el, mode, price) {
+            document.querySelectorAll('.glass-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            funnelState.baseService = mode; funnelState.basePrice = price; 
+            const bUpsell = document.getElementById('bottom-upsell-zone');
+            
+            if (price === 60 || price === 90) bUpsell.style.display = 'flex'; 
+            else { bUpsell.style.display = 'none'; document.getElementById('upsell-toggle-bottom').checked = false; funnelState.hasUpsell = false; }
+            
+            if(navigator.vibrate) navigator.vibrate(20);
+            setTimeout(() => { editStep(3); }, 400); 
+        }
+
+        function toggleUpsell(checkbox) { funnelState.hasUpsell = checkbox.checked; updateWizardUI(); }
+
         function maskPhone(input) { 
             let val = input.value.replace(/\D/g, ''); 
             if (val.length > 11) val = val.slice(0, 11); 
@@ -651,39 +786,14 @@
             input.classList.remove('shake-animation');
             
             if (val.length === 15) {
-                input.classList.remove('input-error', 'pulse-attention');
-                input.classList.add('input-success');
+                input.classList.remove('input-error'); input.classList.add('input-success');
                 funnelState.phoneReady = true;
             } else {
-                input.classList.remove('input-success');
-                funnelState.phoneReady = false;
-                
-                if (val.length > 13 && val.length < 15) {
-                    input.classList.add('input-error');
-                    void input.offsetWidth; 
-                    input.classList.add('shake-animation');
-                } else {
-                    input.classList.remove('input-error');
-                }
+                input.classList.remove('input-success'); funnelState.phoneReady = false;
+                if (val.length > 13) { input.classList.add('input-error'); void input.offsetWidth; input.classList.add('shake-animation'); } 
+                else { input.classList.remove('input-error'); }
             }
             updateBottomCTA();
-        }
-
-        // ESCONDE O CARRINHO SE LER A SESSÃO B2B
-        function handleScroll() {
-            const scrollContainer = document.getElementById('scroll-container');
-            const b2bSection = document.getElementById('b2b-section');
-            const floatingCta = document.getElementById('floating-cta');
-            
-            if (b2bSection && floatingCta) {
-                const b2bRect = b2bSection.getBoundingClientRect();
-                // Se a seção B2B estiver visível na tela
-                if (b2bRect.top < window.innerHeight && b2bRect.bottom >= 0) {
-                    floatingCta.classList.add('hide-cta');
-                } else {
-                    floatingCta.classList.remove('hide-cta');
-                }
-            }
         }
 
         function startIgnition(e) {
@@ -691,7 +801,7 @@
             funnelState.startTime = Date.now(); btn.classList.add('active'); ring.style.strokeDashoffset = "0";
             hintText.innerText = "INICIANDO..."; hintText.style.color = "var(--vermelho-ignicao)"; hintText.style.opacity = "1";
             funnelState.midTimer = setTimeout(() => { bgAmbient.style.opacity = "1"; carStageBg.classList.add('idle-shake'); }, 300);
-            funnelState.timer = setTimeout(ignite, 600); 
+            funnelState.timer = setTimeout(ignite, 400); 
         }
 
         function stopIgnition(e) {
@@ -701,7 +811,7 @@
             btn.classList.remove('active'); ring.style.transition = "none"; ring.style.strokeDashoffset = "408";
             setTimeout(() => ring.style.transition = "stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1)", 50);
             carStageBg.classList.remove('idle-shake');
-            if (duration > 0 && duration < 600) {
+            if (duration > 0 && duration < 400) {
                 document.body.classList.add('accessory-on'); bgAmbient.style.opacity = "1";
                 hintText.innerText = "ALERTA: SEGURE O BOTÃO"; hintText.classList.remove('alert-hint'); void hintText.offsetWidth; hintText.classList.add('alert-hint');
             } else {
@@ -714,54 +824,29 @@
             sound.volume = 0.8; sound.play().catch(e => console.log("Áudio bloqueado."));
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
             hintText.style.opacity = "0";
+            
             setTimeout(() => {
                 const landing = document.getElementById('landing-view');
+                landing.style.transition = "opacity 0.3s ease"; 
                 landing.style.opacity = "0"; 
                 landing.style.pointerEvents = "none";
+                
                 setTimeout(() => {
-                    landing.style.display = "none"; // Remove do DOM visual para evitar bugs de z-index no iOS
-                    document.getElementById('experience-view').classList.add('show-view');
+                    landing.style.display = "none"; 
+                    const expView = document.getElementById('experience-view');
+                    expView.style.display = "flex"; expView.style.opacity = "1"; expView.classList.add('show-view');
+                    
                     setTimeout(() => {
-                        document.getElementById('experience-view').style.opacity = "0";
+                        expView.style.transition = "opacity 0.2s ease"; expView.style.opacity = "0";
                         setTimeout(() => {
-                            document.getElementById('experience-view').style.display = "none";
-                            document.getElementById('app-view').style.display = "flex";
-                            void document.getElementById('app-view').offsetWidth;
-                            document.getElementById('app-view').style.opacity = "1";
-                            setTimeout(() => { document.getElementById('floating-cta').classList.add('visible'); updateBottomCTA();}, 500);
-                        }, 300);
-                    }, 600); 
-                }, 600);
-            }, 600); 
-        }
-
-        function selectUpgrade(el, mode, price) {
-            document.querySelectorAll('.glass-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
-            funnelState.baseService = mode; funnelState.basePrice = price;
-            const bUpsell = document.getElementById('bottom-upsell-zone');
-            if (price === 60 || price === 90) { bUpsell.style.display = 'flex'; } 
-            else { bUpsell.style.display = 'none'; document.getElementById('upsell-toggle-bottom').checked = false; funnelState.hasUpsell = false; }
-            if(navigator.vibrate) navigator.vibrate(20);
-            if(price !== 60 && price !== 90) { setTimeout(() => { funnelState.step = 2; updateWizardUI(); }, 400); } 
-            else { updateWizardUI(); }
-        }
-
-        function toggleUpsell(checkbox) { funnelState.hasUpsell = checkbox.checked; updateWizardUI(); }
-
-        function handleBrandSelect() {
-            const sel = document.getElementById('brand-select');
-            funnelState.brand = sel.value;
-            if(funnelState.brand === "") return;
-            document.getElementById('model-input').style.display = 'block';
-            document.getElementById('model-input').focus();
-            updateWizardUI();
-        }
-
-        function handleModelInput() {
-            funnelState.model = document.getElementById('model-input').value;
-            if (funnelState.brand !== "" && funnelState.model.length >= 2) { setTimeout(() => { funnelState.step = 3; updateWizardUI(); }, 500); }
-            updateWizardUI();
+                            expView.style.display = "none";
+                            const appView = document.getElementById('app-view');
+                            appView.style.display = "flex"; void appView.offsetWidth; appView.style.opacity = "1";
+                            setTimeout(() => { document.getElementById('floating-cta').classList.add('visible'); updateBottomCTA(); }, 150);
+                        }, 200);
+                    }, 400); 
+                }, 300);
+            }, 150); 
         }
 
         function editStep(step) { funnelState.step = step; updateWizardUI(); }
@@ -769,28 +854,40 @@
         function updateWizardUI() {
             const isFirstStep = funnelState.step === 1;
             document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
-            document.getElementById('authority-slider').style.display = isFirstStep ? 'flex' : 'none';
-            document.getElementById('gallery-section').style.display = isFirstStep ? 'block' : 'none';
+            
+            // Oculta tudo que não for o formulário no Step 1
+            document.getElementById('gallery-section').style.display = isFirstStep ? 'none' : 'block';
+            document.getElementById('social-proof-section').style.display = isFirstStep ? 'none' : 'block';
 
+            // STEP 1 (CARRO)
             const s1 = document.getElementById('step-1-section');
             s1.classList.toggle('active-step', funnelState.step === 1);
             if(funnelState.step > 1) s1.classList.add('completed');
+            else s1.classList.remove('completed');
             document.getElementById('step-1-content').style.display = funnelState.step === 1 ? 'block' : 'none';
             document.getElementById('edit-1').style.display = funnelState.step > 1 ? 'block' : 'none';
             
+            // STEP 2 (SERVIÇOS)
             const s2 = document.getElementById('step-2-section');
             s2.classList.toggle('active-step', funnelState.step === 2);
-            document.getElementById('step-2-section').style.display = funnelState.step >= 2 ? 'block' : 'none';
+            s2.style.display = funnelState.step >= 2 ? 'block' : 'none';
+            if(funnelState.step > 2) s2.classList.add('completed');
+            else s2.classList.remove('completed');
             document.getElementById('step-2-content').style.display = funnelState.step === 2 ? 'block' : 'none';
             document.getElementById('edit-2').style.display = funnelState.step > 2 ? 'block' : 'none';
 
+            // STEP 3 (RECIBO)
             const s3 = document.getElementById('step-3-section');
             s3.classList.toggle('active-step', funnelState.step === 3);
-            document.getElementById('step-3-section').style.display = funnelState.step === 3 ? 'block' : 'none';
+            s3.style.display = funnelState.step === 3 ? 'block' : 'none';
             document.getElementById('step-3-content').style.display = funnelState.step === 3 ? 'block' : 'none';
             
-            document.getElementById('receipt-car').innerText = `${funnelState.brand} ${funnelState.model}`;
-            document.getElementById('receipt-base').innerText = funnelState.baseService;
+            // Atualização Visual do Recibo
+            let carInfo = "-";
+            if(funnelState.brand && funnelState.model) carInfo = `${funnelState.brand} ${funnelState.model}`;
+            document.getElementById('receipt-car').innerText = carInfo;
+            document.getElementById('receipt-category').innerText = funnelState.categoryName || '-';
+            document.getElementById('receipt-base').innerText = funnelState.baseService || '-';
             document.getElementById('receipt-upsell-row').style.display = funnelState.hasUpsell ? 'flex' : 'none';
             document.getElementById('receipt-total').innerText = `R$ ${getTotalPrice()}`;
 
@@ -799,13 +896,10 @@
                 setTimeout(() => { 
                     const phoneInput = document.getElementById('client-phone');
                     phoneInput.classList.add('pulse-attention'); 
-                    
-                    // Rolagem segura apenas até o campo do telefone para evitar pular para a área B2B
-                    phoneInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    document.getElementById('step-3-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 100);
             }
             updateBottomCTA();
-            handleScroll(); // Verifica scroll ao mudar de página
         }
 
         function updateBottomCTA() {
@@ -814,10 +908,10 @@
             btnCTA.classList.remove('btn-success'); btnCTA.disabled = true;
 
             if (funnelState.step === 1) {
-                if (funnelState.basePrice === 0) btnCTA.querySelector('.btn-text').innerText = "Selecionar";
-                else { btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Continuar"; }
+                if (!funnelState.brand || funnelState.model.length < 2 || !funnelState.categoryName) btnCTA.querySelector('.btn-text').innerText = "Informe Veículo";
+                else { btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Ver Protocolos"; }
             } else if (funnelState.step === 2) {
-                if (!funnelState.brand || funnelState.model.length < 2) btnCTA.querySelector('.btn-text').innerText = "Informe Veículo";
+                if (funnelState.basePrice === 0) btnCTA.querySelector('.btn-text').innerText = "Selecionar";
                 else { btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Ver Resumo"; }
             } else if (funnelState.step === 3) {
                 if (!funnelState.phoneReady) btnCTA.querySelector('.btn-text').innerText = "Falta Contato";
@@ -826,7 +920,7 @@
         }
 
         function handleNextStep() {
-            if (funnelState.step < 3) { funnelState.step++; updateWizardUI(); } 
+            if (funnelState.step < 3) { editStep(funnelState.step + 1); } 
             else if (funnelState.step === 3 && funnelState.phoneReady) finalizeBooking();
         }
 
@@ -835,11 +929,24 @@
             const btnCTA = document.getElementById('btn-continue-flow');
             btnCTA.classList.add('processing');
             
-            // WHATSAPP DA ESTÉTICA CLIENTE (USANDO O SEU NÚMERO COMO PADRÃO B2B)
             const numWhatsApp = "554933121788"; 
             
-            const msg = `⚡ *RESERVA VIP | [NOME DA ESTÉTICA]* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model}\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
+            const msg = `⚡ *RESERVA VIP | [NOME DA ESTÉTICA]* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR ESTIMADO:* R$ ${getTotalPrice()}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
             setTimeout(() => { window.open(`https://wa.me/${numWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank'); btnCTA.classList.remove('processing'); }, 800);
+        }
+
+        // FAQ
+        function toggleFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (content.classList.contains('hidden')) { content.classList.remove('hidden'); icon.style.transform = 'rotate(45deg)'; } 
+            else { content.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; }
+        }
+        function toggleB2CFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (content.style.display === 'block') { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; } 
+            else { content.style.display = 'block'; icon.style.transform = 'rotate(45deg)'; }
         }
     </script>
 </body>
