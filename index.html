@@ -2,281 +2,241 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#050505">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Black Car | Higienização Personalizada Chapecó</title>
+    <title>Black Car | Estúdio de Detalhamento Automotivo</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f" as="image">
     <link rel="preload" href="https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f" as="image">
 
-    <meta name="description" content="Estética Automotiva de Alta Performance em Chapecó. Higienização Personalizada e Detalhamento.">
-    
     <!-- Meta Pixel Code -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'SEU_PIXEL_ID_AQUI'); // COLOQUE O SEU ID AQUI
-      fbq('track', 'PageView');
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'SEU_PIXEL_ID_AQUI'); fbq('track', 'PageView');
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Share+Tech+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Share+Tech+Mono&display=swap');
 
         :root {
-            --vermelho-ferrari: #e60000;
-            --vermelho-escuro: #8B0000;
-            --preto-fosco: #000000;
-            --chumbo: #111111;
+            --accent: #06b6d4; 
+            --accent-glow: rgba(6, 182, 212, 0.4);
+            --bg-base: #050505;
+            --bg-panel: #0a0a0c;
+            --bg-card: #121214;
+            --vermelho-ignicao: #ef4444;
         }
 
-        body {
-            background-color: var(--preto-fosco);
-            color: white;
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-            height: 100dvh;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-base); color: white; margin: 0; font-family: 'Inter', sans-serif; overflow: hidden; overscroll-behavior-y: none; }
         .tech-text { font-family: 'Share Tech Mono', monospace; }
 
-        /* --- TELA DE IGNIÇÃO (LANDING) --- */
-        #landing-view {
-            position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column;
-            justify-content: space-between; align-items: center; padding: 50px 20px;
-            transition: all 0.5s cubic-bezier(0.85, 0, 0.15, 1);
-        }
-
-        #car-stage-bg { position: absolute; inset: 0; z-index: 0; }
-
-        .car-bg {
-            position: absolute; inset: 0; background-size: cover; background-position: 50% 50%;
-            opacity: 0; transition: opacity 0.5s ease; transform: scale(1.1);
-        }
-
+        /* --- TELA 1: IGNIÇÃO --- */
+        #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 6vh 20px 8vh 20px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); background-color: var(--bg-base); }
+        .car-bg { position: absolute; inset: 0; background-size: cover; background-position: center 60%; opacity: 0; transition: opacity 0.5s ease; transform: scale(1.05); }
         #bg-off { background-image: url('https://carrosest.carrd.co/assets/images/image01.jpg?v=0259a93f'); opacity: 1; z-index: 1; }
         #bg-ambient { background-image: url('https://carrosest.carrd.co/assets/images/image02.jpg?v=0259a93f'); z-index: 2; mix-blend-mode: lighten; } 
         #bg-on { background-image: url('https://carrosest.carrd.co/assets/images/image03.jpg?v=0259a93f'); z-index: 4; mix-blend-mode: lighten; }
-
-        #underglow {
-            position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
-            background: radial-gradient(ellipse at bottom, rgba(255,0,0,0.5) 0%, transparent 65%);
-            opacity: 0.2; mix-blend-mode: screen; z-index: 3; pointer-events: none;
-            animation: breathe-neon 3s infinite alternate ease-in-out; transition: opacity 0.4s;
-        }
-
-        @keyframes breathe-neon { 0% { opacity: 0.1; transform: scaleY(0.9); } 100% { opacity: 0.4; transform: scaleY(1.1); } }
-        .hover-glow-active #underglow { opacity: 0.8 !important; animation: none; }
-        .accessory-on #underglow { opacity: 0.8 !important; animation: none; }
-
-        .vignette {
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 45%, transparent 20%, rgba(0,0,0,0.9) 75%, rgba(0,0,0,1) 100%);
-            z-index: 5; pointer-events: none;
-        }
-
-        .idle-shake { animation: idle-rumble-ani 0.08s infinite linear; }
+        #underglow { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: radial-gradient(ellipse at bottom, rgba(6,182,212,0.25) 0%, transparent 70%); opacity: 0; z-index: 3; pointer-events: none; transition: opacity 0.4s ease; }
+        .accessory-on #underglow { opacity: 1; animation: breathe-glow 3s infinite alternate ease-in-out; }
+        @keyframes breathe-glow { 0% { opacity: 0.5; } 100% { opacity: 1; } }
+        .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,1) 100%); z-index: 5; pointer-events: none; }
+        .idle-shake { animation: idle-rumble-ani 0.06s infinite linear; }
         @keyframes idle-rumble-ani { 0% { transform: translate(0, 0) } 25% { transform: translate(-1px, 1px) } 50% { transform: translate(1px, 1px) } 75% { transform: translate(1px, -1px) } 100% { transform: translate(0, 0) } }
 
-        /* --- BOTÃO START-STOP --- */
-        .engine-btn-ring { position: relative; width: 160px; height: 160px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; z-index: 100; }
-        .progress-circle { position: absolute; transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 1.5s linear; filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8)); }
+        .engine-btn-ring { position: relative; width: 140px; height: 140px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; z-index: 100; margin-top: auto; margin-bottom: 2vh; }
+        @media (min-width: 768px) { .engine-btn-ring { width: 180px; height: 180px; } }
+        .progress-circle { position: absolute; transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)); }
+        .engine-button { width: 85px; height: 85px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #0a0a0a); box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 8px 16px rgba(0,0,0,0.8); border: 1px solid #2a2a2a; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; }
+        @media (min-width: 768px) { .engine-button { width: 110px; height: 110px; } }
+        .engine-button.active { transform: scale(0.92); background: linear-gradient(145deg, #110000, #330000); border-color: var(--vermelho-ignicao); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
+        .btn-lbl-top, .btn-lbl-bot { font-size: 8px; font-weight: 800; color: #555; }
+        .btn-lbl-mid { font-size: 16px; font-weight: 900; color: #ccc; letter-spacing: 0.1em; margin: 2px 0; text-transform: uppercase; transition: all 0.3s; }
+        .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho-ignicao); }
+        .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ignicao); }
+
+        @keyframes pulse-alert { 0%, 100% { transform: scale(1); color: #9ca3af; } 50% { transform: scale(1.05); color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); } }
+        .alert-hint { animation: pulse-alert 0.4s ease-in-out 3; font-weight: 800 !important; color: var(--accent) !important; }
+
+        /* --- TELA 2: PRE-LOADER (Mais Rápido) --- */
+        #experience-view { position: fixed; inset: 0; z-index: 100; background: var(--bg-base); display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .stars-container { display: flex; gap: 8px; margin-bottom: 24px; }
+        .star-icon { width: 20px; height: 20px; fill: #fff; opacity: 0; transform: translateY(15px); }
+        .show-view .star-icon { animation: luxFadeUp 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+        .show-view .star-icon:nth-child(1) { animation-delay: 0.05s; } .show-view .star-icon:nth-child(2) { animation-delay: 0.1s; } .show-view .star-icon:nth-child(3) { animation-delay: 0.15s; } .show-view .star-icon:nth-child(4) { animation-delay: 0.2s; } .show-view .star-icon:nth-child(5) { animation-delay: 0.25s; }
+        @keyframes luxFadeUp { to { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); } }
+        .lux-line { width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin-bottom: 16px; opacity: 0; }
+        .show-view .lux-line { animation: expandLine 0.4s ease forwards; animation-delay: 0.2s; }
+        @keyframes expandLine { 50% { opacity: 1; } 100% { width: 150px; opacity: 1; } }
+        .status-text { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; color: #888; text-transform: uppercase; opacity: 0; transform: translateY(5px); }
+        .show-view .status-text { animation: fadeInTextLux 0.3s ease forwards; animation-delay: 0.3s; }
+
+        /* --- TELA 3: APP VIEW --- */
+        #app-view { display: none; opacity: 0; height: 100dvh; width: 100vw; background: var(--bg-base); transition: opacity 0.4s ease; flex-direction: column; overflow: hidden; }
         
-        .engine-button {
-            width: 100px; height: 100px; flex-shrink: 0; aspect-ratio: 1 / 1; border-radius: 50%; background: linear-gradient(145deg, #1a1a1a, #050505);
-            box-shadow: inset 0 4px 6px rgba(255,255,255,0.1), inset 0 -4px 10px rgba(0,0,0,0.9), 0 10px 20px rgba(0,0,0,0.6), 0 0 0 4px #141414, 0 0 0 5px #0a0a0a;
-            border: 1px solid #333; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            cursor: pointer; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); animation: breathe-btn 3s infinite alternate ease-in-out; z-index: 10;
+        .top-navbar { height: 55px; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; background: rgba(5,5,5,0.98); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 50; backdrop-filter: blur(12px); }
+        @media (min-width: 768px) { .top-navbar { height: 65px; padding: 0 24px; } }
+
+        .app-layout { display: flex; flex-direction: column; height: calc(100dvh - 55px); }
+        @media (min-width: 768px) { .app-layout { flex-direction: row; height: calc(100dvh - 65px); } }
+
+        /* PALCO VISUAL OTIMIZADO */
+        .stage-panel { 
+            position: relative; width: 100%; flex-shrink: 0;
+            height: 90px; min-height: 90px;
+            background: var(--bg-panel);
+            display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;
         }
+        @media (min-width: 768px) { .stage-panel { width: 40%; height: 100%; min-height: auto; border-bottom: none; border-right: 1px solid rgba(255,255,255,0.05); } }
 
-        @keyframes breathe-btn { 0% { border-color: #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.1), inset 0 -4px 10px rgba(0,0,0,0.9), 0 10px 20px rgba(0,0,0,0.6), 0 0 0 4px #141414, 0 0 0 5px #0a0a0a; } 100% { border-color: #500; box-shadow: inset 0 4px 6px rgba(255,255,255,0.1), inset 0 -4px 10px rgba(0,0,0,0.9), 0 10px 20px rgba(255,0,0,0.15), 0 0 0 4px #1a0505, 0 0 0 5px #0a0a0a; } }
+        /* ESCUDO CSS E RADAR ATIVO */
+        .radar-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.15; }
+        .radar-sweep { position: absolute; inset: -50%; background: conic-gradient(from 0deg, transparent 70%, rgba(6, 182, 212, 0.15) 100%); animation: sweep 6s linear infinite; pointer-events: none; opacity: 0.5; }
+        @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .btn-lbl-top, .btn-lbl-bot { font-size: 8px; font-weight: 900; color: #444; transition: all 0.4s; }
-        .btn-lbl-mid { font-size: 15px; font-weight: 900; color: #888; letter-spacing: 0.1em; margin: 2px 0; transition: all 0.4s; text-transform: uppercase; }
-
-        .engine-button.hover-state { animation: none; background: linear-gradient(145deg, #220505, #0a0000); box-shadow: inset 0 4px 6px rgba(255,255,255,0.1), inset 0 -4px 10px rgba(0,0,0,0.9), 0 10px 25px rgba(255,0,0,0.2), 0 0 0 4px #2a0505, 0 0 0 5px #0a0a0a; border-color: #4a0a0a; }
-        .engine-button.hover-state .btn-lbl-mid { color: var(--vermelho-ferrari); text-shadow: 0 0 10px rgba(255,0,0,0.6), 0 0 20px rgba(255,0,0,0.4); }
-        .engine-button.hover-state .btn-lbl-top, .engine-button.hover-state .btn-lbl-bot { color: #888; }
-        .engine-button.active { animation: none; transform: scale(0.92); background: linear-gradient(145deg, #110000, #330000); box-shadow: inset 0 8px 15px rgba(0,0,0,0.9), 0 0 30px rgba(255,0,0,0.4), 0 0 0 4px #3a0000; border-color: var(--vermelho-ferrari); }
-        .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 15px #fff, 0 0 30px var(--vermelho-ferrari); }
-        .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ferrari); }
-
-        /* --- PRE-LOADER (5 ESTRELAS) --- */
-        #experience-view {
-            position: fixed; inset: 0; z-index: 100; background: #000;
-            display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease;
+        .brand-tech-badge {
+            background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 6px; padding: 6px 14px; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+            opacity: 0; transform: translateY(10px); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 15;
         }
-        .stars-container { display: flex; gap: 12px; margin-bottom: 20px; }
-        .star-icon { width: 18px; height: 18px; fill: #fff; opacity: 0; transform: translateY(10px); filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.2)); }
+        @media (min-width: 768px) { .brand-tech-badge { padding: 12px 24px; border-radius: 8px; gap: 16px; box-shadow: 0 0 25px var(--accent-glow); } }
+        .brand-tech-badge.active { opacity: 1; transform: translateY(0); }
         
-        .show-view .star-icon { animation: luxFadeUp 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
-        .show-view .star-icon:nth-child(1) { animation-delay: 0.05s; } .show-view .star-icon:nth-child(2) { animation-delay: 0.1s; }
-        .show-view .star-icon:nth-child(3) { animation-delay: 0.15s; } .show-view .star-icon:nth-child(4) { animation-delay: 0.2s; }
-        .show-view .star-icon:nth-child(5) { animation-delay: 0.25s; }
-        @keyframes luxFadeUp { to { opacity: 1; transform: translateY(0); } }
+        .badge-initial { font-size: 18px; font-weight: 900; color: var(--accent); line-height: 1; text-shadow: 0 0 8px rgba(6, 182, 212, 0.5); }
+        .badge-divider { width: 1px; height: 18px; background: rgba(6, 182, 212, 0.3); }
+        .badge-name { font-size: 10px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
+
+        #laser { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--accent); box-shadow: 0 0 20px 4px var(--accent); z-index: 20; opacity: 0; pointer-events: none; }
+        @keyframes laser-scan { 0% { left: -10%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: 110%; opacity: 0; } }
+
+        /* PAINEL DE CONTROLE (FUNIL) */
+        .control-panel { 
+            width: 100%; height: 100%; flex-grow: 1; overflow-y: auto; scroll-behavior: smooth; 
+            padding: 16px 16px 140px 16px; 
+            background: var(--bg-base);
+        }
+        @media (min-width: 768px) { .control-panel { width: 60%; padding: 40px; } }
+
+        /* --- HERO BANNER C/ PROVA SOCIAL --- */
+        .app-hero-banner {
+            background: linear-gradient(135deg, #083344 0%, var(--bg-card) 100%);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 12px; padding: 16px; margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.02);
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        @media (min-width: 768px) { .app-hero-banner { padding: 24px; border-radius: 16px; margin-bottom: 28px; } }
+        .app-hero-banner::after { content: ''; position: absolute; top: -50%; right: -10%; width: 100px; height: 100px; background: var(--accent); filter: blur(50px); opacity: 0.15; }
         
-        .lux-line { width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--vermelho-ferrari), transparent); margin-bottom: 15px; opacity: 0; }
-        .show-view .lux-line { animation: expandLine 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards; animation-delay: 0.3s; }
-        @keyframes expandLine { 50% { opacity: 1; } 100% { width: 120px; opacity: 1; } }
+        .trust-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); margin-top: 10px; width: fit-content; }
+        .trust-stars { color: #fbbf24; font-size: 10px; letter-spacing: 1px; }
+
+        .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #6b7280; margin-bottom: 12px; font-weight: 800; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
+        .section-title::after { content: ''; flex-grow: 1; height: 1px; background: rgba(255,255,255,0.05); transition: background 0.3s; }
+        .section-title.active { color: var(--accent); }
+        .section-title.active::after { background: var(--accent-glow); }
+
+        .hud-select { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); color: white; width: 100%; padding: 14px; font-size: 15px; font-weight: 500; border-radius: 10px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 12px; cursor: pointer; }
+        .hud-select:focus { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+        .hud-select:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .upgrade-card { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; padding: 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s ease-in-out; position: relative; }
+        .upgrade-card:hover { border-color: rgba(6, 182, 212, 0.4); background: #18181b; }
+        .upgrade-card.selected { background: rgba(6, 182, 212, 0.04); border-color: var(--accent); box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08); transform: scale(1.01); }
         
-        .status-text { font-size: 9px; letter-spacing: 0.5em; color: #555; text-transform: uppercase; opacity: 0; transform: translateY(5px); }
-        .show-view .status-text { animation: fadeInTextLux 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards; animation-delay: 0.4s; }
-        @keyframes fadeInTextLux { to { opacity: 1; transform: translateY(0); color: #fff; } }
-
-        /* --- ANIMAÇÃO DE ALERTA PARA O BOTÃO START --- */
-        @keyframes pulse-alert {
-            0%, 100% { transform: scale(1); color: #a1a1aa; text-shadow: none; }
-            50% { transform: scale(1.1); color: var(--vermelho-ferrari); text-shadow: 0 0 10px rgba(255,0,0,0.8); }
-        }
-        .alert-hint { animation: pulse-alert 0.3s ease-in-out 3; font-weight: 900 !important; color: var(--vermelho-ferrari) !important; }
-
-        /* --- HUD GAMIFICADO --- */
-        #hud-view {
-            display: none; opacity: 0; height: 100dvh;
-            background: #000 url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80') no-repeat center center;
-            background-size: cover; transition: opacity 0.5s ease; position: relative;
-        }
-
-        .scanlines { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8)); pointer-events: none; z-index: 1; }
-
-        .hud-container { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; overflow-y: auto; scroll-behavior: smooth; padding-bottom: 80px; }
-
-        .hud-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); background: #050505; flex-shrink: 0; }
-
-        .upgrade-btn {
-            background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid #333; 
-            padding: 12px 15px; color: #a1a1aa; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;
-            cursor: pointer; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; 
-            border-radius: 8px; position: relative; margin-bottom: 12px;
-        }
-
-        .upgrade-btn:hover { background: rgba(255, 0, 0, 0.05); border-color: rgba(255, 0, 0, 0.2); color: #fff; }
-
-        .upgrade-btn.selected {
-            background: linear-gradient(90deg, rgba(255,0,0,0.15), transparent); border-left: 4px solid var(--vermelho-ferrari);
-            border-top: 1px solid var(--vermelho-ferrari); border-bottom: 1px solid var(--vermelho-ferrari); color: #fff;
-            box-shadow: 0 4px 15px rgba(255,0,0,0.1); transform: translateX(5px);
-        }
-
-        .stat-bar { width: 30px; height: 4px; background: rgba(255,255,255,0.1); display: flex; gap: 2px; border-radius: 2px; overflow: hidden; }
-        .stat-fill { height: 100%; background: #555; transition: all 0.3s; }
-        .upgrade-btn.selected .stat-fill { background: var(--vermelho-ferrari); box-shadow: 0 0 5px var(--vermelho-ferrari); }
-
-        .price-tag { font-family: 'Share Tech Mono', monospace; font-size: 11px; padding: 3px 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: #fff; }
-        .upgrade-btn.selected .price-tag { background: var(--vermelho-ferrari); color: white; border-color: transparent; }
-
-        .car-stage { flex-grow: 1; display: flex; justify-content: center; align-items: center; position: relative; background: radial-gradient(circle at top right, #18181b, #000000); min-height: 250px; padding: 2rem; }
-        .car-silhouette { width: 100%; max-width: 700px; height: auto; max-height: clamp(180px, 35vh, 400px); object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.9)); transition: all 0.5s ease; mask-image: linear-gradient(to bottom, black 85%, transparent 100%); }
-
-        .hud-select { background: rgba(15,15,15,0.9); border: 1px solid rgba(255,255,255,0.1); color: white; width: 100%; padding: 12px 15px; font-size: 14px; font-weight: 700; appearance: none; outline: none; border-radius: 8px; transition: all 0.2s; cursor: pointer; }
-        .hud-select:focus { border-color: var(--vermelho-ferrari); background: rgba(255,0,0,0.02); }
-        .hud-select option { background: #111; color: white; }
-
-        .hud-cta { background: var(--vermelho-escuro); border: none; color: white; padding: 14px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 14px; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; border-radius: 8px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-        .hud-cta:hover { background: var(--vermelho-ferrari); box-shadow: 0 0 20px rgba(255,0,0,0.3); transform: translateY(-2px); }
-
-        .hud-cta-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #ccc; padding: 12px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 0.1em; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; border-radius: 8px; }
-        .hud-cta-secondary:hover { background: rgba(255,255,255,0.05); border-color: white; color: white; }
-
-        .ai-comms { background: rgba(10,10,10,0.8); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--vermelho-ferrari); padding: 10px 15px; margin-bottom: 15px; border-radius: 4px; }
-        .ai-typing { overflow: hidden; border-right: 2px solid var(--vermelho-ferrari); white-space: nowrap; margin: 0; animation: typing 1s steps(40, end), blink-caret .75s step-end infinite; }
-        .typing-reset { animation: none; }
+        .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .card-category { font-size: 9px; font-weight: 800; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; }
+        .upgrade-card.selected .card-category { color: var(--accent); }
         
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--vermelho-ferrari); } }
-
-        .show-view { display: block !important; opacity: 1 !important; }
-        .fade-out-up { transform: translateY(-50px); opacity: 0; pointer-events: none; }
+        .price-badge { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 13px; color: #fff; background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 6px; }
+        .upgrade-card.selected .price-badge { background: var(--accent); color: #000; }
+        .card-title { font-size: 15px; font-weight: 900; color: #fff; margin-bottom: 4px; letter-spacing: -0.5px; }
+        .upgrade-card.selected .card-title { color: var(--accent); }
+        .card-desc { font-size: 11px; color: #8b929e; line-height: 1.5; font-weight: 400; }
+        .tag-recomendado { position: absolute; top: -8px; right: 16px; background: var(--accent); color: #000; font-size: 9px; font-weight: 900; padding: 4px 12px; border-radius: 12px; text-transform: uppercase; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4); }
         
-        /* Nova animação de Scanner */
-        @keyframes laser-scan {
-            0% { left: 5%; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { left: 95%; opacity: 0; }
-        }
-        .scanner-laser {
-            position: absolute; top: 10%; bottom: 10%; width: 2px;
-            background: var(--vermelho-ferrari); box-shadow: 0 0 15px 5px rgba(255,0,0,0.6);
-            z-index: 20; opacity: 0; pointer-events: none;
-        }
-        
-        .hud-footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 15px; background: #050505; border-top: 1px solid rgba(255,255,255,0.05); z-index: 50; display: flex; flex-direction: column; md:flex-row; justify-content: space-between; align-items: center; gap: 8px; }
-        .footer-item { display: flex; align-items: center; gap: 6px; color: #a1a1aa; transition: color 0.3s; text-decoration: none; }
-        .footer-item:hover { color: #fff; }
-        .footer-icon { width: 14px; height: 14px; fill: currentColor; }
+        /* Captura de Leads & Escassez */
+        .urgency-badge { color: #ef4444; font-size: 11px; font-weight: 700; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+        .hud-input { background: rgba(0,0,0,0.6); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 100%; padding: 16px 14px; font-size: 16px; border-radius: 10px; outline: none; margin-bottom: 12px; text-align: center; font-weight: 500; letter-spacing: 1px; transition: all 0.3s; }
+        .hud-input:focus { border-color: var(--accent); background: rgba(6, 182, 212, 0.05); box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); }
+        .hud-input::placeholder { color: #52525b; font-weight: 400; letter-spacing: normal; }
 
-        .float-whatsapp {
-            position: fixed; bottom: 80px; right: 20px; z-index: 1000;
-            width: 50px; height: 50px; background-color: #25D366;
-            border-radius: 50px; text-align: center; font-size: 30px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.5); opacity: 0; transform: translateY(20px);
-            transition: all 0.5s ease; pointer-events: none;
-            display: flex; justify-content: center; align-items: center; text-decoration: none;
+        .hud-cta { background: var(--accent); color: #000; padding: 18px; text-align: center; font-weight: 900; font-size: 14px; border-radius: 10px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; width: 100%; border: none; display: flex; justify-content: center; gap: 10px; align-items: center; letter-spacing: 0.5px; }
+        .hud-cta:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6, 182, 212, 0.25); }
+        .hud-cta:disabled { background: #27272a; color: #52525b; cursor: not-allowed; box-shadow: none; transform: none; }
+
+        .step-section { opacity: 0.25; pointer-events: none; transition: all 0.5s ease; filter: grayscale(100%); }
+        .step-section.unlocked { opacity: 1; pointer-events: auto; filter: grayscale(0%); }
+
+        /* STICKY BAR MOBILE */
+        .mobile-sticky-bar { 
+            position: fixed; bottom: 0; left: 0; right: 0; background: rgba(5,5,5,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255,255,255,0.08); padding: 14px 16px; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            padding-bottom: calc(14px + env(safe-area-inset-bottom));
         }
-        .float-whatsapp.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .float-whatsapp svg { width: 30px; height: 30px; fill: white; }
+        @media (min-width: 768px) { .mobile-sticky-bar { display: none; } }
+        .mobile-sticky-bar.visible { transform: translateY(0); }
+
+        .spinner { border: 2px solid rgba(0,0,0,0.2); border-top: 2px solid #000; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .processing .spinner { display: inline-block; }
     </style>
 </head>
 <body>
 
-    <!-- Som Clássico: O arranque progressivo original que você aprovou -->
     <audio id="ignition-sound" preload="auto">
         <source src="https://assets.mixkit.co/active_storage/sfx/2554/2554-preview.mp3" type="audio/mpeg">
     </audio>
 
     <!-- 1. TELA DE IGNIÇÃO -->
     <div id="landing-view">
-        <div id="car-stage-bg" class="absolute inset-0 z-0">
-            <div id="bg-off" class="car-bg"></div>
+        <div id="car-stage-bg" class="absolute inset-0">
+            <div id="bg-off" class="car-bg" style="opacity:1"></div>
             <div id="bg-ambient" class="car-bg"></div>
             <div id="underglow"></div>
             <div id="bg-on" class="car-bg"></div>
         </div>
-        
         <div class="vignette"></div>
 
-        <div class="text-center z-20 pt-10 pointer-events-none">
-            <span class="tracking-[1.2em] text-zinc-400 uppercase block mb-4" style="font-size: clamp(8px, 2.5vw, 10px);">Chapecó | SC</span>
-            <h1 class="font-light tracking-tighter uppercase leading-tight" style="font-size: clamp(1.8rem, 8vw, 3rem);">
-                HIGIENIZAÇÃO PERSONALIZADA <br>
-                <span class="font-black text-white">BLACK CAR</span>
+        <div class="text-center z-20 pt-8 md:pt-12 pointer-events-none px-2 w-full">
+            <div class="flex justify-center items-center gap-1.5 mb-3 opacity-80">
+                <svg class="w-3 h-3 fill-[var(--accent)]" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span class="tracking-[0.3em] text-zinc-300 uppercase text-[9px] md:text-[10px] font-bold">Centro, Chapecó | SC</span>
+            </div>
+            
+            <h1 class="font-black tracking-tighter uppercase leading-[0.9] text-[2.4rem] md:text-[4.5rem] drop-shadow-xl text-white mb-2">
+                BLACK CAR
             </h1>
-            <div class="w-12 h-[2px] bg-red-600 mx-auto mt-6 rounded-full"></div>
+            <h2 class="font-light text-[1.1rem] md:text-[2rem] text-zinc-300 tracking-[0.2em] uppercase leading-none">Detailing Studio</h2>
+            
+            <p class="mt-5 text-[13px] md:text-[16px] text-zinc-300 font-normal max-w-sm mx-auto leading-relaxed">
+                Estúdio de detalhamento automotivo. Elevamos a estética do seu veículo ao estado de arte.
+            </p>
         </div>
 
         <div class="engine-btn-ring">
-            <svg width="150" height="150" class="absolute pointer-events-none" style="z-index: 50;">
-                <circle cx="75" cy="75" r="65" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"></circle>
-                <circle id="ring" class="progress-circle" cx="75" cy="75" r="65" fill="none" stroke="#e60000" stroke-width="4"></circle>
-            </svg>
-            
-            <div id="btn" class="engine-button" 
-                 onmouseenter="startHover()" onmouseleave="stopHover()"
-                 onmousedown="startIgnition(event)" onmouseup="stopIgnition(event)" 
-                 ontouchstart="startIgnition(event)" ontouchend="stopIgnition(event)" ontouchcancel="stopIgnition(event)">
-                <span class="btn-lbl-top">ENGINE</span>
+            <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 text-[var(--accent)] text-[9px] font-black tracking-[0.1em] uppercase whitespace-nowrap animate-pulse">
+                Segure para Iniciar
+            </div>
+            <svg width="100%" height="100%" class="absolute pointer-events-none"><circle cx="50%" cy="50%" r="42%" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"></circle><circle id="ring" class="progress-circle" cx="50%" cy="50%" r="42%" fill="none" stroke="#ef4444" stroke-width="4"></circle></svg>
+            <div id="btn" class="engine-button" onmousedown="startIgnition(event)" onmouseup="stopIgnition(event)" ontouchstart="startIgnition(event)" ontouchend="stopIgnition(event)">
+                <span class="btn-lbl-top">SYSTEM</span>
                 <span class="btn-lbl-mid">Start</span>
-                <span class="btn-lbl-bot">STOP</span>
+                <span class="btn-lbl-bot">POWER</span>
             </div>
         </div>
 
-        <p id="hold-hint" class="text-[10px] tracking-[0.3em] text-zinc-400 uppercase mb-6 z-20 pointer-events-none transition-all">Mantenha pressionado para iniciar</p>
+        <p id="hold-hint" class="text-[11px] md:text-[12px] tracking-[0.1em] text-zinc-500 mb-2 z-20 font-bold opacity-0 transition-opacity duration-300">Mensagem</p>
     </div>
 
-    <!-- 2. PRE-LOADER -->
+    <!-- 2. PRE-LOADER (ACELERADO) -->
     <div id="experience-view">
         <div class="stars-container">
             <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
@@ -286,493 +246,420 @@
             <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
         </div>
         <div class="lux-line"></div>
-        <p class="status-text text-zinc-400">HIGIENIZAÇÃO PERSONALIZADA // ACESSO CONCEDIDO</p>
+        <p class="status-text text-zinc-400">ACESSANDO PROTOCOLO...</p>
     </div>
 
-    <!-- 3. HUD GAMIFICADO -->
-    <div id="hud-view">
-        <div class="scanlines"></div>
-        <div class="hud-container max-w-7xl mx-auto w-full" id="scroll-container">
-            
-            <header class="hud-header">
-                <div>
-                    <h1 class="font-black text-lg md:text-2xl tracking-tighter uppercase text-white">BLACK CAR <span class="text-red-600">DETAIL</span></h1>
-                </div>
-                <div class="text-right">
-                    <p class="tech-text text-[9px] md:text-[10px] text-zinc-500 tracking-widest">SYS.ONLINE // CHAPECÓ_SC</p>
-                </div>
-            </header>
-
-            <div class="flex-grow flex flex-col md:flex-row relative">
-                
-                <!-- MENU LATERAL -->
-                <aside class="w-full md:w-1/3 border-b md:border-b-0 md:border-r border-white/5 p-4 md:p-6 flex flex-col justify-start md:justify-center z-20 bg-black/80 backdrop-blur-md">
-                    
-                    <div class="ai-comms">
-                        <p class="tech-text text-red-500 text-[10px] mb-1">>> ESPECIALISTA BLACK CAR</p>
-                        <div class="h-4">
-                            <p id="ai-text" class="tech-text text-zinc-200 text-[12px] md:text-[13px] ai-typing inline-block">Sistemas prontos. O que vamos fazer hoje?</p>
-                        </div>
-                    </div>
-
-                    <p class="tech-text text-[12px] text-zinc-500 tracking-widest mb-3 mt-2">SELECIONE O MODO DE PERFORMANCE</p>
-                    
-                    <button class="upgrade-btn" onclick="selectUpgrade(this, 'Modo Express (Ducha Externa + Tapetes Dianteiros)')">
-                        <div class="flex flex-col w-full text-left">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-[9px] tracking-widest opacity-70 text-red-500 font-bold">MODO 01 // MAIS VENDIDO</span>
-                                <span class="price-tag">A PARTIR DE R$ 90</span>
-                            </div>
-                            <div class="flex justify-between items-center mb-1">
-                                <div class="text-[14px] text-zinc-100 font-bold">EXPRESS <span class="text-[10px] ml-1 text-zinc-400 font-normal">(DUCHA RÁPIDA)</span></div>
-                                <div class="stat-bar ml-2"><div class="stat-fill" style="width: 100%"></div><div class="stat-fill" style="width: 0%"></div><div class="stat-fill" style="width: 0%"></div></div>
-                            </div>
-                            <p class="text-[11px] text-zinc-400 leading-snug normal-case">Ducha externa completa, aspiração interna, limpeza básica de painel e revitalização de pneus.</p>
-                        </div>
-                    </button>
-
-                    <button class="upgrade-btn border-red-900/50" style="border-left-color: #e60000;" onclick="selectUpgrade(this, 'Modo Street (Lavagem Técnica + Banho de Cera)')">
-                        <div class="absolute -top-2.5 right-4 bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase animate-pulse shadow-[0_0_8px_rgba(255,0,0,0.6)]">⭐ Mais Recomendado</div>
-                        <div class="flex flex-col w-full text-left pt-1">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-[9px] tracking-widest opacity-60">MODO 02 // O QUERIDINHO</span>
-                                <span class="price-tag">A PARTIR DE R$ 150</span>
-                            </div>
-                            <div class="flex justify-between items-center mb-1">
-                                <div class="text-[14px] text-zinc-100 font-bold">STREET + CERA</div>
-                                <div class="stat-bar ml-2"><div class="stat-fill" style="width: 100%"></div><div class="stat-fill" style="width: 50%"></div><div class="stat-fill" style="width: 0%"></div></div>
-                            </div>
-                            <p class="text-[11px] text-zinc-400 leading-snug normal-case">Lavagem técnica nas caixas de roda, <strong class="text-red-400 font-bold">banho de cera hidrorepelente</strong> e acabamento premium.</p>
-                        </div>
-                    </button>
-
-                    <button class="upgrade-btn" onclick="selectUpgrade(this, 'Modo Cockpit (Higienização Interna Profunda)')">
-                        <div class="flex flex-col w-full text-left">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-[9px] tracking-widest opacity-60">MODO 03 // CONFORTO VIP</span>
-                                <span class="price-tag">A PARTIR DE R$ 250</span>
-                            </div>
-                            <div class="flex justify-between items-center mb-1">
-                                <div class="text-[14px] text-zinc-100 font-bold">COCKPIT <span class="text-[10px] ml-1 text-zinc-400 font-normal">(ESTÉTICA INTERNA)</span></div>
-                                <div class="stat-bar ml-2"><div class="stat-fill" style="width: 100%"></div><div class="stat-fill" style="width: 80%"></div><div class="stat-fill" style="width: 0%"></div></div>
-                            </div>
-                            <p class="text-[11px] text-zinc-400 leading-snug normal-case">Foco no interior. Higienização profunda de bancos, hidratação de plásticos/couro e remoção de odores.</p>
-                        </div>
-                    </button>
-
-                    <button class="upgrade-btn" onclick="selectUpgrade(this, 'Modo Showroom (Polimento e Proteção de Pintura)')">
-                        <div class="flex flex-col w-full text-left">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-[9px] tracking-widest opacity-60">MODO 04 // ALTA PERFORMANCE</span>
-                                <span class="price-tag">A PARTIR DE R$ 800</span>
-                            </div>
-                            <div class="flex justify-between items-center mb-1">
-                                <div class="text-[14px] text-zinc-100 font-bold">SHOWROOM <span class="text-[10px] ml-1 text-zinc-400 font-normal">(POLIMENTO/PROTEÇÃO)</span></div>
-                                <div class="stat-bar ml-2"><div class="stat-fill" style="width: 100%"></div><div class="stat-fill" style="width: 100%"></div><div class="stat-fill" style="width: 100%"></div></div>
-                            </div>
-                            <p class="text-[11px] text-zinc-400 leading-snug normal-case">Correção de pintura (remoção de riscos) e proteção com vitrificador. Estado de concessionária.</p>
-                        </div>
-                    </button>
-                </aside>
-
-                <!-- CONFIGURADOR PRINCIPAL -->
-                <main id="car-stage-target" class="w-full md:w-2/3 flex flex-col z-10 relative">
-                    <div class="car-stage relative p-4 md:p-8 overflow-hidden">
-                        <!-- Miras do HUD -->
-                        <div id="corner-tl" class="absolute top-4 left-4 md:top-8 md:left-8 w-8 h-8 md:w-12 md:h-12 border-t-2 border-l-2 border-zinc-700 transition-all duration-500 z-20"></div>
-                        <div id="corner-tr" class="absolute top-4 right-4 md:top-8 md:right-8 w-8 h-8 md:w-12 md:h-12 border-t-2 border-r-2 border-zinc-700 transition-all duration-500 z-20"></div>
-                        <div id="corner-bl" class="absolute bottom-4 left-4 md:bottom-8 md:left-8 w-8 h-8 md:w-12 md:h-12 border-b-2 border-l-2 border-zinc-700 transition-all duration-500 z-20"></div>
-                        <div id="corner-br" class="absolute bottom-4 right-4 md:bottom-8 md:right-8 w-8 h-8 md:w-12 md:h-12 border-b-2 border-r-2 border-zinc-700 transition-all duration-500 z-20"></div>
-                        
-                        <div id="target-lock" class="tech-text text-red-500 text-[12px] absolute top-6 left-8 md:top-10 md:left-14 opacity-0 transition-opacity tracking-widest z-30 flex items-center gap-2">
-                            <span class="animate-pulse block w-2 h-2 bg-red-500 rounded-full"></span>
-                            <span>ALVO_DETECTADO: <span id="lbl-cat" class="text-zinc-200">...</span></span>
-                        </div>
-
-                        <!-- Feixe de Laser do Scanner -->
-                        <div id="laser" class="scanner-laser"></div>
-
-                        <!-- 1. Chassi Genérico (O Blueprint que é escaneado) -->
-                        <img id="car-blueprint" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=800" class="car-silhouette opacity-30 grayscale mix-blend-screen transition-all duration-700 absolute" alt="Chassi Base">
-                        
-                        <!-- 2. O Carro Real (Aparece de forma majestosa após o Scanner) -->
-                        <img id="car-real" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" class="car-silhouette opacity-0 transition-all duration-1000 z-10" alt="Veículo Real do Cliente">
-                    </div>
-
-                    <div class="p-4 md:p-6 bg-black/90 backdrop-blur-xl border-t border-white/5 mb-8">
-                        <p class="tech-text text-[12px] text-zinc-400 tracking-widest mb-3">ESPECIFICAÇÕES DA MÁQUINA</p>
-                        <div class="flex flex-col md:flex-row gap-3 mb-4">
-                            <div class="w-full">
-                                <select id="brand-select" class="hud-select">
-                                    <option value="">A CARREGAR FABRICANTES...</option>
-                                </select>
-                            </div>
-                            <div class="w-full">
-                                <select id="model-select" class="hud-select opacity-50 pointer-events-none" disabled>
-                                    <option value="">AGUARDANDO FABRICANTE...</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- PAINEL DE AÇÃO -->
-                        <div id="action-panel" class="hidden opacity-0 transition-opacity duration-300">
-                            <div class="flex items-center gap-2 mb-4 px-3 py-2 bg-red-950/30 border border-red-900/50 rounded-lg">
-                                <span class="relative flex h-2 w-2">
-                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                  <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                                </span>
-                                <p class="tech-text text-[10px] tracking-widest text-red-300 uppercase">Aviso do Sistema: Últimos horários vagos nesta semana</p>
-                            </div>
-                            
-                            <div class="flex flex-col gap-3">
-                                <button onclick="sendToWhatsApp()" class="hud-cta w-full">
-                                    [ SOLICITAR VAGA NO WHATSAPP ]
-                                </button>
-                                <button onclick="openRoute()" class="hud-cta-secondary w-full">
-                                    [ ABRIR ROTA PARA A GARAGEM (MAPS) ]
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+    <!-- 3. WEB APP -->
+    <div id="app-view">
+        <header class="top-navbar">
+            <h1 class="font-black text-[14px] md:text-[16px] tracking-tighter uppercase text-white">BLACK CAR <span class="text-[var(--accent)] font-light">Detailing</span></h1>
+            <div class="flex items-center gap-1.5 md:gap-2">
+                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span id="header-status" class="tech-text text-[9px] md:text-[10px] text-green-500 uppercase font-bold">Online</span>
             </div>
+        </header>
+
+        <div class="app-layout">
             
-            <footer class="hud-footer flex-col md:flex-row gap-4 md:gap-0">
-                <div class="flex items-center gap-6 flex-wrap justify-center md:justify-start">
-                    <a href="https://www.google.com/maps/dir//Lojas+Havana+-+Av.+Get%C3%BAlio+Dorneles+Vargas+-+N,+1060+-+Centro,+Chapec%C3%B3+-+SC,+89801-000" target="_blank" class="footer-item">
-                        <svg class="footer-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span class="tech-text text-[9px] tracking-widest">AV. GETÚLIO VARGAS, 1060 - CHAPECÓ/SC</span>
-                    </a>
-                    
-                    <a href="https://wa.me/5549999084031" target="_blank" class="footer-item">
-                        <svg class="footer-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                        <span class="tech-text text-[9px] tracking-widest">(49) 99908-4031</span>
-                    </a>
-                    
-                    <a href="https://instagram.com/blackcar" target="_blank" class="footer-item">
-                        <svg class="footer-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                        <span class="tech-text text-[9px] tracking-widest">@BLACKCAR.CHAPECO</span>
-                    </a>
+            <!-- LADO ESQUERDO: PALCO VISUAL OTIMIZADO C/ VARREDURA VIVA -->
+            <div class="stage-panel">
+                <div class="radar-grid"></div>
+                <div class="radar-sweep"></div>
+                <div id="laser"></div>
+                
+                <div id="brand-hologram" class="brand-tech-badge">
+                    <div class="badge-initial" id="shield-initials">--</div>
+                    <div class="badge-divider"></div>
+                    <div class="badge-name" id="shield-name">MARCA</div>
                 </div>
-                <p class="tech-text text-[8px] text-zinc-600 tracking-widest hidden md:block">SYS.ON // BLACK CAR © 2026</p>
-            </footer>
+            </div>
+
+            <!-- LADO DIREITO: PROGRESSIVE FUNNEL COMPRESSO -->
+            <div class="control-panel" id="scroll-container">
+                
+                <!-- HERO BANNER C/ PROVA SOCIAL ESTRATÉGICA -->
+                <div class="app-hero-banner">
+                    <div class="relative z-10">
+                        <span class="bg-black text-white text-[8px] md:text-[9px] font-black px-2 py-1 rounded uppercase tracking-widest mb-2 inline-block">Centro, Chapecó - SC</span>
+                        <h2 class="text-lg md:text-3xl font-black mt-1 mb-1 md:mb-2 uppercase tracking-tighter leading-none text-white">
+                            ESTÚDIO DE DETALHAMENTO <span class="hidden md:inline"><br></span><span class="text-[var(--accent)] text-[14px] md:text-3xl block md:inline mt-1 md:mt-0">& ESTÉTICA AVANÇADA</span>
+                        </h2>
+                        
+                        <div class="trust-badge">
+                            <span class="trust-stars">★★★★★</span>
+                            <span class="text-[9px] text-zinc-300 font-bold tracking-wider uppercase ml-1">5.0 no Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASSO 1: IDENTIFICAÇÃO DO VEÍCULO -->
+                <div id="step-1-section" class="step-section unlocked mb-6 md:mb-8">
+                    <h2 class="section-title active" id="title-1">01. Identificação do Veículo</h2>
+                    <select id="brand-select" class="hud-select"><option value="">A Carregar Marcas...</option></select>
+                    <select id="model-select" class="hud-select" disabled><option value="">Aguardando Marca...</option></select>
+                </div>
+
+                <!-- PASSO 2: PACOTES -->
+                <div id="step-2-section" class="step-section mb-6 md:mb-8">
+                    <h2 class="section-title" id="title-2">02. Nível de Tratamento</h2>
+                    
+                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Manutenção Técnica', 'R$ 90')">
+                        <div class="card-header-flex">
+                            <span class="card-category">Limpeza Segura</span>
+                            <span class="price-badge">R$ 90</span>
+                        </div>
+                        <h3 class="card-title">MANUTENÇÃO TÉCNICA</h3>
+                        <p class="card-desc">Lavagem detalhada sem ácidos, preservando a integridade do verniz. Inclui aspiração profunda.</p>
+                    </div>
+
+                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Proteção Sintética', 'R$ 150')">
+                        <div class="tag-recomendado">Recomendado</div>
+                        <div class="card-header-flex">
+                            <span class="card-category text-[var(--accent)]">Brilho e Defesa</span>
+                            <span class="price-badge">R$ 150</span>
+                        </div>
+                        <h3 class="card-title">PROTEÇÃO SINTÉTICA</h3>
+                        <p class="card-desc">Descontaminação da pintura e selagem <strong class="text-white font-semibold">Hidrorepelente</strong>. Garante toque aveludado e proteção UV.</p>
+                    </div>
+
+                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Purificação Interna', 'R$ 250')">
+                        <div class="card-header-flex">
+                            <span class="card-category">Biossegurança</span>
+                            <span class="price-badge">R$ 250</span>
+                        </div>
+                        <h3 class="card-title">PURIFICAÇÃO INTERNA</h3>
+                        <p class="card-desc">Higienização profunda, condicionamento de plásticos/couro e Oxi-Sanitização (elimina 99% de odores).</p>
+                    </div>
+
+                    <div class="upgrade-card" onclick="selectUpgrade(this, 'Vitrificação Cerâmica 9H', 'R$ 800')">
+                        <div class="card-header-flex">
+                            <span class="card-category">Blindagem Máxima</span>
+                            <span class="price-badge">R$ 800</span>
+                        </div>
+                        <h3 class="card-title">VITRIFICAÇÃO CERÂMICA 9H</h3>
+                        <p class="card-desc">Correção técnica de pintura e aplicação de Coating Cerâmico de altíssima dureza. Estado de 0km.</p>
+                    </div>
+                </div>
+
+                <!-- PASSO 3: FECHAMENTO / CAPTURA COM ESCASSEZ -->
+                <div id="step-3-section" class="step-section">
+                    <h2 class="section-title" id="title-3">03. Liberação de Vaga</h2>
+                    <div class="bg-[rgba(56,189,248,0.03)] border border-[rgba(56,189,248,0.12)] rounded-xl md:rounded-2xl p-5 md:p-6 text-center mt-2">
+                        
+                        <div class="urgency-badge">⚠️ Apenas 3 vagas para esta semana</div>
+                        
+                        <p class="text-[14px] md:text-[15px] text-white font-black mb-1.5 tracking-tight">GARANTA SEU PROTOCOLO</p>
+                        <p class="text-[11px] md:text-[13px] text-zinc-400 mb-5 leading-relaxed">Insira o seu número de WhatsApp. Iremos consultar a agenda e garantir o seu atendimento de forma exclusiva.</p>
+                        
+                        <input type="tel" id="client-phone" class="hud-input" placeholder="(DD) 99999-9999" maxlength="15" oninput="maskPhone(this); checkUnlock();">
+                        
+                        <button id="btn-agendar-desktop" class="hud-cta hidden md:flex" disabled onclick="handleCheckout(this)">
+                            <div class="spinner"></div>
+                            <span class="btn-text">Inserir Telefone</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STICKY BAR MOBILE (ZONA DO POLEGAR - TIGHT & CLEAN) -->
+        <div id="mobile-bar" class="mobile-sticky-bar">
+            <div class="flex flex-col justify-center">
+                <p class="text-[9px] text-zinc-400 uppercase tracking-widest font-bold mb-0.5" id="mobile-mode-lbl">Aguardando...</p>
+                <p class="text-[15px] font-black text-[var(--accent)] leading-none" id="mobile-price-lbl">Passo 1</p>
+            </div>
+            <button id="btn-agendar-mobile" class="bg-[var(--accent)] text-black px-5 py-3 rounded-lg font-black text-[12px] uppercase tracking-wider transition-all opacity-40 cursor-not-allowed flex justify-center items-center gap-2" onclick="handleMobileCTA(this)">
+                <div class="spinner border-black border-t-transparent"></div>
+                <span class="btn-text">Veículo</span>
+            </button>
         </div>
     </div>
-
-    <!-- BOTÃO FLUTUANTE DE EMERGÊNCIA (FALLBACK) -->
-    <a href="https://wa.me/5549999084031?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Black%20Car." id="float-whatsapp" class="float-whatsapp" target="_blank" aria-label="WhatsApp Direto">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
 
     <script>
         const btn = document.getElementById('btn');
         const ring = document.getElementById('ring');
         const sound = document.getElementById('ignition-sound');
         const carStageBg = document.getElementById('car-stage-bg');
-        const underglow = document.getElementById('underglow');
         const bgAmbient = document.getElementById('bg-ambient');
-        const aiText = document.getElementById('ai-text');
         const hintText = document.getElementById('hold-hint');
-        const floatWhatsapp = document.getElementById('float-whatsapp');
         
-        let timer;
-        let midTimer;
-        let startTime;
-        let isStarted = false;
-        let isAccessoryMode = false;
-        let audioUnlocked = false; 
+        let timer, midTimer, startTime, isStarted = false, audioUnlocked = false; 
         
-        let selectedPain = "";
-        let selectedBrandName = "";
-        let selectedModelName = "";
+        let funnelState = {
+            step: 1,
+            brand: "",
+            model: "",
+            mode: "",
+            price: "",
+            phoneReady: false
+        };
 
-        setTimeout(() => { if(isStarted) floatWhatsapp.classList.add('show'); }, 15000);
-
-        function typeAI(message) {
-            aiText.classList.add('typing-reset');
-            setTimeout(() => {
-                aiText.innerText = message;
-                aiText.classList.remove('typing-reset');
-            }, 50);
+        function getBrandInitials(brandName) {
+            const name = brandName.toUpperCase();
+            if (name.includes('VOLKSWAGEN')) return 'VW';
+            if (name.includes('CHEVROLET')) return 'CHV';
+            if (name.includes('FIAT')) return 'FIA';
+            if (name.includes('FORD')) return 'FRD';
+            if (name.includes('TOYOTA')) return 'TYT';
+            if (name.includes('HONDA')) return 'HND';
+            if (name.includes('HYUNDAI')) return 'HYD';
+            if (name.includes('RENAULT')) return 'RNT';
+            if (name.includes('JEEP')) return 'JEP';
+            if (name.includes('NISSAN')) return 'NSN';
+            if (name.includes('BMW')) return 'BMW';
+            if (name.includes('MERCEDES')) return 'MB';
+            if (name.includes('AUDI')) return 'AUD';
+            if (name.includes('PORSCHE')) return 'PRS';
+            
+            const parts = name.split(' ');
+            if (parts.length > 1) { return (parts[0].charAt(0) + parts[1].charAt(0)).substring(0, 3); } 
+            else { return name.substring(0, 3); }
         }
 
-        function startHover() {
-            if(isStarted) return;
-            document.body.classList.add('hover-glow-active');
+        function maskPhone(input) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length > 11) val = val.slice(0, 11);
+            if (val.length > 2) val = `(${val.substring(0, 2)}) ${val.substring(2)}`;
+            if (val.length > 9) val = `${val.substring(0, 10)}-${val.substring(10)}`;
+            input.value = val;
         }
 
-        function stopHover() {
-            if(isStarted) return;
-            document.body.classList.remove('hover-glow-active');
-        }
-
+        // IGNIÇÃO COM CORTE DIRETO (VELOCIDADE ABSOLUTA)
         function startIgnition(e) {
-            if(e && e.type === 'touchstart') startHover();
             if(isStarted) return;
-
-            if (!audioUnlocked) {
-                sound.play().then(() => { sound.pause(); sound.currentTime = 0; }).catch(err => console.log("Áudio aguardando liberação."));
-                audioUnlocked = true;
-            }
+            if(!audioUnlocked) { sound.play().then(()=> {sound.pause(); sound.currentTime=0;}); audioUnlocked=true; }
+            startTime = Date.now(); 
+            btn.classList.add('active'); 
+            ring.style.strokeDashoffset = "0";
             
-            startTime = Date.now();
-            btn.classList.add('active');
-            
-            ring.style.strokeDashoffset = "0"; 
-            hintText.innerText = "PREPARANDO IGNIÇÃO...";
-            hintText.style.color = "var(--vermelho-ferrari)";
-            hintText.style.fontWeight = "bold";
-            
-            midTimer = setTimeout(() => {
-                bgAmbient.style.opacity = "1";
-                carStageBg.classList.add('idle-shake');
-            }, 400);
-
-            timer = setTimeout(ignite, 1500);
+            hintText.style.opacity = "0";
+            midTimer = setTimeout(() => { bgAmbient.style.opacity = "1"; carStageBg.classList.add('idle-shake'); }, 300);
+            timer = setTimeout(ignite, 600); 
         }
 
         function stopIgnition(e) {
             if(isStarted) return;
-            
             const duration = startTime ? (Date.now() - startTime) : 0;
+            clearTimeout(midTimer); clearTimeout(timer);
             
-            clearTimeout(midTimer);
-            clearTimeout(timer);
+            btn.classList.remove('active'); 
+            ring.style.transition = "none"; ring.style.strokeDashoffset = "408";
+            setTimeout(() => ring.style.transition = "stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1)", 50);
             
-            btn.classList.remove('active');
-            ring.style.transition = "none";
-            ring.style.strokeDashoffset = "408";
-            setTimeout(() => ring.style.transition = "stroke-dashoffset 1.5s linear", 50);
-            
-            hintText.innerText = "Mantenha pressionado para iniciar";
-            hintText.style.color = "";
-            hintText.style.fontWeight = "normal";
-
             carStageBg.classList.remove('idle-shake');
             
-            // O IMPACIENTE: Sistema de pisca a vermelho para educar o cliente que só clica e não segura
-            if (duration > 0 && duration < 500) {
-                isAccessoryMode = !isAccessoryMode;
-                if (isAccessoryMode) {
-                    bgAmbient.style.opacity = "1";
-                    document.body.classList.add('accessory-on');
-                } else {
-                    bgAmbient.style.opacity = "0";
-                    document.body.classList.remove('accessory-on');
-                }
+            if (duration > 0 && duration < 600) {
+                document.body.classList.add('accessory-on');
+                bgAmbient.style.opacity = "1";
                 
-                // Animação brutal para chamar a atenção
-                hintText.classList.remove('alert-hint');
+                hintText.innerText = "ALERTA: MANTENHA PRESSIONADO";
+                hintText.style.color = "var(--accent)";
+                hintText.style.opacity = "1";
+                hintText.classList.remove('alert-hint'); 
                 void hintText.offsetWidth; 
                 hintText.classList.add('alert-hint');
-                
             } else {
-                bgAmbient.style.opacity = isAccessoryMode ? "1" : "0";
+                hintText.style.opacity = "0";
+                bgAmbient.style.opacity = "0";
+                document.body.classList.remove('accessory-on');
             }
-            
             startTime = 0;
-            if(e && (e.type === 'touchend' || e.type === 'touchcancel')) stopHover();
         }
 
         function ignite() {
-            isStarted = true;
-            carStageBg.classList.remove('idle-shake');
-            document.getElementById('bg-on').style.opacity = "1";
-            bgAmbient.style.opacity = "1"; 
-            carStageBg.classList.add('shake-intense');
-            
-            sound.volume = 0.8; 
-            sound.play().catch(e => console.log("Áudio bloqueado."));
+            isStarted = true; carStageBg.classList.remove('idle-shake'); document.getElementById('bg-on').style.opacity = "1"; bgAmbient.style.opacity = "1"; 
+            sound.volume = 0.8; sound.play().catch(e => console.log("Áudio bloqueado."));
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
-            
             if(typeof fbq !== 'undefined') fbq('trackCustom', 'SystemIgnited');
             
+            // CORTE DE 2.5s PARA 600ms - TRANSIÇÃO IMEDIATA E FLUIDA
             setTimeout(() => {
-                document.getElementById('landing-view').classList.add('fade-out-up');
+                document.getElementById('landing-view').style.opacity = "0"; document.getElementById('landing-view').style.pointerEvents = "none";
+                
                 setTimeout(() => {
-                    const expView = document.getElementById('experience-view');
-                    expView.classList.add('show-view');
+                    document.getElementById('experience-view').classList.add('show-view');
+                    
                     setTimeout(() => {
-                        expView.style.opacity = "0";
+                        document.getElementById('experience-view').style.opacity = "0";
                         setTimeout(() => {
-                            expView.classList.remove('show-view');
-                            const hud = document.getElementById('hud-view');
-                            hud.classList.add('show-view');
-                            floatWhatsapp.classList.add('show'); 
+                            document.getElementById('experience-view').style.display = "none";
+                            document.getElementById('app-view').style.display = "flex";
+                            void document.getElementById('app-view').offsetWidth;
+                            document.getElementById('app-view').style.opacity = "1";
+                            setTimeout(() => { document.getElementById('mobile-bar').classList.add('visible'); }, 300);
                             fetchBrands(); 
                         }, 300);
-                    }, 800);
+                    }, 600); // Fica só 600ms no preloader
                 }, 300);
-            }, 400);
+            }, 600); // Cortou o tempo do carro ligado na tela preta
         }
 
-        function selectUpgrade(btnElement, modeName) {
-            document.querySelectorAll('.upgrade-btn').forEach(el => el.classList.remove('selected'));
-            btnElement.classList.add('selected');
-            selectedPain = modeName;
-            
-            if(navigator.vibrate) navigator.vibrate(30);
-
-            if(modeName.includes('Express')) typeAI("Ducha Rápida selecionada.");
-            else if(modeName.includes('Showroom')) typeAI("Blindagem de Pintura selecionada.");
-            else if(modeName.includes('Cockpit')) typeAI("Tratamento interno em andamento.");
-            else typeAI("Lavagem técnica selecionada.");
-
-            checkFinalState();
-        }
+        function updateHeaderStatus(msg) { document.getElementById('header-status').innerText = msg; }
 
         async function fetchBrands() {
             try {
                 const res = await fetch('https://parallelum.com.br/fipe/api/v1/carros/marcas');
                 const data = await res.json();
                 const sel = document.getElementById('brand-select');
-                
-                sel.innerHTML = '<option value="">01. SELECIONE A FABRICANTE</option>' + 
-                    data.map(b => `<option value="${b.codigo}">${b.nome.toUpperCase()}</option>`).join('');
+                sel.innerHTML = '<option value="">1. Selecione a Marca</option>' + data.map(b => `<option value="${b.codigo}">${b.nome.toUpperCase()}</option>`).join('');
                 
                 sel.onchange = async () => {
                     if(!sel.value) return;
-                    selectedBrandName = sel.options[sel.selectedIndex].text;
+                    funnelState.brand = sel.options[sel.selectedIndex].text;
                     const modSel = document.getElementById('model-select');
+                    modSel.disabled = false; modSel.innerHTML = '<option value="">Buscando modelos...</option>';
                     
-                    modSel.disabled = false;
-                    modSel.classList.remove('opacity-50', 'pointer-events-none');
-                    modSel.innerHTML = '<option value="">PESQUISANDO MÁQUINAS...</option>';
-                    typeAI("A conectar servidor. Filtrando base de dados FIPE...");
-
                     const resMod = await fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${sel.value}/modelos`);
                     const modData = await resMod.json();
 
-                    const uniqueModels = [];
-                    const modelSet = new Set();
-
+                    const uniqueModels = []; const modelSet = new Set();
                     modData.modelos.forEach(m => {
                         let baseName = m.nome.split(' ')[0].toUpperCase();
                         if(m.nome.toUpperCase().includes('GRAND CHEROKEE')) baseName = 'GRAND CHEROKEE';
                         if(m.nome.toUpperCase().includes('HR-V')) baseName = 'HR-V';
                         if(m.nome.toUpperCase().includes('T-CROSS')) baseName = 'T-CROSS';
-
-                        if(!modelSet.has(baseName)) {
-                            modelSet.add(baseName);
-                            uniqueModels.push({nome: baseName});
-                        }
+                        if(!modelSet.has(baseName)) { modelSet.add(baseName); uniqueModels.push({nome: baseName}); }
                     });
 
                     uniqueModels.sort((a, b) => a.nome.localeCompare(b.nome));
-
-                    modSel.innerHTML = '<option value="">02. ESPECIFIQUE O MODELO</option>' + 
-                        uniqueModels.map(m => `<option value="${m.nome}">${m.nome}</option>`).join('');
+                    modSel.innerHTML = '<option value="">2. Selecione o Modelo</option>' + uniqueModels.map(m => `<option value="${m.nome}">${m.nome}</option>`).join('');
 
                     modSel.onchange = () => {
                         if(!modSel.value) return;
-                        selectedModelName = modSel.value;
-                        updateRealCarVisual(selectedBrandName, selectedModelName);
+                        funnelState.model = modSel.value;
+                        updateRealCarVisual();
                     };
                 };
-            } catch (error) {
-                console.log("Erro ao carregar FIPE.");
-            }
+            } catch (e) { console.log("FIPE Offline."); }
         }
 
-        function updateRealCarVisual(brand, model) {
-            typeAI("Iniciando varredura de telemetria no chassi...");
-            
-            const blueprint = document.getElementById('car-blueprint');
-            const realCar = document.getElementById('car-real');
+        function updateRealCarVisual() {
+            const hologramBadge = document.getElementById('brand-hologram');
+            const shieldInitials = document.getElementById('shield-initials');
+            const shieldName = document.getElementById('shield-name');
             const laser = document.getElementById('laser');
             
-            // Reset visual antes do scanner
-            blueprint.style.filter = "none";
-            blueprint.style.opacity = "0.3";
-            realCar.style.opacity = "0";
-            document.getElementById('target-lock').style.opacity = "0";
-            
-            ['tl', 'tr', 'bl', 'br'].forEach(pos => {
-                const corner = document.getElementById('corner-' + pos);
-                if(corner) {
-                    corner.classList.add('border-zinc-700');
-                    corner.classList.remove('border-red-600', 'shadow-[0_0_10px_rgba(255,0,0,0.5)]');
-                }
-            });
+            hologramBadge.classList.remove('active');
 
-            // Prepara a imagem real do satélite (Imagin Studio)
-            let cleanMake = brand.toLowerCase().split('-')[0].trim();
-            if(cleanMake === 'vw') cleanMake = 'volkswagen';
-            if(cleanMake === 'gm' || cleanMake === 'chevrolet') cleanMake = 'chevrolet';
-            if(brand.toUpperCase().includes('MERCEDES')) cleanMake = 'mercedes-benz';
-            if(brand.toUpperCase().includes('LAND ROVER')) cleanMake = 'land-rover';
-            let cleanModel = model.toLowerCase();
-            
-            realCar.src = `https://cdn.imagin.studio/getImage?customer=img&make=${cleanMake}&modelFamily=${cleanModel}&paintId=pspc0004&zoomType=fullscreen`;
+            let cleanBrandName = funnelState.brand.split('-')[0].trim();
+            shieldInitials.innerText = getBrandInitials(cleanBrandName);
+            shieldName.innerText = cleanBrandName;
 
-            // Inicia o Scanner Laser
-            laser.style.animation = 'none';
-            void laser.offsetWidth; 
-            laser.style.animation = 'laser-scan 1.5s ease-in-out';
+            laser.style.animation = 'none'; void laser.offsetWidth; 
+            laser.style.animation = 'laser-scan 1.2s ease-in-out';
 
-            // FALLBACK SILENCIOSO: Se a imagem não carregar na API, puxa a imagem segura.
-            realCar.onerror = () => {
-                realCar.src = "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=800";
-            };
-
-            // Quando o laser acaba (1.5s), a magia acontece independentemente do tempo da net
             setTimeout(() => {
                 laser.style.animation = 'none';
-                
-                blueprint.style.opacity = "0";
-                realCar.style.opacity = "1";
-                realCar.style.filter = "drop-shadow(0 20px 30px rgba(0,0,0,0.9)) drop-shadow(0 0 30px rgba(255,0,0,0.2))";
-                
-                document.getElementById('target-lock').style.opacity = "1";
-                document.getElementById('lbl-cat').innerText = brand + " " + model;
-                
-                ['tl', 'tr', 'bl', 'br'].forEach(pos => {
-                    const corner = document.getElementById('corner-' + pos);
-                    if(corner) {
-                        corner.classList.remove('border-zinc-700');
-                        corner.classList.add('border-red-600', 'shadow-[0_0_10px_rgba(255,0,0,0.5)]');
-                    }
-                });
-
-                typeAI("Veículo confirmado no sistema. Pronto para iniciar.");
-                checkFinalState(); 
-            }, 1500); 
+                hologramBadge.classList.add('active');
+                unlockStep2();
+            }, 1200); 
         }
 
-        function checkFinalState() {
-            const actionPanel = document.getElementById('action-panel');
-            if (selectedPain && selectedBrandName && selectedModelName) {
-                actionPanel.classList.remove('hidden');
-                setTimeout(() => {
-                    actionPanel.classList.remove('opacity-0');
-                    
-                    // O PERDIDO NO SCROLL: Empurra agressivamente a tela para baixo
-                    if (window.innerWidth < 768) {
-                        actionPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                    
-                }, 100); 
+        function unlockStep2() {
+            funnelState.step = 2;
+            document.getElementById('title-1').classList.remove('active');
+            document.getElementById('title-2').classList.add('active');
+            const step2 = document.getElementById('step-2-section');
+            step2.classList.add('unlocked');
+            setTimeout(() => { step2.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
+            updateMobileBar();
+        }
+
+        function selectUpgrade(el, mode, price) {
+            if(funnelState.step < 2) return; 
+            document.querySelectorAll('.upgrade-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            
+            funnelState.mode = mode; funnelState.price = price;
+            if(navigator.vibrate) navigator.vibrate(20);
+            
+            unlockStep3();
+        }
+
+        function unlockStep3() {
+            funnelState.step = 3;
+            document.getElementById('title-2').classList.remove('active');
+            document.getElementById('title-3').classList.add('active');
+            const step3 = document.getElementById('step-3-section');
+            step3.classList.add('unlocked');
+            setTimeout(() => { document.getElementById('client-phone').scrollIntoView({ behavior: 'smooth', block: 'center' }); document.getElementById('client-phone').focus(); }, 300);
+            updateMobileBar();
+        }
+
+        function checkUnlock() {
+            const phoneInput = document.getElementById('client-phone').value;
+            const btnDesk = document.getElementById('btn-agendar-desktop');
+            
+            if (phoneInput.length >= 14) {
+                funnelState.phoneReady = true;
+                btnDesk.disabled = false;
+                btnDesk.querySelector('.btn-text').innerText = "GERAR PROTOCOLO (WHATSAPP)";
+            } else {
+                funnelState.phoneReady = false;
+                btnDesk.disabled = true;
+                btnDesk.querySelector('.btn-text').innerText = "Inserir Telefone";
+            }
+            updateMobileBar();
+        }
+
+        function updateMobileBar() {
+            const btnMob = document.getElementById('btn-agendar-mobile');
+            const lblMode = document.getElementById('mobile-mode-lbl');
+            const lblPrice = document.getElementById('mobile-price-lbl');
+
+            if (funnelState.step === 1) {
+                lblMode.innerText = "Passo 1"; lblPrice.innerText = "Veículo";
+                btnMob.querySelector('.btn-text').innerText = "Selecionar";
+                btnMob.classList.add('opacity-40');
+            } else if (funnelState.step === 2 && !funnelState.mode) {
+                lblMode.innerText = "Passo 2"; lblPrice.innerText = "Tratamento";
+                btnMob.querySelector('.btn-text').innerText = "Aguardando";
+                btnMob.classList.add('opacity-40');
+            } else if (funnelState.step >= 2 && funnelState.mode) {
+                lblMode.innerText = funnelState.mode;
+                lblPrice.innerText = funnelState.price;
+                if (!funnelState.phoneReady) {
+                    btnMob.querySelector('.btn-text').innerText = "Contato";
+                    btnMob.classList.add('opacity-40');
+                } else {
+                    btnMob.querySelector('.btn-text').innerText = "Agendar";
+                    btnMob.classList.remove('opacity-40', 'cursor-not-allowed');
+                }
             }
         }
 
-        function sendToWhatsApp() {
-            if(!selectedBrandName || !selectedModelName || !selectedPain) return;
-            
-            if(typeof fbq !== 'undefined') fbq('track', 'Lead');
-            
-            const numWhatsApp = "5549999084031"; 
-            
-            const msg = `⚡ *SISTEMA BLACK CAR* ⚡\n\nFala equipe! Acabei de configurar a higienização no site e vi que têm horários vagos.\n\n🛠️ *MODO SELECIONADO:* ${selectedPain}\n🚗 *VEÍCULO:* ${selectedBrandName} ${selectedModelName}\n\nBora dar o start neste projeto?`;
-            
-            const encodedMsg = encodeURIComponent(msg);
-            window.open(`https://wa.me/${numWhatsApp}?text=${encodedMsg}`, '_blank');
+        function handleMobileCTA(btnElement) {
+            if (funnelState.step === 1) {
+                document.getElementById('brand-select').focus();
+            } else if (funnelState.step === 2 && !funnelState.mode) {
+                document.getElementById('step-2-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (funnelState.step >= 2 && !funnelState.phoneReady) {
+                document.getElementById('client-phone').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                document.getElementById('client-phone').focus();
+            } else {
+                handleCheckout(btnElement);
+            }
         }
 
-        function openRoute() {
-            if(typeof fbq !== 'undefined') fbq('trackCustom', 'OpenedRoute');
+        function handleCheckout(btnElement) {
+            if(!funnelState.brand || !funnelState.model || !funnelState.mode || !funnelState.phoneReady) return;
             
-            const mapUrl = "https://www.google.com/maps/dir//Lojas+Havana+-+Av.+Get%C3%BAlio+Dorneles+Vargas+-+N,+1060+-+Centro,+Chapec%C3%B3+-+SC,+89801-000";
-            window.open(mapUrl, '_blank');
+            const clientPhone = document.getElementById('client-phone').value;
+            if(typeof fbq !== 'undefined') fbq('track', 'Lead');
+            localStorage.setItem('blackcar_lead', clientPhone);
+            
+            btnElement.classList.add('processing');
+            btnElement.querySelector('.btn-text').innerText = "Gerando Protocolo...";
+            
+            const numWhatsApp = "5549999084031"; 
+            const msg = `⚡ *ESTÚDIO BLACK CAR* ⚡\n\nOlá equipe! Gostaria de verificar a agenda para o meu veículo:\n\n🚗 *MÁQUINA:* ${funnelState.brand} ${funnelState.model}\n🛠️ *TRATAMENTO:* ${funnelState.mode} (${funnelState.price})\n📱 *CONTATO:* ${clientPhone}\n\nPodemos confirmar o protocolo?`;
+            
+            setTimeout(() => {
+                btnElement.classList.remove('processing');
+                btnElement.querySelector('.btn-text').innerText = "Redirecionando...";
+                btnElement.style.background = "#25D366"; btnElement.style.color = "#fff";
+                window.open(`https://wa.me/${numWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank');
+            }, 1200);
         }
     </script>
 </body>
