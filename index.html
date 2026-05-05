@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -164,21 +165,14 @@
         .progress-line { flex-grow: 1; height: 3px; background: #27272a; margin: 0 8px; position: relative; top: -6px; z-index: 1; border-radius: 2px; overflow: hidden;}
         .progress-line-fill { height: 100%; width: 0%; background: var(--accent-green); transition: width 0.4s ease; }
 
-        /* 🟢 BARRA DE CONFIANÇA B2C 🟢 */
-        .trust-banner { display: flex; justify-content: space-between; align-items: center; background: var(--card-solid); border: 1px solid var(--card-border); border-radius: 16px; padding: 18px 12px; margin-bottom: 32px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
-        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; flex: 1; }
-        .trust-divider { width: 1px; height: 30px; background: var(--card-border); }
-
-        /* WIZARD & ECRÃS */
+        /* WIZARD & ECRÃS (Desktop Base) */
         .step-section { display: none; animation: slide-in 0.3s ease forwards; transform-origin: top; }
         .step-section.active-step { display: block; }
         @keyframes slide-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #27272a; padding-bottom: 12px;}
         .section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #fff; font-weight: 900; display: flex; align-items: center; margin: 0; }
-        
         .back-btn { font-size: 11px; color: #a1a1aa; font-weight: 800; text-transform: uppercase; background: #121214; border: 1px solid #27272a; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-        .back-btn:hover { color: #fff; border-color: #52525b; background: #27272a;}
 
         /* 💎 CARTÕES CLAROS 💎 */
         .solid-card { background: var(--card-solid); border: 2px solid var(--card-border); border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; margin-bottom: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
@@ -194,36 +188,25 @@
 
         .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 12px; }
         .card-title { font-size: 17px; font-weight: 900; color: #18181b; margin-bottom: 4px; letter-spacing: -0.5px; line-height: 1.2; transition: color 0.3s; display: flex; align-items: center; gap: 6px;}
-        
-        .tier-prata.selected .card-title { color: #334155; }
-        .tier-azul.selected .card-title { color: #0369a1; }
-        .tier-ouro.selected .card-title { color: #b45309; }
-        .tier-verde.selected .card-title { color: #047857; }
-        .tier-roxo.selected .card-title { color: #7e22ce; }
-
         .card-desc { font-size: 13px; color: #52525b; line-height: 1.6; font-weight: 500; margin-bottom: 16px; }
         .solid-card.selected .card-desc { color: #3f3f46; }
-        
         .feature-time { color: #52525b; font-size: 10px; font-weight: 800; background: #f4f4f5; padding: 6px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 16px; border: 1px solid #e4e4e7; letter-spacing: 0.5px;}
         .solid-card.selected .feature-time { background: #fff; border-color: currentColor;}
-        
         .benefit-tag { font-size: 9px; font-weight: 900; color: #3f3f46; border: 1px solid #d4d4d8; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 16px;}
         .solid-card.selected .benefit-tag { background: #fff; border-color: currentColor; }
-        
         .promo-tag { background: #18181b; color: #fff; padding: 6px 14px; font-size: 10px; font-weight: 900; border-radius: 16px 0 16px 0; position: absolute; top: -1px; left: -1px; text-transform: uppercase; letter-spacing: 1px; border-right: 2px solid #fff; border-bottom: 2px solid #fff;}
         .promo-ouro { background: var(--accent-gold); color: #000; border: none; box-shadow: 2px 2px 10px rgba(245, 158, 11, 0.4); }
 
         .price-pill { display: flex; flex-direction: column; align-items: flex-end; text-align: right; flex-shrink: 0; }
         .price-pill .label { font-size: 9px; color: #71717a; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;}
         .price-pill .value { font-size: 18px; font-weight: 900; color: #18181b; letter-spacing: -0.5px;}
-        
         .tier-prata.selected .price-pill .value { color: var(--c-prata); }
         .tier-azul.selected .price-pill .value { color: var(--c-azul); }
         .tier-ouro.selected .price-pill .value { color: var(--c-ouro); }
         .tier-verde.selected .price-pill .value { color: var(--c-verde); }
         .tier-roxo.selected .price-pill .value { color: var(--c-roxo); }
 
-        /* 💎 INPUTS CLAROS 💎 */
+        /* 💎 INPUTS (Desktop Default) 💎 */
         .solid-input { background-color: var(--input-bg); border: 2px solid var(--input-border); color: #18181b; width: 100%; padding: 18px 20px; font-size: 16px; font-weight: 600; border-radius: 12px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         select.solid-input option, select.solid-input optgroup { color: #000000 !important; background-color: #ffffff !important; font-weight: 600; }
         select.solid-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; background-size: 20px; cursor: pointer; }
@@ -241,7 +224,7 @@
         .input-error { border-color: var(--vermelho-ignicao) !important; box-shadow: 0 0 12px rgba(239, 68, 68, 0.2) !important; color: var(--vermelho-ignicao) !important; }
         .input-success { border-color: var(--accent-green) !important; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2) !important; color: var(--accent-green) !important; background-color: #f0fdf4; }
 
-        /* RECIBO CLARO */
+        /* RECIBO CLARO (Desktop) */
         .receipt-card { background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
         .receipt-card h4 { color: #71717a; border-bottom: 1px solid var(--card-border); padding-bottom: 16px; margin-bottom: 20px; font-size: 12px; letter-spacing: 2px;}
         .receipt-row { display: flex; justify-content: space-between; font-size: 14px; color: #52525b; margin-bottom: 16px; border-bottom: 1px dotted var(--card-border); padding-bottom: 10px; font-weight: 500;}
@@ -272,37 +255,85 @@
             .fixed-bottom-cta { display: none !important; }
         }
 
-        /* 💎 BARRA CTA FLUTUANTE MOBILE 💎 */
+        /* 💎 BOTTOM SHEET (MOBILE MODAL DINÂMICO) 💎 */
         @media (max-width: 767px) {
-            .fixed-bottom-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: #ffffff; border-top: 1px solid var(--card-border); z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 12px; transform: translateY(150%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15); }
+            .fixed-bottom-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: #ffffff; border-top: 1px solid var(--card-border); z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 12px; transform: translateY(150%); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15); }
             .fixed-bottom-cta.active-cart { transform: translateY(0); }
+            
+            /* Estado Expandido (Passo 2 e 3) */
+            .fixed-bottom-cta.expanded { border-radius: 24px 24px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,0.5); padding-top: 12px; }
+            .fixed-bottom-cta.expanded #drawer-body { max-height: 60vh; opacity: 1; margin-bottom: 12px; }
+            
+            /* Overrides CSS para Inputs Escuros passarem para Claro dentro do Mobile Drawer */
+            #drawer-body .section-title { color: #18181b !important; }
+            #drawer-body .section-header { border-bottom-color: #e4e4e7 !important; padding-bottom: 8px !important; margin-bottom: 16px !important;}
+            #drawer-body .back-btn { background: #f4f4f5 !important; color: #52525b !important; border-color: #d4d4d8 !important; }
+            
+            #drawer-body p.text-zinc-400, #drawer-body p.text-zinc-700 { color: #52525b !important; }
+            #drawer-body .bg-[#121214] { background-color: #fff !important; border-color: #e4e4e7 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;}
+            
+            #drawer-body .solid-input { background-color: #f4f4f5 !important; border-color: #d4d4d8 !important; color: #18181b !important; box-shadow: none !important;}
+            #drawer-body .solid-input::placeholder { color: #a1a1aa !important; }
+            #drawer-body select.solid-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important; }
+            
+            #drawer-body .cat-btn { background: #fff !important; border-color: #e4e4e7 !important; color: #52525b !important; box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;}
+            #drawer-body .cat-btn.selected { background: #ecfdf5 !important; border-color: var(--accent-green) !important; color: #047857 !important; transform: scale(1.02); }
+            #drawer-body .cat-btn.selected span.text-white { color: #047857 !important; }
+            #drawer-body .cat-btn.selected span.text-zinc-900 { color: #047857 !important; }
+            #drawer-body .cat-btn.selected .cat-icon { filter: none !important; }
+            
+            #drawer-body .receipt-card { background: #f8fafc !important; border-color: #e4e4e7 !important; box-shadow: none !important; padding: 16px !important; margin-bottom: 16px !important;}
+            #drawer-body .receipt-row { border-bottom-color: #d4d4d8 !important; padding-bottom: 8px !important; margin-bottom: 8px !important;}
+            #drawer-body .receipt-val { color: #18181b !important; }
+            #drawer-body .receipt-total { border-top-color: #d4d4d8 !important; padding-top: 12px !important; margin-top: 16px !important;}
+            #drawer-body .border-t.border-zinc-200, #drawer-body .border-t.border-zinc-800\\/50 { border-color: #e4e4e7 !important; }
         }
 
-        .bottom-upsell-zone { display: none; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--card-border); animation: fade-in 0.4s ease forwards; }
+        .bottom-upsell-zone { display: none; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--card-border); animation: fade-in 0.4s ease forwards; }
         
-        .upsell-toggle { appearance: none; width: 48px; height: 26px; background: #e4e4e7; border-radius: 26px; position: relative; cursor: pointer; transition: all 0.3s; outline: none; flex-shrink: 0; border: 1px solid #d4d4d8; }
-        .upsell-toggle::after { content: ''; position: absolute; top: 1px; left: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
+        .upsell-toggle { appearance: none; width: 44px; height: 24px; background: #e4e4e7; border-radius: 24px; position: relative; cursor: pointer; transition: all 0.3s; outline: none; flex-shrink: 0; border: 1px solid #d4d4d8; }
+        .upsell-toggle::after { content: ''; position: absolute; top: 1px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
         .upsell-toggle:checked { background: var(--accent-gold); border-color: var(--accent-gold); }
-        .upsell-toggle:checked::after { transform: translateX(22px); background: #fff; }
+        .upsell-toggle:checked::after { transform: translateX(20px); background: #fff; }
         
         .cta-row-flex { display: flex; justify-content: space-between; align-items: center; width: 100%;}
         .cart-info { display: flex; flex-direction: column; }
-        .cart-label { font-size: 11px; color: #71717a; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 4px;}
-        .cart-total { font-size: 24px; font-weight: 900; color: #18181b; line-height: 1; transition: color 0.3s;}
+        .cart-label { font-size: 10px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 2px;}
+        .cart-total { font-size: 20px; font-weight: 900; color: #18181b; line-height: 1; transition: color 0.3s;}
 
-        .btn-continue { background: #f4f4f5; color: #a1a1aa; border-radius: 12px; padding: 16px 28px; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid #e4e4e7; cursor: not-allowed; transition: all 0.3s; white-space: nowrap; display: flex; justify-content: center; align-items: center; gap: 8px;}
-        .btn-continue.btn-success { background: var(--accent-green); color: #fff; box-shadow: 0 6px 25px rgba(16,185,129,0.3); border: none; cursor: pointer;}
+        .btn-continue { background: #f4f4f5; color: #a1a1aa; border-radius: 12px; padding: 14px 20px; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid #e4e4e7; cursor: not-allowed; transition: all 0.3s; white-space: nowrap; display: flex; justify-content: center; align-items: center; gap: 8px;}
+        .btn-continue.btn-success { background: var(--accent-green); color: #fff; box-shadow: 0 4px 20px rgba(16,185,129,0.3); border: none; cursor: pointer;}
 
-        .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid currentColor; border-radius: 50%; width: 18px; height: 18px; animation: spin 1s linear infinite; display: none; }
+        .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid currentColor; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: none; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .processing .spinner { display: inline-block; }
         .processing .btn-text { display: none; }
 
         /* Gaveta B2B Oculta */
         .b2b-drawer-container { display: none; animation: slide-down 0.5s ease forwards; transform-origin: top;}
+
+        /* 🟢 ANIMAÇÃO BOTÃO B2B (PULSO) 🟢 */
+        @keyframes pulse-b2b {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); border-color: rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); border-color: rgba(16, 185, 129, 1); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); border-color: rgba(16, 185, 129, 0.4); }
+        }
+        .pulse-b2b-btn { animation: pulse-b2b 2s infinite; border: 1px solid var(--accent-green); color: #fff; }
+
+        /* 📱 RESPONSIVIDADE EXTREMA (Telas < 360px) 📱 */
+        @media (max-width: 360px) {
+            .landing-top h1 { font-size: 2.2rem !important; }
+            .engine-btn-ring { width: 130px !important; height: 130px !important; }
+            .engine-button { width: 80px !important; height: 80px !important; }
+            .cat-btn { padding: 12px 2px !important; font-size: 9px !important; }
+            .cat-icon { font-size: 1.5rem !important; }
+            .receipt-total-val { font-size: 22px !important; }
+            .cart-total { font-size: 18px !important; }
+            .btn-continue { padding: 12px 16px !important; font-size: 11px !important; }
+        }
     </style>
 </head>
-<body>
+<body id="main-body">
 
     <audio id="ignition-sound" preload="auto">
         <source src="https://assets.mixkit.co/active_storage/sfx/2736/2736-preview.mp3" type="audio/mpeg">
@@ -412,8 +443,8 @@
                     <button id="dt-btn-continue" onclick="window.handleNextStep()" class="w-full bg-zinc-100 text-zinc-400 font-black uppercase text-[12px] tracking-wider py-4 rounded-xl border border-zinc-200 transition cursor-not-allowed">Selecionar</button>
                 </div>
 
-                <!-- 🟢 LINHA DO TEMPO VISUAL 🟢 -->
-                <div class="progress-container" id="funnel-timeline">
+                <!-- 🟢 LINHA DO TEMPO VISUAL (DESKTOP) 🟢 -->
+                <div class="progress-container hidden md:flex" id="funnel-timeline">
                     <div class="progress-step active" id="step-nav-1">
                         <div class="progress-dot">1</div>
                         <span>Serviço</span>
@@ -430,15 +461,6 @@
                         <div class="progress-dot">3</div>
                         <span>Reserva</span>
                     </div>
-                </div>
-
-                <!-- 🟢 BARRA DE CONFIANÇA B2C (ILHA CLARA) 🟢 -->
-                <div class="trust-banner" id="trust-banner">
-                    <div class="trust-item"><span class="text-xl">💧</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Água<br>Filtrada</span></div>
-                    <div class="trust-divider"></div>
-                    <div class="trust-item"><span class="text-xl">🧪</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Produtos<br>pH Neutro</span></div>
-                    <div class="trust-divider"></div>
-                    <div class="trust-item"><span class="text-xl">🧽</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Toalhas<br>Anti-Risco</span></div>
                 </div>
 
                 <!-- 🟢 PASSO 1: SELEÇÃO DE PROTOCOLOS 🟢 -->
@@ -505,55 +527,74 @@
                     </div>
                 </div>
 
-                <!-- 🟢 PASSO 2: IDENTIFICAÇÃO DO CARRO 🟢 -->
-                <div id="step-2-section" class="step-section">
-                    <div class="section-header">
-                        <h2 class="section-title active" id="title-2">Identifique a Máquina</h2>
-                        <button class="back-btn" onclick="window.editStep(1)">← Voltar</button>
-                    </div>
-                    <div id="step-2-content" class="step-content">
-                        
-                        <p class="text-[13px] text-zinc-700 font-medium mb-6 text-center bg-white p-5 rounded-2xl border border-zinc-200 shadow-sm">Para revelar o orçamento exato para o seu veículo, informe a montadora e o modelo.</p>
+                <!-- 🟢 PASSO 2 E 3 (MOVEM-SE PARA O POPUP NO MOBILE, FICAM AQUI NO DESKTOP) 🟢 -->
+                <div id="desktop-steps-container">
+                    <!-- PASSO 2 -->
+                    <div id="step-2-section" class="step-section">
+                        <div class="section-header">
+                            <h2 class="section-title active" id="title-2">Identifique a Máquina</h2>
+                            <button class="back-btn" onclick="window.editStep(1)">← Voltar</button>
+                        </div>
+                        <div id="step-2-content" class="step-content">
+                            
+                            <p class="text-[13px] text-zinc-400 md:text-zinc-700 font-medium mb-6 text-center bg-[#121214] md:bg-white p-5 rounded-2xl border border-zinc-800 md:border-zinc-200 shadow-sm">Para revelar o orçamento exato para o seu veículo, informe a montadora e o modelo.</p>
 
-                        <select id="native-brand" class="solid-input" onchange="window.handleNativeBrand()">
-                            <option value="" disabled selected>Montadora...</option>
-                        </select>
-                        
-                        <select id="native-model" class="solid-input" style="display: none;" onchange="window.handleNativeModel()">
-                            <option value="" disabled selected>Modelo...</option>
-                        </select>
+                            <select id="native-brand" class="solid-input" onchange="window.handleNativeBrand()">
+                                <option value="" disabled selected>Montadora...</option>
+                            </select>
+                            
+                            <select id="native-model" class="solid-input" style="display: none;" onchange="window.handleNativeModel()">
+                                <option value="" disabled selected>Modelo...</option>
+                            </select>
 
-                        <!-- Fallback Visual SÓLIDO -->
-                        <div id="fallback-size" class="mt-4 bg-white border border-zinc-200 rounded-2xl p-6" style="display:none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                            <p class="text-[12px] text-zinc-900 font-black uppercase tracking-widest mb-5 text-center">Qual o porte aproximado?</p>
-                            <div class="grid grid-cols-3 gap-3 mb-5">
-                                <button type="button" class="cat-btn" id="cat-hatch" onclick="window.selectFallbackCategory('Pequeno/Hatch', 1, 'cat-hatch')"><span class="cat-icon text-3xl">🚗</span><span>Pequeno</span></button>
-                                <button type="button" class="cat-btn" id="cat-suv" onclick="window.selectFallbackCategory('Médio/SUV', 1.3, 'cat-suv')"><span class="cat-icon text-3xl">🚙</span><span>Médio/SUV</span></button>
-                                <button type="button" class="cat-btn" id="cat-pickup" onclick="window.selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-3xl">🛻</span><span>Grande</span></button>
+                            <div id="fallback-size" class="mt-4 bg-[#121214] md:bg-white border border-[#27272a] md:border-zinc-200 rounded-2xl p-6" style="display:none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                                <p class="text-[12px] text-white md:text-zinc-900 font-black uppercase tracking-widest mb-5 text-center">Qual o porte aproximado?</p>
+                                <div class="grid grid-cols-3 gap-3 mb-5">
+                                    <button type="button" class="cat-btn" id="cat-hatch" onclick="window.selectFallbackCategory('Pequeno/Hatch', 1, 'cat-hatch')"><span class="cat-icon text-3xl">🚗</span><span>Pequeno</span></button>
+                                    <button type="button" class="cat-btn" id="cat-suv" onclick="window.selectFallbackCategory('Médio/SUV', 1.3, 'cat-suv')"><span class="cat-icon text-3xl">🚙</span><span>Médio/SUV</span></button>
+                                    <button type="button" class="cat-btn" id="cat-pickup" onclick="window.selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-3xl">🛻</span><span>Grande</span></button>
+                                </div>
+                                <input type="text" id="fallback-input" class="solid-input" placeholder="Nome do modelo (Ex: Monza)" oninput="window.handleFallbackInput()">
                             </div>
-                            <input type="text" id="fallback-input" class="solid-input" placeholder="Nome do modelo (Ex: Monza)" oninput="window.handleFallbackInput()">
                         </div>
                     </div>
-                </div>
 
-                <!-- 🟢 PASSO 3: RECIBO 🟢 -->
-                <div id="step-3-section" class="step-section">
-                    <div class="section-header">
-                        <h2 class="section-title active" id="title-3">Resumo & Reserva</h2>
-                        <button class="back-btn" onclick="window.editStep(2)">← Voltar</button>
-                    </div>
-                    <div id="step-3-content" class="step-content">
-                        <div class="receipt-card">
-                            <h4 class="text-[12px] font-black uppercase tracking-widest text-center text-zinc-400">Protocolo Oficial</h4>
-                            <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
-                            <div class="receipt-row"><span>Porte Base:</span><span class="receipt-val font-medium text-zinc-500" id="receipt-category">Pendente</span></div>
-                            <div class="receipt-row"><span>Serviço:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
-                            <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-500">+ Cera Líquida</span></div>
-                            <div class="receipt-total"><span class="font-black text-[14px] uppercase text-zinc-800">Total Calculado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
+                    <!-- PASSO 3 -->
+                    <div id="step-3-section" class="step-section">
+                        <div class="section-header">
+                            <h2 class="section-title active" id="title-3">Resumo & Reserva</h2>
+                            <button class="back-btn" onclick="window.editStep(2)">← Voltar</button>
                         </div>
-                        <div class="pt-4 pb-32">
-                            <p class="text-[14px] text-zinc-600 mb-6 text-center font-medium">As vagas de detalhamento são limitadas. Insira o seu WhatsApp para confirmar a sua janela de horário.</p>
-                            <input type="tel" id="client-phone" class="solid-input hud-input transition-all duration-300" placeholder="(DD) 99999-9999" maxlength="15" oninput="window.maskPhone(this)">
+                        <div id="step-3-content" class="step-content">
+                            <div class="receipt-card">
+                                <h4 class="text-[12px] font-black uppercase tracking-widest text-center text-zinc-400">Protocolo Oficial</h4>
+                                <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
+                                <div class="receipt-row"><span>Porte Base:</span><span class="receipt-val font-medium text-zinc-500" id="receipt-category">Pendente</span></div>
+                                <div class="receipt-row"><span>Serviço:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
+                                <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-500">+ Cera Líquida</span></div>
+                                <div class="receipt-total"><span class="font-black text-[14px] uppercase text-zinc-400 md:text-zinc-800">Total Calculado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
+                            </div>
+
+                            <!-- 🟢 ESTRATÉGIA B2C: ANCORAGEM DE TURNO 🟢 -->
+                            <div class="mb-5 pt-2 border-t border-zinc-800 md:border-zinc-200">
+                                <p class="text-[11px] text-zinc-400 md:text-zinc-600 mb-3 text-center font-bold uppercase tracking-widest">Turno de Entrega do Veículo</p>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button type="button" class="cat-btn selected relative" id="shift-morning" onclick="window.selectShift('Manhã', 'shift-morning')">
+                                        <span class="absolute -top-2 bg-emerald-500 text-white text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest shadow-md">Recomendado</span>
+                                        <span class="text-xl mb-1 mt-1">🌅</span><span class="font-black text-white md:text-zinc-900">Manhã</span>
+                                        <span class="text-[9px] text-zinc-400 md:text-zinc-500 mt-1">Pronto no mesmo dia</span>
+                                    </button>
+                                    <button type="button" class="cat-btn" id="shift-afternoon" onclick="window.selectShift('Tarde', 'shift-afternoon')">
+                                        <span class="text-xl mb-1 mt-2">🌇</span><span class="font-black text-white md:text-zinc-900">Tarde</span>
+                                        <span class="text-[9px] text-zinc-400 md:text-zinc-500 mt-1">Pronto no dia seguinte</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 pb-8 md:pb-32">
+                                <p class="text-[13px] text-zinc-400 md:text-zinc-600 mb-4 text-center font-medium">As vagas de detalhamento são limitadas. Insira o seu WhatsApp para confirmar a janela de horário.</p>
+                                <input type="tel" id="client-phone" class="solid-input hud-input transition-all duration-300" placeholder="(DD) 99999-9999" maxlength="15" oninput="window.maskPhone(this)">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -632,22 +673,22 @@
                 </footer>
             </div> <!-- Fim Funnel Container -->
 
-            <!-- 🟢 PONTE B2B (TEASER COM CONTEXTO) 🟢 -->
-            <div id="b2b-teaser" class="text-center py-20 px-6 border-t border-zinc-800 bg-zinc-950 mt-4 relative overflow-hidden">
+            <!-- 🟢 PONTE B2B (TEASER COM BOTÃO PULSANTE) 🟢 -->
+            <div id="b2b-teaser" class="text-center pt-20 pb-36 px-6 border-t border-zinc-800 bg-zinc-950 mt-4 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 pointer-events-none"></div>
                 <div class="relative z-10">
                     <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-[3px] mb-3">Tecnologia GL.ID 2026</p>
                     <h3 class="text-white text-2xl md:text-3xl font-black mb-3 tracking-tight">Testou o funil acima?</h3>
                     <p class="text-zinc-400 text-[13px] md:text-[15px] font-medium mb-8 max-w-md mx-auto leading-relaxed">É exatamente esta experiência de alto padrão que o seu cliente terá antes de chamar a sua equipa no WhatsApp.</p>
                     
-                    <button onclick="window.toggleB2B()" class="bg-[#121214] border border-zinc-700 text-white font-black uppercase tracking-widest text-[11px] md:text-[13px] px-6 py-4 rounded-xl shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:bg-zinc-800 hover:border-zinc-500 transition duration-300 w-full max-w-md mx-auto flex items-center justify-center gap-3">
+                    <button onclick="window.toggleB2B()" class="pulse-b2b-btn bg-[#121214] text-white font-black uppercase tracking-widest text-[11px] md:text-[13px] px-6 py-4 rounded-xl transition duration-300 w-full max-w-md mx-auto flex items-center justify-center gap-3">
                         Quero este sistema na minha estética
                     </button>
                 </div>
             </div>
 
-            <!-- ⚪ SEÇÃO B2B GLID (GAVETA OCULTA) ⚪ -->
-            <div id="b2b-section" class="b2b-drawer-container bg-white text-zinc-900 w-full relative z-40 border-t border-zinc-200 pb-20 md:pb-32 font-sans">
+            <!-- ⚪ SEÇÃO B2B GLID (PREÇOS ATUALIZADOS & RODAPÉ CORRIGIDO) ⚪ -->
+            <div id="b2b-section" class="b2b-drawer-container bg-white text-zinc-900 w-full relative z-40 border-t border-zinc-200 font-sans">
                 <div class="max-w-5xl mx-auto px-6 py-20 md:py-32">
                     
                     <!-- DADOS DE CONVERSÃO / A PONTE -->
@@ -680,27 +721,28 @@
                         <div class="bg-white border-2 border-emerald-500 rounded-3xl p-8 md:p-10 relative shadow-xl shadow-emerald-500/10 flex flex-col hover:-translate-y-1 transition transform">
                             <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Lucro Recorrente</div>
                             <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-3 uppercase tracking-tight">PLANO PERFORMANCE</h3>
-                            <div class="mb-8 pb-8 border-b border-zinc-100">
-                                <p class="text-[13px] text-zinc-500 font-medium uppercase mb-2">Setup Inicial: R$ 1.697,00</p>
-                                <p class="text-4xl md:text-5xl font-black text-emerald-600">R$ 97,00 <span class="text-base md:text-lg text-zinc-500 font-medium">/ mês</span></p>
+                            <div class="mb-6 pb-6 border-b border-zinc-100">
+                                <p class="text-[12px] text-zinc-500 font-medium uppercase mb-1">Setup Inicial: <span class="line-through text-zinc-300">R$ 1.697</span> <span class="text-emerald-500 font-black">R$ 1.497</span></p>
+                                <p class="text-4xl md:text-5xl font-black text-emerald-600">R$ 147,00 <span class="text-base md:text-lg text-zinc-500 font-medium">/ mês</span></p>
                             </div>
                             <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-700">
                                 <li>✅ Conexão de Domínio Próprio</li><li>✅ Hospedagem de Alta Velocidade</li><li>✅ Seu negócio, suas cores</li><li>✅ Suporte técnico de vanguarda</li>
                             </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-emerald-500 text-white text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-md hover:bg-emerald-600 transition">Quero este Plano</a>
+                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-emerald-500 text-white text-center text-sm font-bold uppercase py-4 rounded-xl mt-auto shadow-md hover:bg-emerald-600 transition">Quero este Plano</a>
                         </div>
                         
                         <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 relative hover:border-zinc-700 transition flex flex-col hover:-translate-y-1 transform shadow-2xl">
                             <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-zinc-100 text-zinc-900 text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Posse Definitiva</div>
-                            <h3 class="text-xl md:text-2xl font-black text-white mb-3 uppercase tracking-tight">LICENÇA ÚNICA</h3>
-                            <div class="mb-8 pb-8 border-b border-zinc-800">
+                            <h3 class="text-xl md:text-2xl font-black text-white mb-3 uppercase tracking-tight">LICENÇA ANUAL</h3>
+                            <div class="mb-6 pb-6 border-b border-zinc-800">
+                                <p class="text-[12px] text-zinc-500 font-medium uppercase mb-1">Valor Oficial: <span class="line-through text-zinc-600">R$ 3.097</span></p>
                                 <p class="text-4xl md:text-5xl font-black text-white">R$ 2.497,00</p>
-                                <p class="text-[13px] text-zinc-400 font-medium mt-2">(Pagamento Único)</p>
+                                <p class="text-[12px] text-zinc-400 font-medium mt-1">(Pagamento Único Anual)</p>
                             </div>
                             <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-300">
-                                <li>✅ Licença definitiva do código</li><li>✅ Zero mensalidades</li><li>✅ Gestão própria de hospedagem</li><li>✅ Tabela de atualização avulsa</li>
+                                <li>✅ Licença definitiva do código</li><li>✅ Sem mensalidades</li><li>✅ Gestão própria de hospedagem</li><li>✅ Atualizações adquiridas à parte</li>
                             </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Única." target="_blank" class="block w-full bg-white text-zinc-900 text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-lg shadow-white/20 hover:bg-zinc-200 transition">Quero Comprar a Licença</a>
+                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Anual." target="_blank" class="block w-full bg-white text-zinc-900 text-center text-sm font-bold uppercase py-4 rounded-xl mt-auto hover:bg-zinc-200 transition">Quero Comprar a Licença</a>
                         </div>
                     </div>
 
@@ -760,23 +802,38 @@
 
                 </div>
 
-                <div class="bg-zinc-950 py-12 px-6 border-t-4 border-blue-600">
-                    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-                        <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                            <img src="https://glid.carrd.co/assets/images/image03.png?v=a8738403" alt="GLID" class="h-12 mb-4 object-contain">
-                            <p class="text-[11px] text-zinc-500 uppercase tracking-widest font-semibold">© 2026 GLID. Tecnologia em Conversão B2B.</p>
-                        </div>
+                <!-- FIX DE ESPAÇAMENTO E FOOTER COPYRIGHT -->
+                <div class="bg-zinc-950 pt-12 pb-36 md:pb-16 px-6 border-t-4 border-blue-600">
+                    <div class="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
+                        <img src="https://glid.carrd.co/assets/images/image03.png?v=a8738403" alt="GLID" class="h-10 object-contain">
+                        <p class="text-[11px] text-zinc-500 uppercase tracking-widest font-semibold">© 2026 GLID. Tecnologia em Conversão B2B.</p>
+                        <p class="text-[9px] text-zinc-700 uppercase tracking-widest">Todos os direitos reservados. Proibida a cópia, clonagem ou reprodução não autorizada deste design e engenharia.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 🟢 BARRA CTA FLUTUANTE B2C (MOBILE) 🟢 -->
+        <!-- 🟢 BARRA CTA FLUTUANTE B2C (MOBILE GAVETA DE CHECKOUT) 🟢 -->
         <div id="floating-cta" class="fixed-bottom-cta">
+            <!-- Puxador Visual -->
+            <div id="drawer-puller" class="w-12 h-1.5 bg-zinc-200 rounded-full mx-auto mb-2 hidden"></div>
+            
+            <!-- Resumo do Serviço (Aparece no Mobile Drawer) -->
+            <div id="drawer-summary" class="hidden flex-col mb-2 bg-zinc-50 p-4 rounded-xl border border-zinc-200">
+                <p class="text-[9px] text-emerald-600 font-black uppercase tracking-widest mb-1">Pacote Selecionado</p>
+                <h3 id="drawer-service-name" class="font-black text-[15px] text-zinc-900 mb-1">...</h3>
+                <p id="drawer-service-desc" class="text-[11px] text-zinc-500 font-medium leading-relaxed">...</p>
+            </div>
+
+            <!-- Corpo Dinâmico (Passos 2 e 3 são Injetados Aqui via JS no Mobile) -->
+            <div id="drawer-body" class="overflow-y-auto hide-scrollbar transition-all duration-500" style="max-height: 0; opacity: 0;">
+            </div>
+
             <div id="bottom-upsell-zone" class="bottom-upsell-zone">
                 <div><h4 class="text-[12px] font-black text-amber-500 uppercase">✨ Adicionar Cera Líquida</h4><p class="text-[10px] text-zinc-400 mt-1">+ R$ 50 (Proteção Extra e Brilho)</p></div>
                 <input type="checkbox" id="upsell-toggle-bottom" class="upsell-toggle shrink-0" onchange="window.toggleUpsell(this)">
             </div>
+            
             <div class="cta-row-flex">
                 <div class="cart-info"><span class="cart-label">Total Estimado</span><span class="cart-total" id="cta-total">R$ ---</span></div>
                 <button id="btn-continue-flow" class="btn-continue" disabled onclick="window.handleNextStep()"><span class="btn-text">Selecionar</span></button>
@@ -827,7 +884,8 @@
             "Outra Marca": {"Outro (Digitar Manualmente)": "manual"}
         };
 
-        let funnelState = { step: 1, brand: "", model: "", categoryName: "", categoryMultiplier: 1, baseService: "", basePrice: 0, hasUpsell: false, upsellPrice: 50, phoneReady: false, audioUnlocked: false, isStarted: false };
+        // 🟢 STATE GLOBAL 🟢
+        let funnelState = { step: 1, brand: "", model: "", categoryName: "", categoryMultiplier: 1, baseService: "", baseDesc: "", basePrice: 0, hasUpsell: false, upsellPrice: 50, phoneReady: false, audioUnlocked: false, isStarted: false, shift: "Manhã" };
 
         function getTotalPrice() { 
             let baseCalculada = funnelState.basePrice * funnelState.categoryMultiplier;
@@ -878,6 +936,7 @@
                 observer.observe(b2bTeaser);
             }
 
+            // 🟢 ARQUITETURA MOBILE (INJEÇÃO DO DRAWER) 🟢
             if(window.innerWidth < 768) {
                 const cardObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -888,10 +947,19 @@
                     });
                 }, { threshold: 0.7 });
                 document.querySelectorAll('.solid-card').forEach(card => cardObserver.observe(card));
+
+                // Move os Passos 2 e 3 para a Gaveta Inferior no arranque
+                const drawerBody = document.getElementById('drawer-body');
+                const step2 = document.getElementById('step-2-section');
+                const step3 = document.getElementById('step-3-section');
+                if(drawerBody && step2 && step3) {
+                    drawerBody.appendChild(step2);
+                    drawerBody.appendChild(step3);
+                }
             }
         });
 
-        // 🟢 FIX DE ESCOPO: Ancorando funções no window para contornar sandboxes de renderização 🟢
+        // 🟢 FIX DE ESCOPO 🟢
         
         window.handleNativeBrand = function() {
             funnelState.brand = document.getElementById('native-brand').value;
@@ -929,10 +997,22 @@
             } 
         };
 
+        // 🟢 FUNÇÃO DE ESCOLHA DE TURNO (B2C) 🟢
+        window.selectShift = function(shift, btnId) {
+            document.querySelectorAll('#shift-morning, #shift-afternoon').forEach(b => b.classList.remove('selected'));
+            document.getElementById(btnId).classList.add('selected');
+            funnelState.shift = shift;
+            if(navigator.vibrate) navigator.vibrate(10);
+        };
+
         window.selectUpgrade = function(el, mode, price) {
             document.querySelectorAll('.solid-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
-            funnelState.baseService = mode; funnelState.basePrice = price; 
+            
+            funnelState.baseService = mode; 
+            funnelState.basePrice = price; 
+            funnelState.baseDesc = el.querySelector('.card-desc').innerText; // Captura para o Drawer
+            
             const bUpsell = document.getElementById('bottom-upsell-zone');
             const dtUpsell = document.getElementById('dt-upsell-row');
             
@@ -952,9 +1032,8 @@
             if(window.innerWidth >= 768) {
                 const dtCart = document.getElementById('desktop-floating-cart');
                 if(dtCart) dtCart.classList.add('active');
+                setTimeout(() => { window.editStep(2); }, 400); // Desktop Scroll automático
             }
-            
-            setTimeout(() => { window.editStep(2); }, 400);
         };
 
         window.toggleUpsell = function(checkbox) { 
@@ -1000,7 +1079,7 @@
             ring.style.strokeDashoffset = "470";
             document.getElementById('car-stage-bg').classList.remove('idle-shake');
             document.getElementById('bg-ambient').style.opacity = "0";
-            hintText.innerText = "Pressione para iniciar a experiência"; 
+            hintText.innerText = "Pressione para ligar o sistema"; 
             hintText.classList.add('animate-pulse');
         };
 
@@ -1015,7 +1094,6 @@
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
             hintText.style.opacity = "0";
             
-            // Início da transição do ecrã
             setTimeout(() => {
                 const landing = document.getElementById('landing-view');
                 landing.style.transition = "opacity 0.4s ease"; 
@@ -1027,12 +1105,10 @@
                     const expView = document.getElementById('experience-view');
                     expView.style.display = "flex"; 
                     
-                    // PREVINE FLICKER COM 50MS TIMEOUT
                     setTimeout(() => {
                         expView.style.opacity = "1"; 
                         setTimeout(() => expView.classList.add('show-view'), 100); 
 
-                        // 🟢 SINCRONIA PERFEITA: Fade-out começa a meio das estrelas (aos 600ms)
                         setTimeout(() => {
                             let vol = 1.0;
                             let fadeInterval = setInterval(() => { 
@@ -1045,7 +1121,6 @@
                             }, 50);
                         }, 600); 
 
-                        // Transita para o HUD principal após 3 segundos
                         setTimeout(() => {
                             expView.style.transition = "opacity 0.4s ease"; 
                             expView.style.opacity = "0";
@@ -1080,6 +1155,7 @@
                 if (el) el.innerText = text;
             };
 
+            // Layout Geral
             toggleDisplay('hero-banner', isFirstStep ? 'flex' : 'none');
             toggleDisplay('trust-banner', isFirstStep ? 'flex' : 'none');
             toggleDisplay('gallery-section', isFirstStep ? 'block' : 'none');
@@ -1087,29 +1163,22 @@
             toggleDisplay('b2c-faq-section', isFirstStep ? 'block' : 'none');
             toggleDisplay('footer-section', isFirstStep ? 'block' : 'none');
 
+            // Timeline Desktop
             const stepNav1 = document.getElementById('step-nav-1');
-            if (stepNav1) {
-                stepNav1.className = funnelState.step >= 1 ? 'progress-step active' : 'progress-step';
-                if(funnelState.step > 1) stepNav1.classList.add('completed');
-            }
+            if (stepNav1) { stepNav1.className = funnelState.step >= 1 ? 'progress-step active' : 'progress-step'; if(funnelState.step > 1) stepNav1.classList.add('completed'); }
             
             const stepNav2 = document.getElementById('step-nav-2');
-            if (stepNav2) {
-                stepNav2.className = funnelState.step >= 2 ? 'progress-step active' : 'progress-step';
-                if(funnelState.step > 2) stepNav2.classList.add('completed');
-            }
+            if (stepNav2) { stepNav2.className = funnelState.step >= 2 ? 'progress-step active' : 'progress-step'; if(funnelState.step > 2) stepNav2.classList.add('completed'); }
             
             const stepNav3 = document.getElementById('step-nav-3');
-            if (stepNav3) {
-                stepNav3.className = funnelState.step === 3 ? 'progress-step active' : 'progress-step';
-            }
+            if (stepNav3) { stepNav3.className = funnelState.step === 3 ? 'progress-step active' : 'progress-step'; }
 
             const lineFill1 = document.getElementById('line-fill-1');
             if (lineFill1) lineFill1.style.width = funnelState.step >= 2 ? '100%' : '0%';
-            
             const lineFill2 = document.getElementById('line-fill-2');
             if (lineFill2) lineFill2.style.width = funnelState.step === 3 ? '100%' : '0%';
 
+            // Seções (No Desktop ficam na página, no Mobile estão na gaveta)
             toggleDisplay('step-1-section', funnelState.step === 1 ? 'block' : 'none');
             toggleDisplay('step-2-section', funnelState.step === 2 ? 'block' : 'none');
             toggleDisplay('step-3-section', funnelState.step === 3 ? 'block' : 'none');
@@ -1121,11 +1190,34 @@
             
             window.updatePricesDisplay();
 
-            setText('dt-cart-service', funnelState.baseService || "-");
-            setText('dt-cart-size', funnelState.categoryName || "-");
+            const dtCartService = document.getElementById('dt-cart-service');
+            if(dtCartService){ dtCartService.innerText = funnelState.baseService || "-"; document.getElementById('dt-cart-size').innerText = funnelState.categoryName || "-"; }
 
-            const scrollContainer = document.getElementById('scroll-container');
-            if (scrollContainer) scrollContainer.scrollTop = 0;
+            // 🟢 LÓGICA DA GAVETA MOBILE (BOTTOM SHEET) 🟢
+            const floatingBar = document.getElementById('floating-cta');
+            const drawerSummary = document.getElementById('drawer-summary');
+            const drawerPuller = document.getElementById('drawer-puller');
+            
+            if (window.innerWidth < 768 && floatingBar) {
+                if (funnelState.step === 1) {
+                    floatingBar.classList.remove('expanded');
+                    if(drawerSummary) drawerSummary.style.display = 'none';
+                    if(drawerPuller) drawerPuller.style.display = 'none';
+                    document.body.style.overflow = ''; // Liberta Scroll
+                } else {
+                    floatingBar.classList.add('expanded');
+                    if(drawerSummary) {
+                        drawerSummary.style.display = 'flex';
+                        setText('drawer-service-name', funnelState.baseService);
+                        setText('drawer-service-desc', funnelState.baseDesc);
+                    }
+                    if(drawerPuller) drawerPuller.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Tranca o scroll do fundo (Foco no Checkout)
+                }
+            } else {
+                // Se for Desktop e mudou de passo, faz scroll ao topo
+                document.getElementById('scroll-container').scrollTop = 0;
+            }
 
             if (funnelState.step === 3) {
                 toggleDisplay('bottom-upsell-zone', 'none');
@@ -1138,14 +1230,8 @@
             const dtBtnCTA = document.getElementById('dt-btn-continue');
             const floatingBar = document.getElementById('floating-cta');
             
-            if (btnCTA) {
-                btnCTA.classList.remove('btn-success'); 
-                btnCTA.disabled = true;
-            }
-            if (dtBtnCTA) { 
-                dtBtnCTA.disabled = true; 
-                dtBtnCTA.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-500'); 
-            }
+            if (btnCTA) { btnCTA.classList.remove('btn-success'); btnCTA.disabled = true; }
+            if (dtBtnCTA) { dtBtnCTA.disabled = true; dtBtnCTA.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-500'); }
 
             if (window.innerWidth < 768 && floatingBar) {
                 if (funnelState.basePrice > 0) floatingBar.classList.add('active-cart');
@@ -1154,42 +1240,21 @@
 
             if (funnelState.step === 1) {
                 if (funnelState.basePrice > 0) { 
-                    if (btnCTA) {
-                        btnCTA.disabled = false; 
-                        const btnText = btnCTA.querySelector('.btn-text');
-                        if (btnText) btnText.innerText = "Identificar Veículo"; 
-                    }
+                    if (btnCTA) { btnCTA.disabled = false; const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Identificar Veículo"; }
                     if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Identificar Veículo"; }
                 }
             } else if (funnelState.step === 2) {
                 if (funnelState.brand && funnelState.model.length >= 2) { 
-                    if (btnCTA) {
-                        btnCTA.disabled = false; 
-                        const btnText = btnCTA.querySelector('.btn-text');
-                        if (btnText) btnText.innerText = "Ver Resumo"; 
-                    }
+                    if (btnCTA) { btnCTA.disabled = false; const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Escolher Turno"; }
                     if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Ver Resumo"; }
                 }
             } else if (funnelState.step === 3) {
                 if (funnelState.phoneReady) { 
-                    if (btnCTA) {
-                        btnCTA.disabled = false; 
-                        btnCTA.classList.add('btn-success'); 
-                        const btnText = btnCTA.querySelector('.btn-text');
-                        if (btnText) btnText.innerText = "Agendar via WhatsApp"; 
-                    }
-                    if (dtBtnCTA) { 
-                        dtBtnCTA.disabled = false; 
-                        dtBtnCTA.innerText = "Agendar via WhatsApp"; 
-                        dtBtnCTA.classList.add('bg-emerald-500', 'text-white', 'border-emerald-500'); 
-                        dtBtnCTA.classList.remove('bg-zinc-100', 'text-zinc-400');
-                    }
+                    if (btnCTA) { btnCTA.disabled = false; btnCTA.classList.add('btn-success'); const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Agendar via WhatsApp"; }
+                    if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Agendar via WhatsApp"; dtBtnCTA.classList.add('bg-emerald-500', 'text-white', 'border-emerald-500'); dtBtnCTA.classList.remove('bg-zinc-100', 'text-zinc-400');}
                 }
                 else {
-                    if (btnCTA) {
-                        const btnText = btnCTA.querySelector('.btn-text');
-                        if (btnText) btnText.innerText = "Falta Contato";
-                    }
+                    if (btnCTA) { const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Falta Contato"; }
                     if (dtBtnCTA) dtBtnCTA.innerText = "Falta Contato";
                 }
             }
@@ -1200,9 +1265,12 @@
             else if (funnelState.step === 3 && funnelState.phoneReady) window.finalizeBooking();
         };
 
+        // 🟢 CAVALO DE TROIA: COPYWRITING DE VENDAS B2B NO WHATSAPP 🟢
         window.finalizeBooking = function() {
             const totalFormatado = getTotalPrice().toLocaleString('pt-BR');
-            const msg = `⚡ *RESERVA VIP* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n💰 *VALOR CALCULADO:* R$ ${totalFormatado}\n📱 *WHATSAPP:* ${document.getElementById('client-phone').value}`;
+            
+            const msg = `⚡ *NOVA SOLICITAÇÃO VIP* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n🕒 *PREFERÊNCIA:* ${funnelState.shift}\n💰 *VALOR APROVADO:* R$ ${totalFormatado}\n\n━━━━━━━━━━━━━━━━━━━━━\n🎯 *JÁ IMAGINOU RECEBER CLIENTES ASSIM?*\n\nSem perguntas soltas. Sem "qual o valor?".\nO cliente clica no seu Instagram, escolhe o pacote, o sistema calcula o valor pelo tamanho do carro e ele chega ao seu WhatsApp pronto para agendar.\n\nIsto não é um cliente real, é uma demonstração do *Web App GL.ID* que acabámos de gerar para a sua Estética Automotiva.\n\nVocê quer parar de perder tempo com curiosos e ter uma máquina de fechamento automático com a sua marca?\n\nResponda a esta mensagem e vamos implementar este sistema no seu negócio.`;
+            
             window.open(`https://wa.me/554933121788?text=${encodeURIComponent(msg)}`, '_blank');
         };
 
