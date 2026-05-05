@@ -164,6 +164,11 @@
         .progress-line { flex-grow: 1; height: 3px; background: #27272a; margin: 0 8px; position: relative; top: -6px; z-index: 1; border-radius: 2px; overflow: hidden;}
         .progress-line-fill { height: 100%; width: 0%; background: var(--accent-green); transition: width 0.4s ease; }
 
+        /* 🟢 BARRA DE CONFIANÇA B2C 🟢 */
+        .trust-banner { display: flex; justify-content: space-between; align-items: center; background: var(--card-solid); border: 1px solid var(--card-border); border-radius: 16px; padding: 18px 12px; margin-bottom: 32px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; flex: 1; }
+        .trust-divider { width: 1px; height: 30px; background: var(--card-border); }
+
         /* WIZARD & ECRÃS */
         .step-section { display: none; animation: slide-in 0.3s ease forwards; transform-origin: top; }
         .step-section.active-step { display: block; }
@@ -303,7 +308,7 @@
         <source src="https://assets.mixkit.co/active_storage/sfx/2736/2736-preview.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- 1. TELA DE IGNIÇÃO (BLINDADA PARA MOBILE) -->
+    <!-- 1. TELA DE IGNIÇÃO -->
     <div id="landing-view">
         <div id="car-stage-bg" class="absolute inset-0">
             <div id="bg-off" class="car-bg" style="opacity:1"></div>
@@ -346,7 +351,7 @@
         </div>
     </div>
 
-    <!-- 2. PRE-LOADER (ESTABILIZADO) -->
+    <!-- 2. PRE-LOADER -->
     <div id="experience-view">
         <div class="stars-container flex gap-2 mb-4">
             <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
@@ -425,6 +430,15 @@
                         <div class="progress-dot">3</div>
                         <span>Reserva</span>
                     </div>
+                </div>
+
+                <!-- 🟢 BARRA DE CONFIANÇA B2C (ILHA CLARA) 🟢 -->
+                <div class="trust-banner" id="trust-banner">
+                    <div class="trust-item"><span class="text-xl">💧</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Água<br>Filtrada</span></div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item"><span class="text-xl">🧪</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Produtos<br>pH Neutro</span></div>
+                    <div class="trust-divider"></div>
+                    <div class="trust-item"><span class="text-xl">🧽</span><span class="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-widest mt-1">Toalhas<br>Anti-Risco</span></div>
                 </div>
 
                 <!-- 🟢 PASSO 1: SELEÇÃO DE PROTOCOLOS 🟢 -->
@@ -585,7 +599,7 @@
                     </div>
                 </div>
 
-                <!-- FAQ B2C (CLIENTE FINAL) -->
+                <!-- FAQ B2C -->
                 <div class="mt-16 mb-16" id="b2c-faq-section">
                      <h2 class="text-[12px] font-black uppercase text-zinc-500 tracking-[0.2em] mb-6 text-center md:text-left">Dúvidas Frequentes</h2>
                      
@@ -599,7 +613,7 @@
                      <div id="b2c-faq3" class="b2c-faq-content">Oferecemos planos mensais exclusivos para clientes que desejam manter o carro sempre impecável com um valor fixo. Fale connosco no WhatsApp para verificar a disponibilidade de vagas no clube.</div>
                 </div>
 
-                <!-- RODAPÉ B2C ROBUSTO -->
+                <!-- RODAPÉ B2C -->
                 <footer class="b2c-footer rounded-3xl" id="footer-section">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
                         <div>
@@ -670,10 +684,10 @@
                                 <p class="text-[13px] text-zinc-500 font-medium uppercase mb-2">Setup Inicial: R$ 697,00</p>
                                 <p class="text-4xl md:text-5xl font-black text-emerald-600">R$ 97,00 <span class="text-base md:text-lg text-zinc-500 font-medium">/ mês</span></p>
                             </div>
-                            <ul class="space-y-5 mb-8 flex-grow text-[14px] md:text-base font-medium text-zinc-700">
+                            <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-700">
                                 <li>✅ Conexão de Domínio Próprio</li><li>✅ Hospedagem de Alta Velocidade</li><li>✅ Seu negócio, suas cores</li><li>✅ Suporte técnico de vanguarda</li>
                             </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-emerald-500 text-white text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-lg shadow-emerald-500/40 hover:bg-emerald-600 transition">Assinar Agora</a>
+                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-emerald-500 text-white text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-md hover:bg-emerald-600 transition">Quero este Plano</a>
                         </div>
                         
                         <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 relative hover:border-zinc-700 transition flex flex-col hover:-translate-y-1 transform shadow-2xl">
@@ -683,10 +697,10 @@
                                 <p class="text-4xl md:text-5xl font-black text-white">R$ 1.497,00</p>
                                 <p class="text-[13px] text-zinc-400 font-medium mt-2">(Pagamento Único)</p>
                             </div>
-                            <ul class="space-y-5 mb-8 flex-grow text-[14px] md:text-base font-medium text-zinc-300">
+                            <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-300">
                                 <li>✅ Licença definitiva do código</li><li>✅ Zero mensalidades</li><li>✅ Gestão própria de hospedagem</li><li>✅ Tabela de atualização avulsa</li>
                             </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Única." target="_blank" class="block w-full bg-white text-zinc-900 text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-lg shadow-white/20 hover:bg-zinc-200 transition">Adquirir Licença</a>
+                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Única." target="_blank" class="block w-full bg-white text-zinc-900 text-center text-base font-bold uppercase py-5 rounded-xl mt-auto shadow-lg shadow-white/20 hover:bg-zinc-200 transition">Quero Comprar a Licença</a>
                         </div>
                     </div>
 
@@ -923,10 +937,13 @@
             const dtUpsell = document.getElementById('dt-upsell-row');
             
             if (price === 90 || price === 150) {
-                bUpsell.style.display = 'flex';
+                if (bUpsell) bUpsell.style.display = 'flex';
             } else { 
-                bUpsell.style.display = 'none'; funnelState.hasUpsell = false; document.getElementById('upsell-toggle-bottom').checked = false; 
-                if(dtUpsell) dtUpsell.classList.add('hidden');
+                if (bUpsell) bUpsell.style.display = 'none'; 
+                funnelState.hasUpsell = false; 
+                const toggleBottom = document.getElementById('upsell-toggle-bottom');
+                if (toggleBottom) toggleBottom.checked = false; 
+                if (dtUpsell) dtUpsell.classList.add('hidden');
             }
             if(navigator.vibrate) navigator.vibrate(20);
             
@@ -998,6 +1015,7 @@
             if(navigator.vibrate) navigator.vibrate([100, 30, 400]);
             hintText.style.opacity = "0";
             
+            // Início da transição do ecrã
             setTimeout(() => {
                 const landing = document.getElementById('landing-view');
                 landing.style.transition = "opacity 0.4s ease"; 
@@ -1009,10 +1027,12 @@
                     const expView = document.getElementById('experience-view');
                     expView.style.display = "flex"; 
                     
+                    // PREVINE FLICKER COM 50MS TIMEOUT
                     setTimeout(() => {
                         expView.style.opacity = "1"; 
                         setTimeout(() => expView.classList.add('show-view'), 100); 
 
+                        // 🟢 SINCRONIA PERFEITA: Fade-out começa a meio das estrelas (aos 600ms)
                         setTimeout(() => {
                             let vol = 1.0;
                             let fadeInterval = setInterval(() => { 
@@ -1025,6 +1045,7 @@
                             }, 50);
                         }, 600); 
 
+                        // Transita para o HUD principal após 3 segundos
                         setTimeout(() => {
                             expView.style.transition = "opacity 0.4s ease"; 
                             expView.style.opacity = "0";
@@ -1048,46 +1069,66 @@
 
         window.updateWizardUI = function() {
             const isFirstStep = funnelState.step === 1;
-            
-            document.getElementById('hero-banner').style.display = isFirstStep ? 'flex' : 'none';
-            document.getElementById('trust-banner').style.display = isFirstStep ? 'flex' : 'none';
-            document.getElementById('gallery-section').style.display = isFirstStep ? 'block' : 'none';
-            document.getElementById('social-proof-section').style.display = isFirstStep ? 'block' : 'none';
-            document.getElementById('b2c-faq-section').style.display = isFirstStep ? 'block' : 'none';
-            document.getElementById('footer-section').style.display = isFirstStep ? 'block' : 'none';
 
-            document.getElementById('step-nav-1').className = funnelState.step >= 1 ? 'progress-step active' : 'progress-step';
-            if(funnelState.step > 1) document.getElementById('step-nav-1').classList.add('completed');
-            
-            document.getElementById('step-nav-2').className = funnelState.step >= 2 ? 'progress-step active' : 'progress-step';
-            if(funnelState.step > 2) document.getElementById('step-nav-2').classList.add('completed');
-            
-            document.getElementById('step-nav-3').className = funnelState.step === 3 ? 'progress-step active' : 'progress-step';
+            const toggleDisplay = (id, displayValue) => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = displayValue;
+            };
 
-            document.getElementById('line-fill-1').style.width = funnelState.step >= 2 ? '100%' : '0%';
-            document.getElementById('line-fill-2').style.width = funnelState.step === 3 ? '100%' : '0%';
+            const setText = (id, text) => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = text;
+            };
 
-            document.getElementById('step-1-section').style.display = funnelState.step === 1 ? 'block' : 'none';
-            document.getElementById('step-2-section').style.display = funnelState.step === 2 ? 'block' : 'none';
-            document.getElementById('step-3-section').style.display = funnelState.step === 3 ? 'block' : 'none';
+            toggleDisplay('hero-banner', isFirstStep ? 'flex' : 'none');
+            toggleDisplay('trust-banner', isFirstStep ? 'flex' : 'none');
+            toggleDisplay('gallery-section', isFirstStep ? 'block' : 'none');
+            toggleDisplay('social-proof-section', isFirstStep ? 'block' : 'none');
+            toggleDisplay('b2c-faq-section', isFirstStep ? 'block' : 'none');
+            toggleDisplay('footer-section', isFirstStep ? 'block' : 'none');
+
+            const stepNav1 = document.getElementById('step-nav-1');
+            if (stepNav1) {
+                stepNav1.className = funnelState.step >= 1 ? 'progress-step active' : 'progress-step';
+                if(funnelState.step > 1) stepNav1.classList.add('completed');
+            }
             
-            document.getElementById('receipt-car').innerText = funnelState.brand && funnelState.model ? (funnelState.brand + " " + funnelState.model) : "-";
-            document.getElementById('receipt-category').innerText = funnelState.categoryName || "-";
-            document.getElementById('receipt-base').innerText = funnelState.baseService || "-";
-            document.getElementById('receipt-upsell-row').style.display = funnelState.hasUpsell ? 'flex' : 'none';
+            const stepNav2 = document.getElementById('step-nav-2');
+            if (stepNav2) {
+                stepNav2.className = funnelState.step >= 2 ? 'progress-step active' : 'progress-step';
+                if(funnelState.step > 2) stepNav2.classList.add('completed');
+            }
+            
+            const stepNav3 = document.getElementById('step-nav-3');
+            if (stepNav3) {
+                stepNav3.className = funnelState.step === 3 ? 'progress-step active' : 'progress-step';
+            }
+
+            const lineFill1 = document.getElementById('line-fill-1');
+            if (lineFill1) lineFill1.style.width = funnelState.step >= 2 ? '100%' : '0%';
+            
+            const lineFill2 = document.getElementById('line-fill-2');
+            if (lineFill2) lineFill2.style.width = funnelState.step === 3 ? '100%' : '0%';
+
+            toggleDisplay('step-1-section', funnelState.step === 1 ? 'block' : 'none');
+            toggleDisplay('step-2-section', funnelState.step === 2 ? 'block' : 'none');
+            toggleDisplay('step-3-section', funnelState.step === 3 ? 'block' : 'none');
+            
+            setText('receipt-car', funnelState.brand && funnelState.model ? (funnelState.brand + " " + funnelState.model) : "-");
+            setText('receipt-category', funnelState.categoryName || "-");
+            setText('receipt-base', funnelState.baseService || "-");
+            toggleDisplay('receipt-upsell-row', funnelState.hasUpsell ? 'flex' : 'none');
             
             window.updatePricesDisplay();
 
-            const dtCartService = document.getElementById('dt-cart-service');
-            if(dtCartService){
-                dtCartService.innerText = funnelState.baseService || "-";
-                document.getElementById('dt-cart-size').innerText = funnelState.categoryName || "-";
-            }
+            setText('dt-cart-service', funnelState.baseService || "-");
+            setText('dt-cart-size', funnelState.categoryName || "-");
 
-            document.getElementById('scroll-container').scrollTop = 0;
+            const scrollContainer = document.getElementById('scroll-container');
+            if (scrollContainer) scrollContainer.scrollTop = 0;
 
             if (funnelState.step === 3) {
-                document.getElementById('bottom-upsell-zone').style.display = 'none';
+                toggleDisplay('bottom-upsell-zone', 'none');
             }
             window.updateBottomCTA();
         };
@@ -1097,32 +1138,59 @@
             const dtBtnCTA = document.getElementById('dt-btn-continue');
             const floatingBar = document.getElementById('floating-cta');
             
-            btnCTA.classList.remove('btn-success'); btnCTA.disabled = true;
-            if(dtBtnCTA) { dtBtnCTA.disabled = true; dtBtnCTA.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-500'); }
+            if (btnCTA) {
+                btnCTA.classList.remove('btn-success'); 
+                btnCTA.disabled = true;
+            }
+            if (dtBtnCTA) { 
+                dtBtnCTA.disabled = true; 
+                dtBtnCTA.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-500'); 
+            }
 
-            if(window.innerWidth < 768 && floatingBar) {
-                if(funnelState.basePrice > 0) floatingBar.classList.add('active-cart');
+            if (window.innerWidth < 768 && floatingBar) {
+                if (funnelState.basePrice > 0) floatingBar.classList.add('active-cart');
                 else floatingBar.classList.remove('active-cart');
             }
 
             if (funnelState.step === 1) {
                 if (funnelState.basePrice > 0) { 
-                    btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Identificar Veículo"; 
-                    if(dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Identificar Veículo"; }
+                    if (btnCTA) {
+                        btnCTA.disabled = false; 
+                        const btnText = btnCTA.querySelector('.btn-text');
+                        if (btnText) btnText.innerText = "Identificar Veículo"; 
+                    }
+                    if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Identificar Veículo"; }
                 }
             } else if (funnelState.step === 2) {
                 if (funnelState.brand && funnelState.model.length >= 2) { 
-                    btnCTA.disabled = false; btnCTA.querySelector('.btn-text').innerText = "Ver Resumo"; 
-                    if(dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Ver Resumo"; }
+                    if (btnCTA) {
+                        btnCTA.disabled = false; 
+                        const btnText = btnCTA.querySelector('.btn-text');
+                        if (btnText) btnText.innerText = "Ver Resumo"; 
+                    }
+                    if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Ver Resumo"; }
                 }
             } else if (funnelState.step === 3) {
                 if (funnelState.phoneReady) { 
-                    btnCTA.disabled = false; btnCTA.classList.add('btn-success'); btnCTA.querySelector('.btn-text').innerText = "Agendar via WhatsApp"; 
-                    if(dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Agendar via WhatsApp"; dtBtnCTA.classList.add('bg-emerald-500', 'text-white', 'border-emerald-500'); dtBtnCTA.classList.remove('bg-zinc-100', 'text-zinc-400');}
+                    if (btnCTA) {
+                        btnCTA.disabled = false; 
+                        btnCTA.classList.add('btn-success'); 
+                        const btnText = btnCTA.querySelector('.btn-text');
+                        if (btnText) btnText.innerText = "Agendar via WhatsApp"; 
+                    }
+                    if (dtBtnCTA) { 
+                        dtBtnCTA.disabled = false; 
+                        dtBtnCTA.innerText = "Agendar via WhatsApp"; 
+                        dtBtnCTA.classList.add('bg-emerald-500', 'text-white', 'border-emerald-500'); 
+                        dtBtnCTA.classList.remove('bg-zinc-100', 'text-zinc-400');
+                    }
                 }
                 else {
-                    btnCTA.querySelector('.btn-text').innerText = "Falta Contato";
-                    if(dtBtnCTA) dtBtnCTA.innerText = "Falta Contato";
+                    if (btnCTA) {
+                        const btnText = btnCTA.querySelector('.btn-text');
+                        if (btnText) btnText.innerText = "Falta Contato";
+                    }
+                    if (dtBtnCTA) dtBtnCTA.innerText = "Falta Contato";
                 }
             }
         };
@@ -1142,10 +1210,10 @@
         window.toggleB2BFaq = function(id) {
             const content = document.getElementById(id);
             const icon = document.getElementById('icon-' + id);
-            if (content.classList.contains('hidden')) { 
+            if (content && content.classList.contains('hidden')) { 
                 content.classList.remove('hidden'); 
                 if(icon) icon.style.transform = 'rotate(45deg)'; 
-            } else { 
+            } else if (content) { 
                 content.classList.add('hidden'); 
                 if(icon) icon.style.transform = 'rotate(0deg)'; 
             }
