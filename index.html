@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -33,29 +32,24 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         :root {
-            /* Fundo Mood/Emoção (Escuro) */
             --bg-ultra: #050505;
             --bg-carbon: #0d0d0f; 
             
-            /* Ilhas de Foco / Conversão (Claras e Solidas) */
             --card-solid: #ffffff;
             --card-border: #e4e4e7;
             --input-bg: #ffffff;
             --input-border: #d4d4d8;
             
-            /* Cores de Ação */
             --accent-green: #10b981;
             --accent-gold: #f59e0b;
             --vermelho-ignicao: #ef4444;
 
-            /* Tiers: Cores Base */
             --c-prata: #64748b;
             --c-azul: #0284c7;
             --c-ouro: #d97706;
             --c-verde: #059669;
             --c-roxo: #7e22ce;
 
-            /* Tiers: Fundo Selecionado (Suave) */
             --bg-sel-prata: #f8fafc;
             --bg-sel-azul: #f0f9ff;
             --bg-sel-ouro: #fffbeb;
@@ -69,7 +63,7 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- TELA 1: IGNIÇÃO (LAYOUT PERFEITO COM 100DVH) --- */
+        /* --- TELA 1: IGNIÇÃO --- */
         #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; background-color: var(--bg-ultra); transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); height: 100dvh; }
         
         .car-bg { position: absolute; inset: 0; background-size: cover; background-position: center 60%; opacity: 0; transition: opacity 0.5s ease; transform: scale(1.05); }
@@ -81,7 +75,6 @@
         .idle-shake { animation: idle-rumble-ani 0.06s infinite linear; }
         @keyframes idle-rumble-ani { 0% { transform: translate(0, 0) } 25% { transform: translate(-1px, 1px) } 50% { transform: translate(1px, 1px) } 75% { transform: translate(1px, -1px) } 100% { transform: translate(0, 0) } }
 
-        /* Grelha de Posição da Ignição */
         .landing-top { padding-top: 6vh; position: relative; z-index: 10; width: 100%; text-align: center; }
         .landing-center { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 10; }
         .landing-bottom { padding-bottom: 5vh; width: 100%; position: relative; z-index: 10; text-align: center; padding-left: 1rem; padding-right: 1rem; }
@@ -101,7 +94,7 @@
         .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho-ignicao); }
         .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ignicao); }
 
-        /* --- TELA 2: PRE-LOADER BLINDADO --- */
+        /* --- TELA 2: PRE-LOADER --- */
         #experience-view { position: fixed; inset: 0; z-index: 100; background: var(--bg-ultra); display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; height: 100dvh;}
         .stars-container { display: flex; gap: 8px; margin-bottom: 24px; }
         .star-icon { width: 22px; height: 22px; fill: var(--accent-gold); opacity: 0; transform: translateY(15px); }
@@ -113,10 +106,7 @@
         .show-view .star-icon:nth-child(4) { animation-delay: 0.5s; } 
         .show-view .star-icon:nth-child(5) { animation-delay: 0.6s; }
         
-        @keyframes luxFadeUp { 
-            to { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); } 
-        }
-
+        @keyframes luxFadeUp { to { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); } }
         .pulse-text { animation: pulse-opacity 2s ease-in-out infinite; }
         @keyframes pulse-opacity { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
@@ -165,7 +155,7 @@
         .progress-line { flex-grow: 1; height: 3px; background: #27272a; margin: 0 8px; position: relative; top: -6px; z-index: 1; border-radius: 2px; overflow: hidden;}
         .progress-line-fill { height: 100%; width: 0%; background: var(--accent-green); transition: width 0.4s ease; }
 
-        /* WIZARD & ECRÃS (Desktop Base) */
+        /* WIZARD & ECRÃS */
         .step-section { display: none; animation: slide-in 0.3s ease forwards; transform-origin: top; }
         .step-section.active-step { display: block; }
         @keyframes slide-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -173,6 +163,7 @@
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #27272a; padding-bottom: 12px;}
         .section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #fff; font-weight: 900; display: flex; align-items: center; margin: 0; }
         .back-btn { font-size: 11px; color: #a1a1aa; font-weight: 800; text-transform: uppercase; background: #121214; border: 1px solid #27272a; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .back-btn:hover { color: #fff; border-color: #52525b; background: #27272a;}
 
         /* 💎 CARTÕES CLAROS 💎 */
         .solid-card { background: var(--card-solid); border: 2px solid var(--card-border); border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; margin-bottom: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
@@ -190,10 +181,13 @@
         .card-title { font-size: 17px; font-weight: 900; color: #18181b; margin-bottom: 4px; letter-spacing: -0.5px; line-height: 1.2; transition: color 0.3s; display: flex; align-items: center; gap: 6px;}
         .card-desc { font-size: 13px; color: #52525b; line-height: 1.6; font-weight: 500; margin-bottom: 16px; }
         .solid-card.selected .card-desc { color: #3f3f46; }
+        
         .feature-time { color: #52525b; font-size: 10px; font-weight: 800; background: #f4f4f5; padding: 6px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 16px; border: 1px solid #e4e4e7; letter-spacing: 0.5px;}
         .solid-card.selected .feature-time { background: #fff; border-color: currentColor;}
+        
         .benefit-tag { font-size: 9px; font-weight: 900; color: #3f3f46; border: 1px solid #d4d4d8; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 16px;}
         .solid-card.selected .benefit-tag { background: #fff; border-color: currentColor; }
+        
         .promo-tag { background: #18181b; color: #fff; padding: 6px 14px; font-size: 10px; font-weight: 900; border-radius: 16px 0 16px 0; position: absolute; top: -1px; left: -1px; text-transform: uppercase; letter-spacing: 1px; border-right: 2px solid #fff; border-bottom: 2px solid #fff;}
         .promo-ouro { background: var(--accent-gold); color: #000; border: none; box-shadow: 2px 2px 10px rgba(245, 158, 11, 0.4); }
 
@@ -206,7 +200,7 @@
         .tier-verde.selected .price-pill .value { color: var(--c-verde); }
         .tier-roxo.selected .price-pill .value { color: var(--c-roxo); }
 
-        /* 💎 INPUTS (Desktop Default) 💎 */
+        /* 💎 INPUTS (Desktop Base) 💎 */
         .solid-input { background-color: var(--input-bg); border: 2px solid var(--input-border); color: #18181b; width: 100%; padding: 18px 20px; font-size: 16px; font-weight: 600; border-radius: 12px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         select.solid-input option, select.solid-input optgroup { color: #000000 !important; background-color: #ffffff !important; font-weight: 600; }
         select.solid-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; background-size: 20px; cursor: pointer; }
@@ -246,6 +240,7 @@
         /* 💎 CARRINHO DESKTOP (FLUTUANTE LATERAL) 💎 */
         .desktop-cart { display: none; }
         @media (min-width: 768px) {
+            .progress-container.md\:flex { display: flex !important; }
             .desktop-cart {
                 display: flex; flex-direction: column; position: fixed; top: 100px; right: 20px; width: 320px; z-index: 90;
                 background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px; padding: 20px;
@@ -255,20 +250,27 @@
             .fixed-bottom-cta { display: none !important; }
         }
 
+        /* 💎 BACKDROP MOBILE (FUNDO ESCURO DO POPUP) 💎 */
+        #mobile-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);}
+        #mobile-backdrop.active { opacity: 1; pointer-events: auto; }
+
         /* 💎 BOTTOM SHEET (MOBILE MODAL DINÂMICO) 💎 */
         @media (max-width: 767px) {
+            .progress-container { display: none !important; }
+            
             .fixed-bottom-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: #ffffff; border-top: 1px solid var(--card-border); z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 12px; transform: translateY(150%); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15); }
             .fixed-bottom-cta.active-cart { transform: translateY(0); }
             
-            /* Estado Expandido (Passo 2 e 3) */
-            .fixed-bottom-cta.expanded { border-radius: 24px 24px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,0.5); padding-top: 12px; }
-            .fixed-bottom-cta.expanded #drawer-body { max-height: 60vh; opacity: 1; margin-bottom: 12px; }
+            /* Estado Expandido (Passo 2 e 3 dentro do Drawer) */
+            .fixed-bottom-cta.expanded { border-radius: 24px 24px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,0.5); padding-top: 12px; max-height: 90dvh; }
+            .fixed-bottom-cta.expanded #drawer-body { max-height: calc(90dvh - 160px); overflow-y: auto; opacity: 1; margin-bottom: 12px; padding-bottom: 20px; transition: max-height 0.4s ease; }
+            
+            #drawer-body .section-header { display: none !important; }
+            #step-2-section { margin-bottom: 0 !important; padding-bottom: 16px !important; border-bottom: 1px dashed #e4e4e7 !important; }
+            #step-3-section { padding-top: 16px !important; }
             
             /* Overrides CSS para Inputs Escuros passarem para Claro dentro do Mobile Drawer */
             #drawer-body .section-title { color: #18181b !important; }
-            #drawer-body .section-header { border-bottom-color: #e4e4e7 !important; padding-bottom: 8px !important; margin-bottom: 16px !important;}
-            #drawer-body .back-btn { background: #f4f4f5 !important; color: #52525b !important; border-color: #d4d4d8 !important; }
-            
             #drawer-body p.text-zinc-400, #drawer-body p.text-zinc-700 { color: #52525b !important; }
             #drawer-body .bg-[#121214] { background-color: #fff !important; border-color: #e4e4e7 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;}
             
@@ -278,8 +280,7 @@
             
             #drawer-body .cat-btn { background: #fff !important; border-color: #e4e4e7 !important; color: #52525b !important; box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;}
             #drawer-body .cat-btn.selected { background: #ecfdf5 !important; border-color: var(--accent-green) !important; color: #047857 !important; transform: scale(1.02); }
-            #drawer-body .cat-btn.selected span.text-white { color: #047857 !important; }
-            #drawer-body .cat-btn.selected span.text-zinc-900 { color: #047857 !important; }
+            #drawer-body .cat-btn.selected span.text-white, #drawer-body .cat-btn.selected span.text-zinc-900 { color: #047857 !important; }
             #drawer-body .cat-btn.selected .cat-icon { filter: none !important; }
             
             #drawer-body .receipt-card { background: #f8fafc !important; border-color: #e4e4e7 !important; box-shadow: none !important; padding: 16px !important; margin-bottom: 16px !important;}
@@ -395,6 +396,9 @@
     </div>
 
     <!-- 3. WEB APP -->
+    <!-- 🟢 FUNDO ESCURO DO POPUP MOBILE 🟢 -->
+    <div id="mobile-backdrop" onclick="window.closeDrawer()"></div>
+    
     <div id="app-view">
         
         <div class="fixed-top-header">
@@ -688,118 +692,115 @@
             </div>
 
             <!-- ⚪ SEÇÃO B2B GLID (PREÇOS ATUALIZADOS & RODAPÉ CORRIGIDO) ⚪ -->
-            <div id="b2b-section" class="b2b-drawer-container bg-white text-zinc-900 w-full relative z-40 border-t border-zinc-200 font-sans">
-                <div class="max-w-5xl mx-auto px-6 py-20 md:py-32">
-                    
-                    <!-- DADOS DE CONVERSÃO / A PONTE -->
-                    <div class="text-center mb-16 md:mb-24">
-                        <span class="text-[12px] md:text-[14px] font-bold text-red-700 uppercase tracking-[3px] block mb-4">O FIM DOS ORÇAMENTOS PERDIDOS</span>
-                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight mb-6">O QUE VOCÊ ACABOU DE TESTAR É UMA<br class="hidden md:block"> MÁQUINA DE FECHAMENTO VIP.</h2>
-                        <p class="text-sm md:text-lg text-zinc-600 leading-relaxed font-medium max-w-3xl mx-auto">Sua equipa perde horas todos os dias a responder a curiosos. Com este funil ativo na bio do seu Instagram, o cliente educa-se, percebe o seu valor e <strong>calcula o próprio orçamento</strong> antes de dizer um "Olá".</p>
-                    </div>
+            <div id="b2b-section" class="b2b-drawer-container w-full relative z-40 font-sans">
+                <div class="bg-white text-zinc-900 border-t border-zinc-200 pb-20 md:pb-32">
+                    <div class="max-w-5xl mx-auto px-6 py-20 md:py-32">
+                        <!-- DADOS DE CONVERSÃO / A PONTE -->
+                        <div class="text-center mb-16 md:mb-24">
+                            <span class="text-[12px] md:text-[14px] font-bold text-red-700 uppercase tracking-[3px] block mb-4">O FIM DOS ORÇAMENTOS PERDIDOS</span>
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight mb-6">O QUE VOCÊ ACABOU DE TESTAR É UMA<br class="hidden md:block"> MÁQUINA DE FECHAMENTO VIP.</h2>
+                            <p class="text-sm md:text-lg text-zinc-600 leading-relaxed font-medium max-w-3xl mx-auto">Sua equipa perde horas todos os dias a responder a curiosos. Com este funil ativo na bio do seu Instagram, o cliente educa-se, percebe o seu valor e <strong>calcula o próprio orçamento</strong> antes de dizer um "Olá".</p>
+                        </div>
 
-                    <!-- POR QUE CONVERTE 3X MAIS -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 max-w-4xl mx-auto">
-                        <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
-                            <span class="text-3xl block mb-3">🛑</span>
-                            <h4 class="font-black text-zinc-900 mb-2">Filtro Implacável</h4>
-                            <p class="text-[13px] text-zinc-600 font-medium">O cliente só chama o WhatsApp depois de aceitar o preço. Fim dos curiosos.</p>
-                        </div>
-                        <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
-                            <span class="text-3xl block mb-3">⚙️</span>
-                            <h4 class="font-black text-zinc-900 mb-2">Preço Dinâmico</h4>
-                            <p class="text-[13px] text-zinc-600 font-medium">Lavar um Hatch não custa o mesmo que uma RAM. O sistema calcula a diferença sozinho.</p>
-                        </div>
-                        <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
-                            <span class="text-3xl block mb-3">💎</span>
-                            <h4 class="font-black text-zinc-900 mb-2">Ancoragem de Grife</h4>
-                            <p class="text-[13px] text-zinc-600 font-medium">A interface de hipercarro destrói a comparação com o lava-rápido da esquina.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16">
-                        <div class="bg-white border-2 border-emerald-500 rounded-3xl p-8 md:p-10 relative shadow-xl shadow-emerald-500/10 flex flex-col hover:-translate-y-1 transition transform">
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Lucro Recorrente</div>
-                            <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-3 uppercase tracking-tight">PLANO PERFORMANCE</h3>
-                            <div class="mb-6 pb-6 border-b border-zinc-100">
-                                <p class="text-[12px] text-zinc-500 font-medium uppercase mb-1">Setup Inicial: <span class="line-through text-zinc-300">R$ 1.697</span> <span class="text-emerald-500 font-black">R$ 1.497</span></p>
-                                <p class="text-4xl md:text-5xl font-black text-emerald-600">R$ 147,00 <span class="text-base md:text-lg text-zinc-500 font-medium">/ mês</span></p>
+                        <!-- POR QUE CONVERTE 3X MAIS -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 max-w-4xl mx-auto">
+                            <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
+                                <span class="text-3xl block mb-3">🛑</span>
+                                <h4 class="font-black text-zinc-900 mb-2">Filtro Implacável</h4>
+                                <p class="text-[13px] text-zinc-600 font-medium">O cliente só chama o WhatsApp depois de aceitar o preço. Fim dos curiosos.</p>
                             </div>
-                            <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-700">
-                                <li>✅ Conexão de Domínio Próprio</li><li>✅ Hospedagem de Alta Velocidade</li><li>✅ Seu negócio, suas cores</li><li>✅ Suporte técnico de vanguarda</li>
-                            </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-emerald-500 text-white text-center text-sm font-bold uppercase py-4 rounded-xl mt-auto shadow-md hover:bg-emerald-600 transition">Quero este Plano</a>
-                        </div>
-                        
-                        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 relative hover:border-zinc-700 transition flex flex-col hover:-translate-y-1 transform shadow-2xl">
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-zinc-100 text-zinc-900 text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Posse Definitiva</div>
-                            <h3 class="text-xl md:text-2xl font-black text-white mb-3 uppercase tracking-tight">LICENÇA ANUAL</h3>
-                            <div class="mb-6 pb-6 border-b border-zinc-800">
-                                <p class="text-[12px] text-zinc-500 font-medium uppercase mb-1">Valor Oficial: <span class="line-through text-zinc-600">R$ 3.097</span></p>
-                                <p class="text-4xl md:text-5xl font-black text-white">R$ 2.497,00</p>
-                                <p class="text-[12px] text-zinc-400 font-medium mt-1">(Pagamento Único Anual)</p>
+                            <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
+                                <span class="text-3xl block mb-3">⚙️</span>
+                                <h4 class="font-black text-zinc-900 mb-2">Preço Dinâmico</h4>
+                                <p class="text-[13px] text-zinc-600 font-medium">Lavar um Hatch não custa o mesmo que uma RAM. O sistema calcula a diferença sozinho.</p>
                             </div>
-                            <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-300">
-                                <li>✅ Licença definitiva do código</li><li>✅ Sem mensalidades</li><li>✅ Gestão própria de hospedagem</li><li>✅ Atualizações adquiridas à parte</li>
-                            </ul>
-                            <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Anual." target="_blank" class="block w-full bg-white text-zinc-900 text-center text-sm font-bold uppercase py-4 rounded-xl mt-auto hover:bg-zinc-200 transition">Quero Comprar a Licença</a>
+                            <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
+                                <span class="text-3xl block mb-3">💎</span>
+                                <h4 class="font-black text-zinc-900 mb-2">Ancoragem de Grife</h4>
+                                <p class="text-[13px] text-zinc-600 font-medium">A interface de hipercarro destrói a comparação com o lava-rápido da esquina.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 🟢 B2B FAQ (MATA OBJEÇÕES) 🟢 -->
-                    <div class="max-w-4xl mx-auto mb-20 mt-10">
-                        <h3 class="text-2xl md:text-3xl font-black text-zinc-900 mb-8 text-center tracking-tight uppercase">Dúvidas Frequentes antes de começar</h3>
-                        
-                        <div class="space-y-4">
-                            <!-- Pergunta 1 -->
-                            <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
-                                <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-1')">
-                                    <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Preciso ter conhecimento em tecnologia ou programação?</span>
-                                    <span id="icon-b2b-obj-1" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                </button>
-                                <div id="b2b-obj-1" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
-                                    <p class="border-t border-zinc-100 pt-4 mt-2"><strong>Absolutamente não.</strong> Entregamos a plataforma com um sistema "Chave na Mão". A nossa equipa insere a sua logomarca, configura as suas cores e tabela de preços. Você recebe apenas um link pronto para colocar na bio do seu Instagram e enviar aos seus clientes.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16">
+                            <div class="bg-white border-2 border-emerald-500 rounded-3xl p-8 md:p-10 relative shadow-xl shadow-emerald-500/10 flex flex-col hover:-translate-y-1 transition transform">
+                                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Lucro Recorrente</div>
+                                <h3 class="text-xl md:text-2xl font-black text-zinc-900 mb-3 uppercase tracking-tight">PLANO PERFORMANCE</h3>
+                                <div class="mb-6 pb-6 border-b border-zinc-100">
+                                    <p class="text-[12px] text-zinc-500 font-medium uppercase mb-1">Setup Inicial: <span class="line-through text-zinc-300">R$ 1.697</span> <span class="text-emerald-500 font-black">R$ 1.497</span></p>
+                                    <p class="text-4xl md:text-5xl font-black text-emerald-600">R$ 147,00 <span class="text-base md:text-lg text-zinc-500 font-medium">/ mês</span></p>
                                 </div>
+                                <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-700">
+                                    <li>✅ Conexão de Domínio Próprio</li><li>✅ Hospedagem de Alta Velocidade</li><li>✅ Seu negócio, suas cores</li><li>✅ Suporte técnico de vanguarda</li>
+                                </ul>
+                                <a href="https://wa.me/554933121788?text=Olá!%20Quero%20assinar%20o%20Plano%20Performance." target="_blank" class="block w-full bg-emerald-500 text-white text-center text-sm font-bold uppercase py-4 rounded-xl mt-auto shadow-md hover:bg-emerald-600 transition">Quero este Plano</a>
                             </div>
                             
-                            <!-- Pergunta 2 -->
-                            <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
-                                <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-2')">
-                                    <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Como recebo os orçamentos do cliente?</span>
-                                    <span id="icon-b2b-obj-2" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                </button>
-                                <div id="b2b-obj-2" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
-                                    <p class="border-t border-zinc-100 pt-4 mt-2">O cliente navega pelo site, escolhe o pacote e o sistema cruza os dados do modelo do veículo para gerar o preço. Quando ele clica em "Agendar", o sistema abre o WhatsApp dele e envia uma mensagem padronizada diretamente para o <strong>seu número de atendimento</strong> com todos os dados calculados.</p>
+                            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 relative hover:border-zinc-700 transition flex flex-col hover:-translate-y-1 transform shadow-2xl">
+                                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-zinc-100 text-zinc-900 text-[11px] font-bold uppercase tracking-widest py-2 px-5 rounded-full shadow-md">Posse Definitiva</div>
+                                <h3 class="text-xl md:text-2xl font-black text-white mb-3 uppercase tracking-tight">LICENÇA ANUAL</h3>
+                                <div class="mb-6 pb-6 border-b border-zinc-800">
+                                    <p class="text-[12px] text-zinc-500 font-medium uppercase mb-1">Valor Oficial: <span class="line-through text-zinc-600">R$ 3.097</span></p>
+                                    <p class="text-4xl md:text-5xl font-black text-white">R$ 2.497,00</p>
+                                    <p class="text-[12px] text-zinc-400 font-medium mt-1">(Pagamento Único Anual)</p>
                                 </div>
-                            </div>
-
-                            <!-- Pergunta 3 -->
-                            <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
-                                <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-3')">
-                                    <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Isto substitui o meu site antigo ou o meu Instagram?</span>
-                                    <span id="icon-b2b-obj-3" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                </button>
-                                <div id="b2b-obj-3" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
-                                    <p class="border-t border-zinc-100 pt-4 mt-2">O seu Instagram é a sua vitrine de atração (onde você mostra os carros a brilhar). Mas vitrine não fecha vendas. O sistema da GL.ID é a sua <strong>ferramenta tática de conversão</strong>. Substitui PDFs de preços e sites lentos, retendo a atenção do cliente e forçando uma decisão rápida e de alto valor.</p>
-                                </div>
+                                <ul class="space-y-4 mb-6 flex-grow text-[13px] md:text-sm font-medium text-zinc-300">
+                                    <li>✅ Licença definitiva do código</li><li>✅ Sem mensalidades</li><li>✅ Gestão própria de hospedagem</li><li>✅ Atualizações adquiridas à parte</li>
+                                </ul>
+                                <a href="https://wa.me/554933121788?text=Olá!%20Quero%20adquirir%20a%20Licença%20Anual." target="_blank" class="block w-full bg-white text-zinc-900 text-center text-sm font-bold uppercase py-4 rounded-xl mt-auto hover:bg-zinc-200 transition">Quero Comprar a Licença</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 🟢 FECHAMENTO EXTREMO (THE BLACK BOX) 🟢 -->
-                    <div class="bg-zinc-900 rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 pointer-events-none"></div>
-                        <div class="relative z-10">
-                            <span class="text-[12px] md:text-[14px] font-bold text-emerald-500 uppercase tracking-[4px] block mb-4">A DECISÃO É SUA</span>
-                            <h3 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">O MERCADO DE ALTO PADRÃO NÃO PERDOA ATENDIMENTO AMADOR.</h3>
-                            <p class="text-zinc-400 text-base md:text-lg font-medium max-w-2xl mx-auto mb-10 leading-relaxed">Continue a perder clientes porque o seu PDF de preços demorou a carregar, ou junte-se à elite da estética automóvel e fature com uma máquina automática de fechamento VIP.</p>
+                        <!-- 🟢 B2B FAQ (MATA OBJEÇÕES) 🟢 -->
+                        <div class="max-w-4xl mx-auto mb-20 mt-10">
+                            <h3 class="text-2xl md:text-3xl font-black text-zinc-900 mb-8 text-center tracking-tight uppercase">Dúvidas Frequentes antes de começar</h3>
                             
-                            <a href="https://wa.me/554933121788?text=Olá!%20Estou%20pronto%20para%20levar%20a%20minha%20estética%20para%20o%20próximo%20nível." target="_blank" class="inline-block bg-emerald-500 text-white font-black uppercase tracking-widest text-[13px] md:text-[15px] px-8 md:px-12 py-5 rounded-2xl shadow-[0_10px_30px_rgba(16,185,129,0.4)] hover:bg-emerald-400 hover:-translate-y-1 transition duration-300 transform">
-                                Falar com a Equipe GL.ID Agora
-                            </a>
+                            <div class="space-y-4">
+                                <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
+                                    <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-1')">
+                                        <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Preciso ter conhecimento em tecnologia ou programação?</span>
+                                        <span id="icon-b2b-obj-1" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
+                                    </button>
+                                    <div id="b2b-obj-1" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
+                                        <p class="border-t border-zinc-100 pt-4 mt-2"><strong>Absolutamente não.</strong> Entregamos a plataforma com um sistema "Chave na Mão". A nossa equipa insere a sua logomarca, configura as suas cores e tabela de preços. Você recebe apenas um link pronto para colocar na bio do seu Instagram e enviar aos seus clientes.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
+                                    <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-2')">
+                                        <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Como recebo os orçamentos do cliente?</span>
+                                        <span id="icon-b2b-obj-2" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
+                                    </button>
+                                    <div id="b2b-obj-2" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
+                                        <p class="border-t border-zinc-100 pt-4 mt-2">O cliente navega pelo site, escolhe o pacote e o sistema cruza os dados do modelo do veículo para gerar o preço. Quando ele clica em "Agendar", o sistema abre o WhatsApp dele e envia uma mensagem padronizada diretamente para o <strong>seu número de atendimento</strong> com todos os dados calculados.</p>
+                                    </div>
+                                </div>
+
+                                <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
+                                    <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-3')">
+                                        <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Isto substitui o meu site antigo ou o meu Instagram?</span>
+                                        <span id="icon-b2b-obj-3" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
+                                    </button>
+                                    <div id="b2b-obj-3" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
+                                        <p class="border-t border-zinc-100 pt-4 mt-2">O seu Instagram é a sua vitrine de atração (onde você mostra os carros a brilhar). Mas vitrine não fecha vendas. O sistema da GL.ID é a sua <strong>ferramenta tática de conversão</strong>. Substitui PDFs de preços e sites lentos, retendo a atenção do cliente e forçando uma decisão rápida e de alto valor.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 🟢 FECHAMENTO EXTREMO (THE BLACK BOX) 🟢 -->
+                        <div class="bg-zinc-900 rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 pointer-events-none"></div>
+                            <div class="relative z-10">
+                                <span class="text-[12px] md:text-[14px] font-bold text-emerald-500 uppercase tracking-[4px] block mb-4">A DECISÃO É SUA</span>
+                                <h3 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">O MERCADO DE ALTO PADRÃO NÃO PERDOA ATENDIMENTO AMADOR.</h3>
+                                <p class="text-zinc-400 text-base md:text-lg font-medium max-w-2xl mx-auto mb-10 leading-relaxed">Continue a perder clientes porque o seu PDF de preços demorou a carregar, ou junte-se à elite da estética automóvel e fature com uma máquina automática de fechamento VIP.</p>
+                                
+                                <a href="https://wa.me/554933121788?text=Olá!%20Estou%20pronto%20para%20levar%20a%20minha%20estética%20para%20o%20próximo%20nível." target="_blank" class="inline-block bg-emerald-500 text-white font-black uppercase tracking-widest text-[13px] md:text-[15px] px-8 md:px-12 py-5 rounded-2xl shadow-[0_10px_30px_rgba(16,185,129,0.4)] hover:bg-emerald-400 hover:-translate-y-1 transition duration-300 transform">
+                                    Falar com a Equipe GL.ID Agora
+                                </a>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- FIX DE ESPAÇAMENTO E FOOTER COPYRIGHT -->
@@ -816,7 +817,7 @@
         <!-- 🟢 BARRA CTA FLUTUANTE B2C (MOBILE GAVETA DE CHECKOUT) 🟢 -->
         <div id="floating-cta" class="fixed-bottom-cta">
             <!-- Puxador Visual -->
-            <div id="drawer-puller" class="w-12 h-1.5 bg-zinc-200 rounded-full mx-auto mb-2 hidden"></div>
+            <div id="drawer-puller" class="w-12 h-1.5 bg-zinc-200 rounded-full mx-auto mb-2 hidden" onclick="window.closeDrawer()"></div>
             
             <!-- Resumo do Serviço (Aparece no Mobile Drawer) -->
             <div id="drawer-summary" class="hidden flex-col mb-2 bg-zinc-50 p-4 rounded-xl border border-zinc-200">
@@ -1033,6 +1034,8 @@
                 const dtCart = document.getElementById('desktop-floating-cart');
                 if(dtCart) dtCart.classList.add('active');
                 setTimeout(() => { window.editStep(2); }, 400); // Desktop Scroll automático
+            } else {
+                setTimeout(() => { window.editStep(2); }, 400); // Mobile Pop-up automático
             }
         };
 
@@ -1141,8 +1144,13 @@
         }
 
         window.editStep = function(step) { funnelState.step = step; window.updateWizardUI(); };
+        
+        window.closeDrawer = function() {
+            window.editStep(1);
+        };
 
         window.updateWizardUI = function() {
+            const isMobile = window.innerWidth < 768;
             const isFirstStep = funnelState.step === 1;
 
             const toggleDisplay = (id, displayValue) => {
@@ -1155,9 +1163,11 @@
                 if (el) el.innerText = text;
             };
 
-            // Layout Geral
-            toggleDisplay('hero-banner', isFirstStep ? 'flex' : 'none');
-            toggleDisplay('trust-banner', isFirstStep ? 'flex' : 'none');
+            // Layout Geral (Sempre visível no Mobile como background)
+            toggleDisplay('hero-banner', (isMobile || isFirstStep) ? 'flex' : 'none');
+            toggleDisplay('trust-banner', (isMobile || isFirstStep) ? 'flex' : 'none');
+            toggleDisplay('step-1-section', (isMobile || isFirstStep) ? 'block' : 'none');
+            
             toggleDisplay('gallery-section', isFirstStep ? 'block' : 'none');
             toggleDisplay('social-proof-section', isFirstStep ? 'block' : 'none');
             toggleDisplay('b2c-faq-section', isFirstStep ? 'block' : 'none');
@@ -1178,11 +1188,51 @@
             const lineFill2 = document.getElementById('line-fill-2');
             if (lineFill2) lineFill2.style.width = funnelState.step === 3 ? '100%' : '0%';
 
-            // Seções (No Desktop ficam na página, no Mobile estão na gaveta)
-            toggleDisplay('step-1-section', funnelState.step === 1 ? 'block' : 'none');
-            toggleDisplay('step-2-section', funnelState.step === 2 ? 'block' : 'none');
-            toggleDisplay('step-3-section', funnelState.step === 3 ? 'block' : 'none');
+            // 🟢 LÓGICA DA GAVETA MOBILE vs DESKTOP 🟢
+            if (isMobile) {
+                const floatingBar = document.getElementById('floating-cta');
+                const backdrop = document.getElementById('mobile-backdrop');
+                const drawerBody = document.getElementById('drawer-body');
+                
+                if (isFirstStep) {
+                    if(floatingBar) floatingBar.classList.remove('expanded');
+                    if(backdrop) backdrop.classList.remove('active');
+                    document.body.style.overflow = ''; // Liberta Scroll
+                    
+                    toggleDisplay('drawer-summary', 'none');
+                    toggleDisplay('drawer-puller', 'none');
+                    toggleDisplay('step-2-section', 'none');
+                    toggleDisplay('step-3-section', 'none');
+                } else {
+                    if(floatingBar) floatingBar.classList.add('expanded');
+                    if(backdrop) backdrop.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Tranca o scroll do fundo
+                    
+                    toggleDisplay('drawer-summary', 'flex');
+                    toggleDisplay('drawer-puller', 'block');
+                    
+                    // PROGRESSIVE REVEAL NO POPUP
+                    toggleDisplay('step-2-section', funnelState.step >= 2 ? 'block' : 'none');
+                    
+                    if (funnelState.step === 3) {
+                        toggleDisplay('step-3-section', 'block');
+                        setTimeout(() => {
+                            if(drawerBody) drawerBody.scrollTo({ top: drawerBody.scrollHeight, behavior: 'smooth' });
+                        }, 100);
+                    } else {
+                        toggleDisplay('step-3-section', 'none');
+                    }
+                }
+            } else {
+                // Desktop stays sequential
+                toggleDisplay('step-2-section', funnelState.step === 2 ? 'block' : 'none');
+                toggleDisplay('step-3-section', funnelState.step === 3 ? 'block' : 'none');
+                document.getElementById('scroll-container').scrollTop = 0;
+            }
             
+            setText('drawer-service-name', funnelState.baseService || "...");
+            setText('drawer-service-desc', funnelState.baseDesc || "...");
+
             setText('receipt-car', funnelState.brand && funnelState.model ? (funnelState.brand + " " + funnelState.model) : "-");
             setText('receipt-category', funnelState.categoryName || "-");
             setText('receipt-base', funnelState.baseService || "-");
@@ -1192,32 +1242,6 @@
 
             const dtCartService = document.getElementById('dt-cart-service');
             if(dtCartService){ dtCartService.innerText = funnelState.baseService || "-"; document.getElementById('dt-cart-size').innerText = funnelState.categoryName || "-"; }
-
-            // 🟢 LÓGICA DA GAVETA MOBILE (BOTTOM SHEET) 🟢
-            const floatingBar = document.getElementById('floating-cta');
-            const drawerSummary = document.getElementById('drawer-summary');
-            const drawerPuller = document.getElementById('drawer-puller');
-            
-            if (window.innerWidth < 768 && floatingBar) {
-                if (funnelState.step === 1) {
-                    floatingBar.classList.remove('expanded');
-                    if(drawerSummary) drawerSummary.style.display = 'none';
-                    if(drawerPuller) drawerPuller.style.display = 'none';
-                    document.body.style.overflow = ''; // Liberta Scroll
-                } else {
-                    floatingBar.classList.add('expanded');
-                    if(drawerSummary) {
-                        drawerSummary.style.display = 'flex';
-                        setText('drawer-service-name', funnelState.baseService);
-                        setText('drawer-service-desc', funnelState.baseDesc);
-                    }
-                    if(drawerPuller) drawerPuller.style.display = 'block';
-                    document.body.style.overflow = 'hidden'; // Tranca o scroll do fundo (Foco no Checkout)
-                }
-            } else {
-                // Se for Desktop e mudou de passo, faz scroll ao topo
-                document.getElementById('scroll-container').scrollTop = 0;
-            }
 
             if (funnelState.step === 3) {
                 toggleDisplay('bottom-upsell-zone', 'none');
