@@ -32,24 +32,29 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         :root {
+            /* Fundo Mood/Emoção (Escuro) */
             --bg-ultra: #050505;
             --bg-carbon: #0d0d0f; 
             
+            /* Ilhas de Foco / Conversão (Claras e Solidas) */
             --card-solid: #ffffff;
             --card-border: #e4e4e7;
             --input-bg: #ffffff;
             --input-border: #d4d4d8;
             
+            /* Cores de Ação */
             --accent-green: #10b981;
             --accent-gold: #f59e0b;
             --vermelho-ignicao: #ef4444;
 
+            /* Tiers: Cores Base */
             --c-prata: #64748b;
             --c-azul: #0284c7;
             --c-ouro: #d97706;
             --c-verde: #059669;
             --c-roxo: #7e22ce;
 
+            /* Tiers: Fundo Selecionado (Suave) */
             --bg-sel-prata: #f8fafc;
             --bg-sel-azul: #f0f9ff;
             --bg-sel-ouro: #fffbeb;
@@ -63,7 +68,7 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- TELA 1: IGNIÇÃO --- */
+        /* --- TELA 1: IGNIÇÃO (LAYOUT PERFEITO COM 100DVH) --- */
         #landing-view { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; background-color: var(--bg-ultra); transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); height: 100dvh; }
         
         .car-bg { position: absolute; inset: 0; background-size: cover; background-position: center 60%; opacity: 0; transition: opacity 0.5s ease; transform: scale(1.05); }
@@ -94,7 +99,7 @@
         .engine-button.active .btn-lbl-mid { color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--vermelho-ignicao); }
         .engine-button.active .btn-lbl-top, .engine-button.active .btn-lbl-bot { color: var(--vermelho-ignicao); }
 
-        /* --- TELA 2: PRE-LOADER --- */
+        /* --- TELA 2: PRE-LOADER BLINDADO --- */
         #experience-view { position: fixed; inset: 0; z-index: 100; background: var(--bg-ultra); display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; height: 100dvh;}
         .stars-container { display: flex; gap: 8px; margin-bottom: 24px; }
         .star-icon { width: 22px; height: 22px; fill: var(--accent-gold); opacity: 0; transform: translateY(15px); }
@@ -106,7 +111,10 @@
         .show-view .star-icon:nth-child(4) { animation-delay: 0.5s; } 
         .show-view .star-icon:nth-child(5) { animation-delay: 0.6s; }
         
-        @keyframes luxFadeUp { to { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); } }
+        @keyframes luxFadeUp { 
+            to { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); } 
+        }
+
         .pulse-text { animation: pulse-opacity 2s ease-in-out infinite; }
         @keyframes pulse-opacity { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
@@ -144,49 +152,21 @@
         .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; width: 100%; }
         .funnel-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px 16px 140px 16px; }
 
-        /* 🟢 LINHA DO TEMPO VISUAL 🟢 */
-        .progress-container { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
-        .progress-step { display: flex; flex-direction: column; align-items: center; gap: 6px; color: #52525b; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;}
-        .progress-step.active { color: var(--accent-green); }
-        .progress-dot { width: 24px; height: 24px; border-radius: 50%; background: #27272a; border: 2px solid #3f3f46; display: flex; justify-content: center; align-items: center; font-size: 11px; font-weight: 900; color: #a1a1aa; transition: all 0.3s; z-index: 2;}
-        .progress-step.active .progress-dot { background: var(--accent-green); border-color: var(--accent-green); color: #000; box-shadow: 0 0 15px rgba(16,185,129,0.4);}
-        .progress-step.completed .progress-dot { background: #fff; border-color: #fff; color: #000; }
-        .progress-step.completed { color: #fff; }
-        .progress-line { flex-grow: 1; height: 3px; background: #27272a; margin: 0 8px; position: relative; top: -6px; z-index: 1; border-radius: 2px; overflow: hidden;}
-        .progress-line-fill { height: 100%; width: 0%; background: var(--accent-green); transition: width 0.4s ease; }
-
-        /* WIZARD & ECRÃS */
-        .step-section { display: none; animation: slide-in 0.3s ease forwards; transform-origin: top; }
-        .step-section.active-step { display: block; }
-        @keyframes slide-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #27272a; padding-bottom: 12px;}
         .section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #fff; font-weight: 900; display: flex; align-items: center; margin: 0; }
-        .back-btn { font-size: 11px; color: #a1a1aa; font-weight: 800; text-transform: uppercase; background: #121214; border: 1px solid #27272a; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-        .back-btn:hover { color: #fff; border-color: #52525b; background: #27272a;}
-
-        /* 💎 CARTÕES CLAROS 💎 */
+        
+        /* 💎 CARTÕES CLAROS (PASSO 1) 💎 */
         .solid-card { background: var(--card-solid); border: 2px solid var(--card-border); border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; margin-bottom: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
         .solid-card:hover { border-color: #a1a1aa; transform: translateY(-2px); }
         .solid-card.scroll-highlight { transform: scale(1.02); border-color: #a1a1aa; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .solid-card.selected { transform: scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
         
-        .tier-prata.selected { background: var(--bg-sel-prata); border-color: var(--c-prata); }
-        .tier-azul.selected  { background: var(--bg-sel-azul);  border-color: var(--c-azul); }
-        .tier-ouro.selected  { background: var(--bg-sel-ouro);  border-color: var(--c-ouro); }
-        .tier-verde.selected { background: var(--bg-sel-verde); border-color: var(--c-verde); }
-        .tier-roxo.selected  { background: var(--bg-sel-roxo);  border-color: var(--c-roxo); }
-
         .card-header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 12px; }
         .card-title { font-size: 17px; font-weight: 900; color: #18181b; margin-bottom: 4px; letter-spacing: -0.5px; line-height: 1.2; transition: color 0.3s; display: flex; align-items: center; gap: 6px;}
+        
         .card-desc { font-size: 13px; color: #52525b; line-height: 1.6; font-weight: 500; margin-bottom: 16px; }
-        .solid-card.selected .card-desc { color: #3f3f46; }
         
         .feature-time { color: #52525b; font-size: 10px; font-weight: 800; background: #f4f4f5; padding: 6px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 16px; border: 1px solid #e4e4e7; letter-spacing: 0.5px;}
-        .solid-card.selected .feature-time { background: #fff; border-color: currentColor;}
-        
         .benefit-tag { font-size: 9px; font-weight: 900; color: #3f3f46; border: 1px solid #d4d4d8; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 16px;}
-        .solid-card.selected .benefit-tag { background: #fff; border-color: currentColor; }
         
         .promo-tag { background: #18181b; color: #fff; padding: 6px 14px; font-size: 10px; font-weight: 900; border-radius: 16px 0 16px 0; position: absolute; top: -1px; left: -1px; text-transform: uppercase; letter-spacing: 1px; border-right: 2px solid #fff; border-bottom: 2px solid #fff;}
         .promo-ouro { background: var(--accent-gold); color: #000; border: none; box-shadow: 2px 2px 10px rgba(245, 158, 11, 0.4); }
@@ -194,38 +174,6 @@
         .price-pill { display: flex; flex-direction: column; align-items: flex-end; text-align: right; flex-shrink: 0; }
         .price-pill .label { font-size: 9px; color: #71717a; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;}
         .price-pill .value { font-size: 18px; font-weight: 900; color: #18181b; letter-spacing: -0.5px;}
-        .tier-prata.selected .price-pill .value { color: var(--c-prata); }
-        .tier-azul.selected .price-pill .value { color: var(--c-azul); }
-        .tier-ouro.selected .price-pill .value { color: var(--c-ouro); }
-        .tier-verde.selected .price-pill .value { color: var(--c-verde); }
-        .tier-roxo.selected .price-pill .value { color: var(--c-roxo); }
-
-        /* 💎 INPUTS (Desktop Base) 💎 */
-        .solid-input { background-color: var(--input-bg); border: 2px solid var(--input-border); color: #18181b; width: 100%; padding: 18px 20px; font-size: 16px; font-weight: 600; border-radius: 12px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        select.solid-input option, select.solid-input optgroup { color: #000000 !important; background-color: #ffffff !important; font-weight: 600; }
-        select.solid-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; background-size: 20px; cursor: pointer; }
-        .solid-input:focus { border-color: var(--accent-green); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); background-color: #fff; }
-        
-        .hud-input { text-align: center; font-size: 22px; letter-spacing: 4px; font-weight: 800; background-image: none !important;}
-        .hud-input::placeholder { color: #a1a1aa; font-weight: 500; letter-spacing: normal; font-size: 15px;}
-        
-        .cat-btn { background: var(--card-solid); border: 2px solid var(--card-border); border-radius: 12px; padding: 18px 6px; color: #52525b; font-size: 11px; font-weight: 800; text-transform: uppercase; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
-        .cat-btn.selected { background: var(--accent-green); border-color: var(--accent-green); color: #fff; box-shadow: 0 6px 20px rgba(16,185,129,0.3); transform: translateY(-3px); }
-        .cat-btn.selected .cat-icon { filter: brightness(2); }
-
-        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-6px); } }
-        .shake-animation { animation: shake 0.4s ease-in-out; }
-        .input-error { border-color: var(--vermelho-ignicao) !important; box-shadow: 0 0 12px rgba(239, 68, 68, 0.2) !important; color: var(--vermelho-ignicao) !important; }
-        .input-success { border-color: var(--accent-green) !important; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2) !important; color: var(--accent-green) !important; background-color: #f0fdf4; }
-
-        /* RECIBO CLARO (Desktop) */
-        .receipt-card { background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
-        .receipt-card h4 { color: #71717a; border-bottom: 1px solid var(--card-border); padding-bottom: 16px; margin-bottom: 20px; font-size: 12px; letter-spacing: 2px;}
-        .receipt-row { display: flex; justify-content: space-between; font-size: 14px; color: #52525b; margin-bottom: 16px; border-bottom: 1px dotted var(--card-border); padding-bottom: 10px; font-weight: 500;}
-        .receipt-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .receipt-val { color: #18181b; font-weight: 800; text-align: right;}
-        .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; padding-top: 24px; border-top: 2px solid var(--card-border); }
-        .receipt-total-val { font-size: 26px; font-weight: 900; color: var(--accent-green); letter-spacing: -0.5px; }
 
         /* B2C PROVAS SOCIAIS E FAQ */
         .review-card { background: var(--card-solid); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; min-width: 280px; max-width: 300px; scroll-snap-align: start; flex-shrink: 0; box-shadow: 0 6px 15px rgba(0,0,0,0.08);}
@@ -237,78 +185,67 @@
 
         .b2c-footer { border-top: 1px solid #27272a; padding: 48px 24px; margin-top: 40px; background: #000; color: #fff;}
 
-        /* 💎 CARRINHO DESKTOP (FLUTUANTE LATERAL) 💎 */
-        .desktop-cart { display: none; }
-        @media (min-width: 768px) {
-            .progress-container.md\:flex { display: flex !important; }
-            .desktop-cart {
-                display: flex; flex-direction: column; position: fixed; top: 100px; right: 20px; width: 320px; z-index: 90;
-                background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px; padding: 20px;
-                box-shadow: 0 12px 40px rgba(0,0,0,0.3); transform: translateX(120%); transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            }
-            .desktop-cart.active { transform: translateX(0); }
-            .fixed-bottom-cta { display: none !important; }
+        /* 🟢 BACKDROP GLOBAL (ESCURECE O FUNDO QUANDO O MODAL ABRE) 🟢 */
+        #global-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);}
+        #global-backdrop.active { opacity: 1; pointer-events: auto; }
+
+        /* 🟢 THE UNIFIED CHECKOUT MODAL (DRAWER) 🟢 */
+        #checkout-drawer {
+            position: fixed; background: #ffffff; z-index: 105; display: flex; flex-direction: column;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-
-        /* 💎 BACKDROP MOBILE (FUNDO ESCURO DO POPUP) 💎 */
-        #mobile-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);}
-        #mobile-backdrop.active { opacity: 1; pointer-events: auto; }
-
-        /* 💎 BOTTOM SHEET (MOBILE MODAL DINÂMICO) 💎 */
-        @media (max-width: 767px) {
-            .progress-container { display: none !important; }
-            
-            .fixed-bottom-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: #ffffff; border-top: 1px solid var(--card-border); z-index: 100; display: flex; flex-direction: column; align-items: stretch; gap: 12px; transform: translateY(150%); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.15); }
-            .fixed-bottom-cta.active-cart { transform: translateY(0); }
-            
-            /* Estado Expandido (Passo 2 e 3 dentro do Drawer) */
-            .fixed-bottom-cta.expanded { border-radius: 24px 24px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,0.5); padding-top: 12px; max-height: 90dvh; }
-            .fixed-bottom-cta.expanded #drawer-body { max-height: calc(90dvh - 160px); overflow-y: auto; opacity: 1; margin-bottom: 12px; padding-bottom: 20px; transition: max-height 0.4s ease; }
-            
-            #drawer-body .section-header { display: none !important; }
-            #step-2-section { margin-bottom: 0 !important; padding-bottom: 16px !important; border-bottom: 1px dashed #e4e4e7 !important; }
-            #step-3-section { padding-top: 16px !important; }
-            
-            /* Overrides CSS para Inputs Escuros passarem para Claro dentro do Mobile Drawer */
-            #drawer-body .section-title { color: #18181b !important; }
-            #drawer-body p.text-zinc-400, #drawer-body p.text-zinc-700 { color: #52525b !important; }
-            #drawer-body .bg-[#121214] { background-color: #fff !important; border-color: #e4e4e7 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;}
-            
-            #drawer-body .solid-input { background-color: #f4f4f5 !important; border-color: #d4d4d8 !important; color: #18181b !important; box-shadow: none !important;}
-            #drawer-body .solid-input::placeholder { color: #a1a1aa !important; }
-            #drawer-body select.solid-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important; }
-            
-            #drawer-body .cat-btn { background: #fff !important; border-color: #e4e4e7 !important; color: #52525b !important; box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;}
-            #drawer-body .cat-btn.selected { background: #ecfdf5 !important; border-color: var(--accent-green) !important; color: #047857 !important; transform: scale(1.02); }
-            #drawer-body .cat-btn.selected span.text-white, #drawer-body .cat-btn.selected span.text-zinc-900 { color: #047857 !important; }
-            #drawer-body .cat-btn.selected .cat-icon { filter: none !important; }
-            
-            #drawer-body .receipt-card { background: #f8fafc !important; border-color: #e4e4e7 !important; box-shadow: none !important; padding: 16px !important; margin-bottom: 16px !important;}
-            #drawer-body .receipt-row { border-bottom-color: #d4d4d8 !important; padding-bottom: 8px !important; margin-bottom: 8px !important;}
-            #drawer-body .receipt-val { color: #18181b !important; }
-            #drawer-body .receipt-total { border-top-color: #d4d4d8 !important; padding-top: 12px !important; margin-top: 16px !important;}
-            #drawer-body .border-t.border-zinc-200, #drawer-body .border-t.border-zinc-800\\/50 { border-color: #e4e4e7 !important; }
-        }
-
-        .bottom-upsell-zone { display: none; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--card-border); animation: fade-in 0.4s ease forwards; }
         
+        /* Tema Claro Obrigatório dentro do Drawer */
+        #drawer-body .drawer-section-title { font-size: 13px; font-weight: 900; color: #18181b; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #e4e4e7; padding-bottom: 8px; margin-bottom: 16px; margin-top: 24px; display: block;}
+        #drawer-body .drawer-section-title.first { margin-top: 8px; }
+        
+        #drawer-body .solid-input { background-color: #f4f4f5; border: 2px solid #d4d4d8; color: #18181b; width: 100%; padding: 16px 20px; font-size: 15px; font-weight: 600; border-radius: 12px; appearance: none; outline: none; transition: all 0.3s; margin-bottom: 16px; }
+        #drawer-body .solid-input:focus { border-color: var(--accent-green); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); background-color: #fff;}
+        #drawer-body .solid-input::placeholder { color: #a1a1aa; font-weight: 500;}
+        #drawer-body select.solid-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2352525b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px; cursor: pointer; }
+        
+        #drawer-body .cat-btn { background: #fff; border: 2px solid #e4e4e7; border-radius: 12px; padding: 14px 4px; color: #52525b; font-size: 10px; font-weight: 800; text-transform: uppercase; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.02);}
+        #drawer-body .cat-btn.selected { background: #ecfdf5; border-color: var(--accent-green); color: #047857; transform: scale(1.02); box-shadow: 0 6px 15px rgba(16,185,129,0.2);}
+        #drawer-body .cat-btn.selected span.text-zinc-900 { color: #047857 !important;}
+        
+        #drawer-body .receipt-card { background: #f8fafc; border: 1px solid #e4e4e7; border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        #drawer-body .receipt-card h4 { color: #71717a; border-bottom: 1px solid #e4e4e7; padding-bottom: 12px; margin-bottom: 12px; font-size: 11px; letter-spacing: 2px;}
+        #drawer-body .receipt-row { display: flex; justify-content: space-between; font-size: 13px; color: #52525b; margin-bottom: 8px; border-bottom: 1px dashed #d4d4d8; padding-bottom: 8px; font-weight: 500;}
+        #drawer-body .receipt-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        #drawer-body .receipt-val { color: #18181b; font-weight: 800; text-align: right;}
+        #drawer-body .receipt-total { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid #d4d4d8; }
+        #drawer-body .receipt-total-val { font-size: 20px; font-weight: 900; color: var(--accent-green); letter-spacing: -0.5px; }
+
+        .hud-input { text-align: center; font-size: 20px !important; letter-spacing: 3px; font-weight: 800; background-image: none !important;}
+
         .upsell-toggle { appearance: none; width: 44px; height: 24px; background: #e4e4e7; border-radius: 24px; position: relative; cursor: pointer; transition: all 0.3s; outline: none; flex-shrink: 0; border: 1px solid #d4d4d8; }
         .upsell-toggle::after { content: ''; position: absolute; top: 1px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
         .upsell-toggle:checked { background: var(--accent-gold); border-color: var(--accent-gold); }
         .upsell-toggle:checked::after { transform: translateX(20px); background: #fff; }
-        
-        .cta-row-flex { display: flex; justify-content: space-between; align-items: center; width: 100%;}
-        .cart-info { display: flex; flex-direction: column; }
-        .cart-label { font-size: 10px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 2px;}
-        .cart-total { font-size: 20px; font-weight: 900; color: #18181b; line-height: 1; transition: color 0.3s;}
 
-        .btn-continue { background: #f4f4f5; color: #a1a1aa; border-radius: 12px; padding: 14px 20px; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid #e4e4e7; cursor: not-allowed; transition: all 0.3s; white-space: nowrap; display: flex; justify-content: center; align-items: center; gap: 8px;}
-        .btn-continue.btn-success { background: var(--accent-green); color: #fff; box-shadow: 0 4px 20px rgba(16,185,129,0.3); border: none; cursor: pointer;}
+        .btn-continue { background: #f4f4f5; color: #a1a1aa; border-radius: 12px; padding: 16px; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid #d4d4d8; cursor: not-allowed; transition: all 0.3s; white-space: nowrap; display: flex; justify-content: center; align-items: center; width: 100%;}
+        .btn-continue.btn-success { background: var(--accent-green); color: #fff; box-shadow: 0 6px 20px rgba(16,185,129,0.3); border: none; cursor: pointer;}
 
-        .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid currentColor; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: none; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .processing .spinner { display: inline-block; }
-        .processing .btn-text { display: none; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-6px); } }
+        .shake-animation { animation: shake 0.4s ease-in-out; }
+        #drawer-body .input-error { border-color: var(--vermelho-ignicao) !important; box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15) !important; color: var(--vermelho-ignicao) !important; }
+        #drawer-body .input-success { border-color: var(--accent-green) !important; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15) !important; color: var(--accent-green) !important; background-color: #fff !important; }
+
+        /* Desktop Drawer Modifiers */
+        @media (min-width: 768px) {
+            #checkout-drawer { top: 0; right: 0; bottom: 0; width: 420px; border-left: 1px solid var(--card-border); transform: translateX(100%); box-shadow: -10px 0 40px rgba(0,0,0,0.3); }
+            #checkout-drawer.active-drawer { transform: translateX(0); }
+            #drawer-body { flex-grow: 1; overflow-y: auto; padding: 24px; padding-bottom: 40px; }
+            .drawer-fixed-footer { padding: 20px 24px; border-top: 1px solid #e4e4e7; background: #fff; }
+        }
+
+        /* Mobile Bottom Sheet Modifiers */
+        @media (max-width: 767px) {
+            #checkout-drawer { bottom: 0; left: 0; right: 0; border-top: 1px solid var(--card-border); border-radius: 24px 24px 0 0; transform: translateY(100%); box-shadow: 0 -10px 40px rgba(0,0,0,0.2); max-height: 90dvh; }
+            #checkout-drawer.active-drawer { transform: translateY(0); }
+            #drawer-body { overflow-y: auto; padding: 20px; padding-bottom: 24px; }
+            .drawer-fixed-footer { padding: 16px 20px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); border-top: 1px solid #e4e4e7; background: #fff; }
+        }
 
         /* Gaveta B2B Oculta */
         .b2b-drawer-container { display: none; animation: slide-down 0.5s ease forwards; transform-origin: top;}
@@ -328,8 +265,8 @@
             .engine-button { width: 80px !important; height: 80px !important; }
             .cat-btn { padding: 12px 2px !important; font-size: 9px !important; }
             .cat-icon { font-size: 1.5rem !important; }
-            .receipt-total-val { font-size: 22px !important; }
-            .cart-total { font-size: 18px !important; }
+            #drawer-body .receipt-total-val { font-size: 18px !important; }
+            #cta-total { font-size: 18px !important; }
             .btn-continue { padding: 12px 16px !important; font-size: 11px !important; }
         }
     </style>
@@ -396,11 +333,10 @@
     </div>
 
     <!-- 3. WEB APP -->
-    <!-- 🟢 FUNDO ESCURO DO POPUP MOBILE 🟢 -->
-    <div id="mobile-backdrop" onclick="window.closeDrawer()"></div>
+    <!-- 🟢 FUNDO ESCURO DO CHECKOUT GLOBAL 🟢 -->
+    <div id="global-backdrop" onclick="window.closeDrawer()"></div>
     
     <div id="app-view">
-        
         <div class="fixed-top-header">
             <header class="top-navbar">
                 <h1 class="font-black text-[14px] uppercase text-white truncate flex-1 pr-2">
@@ -433,172 +369,62 @@
             </div>
 
             <div class="funnel-container relative">
-
-                <!-- 🟢 CARRINHO FLUTUANTE DESKTOP 🟢 -->
-                <div id="desktop-floating-cart" class="desktop-cart">
-                    <h4 class="text-[11px] font-black uppercase tracking-widest text-zinc-400 mb-4 border-b border-zinc-200 pb-3">Seu Orçamento</h4>
-                    <div class="flex justify-between items-center mb-3"><span class="text-xs text-zinc-500 font-bold uppercase">Protocolo</span><span id="dt-cart-service" class="text-xs font-black text-zinc-900 text-right w-1/2 truncate">-</span></div>
-                    <div class="flex justify-between items-center mb-3"><span class="text-xs text-zinc-500 font-bold uppercase">Porte</span><span id="dt-cart-size" class="text-xs font-black text-zinc-900">-</span></div>
-                    <div id="dt-upsell-row" class="flex justify-between items-center mb-3 hidden"><span class="text-xs text-zinc-500 font-bold uppercase">Opcional</span><span class="text-xs font-black text-amber-500">+ Cera</span></div>
-                    
-                    <div class="border-t border-zinc-200 my-3"></div>
-                    <div class="flex justify-between items-center mb-6"><span class="text-sm font-black text-zinc-400 uppercase tracking-widest">Total</span><span id="dt-cart-total" class="text-xl font-black text-emerald-600">R$ ---</span></div>
-                    
-                    <button id="dt-btn-continue" onclick="window.handleNextStep()" class="w-full bg-zinc-100 text-zinc-400 font-black uppercase text-[12px] tracking-wider py-4 rounded-xl border border-zinc-200 transition cursor-not-allowed">Selecionar</button>
-                </div>
-
-                <!-- 🟢 LINHA DO TEMPO VISUAL (DESKTOP) 🟢 -->
-                <div class="progress-container hidden md:flex" id="funnel-timeline">
-                    <div class="progress-step active" id="step-nav-1">
-                        <div class="progress-dot">1</div>
-                        <span>Serviço</span>
-                    </div>
-                    <div class="progress-line"><div class="progress-line-fill" id="line-fill-1"></div></div>
-                    
-                    <div class="progress-step" id="step-nav-2">
-                        <div class="progress-dot">2</div>
-                        <span>Veículo</span>
-                    </div>
-                    <div class="progress-line"><div class="progress-line-fill" id="line-fill-2"></div></div>
-                    
-                    <div class="progress-step" id="step-nav-3">
-                        <div class="progress-dot">3</div>
-                        <span>Reserva</span>
-                    </div>
-                </div>
-
-                <!-- 🟢 PASSO 1: SELEÇÃO DE PROTOCOLOS 🟢 -->
-                <div id="step-1-section" class="step-section active-step">
+                <!-- 🟢 PASSO 1: SELEÇÃO DE PROTOCOLOS (O ÚNICO PASSO VISÍVEL NA PÁGINA) 🟢 -->
+                <div id="step-1-section">
                     <div class="section-header">
                         <h2 class="section-title active" id="title-1">Selecione o Protocolo</h2>
                     </div>
-                    <div id="step-1-content" class="step-content" style="display: block;">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="solid-card tier-prata scroll-reveal" onclick="window.selectUpgrade(this, 'Ducha Premium Express', 90)">
+                            <div class="promo-tag">Promoção de Maio</div>
+                            <div class="card-header-flex mt-4">
+                                <h3 class="card-title"><span class="text-lg">🚿</span> Ducha Express</h3>
+                                <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 90</div></div>
+                            </div>
+                            <span class="benefit-tag">✓ Lavagem Segura</span>
+                            <p class="card-desc">Foco na agilidade. Ducha externa de alta pressão, pneu "pretinho" e aspiração focada nos dois tapetes dianteiros.</p>
+                            <span class="feature-time">⏱️ 40 a 60 min</span>
+                        </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            
-                            <div class="solid-card tier-prata scroll-reveal" onclick="window.selectUpgrade(this, 'Ducha Premium Express', 90)">
-                                <div class="promo-tag">Promoção de Maio</div>
-                                <div class="card-header-flex mt-4">
-                                    <h3 class="card-title"><span class="text-lg">🚿</span> Ducha Express</h3>
-                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 90</div></div>
-                                </div>
-                                <span class="benefit-tag">✓ Lavagem Segura</span>
-                                <p class="card-desc">Foco na agilidade. Ducha externa de alta pressão, pneu "pretinho" e aspiração focada nos dois tapetes dianteiros.</p>
-                                <span class="feature-time">⏱️ 40 a 60 min</span>
+                        <div class="solid-card tier-azul scroll-reveal" onclick="window.selectUpgrade(this, 'Lavagem Técnica Detalhada', 150)">
+                            <div class="card-header-flex">
+                                <h3 class="card-title"><span class="text-lg">🧼</span> Lavagem Técnica</h3>
+                                <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 150</div></div>
                             </div>
-                            
-                            <div class="solid-card tier-azul scroll-reveal" onclick="window.selectUpgrade(this, 'Lavagem Técnica Detalhada', 150)">
-                                <div class="card-header-flex">
-                                    <h3 class="card-title"><span class="text-lg">🧼</span> Lavagem Técnica</h3>
-                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 150</div></div>
-                                </div>
-                                <span class="benefit-tag">✓ Limpeza de Emblemas</span>
-                                <p class="card-desc">Limpeza profunda com espuma de PH neutro, aspiração completa e pincelamento detalhado em grades e frisos.</p>
-                                <span class="feature-time">⏱️ 1h30 a 2h</span>
-                            </div>
-                            
-                            <div class="solid-card tier-ouro scroll-reveal" onclick="window.selectUpgrade(this, 'Detalhamento + Cera Sintética', 250)">
-                                <div class="promo-tag promo-ouro">Mais Escolhido</div>
-                                <div class="card-header-flex mt-4">
-                                    <h3 class="card-title"><span class="text-lg">✨</span> Cera Sintética</h3>
-                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 250</div></div>
-                                </div>
-                                <span class="benefit-tag">✓ Brilho de Showroom</span>
-                                <p class="card-desc">Descontaminação química da pintura (remoção de seiva e asfalto) e selagem para um alto brilho e durabilidade.</p>
-                                <span class="feature-time">⏱️ 3 a 4h</span>
-                            </div>
-                            
-                            <div class="solid-card tier-verde scroll-reveal" onclick="window.selectUpgrade(this, 'Purificação Interna VIP', 350)">
-                                <div class="card-header-flex">
-                                    <h3 class="card-title"><span class="text-lg">💨</span> Interna VIP</h3>
-                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 350</div></div>
-                                </div>
-                                <span class="benefit-tag">✓ Remoção de Odores</span>
-                                <p class="card-desc">Higienização profunda dos tecidos/couro e Oxi-Sanitização (elimina ácaros, fungos e odores entranhados).</p>
-                                <span class="feature-time">⏱️ 1 Dia</span>
-                            </div>
-                            
-                            <div class="solid-card tier-roxo md:col-span-2 scroll-reveal" onclick="window.selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
-                                <div class="card-header-flex">
-                                    <h3 class="card-title"><span class="text-lg">💎</span> Vitrificação 9H</h3>
-                                    <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 800</div></div>
-                                </div>
-                                <span class="benefit-tag">✓ Proteção Máxima</span>
-                                <p class="card-desc">Polimento técnico de correção (remoção de riscos superficiais) e blindagem química extrema contra raios UV e dejetos.</p>
-                                <span class="feature-time">⏱️ 2 a 3 Dias</span>
-                            </div>
+                            <span class="benefit-tag">✓ Limpeza de Emblemas</span>
+                            <p class="card-desc">Limpeza profunda com espuma de PH neutro, aspiração completa e pincelamento detalhado em grades e frisos.</p>
+                            <span class="feature-time">⏱️ 1h30 a 2h</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- 🟢 PASSO 2 E 3 (MOVEM-SE PARA O POPUP NO MOBILE, FICAM AQUI NO DESKTOP) 🟢 -->
-                <div id="desktop-steps-container">
-                    <!-- PASSO 2 -->
-                    <div id="step-2-section" class="step-section">
-                        <div class="section-header">
-                            <h2 class="section-title active" id="title-2">Identifique a Máquina</h2>
-                            <button class="back-btn" onclick="window.editStep(1)">← Voltar</button>
+                        
+                        <div class="solid-card tier-ouro scroll-reveal" onclick="window.selectUpgrade(this, 'Detalhamento + Cera Sintética', 250)">
+                            <div class="promo-tag promo-ouro">Mais Escolhido</div>
+                            <div class="card-header-flex mt-4">
+                                <h3 class="card-title"><span class="text-lg">✨</span> Cera Sintética</h3>
+                                <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 250</div></div>
+                            </div>
+                            <span class="benefit-tag">✓ Brilho de Showroom</span>
+                            <p class="card-desc">Descontaminação química da pintura (remoção de seiva e asfalto) e selagem para um alto brilho e durabilidade.</p>
+                            <span class="feature-time">⏱️ 3 a 4h</span>
                         </div>
-                        <div id="step-2-content" class="step-content">
-                            
-                            <p class="text-[13px] text-zinc-400 md:text-zinc-700 font-medium mb-6 text-center bg-[#121214] md:bg-white p-5 rounded-2xl border border-zinc-800 md:border-zinc-200 shadow-sm">Para revelar o orçamento exato para o seu veículo, informe a montadora e o modelo.</p>
-
-                            <select id="native-brand" class="solid-input" onchange="window.handleNativeBrand()">
-                                <option value="" disabled selected>Montadora...</option>
-                            </select>
-                            
-                            <select id="native-model" class="solid-input" style="display: none;" onchange="window.handleNativeModel()">
-                                <option value="" disabled selected>Modelo...</option>
-                            </select>
-
-                            <div id="fallback-size" class="mt-4 bg-[#121214] md:bg-white border border-[#27272a] md:border-zinc-200 rounded-2xl p-6" style="display:none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                                <p class="text-[12px] text-white md:text-zinc-900 font-black uppercase tracking-widest mb-5 text-center">Qual o porte aproximado?</p>
-                                <div class="grid grid-cols-3 gap-3 mb-5">
-                                    <button type="button" class="cat-btn" id="cat-hatch" onclick="window.selectFallbackCategory('Pequeno/Hatch', 1, 'cat-hatch')"><span class="cat-icon text-3xl">🚗</span><span>Pequeno</span></button>
-                                    <button type="button" class="cat-btn" id="cat-suv" onclick="window.selectFallbackCategory('Médio/SUV', 1.3, 'cat-suv')"><span class="cat-icon text-3xl">🚙</span><span>Médio/SUV</span></button>
-                                    <button type="button" class="cat-btn" id="cat-pickup" onclick="window.selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-3xl">🛻</span><span>Grande</span></button>
-                                </div>
-                                <input type="text" id="fallback-input" class="solid-input" placeholder="Nome do modelo (Ex: Monza)" oninput="window.handleFallbackInput()">
+                        
+                        <div class="solid-card tier-verde scroll-reveal" onclick="window.selectUpgrade(this, 'Purificação Interna VIP', 350)">
+                            <div class="card-header-flex">
+                                <h3 class="card-title"><span class="text-lg">💨</span> Interna VIP</h3>
+                                <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 350</div></div>
                             </div>
+                            <span class="benefit-tag">✓ Remoção de Odores</span>
+                            <p class="card-desc">Higienização profunda dos tecidos/couro e Oxi-Sanitização (elimina ácaros, fungos e odores entranhados).</p>
+                            <span class="feature-time">⏱️ 1 Dia</span>
                         </div>
-                    </div>
-
-                    <!-- PASSO 3 -->
-                    <div id="step-3-section" class="step-section">
-                        <div class="section-header">
-                            <h2 class="section-title active" id="title-3">Resumo & Reserva</h2>
-                            <button class="back-btn" onclick="window.editStep(2)">← Voltar</button>
-                        </div>
-                        <div id="step-3-content" class="step-content">
-                            <div class="receipt-card">
-                                <h4 class="text-[12px] font-black uppercase tracking-widest text-center text-zinc-400">Protocolo Oficial</h4>
-                                <div class="receipt-row"><span>Veículo:</span><span class="receipt-val" id="receipt-car">Pendente</span></div>
-                                <div class="receipt-row"><span>Porte Base:</span><span class="receipt-val font-medium text-zinc-500" id="receipt-category">Pendente</span></div>
-                                <div class="receipt-row"><span>Serviço:</span><span class="receipt-val" id="receipt-base">Pendente</span></div>
-                                <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-500">+ Cera Líquida</span></div>
-                                <div class="receipt-total"><span class="font-black text-[14px] uppercase text-zinc-400 md:text-zinc-800">Total Calculado:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
+                        
+                        <div class="solid-card tier-roxo md:col-span-2 scroll-reveal" onclick="window.selectUpgrade(this, 'Vitrificação Cerâmica 9H', 800)">
+                            <div class="card-header-flex">
+                                <h3 class="card-title"><span class="text-lg">💎</span> Vitrificação 9H</h3>
+                                <div class="price-pill"><div class="label">A partir de</div><div class="value">R$ 800</div></div>
                             </div>
-
-                            <!-- 🟢 ESTRATÉGIA B2C: ANCORAGEM DE TURNO 🟢 -->
-                            <div class="mb-5 pt-2 border-t border-zinc-800 md:border-zinc-200">
-                                <p class="text-[11px] text-zinc-400 md:text-zinc-600 mb-3 text-center font-bold uppercase tracking-widest">Turno de Entrega do Veículo</p>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <button type="button" class="cat-btn selected relative" id="shift-morning" onclick="window.selectShift('Manhã', 'shift-morning')">
-                                        <span class="absolute -top-2 bg-emerald-500 text-white text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest shadow-md">Recomendado</span>
-                                        <span class="text-xl mb-1 mt-1">🌅</span><span class="font-black text-white md:text-zinc-900">Manhã</span>
-                                        <span class="text-[9px] text-zinc-400 md:text-zinc-500 mt-1">Pronto no mesmo dia</span>
-                                    </button>
-                                    <button type="button" class="cat-btn" id="shift-afternoon" onclick="window.selectShift('Tarde', 'shift-afternoon')">
-                                        <span class="text-xl mb-1 mt-2">🌇</span><span class="font-black text-white md:text-zinc-900">Tarde</span>
-                                        <span class="text-[9px] text-zinc-400 md:text-zinc-500 mt-1">Pronto no dia seguinte</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="pt-2 pb-8 md:pb-32">
-                                <p class="text-[13px] text-zinc-400 md:text-zinc-600 mb-4 text-center font-medium">As vagas de detalhamento são limitadas. Insira o seu WhatsApp para confirmar a janela de horário.</p>
-                                <input type="tel" id="client-phone" class="solid-input hud-input transition-all duration-300" placeholder="(DD) 99999-9999" maxlength="15" oninput="window.maskPhone(this)">
-                            </div>
+                            <span class="benefit-tag">✓ Proteção Máxima</span>
+                            <p class="card-desc">Polimento técnico de correção (remoção de riscos superficiais) e blindagem química extrema contra raios UV e dejetos.</p>
+                            <span class="feature-time">⏱️ 2 a 3 Dias</span>
                         </div>
                     </div>
                 </div>
@@ -653,9 +479,6 @@
 
                      <button class="b2c-faq-btn" onclick="window.toggleB2CFaq('b2c-faq2')">Posso deixar o carro e buscar depois? <span id="icon-b2c-faq2" class="text-emerald-500 transition-transform text-xl">+</span></button>
                      <div id="b2c-faq2" class="b2c-faq-content">Com certeza. O nosso espaço é seguro e monitorizado. Pode deixar o seu veículo connosco pela manhã e recolhê-lo ao final do dia.</div>
-
-                     <button class="b2c-faq-btn" onclick="window.toggleB2CFaq('b2c-faq3')">Como funciona o Clube de Mensalistas? <span id="icon-b2c-faq3" class="text-emerald-500 transition-transform text-xl">+</span></button>
-                     <div id="b2c-faq3" class="b2c-faq-content">Oferecemos planos mensais exclusivos para clientes que desejam manter o carro sempre impecável com um valor fixo. Fale connosco no WhatsApp para verificar a disponibilidade de vagas no clube.</div>
                 </div>
 
                 <!-- RODAPÉ B2C -->
@@ -691,7 +514,7 @@
                 </div>
             </div>
 
-            <!-- ⚪ SEÇÃO B2B GLID (PREÇOS ATUALIZADOS & RODAPÉ CORRIGIDO) ⚪ -->
+            <!-- ⚪ SEÇÃO B2B GLID (VENDAS) ⚪ -->
             <div id="b2b-section" class="b2b-drawer-container w-full relative z-40 font-sans">
                 <div class="bg-white text-zinc-900 border-t border-zinc-200 pb-20 md:pb-32">
                     <div class="max-w-5xl mx-auto px-6 py-20 md:py-32">
@@ -700,25 +523,6 @@
                             <span class="text-[12px] md:text-[14px] font-bold text-red-700 uppercase tracking-[3px] block mb-4">O FIM DOS ORÇAMENTOS PERDIDOS</span>
                             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight mb-6">O QUE VOCÊ ACABOU DE TESTAR É UMA<br class="hidden md:block"> MÁQUINA DE FECHAMENTO VIP.</h2>
                             <p class="text-sm md:text-lg text-zinc-600 leading-relaxed font-medium max-w-3xl mx-auto">Sua equipa perde horas todos os dias a responder a curiosos. Com este funil ativo na bio do seu Instagram, o cliente educa-se, percebe o seu valor e <strong>calcula o próprio orçamento</strong> antes de dizer um "Olá".</p>
-                        </div>
-
-                        <!-- POR QUE CONVERTE 3X MAIS -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 max-w-4xl mx-auto">
-                            <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
-                                <span class="text-3xl block mb-3">🛑</span>
-                                <h4 class="font-black text-zinc-900 mb-2">Filtro Implacável</h4>
-                                <p class="text-[13px] text-zinc-600 font-medium">O cliente só chama o WhatsApp depois de aceitar o preço. Fim dos curiosos.</p>
-                            </div>
-                            <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
-                                <span class="text-3xl block mb-3">⚙️</span>
-                                <h4 class="font-black text-zinc-900 mb-2">Preço Dinâmico</h4>
-                                <p class="text-[13px] text-zinc-600 font-medium">Lavar um Hatch não custa o mesmo que uma RAM. O sistema calcula a diferença sozinho.</p>
-                            </div>
-                            <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200 text-center">
-                                <span class="text-3xl block mb-3">💎</span>
-                                <h4 class="font-black text-zinc-900 mb-2">Ancoragem de Grife</h4>
-                                <p class="text-[13px] text-zinc-600 font-medium">A interface de hipercarro destrói a comparação com o lava-rápido da esquina.</p>
-                            </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16">
@@ -750,61 +554,11 @@
                             </div>
                         </div>
 
-                        <!-- 🟢 B2B FAQ (MATA OBJEÇÕES) 🟢 -->
-                        <div class="max-w-4xl mx-auto mb-20 mt-10">
-                            <h3 class="text-2xl md:text-3xl font-black text-zinc-900 mb-8 text-center tracking-tight uppercase">Dúvidas Frequentes antes de começar</h3>
-                            
-                            <div class="space-y-4">
-                                <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
-                                    <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-1')">
-                                        <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Preciso ter conhecimento em tecnologia ou programação?</span>
-                                        <span id="icon-b2b-obj-1" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                    </button>
-                                    <div id="b2b-obj-1" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
-                                        <p class="border-t border-zinc-100 pt-4 mt-2"><strong>Absolutamente não.</strong> Entregamos a plataforma com um sistema "Chave na Mão". A nossa equipa insere a sua logomarca, configura as suas cores e tabela de preços. Você recebe apenas um link pronto para colocar na bio do seu Instagram e enviar aos seus clientes.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
-                                    <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-2')">
-                                        <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Como recebo os orçamentos do cliente?</span>
-                                        <span id="icon-b2b-obj-2" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                    </button>
-                                    <div id="b2b-obj-2" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
-                                        <p class="border-t border-zinc-100 pt-4 mt-2">O cliente navega pelo site, escolhe o pacote e o sistema cruza os dados do modelo do veículo para gerar o preço. Quando ele clica em "Agendar", o sistema abre o WhatsApp dele e envia uma mensagem padronizada diretamente para o <strong>seu número de atendimento</strong> com todos os dados calculados.</p>
-                                    </div>
-                                </div>
-
-                                <div class="border border-zinc-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-zinc-300 transition">
-                                    <button class="w-full px-6 py-5 text-left font-bold text-zinc-900 flex justify-between items-center focus:outline-none" onclick="window.toggleB2BFaq('b2b-obj-3')">
-                                        <span class="pr-4 text-[14px] md:text-[16px] uppercase tracking-wide">Isto substitui o meu site antigo ou o meu Instagram?</span>
-                                        <span id="icon-b2b-obj-3" class="text-emerald-500 text-2xl font-normal leading-none transition-transform duration-300">+</span>
-                                    </button>
-                                    <div id="b2b-obj-3" class="hidden px-6 pb-5 text-[14px] text-zinc-600 font-medium leading-relaxed">
-                                        <p class="border-t border-zinc-100 pt-4 mt-2">O seu Instagram é a sua vitrine de atração (onde você mostra os carros a brilhar). Mas vitrine não fecha vendas. O sistema da GL.ID é a sua <strong>ferramenta tática de conversão</strong>. Substitui PDFs de preços e sites lentos, retendo a atenção do cliente e forçando uma decisão rápida e de alto valor.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 🟢 FECHAMENTO EXTREMO (THE BLACK BOX) 🟢 -->
-                        <div class="bg-zinc-900 rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 pointer-events-none"></div>
-                            <div class="relative z-10">
-                                <span class="text-[12px] md:text-[14px] font-bold text-emerald-500 uppercase tracking-[4px] block mb-4">A DECISÃO É SUA</span>
-                                <h3 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">O MERCADO DE ALTO PADRÃO NÃO PERDOA ATENDIMENTO AMADOR.</h3>
-                                <p class="text-zinc-400 text-base md:text-lg font-medium max-w-2xl mx-auto mb-10 leading-relaxed">Continue a perder clientes porque o seu PDF de preços demorou a carregar, ou junte-se à elite da estética automóvel e fature com uma máquina automática de fechamento VIP.</p>
-                                
-                                <a href="https://wa.me/554933121788?text=Olá!%20Estou%20pronto%20para%20levar%20a%20minha%20estética%20para%20o%20próximo%20nível." target="_blank" class="inline-block bg-emerald-500 text-white font-black uppercase tracking-widest text-[13px] md:text-[15px] px-8 md:px-12 py-5 rounded-2xl shadow-[0_10px_30px_rgba(16,185,129,0.4)] hover:bg-emerald-400 hover:-translate-y-1 transition duration-300 transform">
-                                    Falar com a Equipe GL.ID Agora
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- FIX DE ESPAÇAMENTO E FOOTER COPYRIGHT -->
-                <div class="bg-zinc-950 pt-12 pb-36 md:pb-16 px-6 border-t-4 border-blue-600">
+                <div class="bg-zinc-950 pt-12 pb-16 px-6 border-t-4 border-blue-600">
                     <div class="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
                         <img src="https://glid.carrd.co/assets/images/image03.png?v=a8738403" alt="GLID" class="h-10 object-contain">
                         <p class="text-[11px] text-zinc-500 uppercase tracking-widest font-semibold">© 2026 GLID. Tecnologia em Conversão B2B.</p>
@@ -814,30 +568,113 @@
             </div>
         </div>
 
-        <!-- 🟢 BARRA CTA FLUTUANTE B2C (MOBILE GAVETA DE CHECKOUT) 🟢 -->
-        <div id="floating-cta" class="fixed-bottom-cta">
-            <!-- Puxador Visual -->
-            <div id="drawer-puller" class="w-12 h-1.5 bg-zinc-200 rounded-full mx-auto mb-2 hidden" onclick="window.closeDrawer()"></div>
+        <!-- 🟢 O NOVO CHECKOUT UNIFICADO (MODAL/GAVETA) 🟢 -->
+        <div id="checkout-drawer">
             
-            <!-- Resumo do Serviço (Aparece no Mobile Drawer) -->
-            <div id="drawer-summary" class="hidden flex-col mb-2 bg-zinc-50 p-4 rounded-xl border border-zinc-200">
-                <p class="text-[9px] text-emerald-600 font-black uppercase tracking-widest mb-1">Pacote Selecionado</p>
-                <h3 id="drawer-service-name" class="font-black text-[15px] text-zinc-900 mb-1">...</h3>
-                <p id="drawer-service-desc" class="text-[11px] text-zinc-500 font-medium leading-relaxed">...</p>
+            <!-- Puxador Visual Mobile & Botão Fechar Desktop -->
+            <div class="w-full flex justify-center pt-3 pb-1 md:hidden" onclick="window.closeDrawer()">
+                <div class="w-12 h-1.5 bg-zinc-300 rounded-full cursor-pointer"></div>
+            </div>
+            <div class="hidden md:flex justify-between items-center p-6 border-b border-zinc-200">
+                <h3 class="font-black text-zinc-900 uppercase tracking-widest text-[13px]">Orçamento</h3>
+                <button onclick="window.closeDrawer()" class="text-zinc-400 hover:text-zinc-900 text-2xl font-light leading-none">&times;</button>
             </div>
 
-            <!-- Corpo Dinâmico (Passos 2 e 3 são Injetados Aqui via JS no Mobile) -->
-            <div id="drawer-body" class="overflow-y-auto hide-scrollbar transition-all duration-500" style="max-height: 0; opacity: 0;">
+            <!-- Corpo Dinâmico Rolável -->
+            <div id="drawer-body" class="hide-scrollbar">
+                
+                <!-- Resumo do Serviço (Ancorado no Topo) -->
+                <div class="mb-4 bg-zinc-50 p-4 rounded-xl border border-zinc-200 shadow-sm">
+                    <p class="text-[9px] text-emerald-600 font-black uppercase tracking-widest mb-1">Pacote Selecionado</p>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 id="drawer-service-name" class="font-black text-[15px] text-zinc-900 mb-1">...</h3>
+                            <p id="drawer-service-desc" class="text-[11px] text-zinc-500 font-medium leading-relaxed pr-2">...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASSO 1 INTERNO: Identificar a Máquina -->
+                <h2 class="drawer-section-title first">1. Veículo</h2>
+                <p class="text-[11px] text-zinc-500 font-medium mb-3">Para revelar o orçamento exato, informe o modelo.</p>
+                <select id="native-brand" class="solid-input" onchange="window.handleNativeBrand()">
+                    <option value="" disabled selected>Montadora...</option>
+                </select>
+                <select id="native-model" class="solid-input" style="display: none;" onchange="window.handleNativeModel()">
+                    <option value="" disabled selected>Modelo...</option>
+                </select>
+
+                <div id="fallback-size" class="mt-2 bg-white border border-zinc-200 rounded-xl p-4 mb-4 shadow-sm" style="display:none;">
+                    <p class="text-[10px] text-zinc-900 font-black uppercase tracking-widest mb-3 text-center">Qual o porte aproximado?</p>
+                    <div class="grid grid-cols-3 gap-2 mb-3">
+                        <button type="button" class="cat-btn" id="cat-hatch" onclick="window.selectFallbackCategory('Pequeno/Hatch', 1, 'cat-hatch')"><span class="cat-icon text-2xl">🚗</span><span>Pequeno</span></button>
+                        <button type="button" class="cat-btn" id="cat-suv" onclick="window.selectFallbackCategory('Médio/SUV', 1.3, 'cat-suv')"><span class="cat-icon text-2xl">🚙</span><span>Médio/SUV</span></button>
+                        <button type="button" class="cat-btn" id="cat-pickup" onclick="window.selectFallbackCategory('Grande/Pickup', 1.5, 'cat-pickup')"><span class="cat-icon text-2xl">🛻</span><span>Grande</span></button>
+                    </div>
+                    <input type="text" id="fallback-input" class="solid-input mb-0" placeholder="Ex: Monza" oninput="window.handleFallbackInput()">
+                </div>
+
+                <!-- PASSO 2 INTERNO: Oculto até o carro ser selecionado -->
+                <div id="drawer-step-3" style="opacity: 0; max-height: 0; overflow: hidden; transition: all 0.5s ease;">
+                    
+                    <h2 class="drawer-section-title">2. Adicionais</h2>
+                    <div class="flex justify-between items-center mb-4 bg-amber-50 p-4 rounded-xl border border-amber-200">
+                        <div>
+                            <h4 class="text-[12px] font-black text-amber-600 uppercase">✨ Cera Líquida</h4>
+                            <p class="text-[10px] text-amber-700/70 mt-1">+ R$ 50 (Proteção e Brilho)</p>
+                        </div>
+                        <input type="checkbox" id="upsell-toggle-bottom" class="upsell-toggle shrink-0" onchange="window.toggleUpsell(this)">
+                    </div>
+
+                    <!-- 🟢 NOVA SEÇÃO: FINALIZAÇÃO DOS PNEUS 🟢 -->
+                    <h2 class="drawer-section-title">3. Finalização dos Pneus <span class="text-[9px] bg-zinc-200 text-zinc-600 px-2 py-0.5 rounded-full ml-1 normal-case tracking-normal">Cortesia</span></h2>
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <button type="button" class="cat-btn selected" id="tire-gloss" onclick="window.selectTireFinish('Brilhante', 'tire-gloss')">
+                            <span class="text-xl mb-1 mt-1">✨</span><span class="font-black text-zinc-900">Brilhante</span>
+                            <span class="text-[9px] text-zinc-500 mt-1">Look molhado clássico</span>
+                        </button>
+                        <button type="button" class="cat-btn" id="tire-matte" onclick="window.selectTireFinish('Fosco', 'tire-matte')">
+                            <span class="text-xl mb-1 mt-2">🛡️</span><span class="font-black text-zinc-900">Fosco</span>
+                            <span class="text-[9px] text-zinc-500 mt-1">Look acetinado/original</span>
+                        </button>
+                    </div>
+
+                    <h2 class="drawer-section-title">4. Turno de Entrega</h2>
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <button type="button" class="cat-btn selected relative" id="shift-morning" onclick="window.selectShift('Manhã', 'shift-morning')">
+                            <span class="absolute -top-2 bg-emerald-500 text-white text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest shadow-md">Recomendado</span>
+                            <span class="text-xl mb-1 mt-1">🌅</span><span class="font-black text-zinc-900">Manhã</span>
+                            <span class="text-[9px] text-zinc-500 mt-1">Pronto no mesmo dia</span>
+                        </button>
+                        <button type="button" class="cat-btn" id="shift-afternoon" onclick="window.selectShift('Tarde', 'shift-afternoon')">
+                            <span class="text-xl mb-1 mt-2">🌇</span><span class="font-black text-zinc-900">Tarde</span>
+                            <span class="text-[9px] text-zinc-500 mt-1">Pronto no dia seguinte</span>
+                        </button>
+                    </div>
+
+                    <h2 class="drawer-section-title">5. Reserva VIP</h2>
+                    <p class="text-[11px] text-zinc-500 mb-3 font-medium">As vagas são limitadas. Confirme seu WhatsApp.</p>
+                    <input type="tel" id="client-phone" class="solid-input hud-input mb-2" placeholder="(DD) 99999-9999" maxlength="15" oninput="window.maskPhone(this)">
+                    
+                    <div class="receipt-card mt-6">
+                        <h4 class="text-center font-black">RECIBO FINAL</h4>
+                        <div class="receipt-row"><span>Porte Base:</span><span class="receipt-val font-medium text-zinc-500" id="receipt-category">Pendente</span></div>
+                        <div id="receipt-upsell-row" class="receipt-row" style="display:none;"><span>Opcional:</span><span class="receipt-val text-amber-600">+ Cera Líquida</span></div>
+                        <div class="receipt-total"><span class="font-black text-[12px] uppercase text-zinc-800">Total a Pagar:</span><span class="receipt-total-val" id="receipt-total">R$ 0</span></div>
+                    </div>
+                </div>
+
             </div>
 
-            <div id="bottom-upsell-zone" class="bottom-upsell-zone">
-                <div><h4 class="text-[12px] font-black text-amber-500 uppercase">✨ Adicionar Cera Líquida</h4><p class="text-[10px] text-zinc-400 mt-1">+ R$ 50 (Proteção Extra e Brilho)</p></div>
-                <input type="checkbox" id="upsell-toggle-bottom" class="upsell-toggle shrink-0" onchange="window.toggleUpsell(this)">
-            </div>
-            
-            <div class="cta-row-flex">
-                <div class="cart-info"><span class="cart-label">Total Estimado</span><span class="cart-total" id="cta-total">R$ ---</span></div>
-                <button id="btn-continue-flow" class="btn-continue" disabled onclick="window.handleNextStep()"><span class="btn-text">Selecionar</span></button>
+            <!-- Rodapé Fixo do Modal -->
+            <div class="drawer-fixed-footer">
+                <div class="flex justify-between items-center mb-3 px-1">
+                    <span class="text-[11px] font-black uppercase tracking-widest text-zinc-400">Total Estimado</span>
+                    <span id="cta-total" class="text-2xl font-black text-emerald-600">R$ ---</span>
+                </div>
+                <button id="btn-continue-flow" class="btn-continue" disabled onclick="window.finalizeBooking()">
+                    <span class="btn-text">Preencha os Dados Acima</span>
+                </button>
             </div>
         </div>
     </div>
@@ -886,35 +723,12 @@
         };
 
         // 🟢 STATE GLOBAL 🟢
-        let funnelState = { step: 1, brand: "", model: "", categoryName: "", categoryMultiplier: 1, baseService: "", baseDesc: "", basePrice: 0, hasUpsell: false, upsellPrice: 50, phoneReady: false, audioUnlocked: false, isStarted: false, shift: "Manhã" };
+        let funnelState = { step: 1, brand: "", model: "", categoryName: "", categoryMultiplier: 1, baseService: "", baseDesc: "", basePrice: 0, hasUpsell: false, upsellPrice: 50, phoneReady: false, audioUnlocked: false, isStarted: false, shift: "Manhã", tireFinish: "Brilhante" };
 
         function getTotalPrice() { 
             let baseCalculada = funnelState.basePrice * funnelState.categoryMultiplier;
             return Math.round(baseCalculada) + (funnelState.hasUpsell ? funnelState.upsellPrice : 0); 
         }
-
-        // Função Master para Formatação Segura e Sincronizada
-        window.updatePricesDisplay = function() {
-            const total = getTotalPrice();
-            const formattedTotal = total.toLocaleString('pt-BR');
-            const formattedBase = funnelState.basePrice.toLocaleString('pt-BR');
-
-            let displayTotal = "R$ ---";
-            if (funnelState.step === 1 && funnelState.basePrice > 0) {
-                displayTotal = "A partir de R$ " + formattedBase;
-            } else if (funnelState.step >= 2 && funnelState.basePrice > 0) {
-                displayTotal = "R$ " + formattedTotal;
-            }
-
-            const ctaTotal = document.getElementById('cta-total');
-            if (ctaTotal) ctaTotal.innerText = displayTotal;
-            
-            const dtCartTotal = document.getElementById('dt-cart-total');
-            if (dtCartTotal) dtCartTotal.innerText = displayTotal;
-
-            const receiptTotal = document.getElementById('receipt-total');
-            if (receiptTotal) receiptTotal.innerText = "R$ " + formattedTotal;
-        };
 
         document.addEventListener("DOMContentLoaded", () => {
             const brandSelect = document.getElementById('native-brand');
@@ -923,21 +737,6 @@
                 brandSelect.appendChild(option);
             });
             
-            const floatingCta = document.getElementById('floating-cta');
-            const scrollContainer = document.getElementById('scroll-container'); 
-            const b2bTeaser = document.getElementById('b2b-teaser');
-            
-            if (b2bTeaser && floatingCta && scrollContainer) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) floatingCta.classList.add('hide-cta');
-                        else if (funnelState.basePrice > 0) floatingCta.classList.remove('hide-cta');
-                    });
-                }, { root: scrollContainer, threshold: 0.05 }); 
-                observer.observe(b2bTeaser);
-            }
-
-            // 🟢 ARQUITETURA MOBILE (INJEÇÃO DO DRAWER) 🟢
             if(window.innerWidth < 768) {
                 const cardObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -948,20 +747,9 @@
                     });
                 }, { threshold: 0.7 });
                 document.querySelectorAll('.solid-card').forEach(card => cardObserver.observe(card));
-
-                // Move os Passos 2 e 3 para a Gaveta Inferior no arranque
-                const drawerBody = document.getElementById('drawer-body');
-                const step2 = document.getElementById('step-2-section');
-                const step3 = document.getElementById('step-3-section');
-                if(drawerBody && step2 && step3) {
-                    drawerBody.appendChild(step2);
-                    drawerBody.appendChild(step3);
-                }
             }
         });
 
-        // 🟢 FIX DE ESCOPO 🟢
-        
         window.handleNativeBrand = function() {
             funnelState.brand = document.getElementById('native-brand').value;
             const modelSelect = document.getElementById('native-model');
@@ -981,24 +769,23 @@
             const mult = carDatabase[funnelState.brand][funnelState.model];
             funnelState.categoryMultiplier = mult;
             funnelState.categoryName = mult === 1 ? "Pequeno/Sedan" : (mult === 1.3 ? "Médio/SUV" : "Grande/Pickup");
-            setTimeout(() => { window.editStep(3); }, 400); 
+            window.unlockStep3();
         };
 
         window.selectFallbackCategory = function(catName, multiplier, btnId) {
             document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('selected'));
             document.getElementById(btnId).classList.add('selected');
             funnelState.categoryName = catName; funnelState.categoryMultiplier = multiplier;
-            if (funnelState.model.length >= 2) setTimeout(() => { window.editStep(3); }, 400);
+            if (funnelState.model.length >= 2) window.unlockStep3();
         };
 
         window.handleFallbackInput = function() { 
             funnelState.model = document.getElementById('fallback-input').value; 
             if (funnelState.model.length >= 2 && funnelState.categoryName !== "") { 
-                setTimeout(() => { window.editStep(3); }, 500); 
+                window.unlockStep3();
             } 
         };
 
-        // 🟢 FUNÇÃO DE ESCOLHA DE TURNO (B2C) 🟢
         window.selectShift = function(shift, btnId) {
             document.querySelectorAll('#shift-morning, #shift-afternoon').forEach(b => b.classList.remove('selected'));
             document.getElementById(btnId).classList.add('selected');
@@ -1006,47 +793,22 @@
             if(navigator.vibrate) navigator.vibrate(10);
         };
 
-        window.selectUpgrade = function(el, mode, price) {
-            document.querySelectorAll('.solid-card').forEach(c => c.classList.remove('selected'));
-            el.classList.add('selected');
-            
-            funnelState.baseService = mode; 
-            funnelState.basePrice = price; 
-            funnelState.baseDesc = el.querySelector('.card-desc').innerText; // Captura para o Drawer
-            
-            const bUpsell = document.getElementById('bottom-upsell-zone');
-            const dtUpsell = document.getElementById('dt-upsell-row');
-            
-            if (price === 90 || price === 150) {
-                if (bUpsell) bUpsell.style.display = 'flex';
-            } else { 
-                if (bUpsell) bUpsell.style.display = 'none'; 
-                funnelState.hasUpsell = false; 
-                const toggleBottom = document.getElementById('upsell-toggle-bottom');
-                if (toggleBottom) toggleBottom.checked = false; 
-                if (dtUpsell) dtUpsell.classList.add('hidden');
-            }
-            if(navigator.vibrate) navigator.vibrate(20);
-            
-            window.updateWizardUI(); 
-            
-            if(window.innerWidth >= 768) {
-                const dtCart = document.getElementById('desktop-floating-cart');
-                if(dtCart) dtCart.classList.add('active');
-                setTimeout(() => { window.editStep(2); }, 400); // Desktop Scroll automático
-            } else {
-                setTimeout(() => { window.editStep(2); }, 400); // Mobile Pop-up automático
-            }
+        // 🟢 NOVA FUNÇÃO: ESTÉTICA DE PNEUS 🟢
+        window.selectTireFinish = function(finish, btnId) {
+            document.querySelectorAll('#tire-gloss, #tire-matte').forEach(b => b.classList.remove('selected'));
+            document.getElementById(btnId).classList.add('selected');
+            funnelState.tireFinish = finish;
+            if(navigator.vibrate) navigator.vibrate(10);
         };
 
         window.toggleUpsell = function(checkbox) { 
             funnelState.hasUpsell = checkbox.checked; 
-            const dtUpsell = document.getElementById('dt-upsell-row');
+            const dtUpsell = document.getElementById('receipt-upsell-row');
             if(dtUpsell) {
-                if(funnelState.hasUpsell) dtUpsell.classList.remove('hidden');
-                else dtUpsell.classList.add('hidden');
+                if(funnelState.hasUpsell) dtUpsell.style.display = 'flex';
+                else dtUpsell.style.display = 'none';
             }
-            window.updateWizardUI(); 
+            window.updatePricesDisplay(); 
         };
 
         window.maskPhone = function(input) { 
@@ -1057,6 +819,99 @@
             if (val.length === 15) { input.classList.remove('input-error'); input.classList.add('input-success'); funnelState.phoneReady = true; } 
             else { input.classList.remove('input-success'); funnelState.phoneReady = false; if (val.length > 13) { input.classList.add('input-error'); void input.offsetWidth; input.classList.add('shake-animation'); } }
             window.updateBottomCTA();
+        };
+
+        // 🟢 O SEGREDO DA CONVERSÃO: O PROGRESSIVE REVEAL 🟢
+        window.selectUpgrade = function(el, mode, price) {
+            document.querySelectorAll('.solid-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            
+            funnelState.baseService = mode; 
+            funnelState.basePrice = price; 
+            funnelState.baseDesc = el.querySelector('.card-desc').innerText;
+            
+            document.getElementById('drawer-service-name').innerText = funnelState.baseService;
+            document.getElementById('drawer-service-desc').innerText = funnelState.baseDesc;
+            
+            document.getElementById('global-backdrop').classList.add('active');
+            document.getElementById('checkout-drawer').classList.add('active-drawer');
+            document.body.style.overflow = 'hidden'; 
+            
+            document.getElementById('drawer-step-3').style.opacity = "0";
+            document.getElementById('drawer-step-3').style.maxHeight = "0";
+            funnelState.step = 2; 
+
+            window.updatePricesDisplay();
+            window.updateBottomCTA();
+        };
+
+        window.closeDrawer = function() {
+            document.getElementById('global-backdrop').classList.remove('active');
+            document.getElementById('checkout-drawer').classList.remove('active-drawer');
+            document.body.style.overflow = ''; 
+            funnelState.step = 1;
+            
+            document.querySelectorAll('.solid-card').forEach(c => c.classList.remove('selected'));
+        };
+
+        window.unlockStep3 = function() {
+            funnelState.step = 3;
+            const step3El = document.getElementById('drawer-step-3');
+            step3El.style.opacity = "1";
+            step3El.style.maxHeight = "1500px"; 
+            
+            document.getElementById('receipt-category').innerText = funnelState.categoryName;
+            
+            window.updatePricesDisplay();
+            window.updateBottomCTA();
+
+            setTimeout(() => {
+                const drawerBody = document.getElementById('drawer-body');
+                drawerBody.scrollTo({ top: drawerBody.scrollHeight, behavior: 'smooth' });
+            }, 300);
+        };
+
+        window.updatePricesDisplay = function() {
+            const total = getTotalPrice();
+            const formattedTotal = total.toLocaleString('pt-BR');
+            const formattedBase = funnelState.basePrice.toLocaleString('pt-BR');
+
+            let displayTotal = "R$ ---";
+            if (funnelState.step === 2 && funnelState.basePrice > 0) {
+                displayTotal = "A partir de R$ " + formattedBase;
+            } else if (funnelState.step === 3 && funnelState.basePrice > 0) {
+                displayTotal = "R$ " + formattedTotal;
+            }
+
+            const ctaTotal = document.getElementById('cta-total');
+            if (ctaTotal) ctaTotal.innerText = displayTotal;
+
+            const receiptTotal = document.getElementById('receipt-total');
+            if (receiptTotal) receiptTotal.innerText = "R$ " + formattedTotal;
+        };
+
+        window.updateBottomCTA = function() {
+            const btnCTA = document.getElementById('btn-continue-flow');
+            btnCTA.classList.remove('btn-success'); btnCTA.disabled = true;
+
+            if (funnelState.step === 2) {
+                btnCTA.querySelector('.btn-text').innerText = "Identifique o Veículo"; 
+            } else if (funnelState.step === 3) {
+                if (funnelState.phoneReady) { 
+                    btnCTA.disabled = false; btnCTA.classList.add('btn-success'); btnCTA.querySelector('.btn-text').innerText = "Agendar via WhatsApp"; 
+                } else {
+                    btnCTA.querySelector('.btn-text').innerText = "Insira o WhatsApp";
+                }
+            }
+        };
+
+        // 🟢 CAVALO DE TROIA NO WHATSAPP COM PNEUS 🟢
+        window.finalizeBooking = function() {
+            const totalFormatado = getTotalPrice().toLocaleString('pt-BR');
+            
+            const msg = `⚡ *NOVA SOLICITAÇÃO VIP* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n🛞 *PNEUS:* ${funnelState.tireFinish}\n🕒 *PREFERÊNCIA:* ${funnelState.shift}\n💰 *VALOR APROVADO:* R$ ${totalFormatado}\n\n━━━━━━━━━━━━━━━━━━━━━\n🎯 *JÁ IMAGINOU RECEBER CLIENTES ASSIM?*\n\nSem perguntas soltas. Sem "qual o valor?".\nO cliente clica no seu Instagram, escolhe o pacote, o sistema calcula o valor pelo tamanho do carro e ele chega ao seu WhatsApp pronto para agendar.\n\nIsto não é um cliente real, é uma demonstração do *Web App GL.ID* que acabámos de gerar para a sua Estética Automotiva.\n\nVocê quer parar de perder tempo com curiosos e ter uma máquina de fechamento automático com a sua marca?\n\nResponda a esta mensagem e vamos implementar este sistema no seu negócio.`;
+            
+            window.open(`https://wa.me/554933121788?text=${encodeURIComponent(msg)}`, '_blank');
         };
 
         // ⚡ IGNIÇÃO E PRÉ-LOADER ⚡
@@ -1134,169 +989,12 @@
                                 appView.style.display = "flex"; 
                                 void appView.offsetWidth; 
                                 appView.style.opacity = "1";
-
-                                window.updateWizardUI();
                             }, 400);
                         }, 3000);
                     }, 50);
                 }, 400); 
             }, 2000); 
         }
-
-        window.editStep = function(step) { funnelState.step = step; window.updateWizardUI(); };
-        
-        window.closeDrawer = function() {
-            window.editStep(1);
-        };
-
-        window.updateWizardUI = function() {
-            const isMobile = window.innerWidth < 768;
-            const isFirstStep = funnelState.step === 1;
-
-            const toggleDisplay = (id, displayValue) => {
-                const el = document.getElementById(id);
-                if (el) el.style.display = displayValue;
-            };
-
-            const setText = (id, text) => {
-                const el = document.getElementById(id);
-                if (el) el.innerText = text;
-            };
-
-            // Layout Geral (Sempre visível no Mobile como background)
-            toggleDisplay('hero-banner', (isMobile || isFirstStep) ? 'flex' : 'none');
-            toggleDisplay('trust-banner', (isMobile || isFirstStep) ? 'flex' : 'none');
-            toggleDisplay('step-1-section', (isMobile || isFirstStep) ? 'block' : 'none');
-            
-            toggleDisplay('gallery-section', isFirstStep ? 'block' : 'none');
-            toggleDisplay('social-proof-section', isFirstStep ? 'block' : 'none');
-            toggleDisplay('b2c-faq-section', isFirstStep ? 'block' : 'none');
-            toggleDisplay('footer-section', isFirstStep ? 'block' : 'none');
-
-            // Timeline Desktop
-            const stepNav1 = document.getElementById('step-nav-1');
-            if (stepNav1) { stepNav1.className = funnelState.step >= 1 ? 'progress-step active' : 'progress-step'; if(funnelState.step > 1) stepNav1.classList.add('completed'); }
-            
-            const stepNav2 = document.getElementById('step-nav-2');
-            if (stepNav2) { stepNav2.className = funnelState.step >= 2 ? 'progress-step active' : 'progress-step'; if(funnelState.step > 2) stepNav2.classList.add('completed'); }
-            
-            const stepNav3 = document.getElementById('step-nav-3');
-            if (stepNav3) { stepNav3.className = funnelState.step === 3 ? 'progress-step active' : 'progress-step'; }
-
-            const lineFill1 = document.getElementById('line-fill-1');
-            if (lineFill1) lineFill1.style.width = funnelState.step >= 2 ? '100%' : '0%';
-            const lineFill2 = document.getElementById('line-fill-2');
-            if (lineFill2) lineFill2.style.width = funnelState.step === 3 ? '100%' : '0%';
-
-            // 🟢 LÓGICA DA GAVETA MOBILE vs DESKTOP 🟢
-            if (isMobile) {
-                const floatingBar = document.getElementById('floating-cta');
-                const backdrop = document.getElementById('mobile-backdrop');
-                const drawerBody = document.getElementById('drawer-body');
-                
-                if (isFirstStep) {
-                    if(floatingBar) floatingBar.classList.remove('expanded');
-                    if(backdrop) backdrop.classList.remove('active');
-                    document.body.style.overflow = ''; // Liberta Scroll
-                    
-                    toggleDisplay('drawer-summary', 'none');
-                    toggleDisplay('drawer-puller', 'none');
-                    toggleDisplay('step-2-section', 'none');
-                    toggleDisplay('step-3-section', 'none');
-                } else {
-                    if(floatingBar) floatingBar.classList.add('expanded');
-                    if(backdrop) backdrop.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Tranca o scroll do fundo
-                    
-                    toggleDisplay('drawer-summary', 'flex');
-                    toggleDisplay('drawer-puller', 'block');
-                    
-                    // PROGRESSIVE REVEAL NO POPUP
-                    toggleDisplay('step-2-section', funnelState.step >= 2 ? 'block' : 'none');
-                    
-                    if (funnelState.step === 3) {
-                        toggleDisplay('step-3-section', 'block');
-                        setTimeout(() => {
-                            if(drawerBody) drawerBody.scrollTo({ top: drawerBody.scrollHeight, behavior: 'smooth' });
-                        }, 100);
-                    } else {
-                        toggleDisplay('step-3-section', 'none');
-                    }
-                }
-            } else {
-                // Desktop stays sequential
-                toggleDisplay('step-2-section', funnelState.step === 2 ? 'block' : 'none');
-                toggleDisplay('step-3-section', funnelState.step === 3 ? 'block' : 'none');
-                document.getElementById('scroll-container').scrollTop = 0;
-            }
-            
-            setText('drawer-service-name', funnelState.baseService || "...");
-            setText('drawer-service-desc', funnelState.baseDesc || "...");
-
-            setText('receipt-car', funnelState.brand && funnelState.model ? (funnelState.brand + " " + funnelState.model) : "-");
-            setText('receipt-category', funnelState.categoryName || "-");
-            setText('receipt-base', funnelState.baseService || "-");
-            toggleDisplay('receipt-upsell-row', funnelState.hasUpsell ? 'flex' : 'none');
-            
-            window.updatePricesDisplay();
-
-            const dtCartService = document.getElementById('dt-cart-service');
-            if(dtCartService){ dtCartService.innerText = funnelState.baseService || "-"; document.getElementById('dt-cart-size').innerText = funnelState.categoryName || "-"; }
-
-            if (funnelState.step === 3) {
-                toggleDisplay('bottom-upsell-zone', 'none');
-            }
-            window.updateBottomCTA();
-        };
-
-        window.updateBottomCTA = function() {
-            const btnCTA = document.getElementById('btn-continue-flow');
-            const dtBtnCTA = document.getElementById('dt-btn-continue');
-            const floatingBar = document.getElementById('floating-cta');
-            
-            if (btnCTA) { btnCTA.classList.remove('btn-success'); btnCTA.disabled = true; }
-            if (dtBtnCTA) { dtBtnCTA.disabled = true; dtBtnCTA.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-500'); }
-
-            if (window.innerWidth < 768 && floatingBar) {
-                if (funnelState.basePrice > 0) floatingBar.classList.add('active-cart');
-                else floatingBar.classList.remove('active-cart');
-            }
-
-            if (funnelState.step === 1) {
-                if (funnelState.basePrice > 0) { 
-                    if (btnCTA) { btnCTA.disabled = false; const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Identificar Veículo"; }
-                    if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Identificar Veículo"; }
-                }
-            } else if (funnelState.step === 2) {
-                if (funnelState.brand && funnelState.model.length >= 2) { 
-                    if (btnCTA) { btnCTA.disabled = false; const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Escolher Turno"; }
-                    if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Ver Resumo"; }
-                }
-            } else if (funnelState.step === 3) {
-                if (funnelState.phoneReady) { 
-                    if (btnCTA) { btnCTA.disabled = false; btnCTA.classList.add('btn-success'); const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Agendar via WhatsApp"; }
-                    if (dtBtnCTA) { dtBtnCTA.disabled = false; dtBtnCTA.innerText = "Agendar via WhatsApp"; dtBtnCTA.classList.add('bg-emerald-500', 'text-white', 'border-emerald-500'); dtBtnCTA.classList.remove('bg-zinc-100', 'text-zinc-400');}
-                }
-                else {
-                    if (btnCTA) { const btnText = btnCTA.querySelector('.btn-text'); if (btnText) btnText.innerText = "Falta Contato"; }
-                    if (dtBtnCTA) dtBtnCTA.innerText = "Falta Contato";
-                }
-            }
-        };
-
-        window.handleNextStep = function() {
-            if (funnelState.step < 3) { window.editStep(funnelState.step + 1); } 
-            else if (funnelState.step === 3 && funnelState.phoneReady) window.finalizeBooking();
-        };
-
-        // 🟢 CAVALO DE TROIA: COPYWRITING DE VENDAS B2B NO WHATSAPP 🟢
-        window.finalizeBooking = function() {
-            const totalFormatado = getTotalPrice().toLocaleString('pt-BR');
-            
-            const msg = `⚡ *NOVA SOLICITAÇÃO VIP* ⚡\n\n🚗 *VEÍCULO:* ${funnelState.brand} ${funnelState.model} (${funnelState.categoryName})\n🛠️ *SERVIÇO:* ${funnelState.baseService}${funnelState.hasUpsell ? ' + Cera' : ''}\n🕒 *PREFERÊNCIA:* ${funnelState.shift}\n💰 *VALOR APROVADO:* R$ ${totalFormatado}\n\n━━━━━━━━━━━━━━━━━━━━━\n🎯 *JÁ IMAGINOU RECEBER CLIENTES ASSIM?*\n\nSem perguntas soltas. Sem "qual o valor?".\nO cliente clica no seu Instagram, escolhe o pacote, o sistema calcula o valor pelo tamanho do carro e ele chega ao seu WhatsApp pronto para agendar.\n\nIsto não é um cliente real, é uma demonstração do *Web App GL.ID* que acabámos de gerar para a sua Estética Automotiva.\n\nVocê quer parar de perder tempo com curiosos e ter uma máquina de fechamento automático com a sua marca?\n\nResponda a esta mensagem e vamos implementar este sistema no seu negócio.`;
-            
-            window.open(`https://wa.me/554933121788?text=${encodeURIComponent(msg)}`, '_blank');
-        };
 
         // 🟢 FUNÇÕES B2B 🟢
         window.toggleB2BFaq = function(id) {
